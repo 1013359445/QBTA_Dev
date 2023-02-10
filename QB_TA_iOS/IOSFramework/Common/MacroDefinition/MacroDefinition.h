@@ -9,6 +9,9 @@
 #define MacroDefinition_h
 
 
+#define kBundleImage(imgName,folderName) [NSBundle mj_ImageWithName:imgName folder:folderName]
+//[UIimage imageNamed:name]
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
@@ -22,11 +25,9 @@
 
 
 //判断是否为iPhone
-#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
 
 //判断是否为iPad
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@"iPad"])
 
 //判断是否为ipod
@@ -124,5 +125,6 @@ static className *_instance##className; \
     }); \
     return _instance##className; \
 }
+
 
 #endif /* MacroDefinition_h */

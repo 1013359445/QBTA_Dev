@@ -167,7 +167,7 @@
     [self drawAgreementTextView];
     [self.agreementText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_agreeBtn.mas_right).mas_offset(kRelative(14));
-        make.right.mas_equalTo(_frameImageView.mas_right).mas_offset(-30);
+        make.right.mas_equalTo(_frameImageView.mas_right);
         make.height.mas_equalTo(kRelative(56));
         make.top.mas_equalTo(_agreeBtn.mas_top).mas_offset(kRelative(-12));
 
@@ -263,54 +263,9 @@
 -(UIImageView*)bgImageView{
     if (!_bgImageView){
         _bgImageView = [UIImageView new];
-//        NSBundle *containnerBundle = [NSBundle bundleForClass:[self class]];
-//
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"IOSFramework" ofType:@"framework" inDirectory:@"Frameworks"];
-//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        NSLog(@"bundle1");
-//
-//        if (!bundle) {
-//            bundlePath = [bundlePath stringByAppendingPathComponent:@"/TABundle.bundle"];
-//            bundle = [NSBundle bundleWithPath:bundlePath];
-//            NSLog(@"bundle2");
-//        }
-//        if (!bundle) {
-//            bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
-//            bundle = [NSBundle bundleWithPath:bundlePath];
-//            NSLog(@"bundle3");
-//        }
-//        if (!bundle) {
-//            bundle = [NSBundle bundleWithIdentifier:@"TABundle.bundle"];
-//            NSLog(@"bundle4");
-//        }
-//        if (!bundle) {
-//            bundle = [NSBundle bundleWithIdentifier:@"TABundle"];
-//            NSLog(@"bundle5");
-//        }
-//        if (!bundle) {
-//            NSBundle *containnerBundle = [NSBundle bundleForClass:[self class]];
-//            bundle = [NSBundle bundleWithPath:[containnerBundle pathForResource:@"TABundle" ofType:@"bundle"]];
-//            NSLog(@"bundle6");
-//        }
-//
-//        UIImage *rImage = nil;
-//        UIImage *image = [UIImage imageNamed:@"login_bg" inBundle:bundle compatibleWithTraitCollection:nil];
-//        NSLog(@"image1:%@",image);
-//        rImage = image?: rImage;
-//
-//        NSString *imagePath = [bundle pathForResource:@"login_bg" ofType:@"png"];
-//        image = [UIImage imageWithContentsOfFile:imagePath];
-//        NSLog(@"image1:%@",image);
-//        rImage = image?: rImage;
-//
-//        imagePath = [bundle pathForResource:@"login_bg@2x" ofType:@"png"];
-//        image = [UIImage imageWithContentsOfFile:imagePath];
-//        NSLog(@"image2:%@",image);
-//        rImage = image?: rImage;
 
-        
-        
-        [_bgImageView setImage:[UIImage imageNamed:@"login_bg"]];
+        UIImage *image = kBundleImage(@"login_bg", @"Login");
+        [_bgImageView setImage:image];
         [_bgImageView setUserInteractionEnabled:YES];
         [_bgImageView setContentMode:UIViewContentModeScaleAspectFill];
     }
@@ -320,7 +275,7 @@
 -(UIImageView*)frameImageView{
     if (!_frameImageView){
         _frameImageView = [UIImageView new];
-        [_frameImageView setImage:[UIImage imageNamed:@"login_frame"]];
+        [_frameImageView setImage:kBundleImage(@"login_frame", @"Login")];
         [_frameImageView setUserInteractionEnabled:YES];
     }
     return _frameImageView;
@@ -402,8 +357,8 @@
 -(UIButton*   )eyeBtn{
     if (!_eyeBtn){
         _eyeBtn = [UIButton new];
-        [_eyeBtn setImage:[UIImage imageNamed:@"login_closeEyes"] forState:UIControlStateNormal];
-        [_eyeBtn setImage:[UIImage imageNamed:@"login_openEyes"] forState:UIControlStateSelected];
+        [_eyeBtn setImage:kBundleImage(@"login_closeEyes", @"Login") forState:UIControlStateNormal];
+        [_eyeBtn setImage:kBundleImage(@"login_openEyes", @"Login") forState:UIControlStateSelected];
         [_eyeBtn addTarget:self action:@selector(eyeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _eyeBtn;
@@ -465,8 +420,8 @@
 -(UIButton*   )agreeBtn{
     if (!_agreeBtn){
         _agreeBtn = [UIButton new];
-        [_agreeBtn setImage:[UIImage imageNamed:@"login_agree_n"] forState:UIControlStateNormal];
-        [_agreeBtn setImage:[UIImage imageNamed:@"login_agree_s"] forState:UIControlStateSelected];
+        [_agreeBtn setImage:kBundleImage(@"login_agree_n", @"Login") forState:UIControlStateNormal];
+        [_agreeBtn setImage:kBundleImage(@"login_agree_s", @"Login") forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _agreeBtn;

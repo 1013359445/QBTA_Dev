@@ -11,8 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSBundle (MJImage)
-+ (instancetype)mj_refreshBundle;
-+ (UIImage *)mj_ImageWithName:(NSString *)imageName;
++ (UIImage *)mj_ImageWithName:(NSString *)imageName folder:(NSString *)folder;
 @end
 
 NS_ASSUME_NONNULL_END

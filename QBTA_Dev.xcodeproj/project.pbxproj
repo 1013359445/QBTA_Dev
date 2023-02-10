@@ -14,23 +14,16 @@
 		7A3CACFE298A2E1700DD1998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFD298A2E1700DD1998 /* Assets.xcassets */; };
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
-		7A3CAD15298A2E8400DD1998 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3CAD14298A2E8400DD1998 /* IOSFramework.framework */; platformFilter = ios; };
-		7A3CB1FE298A8F2F00DD1998 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CB1FD298A8F2F00DD1998 /* Images.xcassets */; };
+		7ACB5A9A29964F820005E0D5 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACB5A9929964F820005E0D5 /* IOSFramework.framework */; };
+		7ACB5A9B29964FD20005E0D5 /* IOSFramework.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB5A9929964F820005E0D5 /* IOSFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7A3CAD0E298A2E4300DD1998 /* PBXContainerItemProxy */ = {
+		7ACB5AA029964FE80005E0D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7A3CAD0A298A2E4300DD1998 /* QB_TA_iOS.xcodeproj */;
+			containerPortal = 7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7AC8D5FA29875A07001E9F12;
-			remoteInfo = IOSFramework;
-		};
-		7A3CAD10298A2E4F00DD1998 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A3CAD0A298A2E4300DD1998 /* QB_TA_iOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7AC8D5F929875A07001E9F12;
 			remoteInfo = IOSFramework;
 		};
 /* End PBXContainerItemProxy section */
@@ -48,9 +41,8 @@
 		7A3CAD00298A2E1700DD1998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A3CAD02298A2E1700DD1998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A3CAD03298A2E1700DD1998 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7A3CAD0A298A2E4300DD1998 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
-		7A3CAD14298A2E8400DD1998 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
-		7A3CB1FD298A8F2F00DD1998 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = QB_TA_iOS/IOSFramework/Resource/Images.xcassets; sourceTree = "<group>"; };
+		7ACB5A9929964F820005E0D5 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Debug-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
+		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A3CAD15298A2E8400DD1998 /* IOSFramework.framework in Frameworks */,
+				7ACB5A9A29964F820005E0D5 /* IOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +60,7 @@
 		7A3CACE5298A2E1600DD1998 = {
 			isa = PBXGroup;
 			children = (
-				7A3CB1FD298A8F2F00DD1998 /* Images.xcassets */,
-				7A3CAD0A298A2E4300DD1998 /* QB_TA_iOS.xcodeproj */,
+				7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */,
 				7A3CACF0298A2E1600DD1998 /* QBTA_Dev */,
 				7A3CACEF298A2E1600DD1998 /* Products */,
 				7A3CAD12298A2E7200DD1998 /* Frameworks */,
@@ -102,20 +93,20 @@
 			path = QBTA_Dev;
 			sourceTree = "<group>";
 		};
-		7A3CAD0B298A2E4300DD1998 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7A3CAD0F298A2E4300DD1998 /* IOSFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7A3CAD12298A2E7200DD1998 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7A3CAD14298A2E8400DD1998 /* IOSFramework.framework */,
+				7ACB5A9929964F820005E0D5 /* IOSFramework.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7ACB5A9D29964FE80005E0D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7ACB5AA129964FE80005E0D5 /* IOSFramework.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +123,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7A3CAD11298A2E4F00DD1998 /* PBXTargetDependency */,
 			);
 			name = QBTA_Dev;
 			productName = QBTA_Dev;
@@ -166,8 +156,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 7A3CAD0B298A2E4300DD1998 /* Products */;
-					ProjectRef = 7A3CAD0A298A2E4300DD1998 /* QB_TA_iOS.xcodeproj */;
+					ProductGroup = 7ACB5A9D29964FE80005E0D5 /* Products */;
+					ProjectRef = 7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -178,11 +168,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7A3CAD0F298A2E4300DD1998 /* IOSFramework.framework */ = {
+		7ACB5AA129964FE80005E0D5 /* IOSFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = IOSFramework.framework;
-			remoteRef = 7A3CAD0E298A2E4300DD1998 /* PBXContainerItemProxy */;
+			remoteRef = 7ACB5AA029964FE80005E0D5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -192,7 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A3CB1FE298A8F2F00DD1998 /* Images.xcassets in Resources */,
+				7ACB5A9B29964FD20005E0D5 /* IOSFramework.framework in Resources */,
 				7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */,
 				7A3CACFE298A2E1700DD1998 /* Assets.xcassets in Resources */,
 				7A3CACFC298A2E1600DD1998 /* Main.storyboard in Resources */,
@@ -214,14 +204,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7A3CAD11298A2E4F00DD1998 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IOSFramework;
-			targetProxy = 7A3CAD10298A2E4F00DD1998 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7A3CACFA298A2E1600DD1998 /* Main.storyboard */ = {
@@ -364,6 +346,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;
@@ -397,6 +383,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;

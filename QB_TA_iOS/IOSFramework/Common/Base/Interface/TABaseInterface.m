@@ -18,11 +18,10 @@
     return self;
 }
 
-//- (void)dealloc
-//{
-//[request clearDelegatesAndCancel];[request release];
-//[super dealloc];
-//}
+- (void)dealloc
+{
+    [_formRequest clearDelegatesAndCancel];
+}
 
 
 -(void)requestStarted:(ASIHTTPRequest *)request

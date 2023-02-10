@@ -13,7 +13,6 @@
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
 		7A3CAD1D298A2EFC00DD1998 /* TABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD1B298A2EFC00DD1998 /* TABaseViewController.m */; };
-		7A3CAD27298A30C900DD1998 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CAD26298A30C900DD1998 /* Images.xcassets */; };
 		7A3CADE1298A426300DD1998 /* MJPropertyKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CADCB298A426300DD1998 /* MJPropertyKey.h */; };
 		7A3CADE2298A426300DD1998 /* NSObject+MJClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CADCC298A426300DD1998 /* NSObject+MJClass.h */; };
 		7A3CADE3298A426300DD1998 /* NSString+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CADCD298A426300DD1998 /* NSString+MJExtension.h */; };
@@ -487,7 +486,6 @@
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
 		7A3CAD1B298A2EFC00DD1998 /* TABaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TABaseViewController.m; sourceTree = "<group>"; };
-		7A3CAD26298A30C900DD1998 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7A3CADCB298A426300DD1998 /* MJPropertyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
 		7A3CADCC298A426300DD1998 /* NSObject+MJClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJClass.h"; sourceTree = "<group>"; };
 		7A3CADCD298A426300DD1998 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
@@ -979,7 +977,6 @@
 			isa = PBXGroup;
 			children = (
 				7AF92674298D03680005CA52 /* TABundle.bundle */,
-				7A3CAD26298A30C900DD1998 /* Images.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2221,7 +2218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AF92676298D03680005CA52 /* TABundle.bundle in Resources */,
-				7A3CAD27298A30C900DD1998 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

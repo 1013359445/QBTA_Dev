@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0D28712995F2FB004BCDC6 /* NSBundle+MJImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */; };
+		7A0D28722995F2FB004BCDC6 /* NSBundle+MJImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -459,7 +461,6 @@
 		7A3CB1F5298A565900DD1998 /* UITextField+JKBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB12A298A565900DD1998 /* UITextField+JKBlocks.m */; };
 		7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB1F6298A703500DD1998 /* TARouter.h */; };
 		7A3CB1F9298A703500DD1998 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB1F7298A703500DD1998 /* TARouter.m */; };
-		7A3CB1FC298A8E2E00DD1998 /* TABundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CB1FB298A8E2E00DD1998 /* TABundle.bundle */; };
 		7A3CB201298B639700DD1998 /* MacroDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB200298B639700DD1998 /* MacroDefinition.h */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
@@ -476,9 +477,12 @@
 		7AC8D5FD29875A07001E9F12 /* IOSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D5FC29875A07001E9F12 /* IOSFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D60129875A23001E9F12 /* CommInterface.m */; };
 		7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D60229875A23001E9F12 /* CommInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AF92676298D03680005CA52 /* TABundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AF92674298D03680005CA52 /* TABundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+MJImage.m"; sourceTree = "<group>"; };
+		7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+MJImage.h"; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -931,7 +935,6 @@
 		7A3CB12A298A565900DD1998 /* UITextField+JKBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JKBlocks.m"; sourceTree = "<group>"; };
 		7A3CB1F6298A703500DD1998 /* TARouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouter.h; sourceTree = "<group>"; };
 		7A3CB1F7298A703500DD1998 /* TARouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARouter.m; sourceTree = "<group>"; };
-		7A3CB1FB298A8E2E00DD1998 /* TABundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TABundle.bundle; sourceTree = "<group>"; };
 		7A3CB200298B639700DD1998 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
 		7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginInterface.m; sourceTree = "<group>"; };
@@ -949,6 +952,7 @@
 		7AC8D5FC29875A07001E9F12 /* IOSFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSFramework.h; sourceTree = "<group>"; };
 		7AC8D60129875A23001E9F12 /* CommInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommInterface.m; sourceTree = "<group>"; };
 		7AC8D60229875A23001E9F12 /* CommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommInterface.h; sourceTree = "<group>"; };
+		7AF92674298D03680005CA52 /* TABundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TABundle.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -974,6 +978,7 @@
 		7A3CAD1F298A2F2F00DD1998 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7AF92674298D03680005CA52 /* TABundle.bundle */,
 				7A3CAD26298A30C900DD1998 /* Images.xcassets */,
 			);
 			path = Resource;
@@ -1050,6 +1055,8 @@
 		7A3CADCA298A426300DD1998 /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
+				7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */,
+				7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */,
 				7A3CADD5298A426300DD1998 /* MJExtension.h */,
 				7A3CADD0298A426300DD1998 /* MJExtensionConst.h */,
 				7A3CADD6298A426300DD1998 /* MJExtensionConst.m */,
@@ -1888,7 +1895,6 @@
 		7AD8608B29765008002B65E1 = {
 			isa = PBXGroup;
 			children = (
-				7A3CB1FB298A8E2E00DD1998 /* TABundle.bundle */,
 				7AC8D5FB29875A07001E9F12 /* IOSFramework */,
 				7AD8609529765008002B65E1 /* Products */,
 			);
@@ -1941,6 +1947,7 @@
 				7A3CB201298B639700DD1998 /* MacroDefinition.h in Headers */,
 				7A3CB1F2298A565900DD1998 /* UITextField+JKShake.h in Headers */,
 				7A3CB004298A46EF00DD1998 /* SDImageCachesManagerOperation.h in Headers */,
+				7A0D28722995F2FB004BCDC6 /* NSBundle+MJImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
@@ -2213,7 +2220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A3CB1FC298A8E2E00DD1998 /* TABundle.bundle in Resources */,
+				7AF92676298D03680005CA52 /* TABundle.bundle in Resources */,
 				7A3CAD27298A30C900DD1998 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2414,6 +2421,7 @@
 				7A3CB1BF298A565900DD1998 /* UIBezierPath+JKSymbol.m in Sources */,
 				7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */,
 				7A3CB136298A565900DD1998 /* UIImage+JKVector.m in Sources */,
+				7A0D28712995F2FB004BCDC6 /* NSBundle+MJImage.m in Sources */,
 				7A3CB1CD298A565900DD1998 /* UINavigationBar+JKAwesome.m in Sources */,
 				7A3CADE7298A426300DD1998 /* NSObject+MJKeyValue.m in Sources */,
 				7A3CB19C298A565900DD1998 /* UIView+JKRecursion.m in Sources */,
@@ -2474,7 +2482,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta.IOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2506,7 +2516,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta.IOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

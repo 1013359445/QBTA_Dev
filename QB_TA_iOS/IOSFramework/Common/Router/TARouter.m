@@ -59,8 +59,6 @@ shareInstance_implementation(TARouter)
         if (parmdic && [parmdic allKeys].count > 0) {
             vc.params = parmdic;
         }
-
-        [baseVC.view addSubview:vc.view];
         
         BOOL animated = [[parm objectForKey:@"animated"] boolValue];
 
@@ -68,8 +66,8 @@ shareInstance_implementation(TARouter)
             [baseVC.navigationController pushViewController:vc animated:animated];
         }
         else{
-            [baseVC presentViewController:vc animated:animated completion:nil];
             vc.modalPresentationStyle = UIModalPresentationFullScreen;
+            [baseVC presentViewController:vc animated:animated completion:nil];
         }
         vc.taskFinishBlock = successed;
     }else{

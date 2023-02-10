@@ -7,8 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <IOSFramework/CommInterface.h>
-
 //! Project version number for IOSFramework.
 FOUNDATION_EXPORT double IOSFrameworkVersionNumber;
 
@@ -16,5 +14,4 @@ FOUNDATION_EXPORT double IOSFrameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char IOSFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IOSFramework/PublicHeader.h>
-
-
+#import <IOSFramework/CommInterface.h>

@@ -57,7 +57,10 @@
 {
     [self.view addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.right.mas_equalTo(self.view.mas_right);
+        make.top.mas_equalTo(self.view.mas_top);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
     
     [self.bgImageView addSubview:self.frameImageView];
@@ -233,13 +236,18 @@
 
 }
 
+
+
 - (void)loginBtnClick:(UIButton *)sender
 {
     LRWeakSelf(self);
     [[TALoginInterface shareInstance] loginWithParmModel:nil dataModelClass:[TAUserInfoDataModel class] finishedBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
         
         weakself.taskFinishBlock(response);
-        [weakself.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakself goBack];
+        });
+
 
     } failedBlock:^(NSDictionary * _Nonnull response) {
         weakself.taskFinishBlock(response);
@@ -255,6 +263,53 @@
 -(UIImageView*)bgImageView{
     if (!_bgImageView){
         _bgImageView = [UIImageView new];
+//        NSBundle *containnerBundle = [NSBundle bundleForClass:[self class]];
+//
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"IOSFramework" ofType:@"framework" inDirectory:@"Frameworks"];
+//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+//        NSLog(@"bundle1");
+//
+//        if (!bundle) {
+//            bundlePath = [bundlePath stringByAppendingPathComponent:@"/TABundle.bundle"];
+//            bundle = [NSBundle bundleWithPath:bundlePath];
+//            NSLog(@"bundle2");
+//        }
+//        if (!bundle) {
+//            bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
+//            bundle = [NSBundle bundleWithPath:bundlePath];
+//            NSLog(@"bundle3");
+//        }
+//        if (!bundle) {
+//            bundle = [NSBundle bundleWithIdentifier:@"TABundle.bundle"];
+//            NSLog(@"bundle4");
+//        }
+//        if (!bundle) {
+//            bundle = [NSBundle bundleWithIdentifier:@"TABundle"];
+//            NSLog(@"bundle5");
+//        }
+//        if (!bundle) {
+//            NSBundle *containnerBundle = [NSBundle bundleForClass:[self class]];
+//            bundle = [NSBundle bundleWithPath:[containnerBundle pathForResource:@"TABundle" ofType:@"bundle"]];
+//            NSLog(@"bundle6");
+//        }
+//
+//        UIImage *rImage = nil;
+//        UIImage *image = [UIImage imageNamed:@"login_bg" inBundle:bundle compatibleWithTraitCollection:nil];
+//        NSLog(@"image1:%@",image);
+//        rImage = image?: rImage;
+//
+//        NSString *imagePath = [bundle pathForResource:@"login_bg" ofType:@"png"];
+//        image = [UIImage imageWithContentsOfFile:imagePath];
+//        NSLog(@"image1:%@",image);
+//        rImage = image?: rImage;
+//
+//        imagePath = [bundle pathForResource:@"login_bg@2x" ofType:@"png"];
+//        image = [UIImage imageWithContentsOfFile:imagePath];
+//        NSLog(@"image2:%@",image);
+//        rImage = image?: rImage;
+
+        
+        
         [_bgImageView setImage:[UIImage imageNamed:@"login_bg"]];
         [_bgImageView setUserInteractionEnabled:YES];
         [_bgImageView setContentMode:UIViewContentModeScaleAspectFill];

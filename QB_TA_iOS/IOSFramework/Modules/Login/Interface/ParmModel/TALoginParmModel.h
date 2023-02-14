@@ -6,16 +6,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TABaseParmModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TALoginParmModel : NSObject
+@interface TALoginParmModel : TABaseParmModel
 
 @property (nonatomic, copy)NSString*    phone;
 
 @property (nonatomic, copy)NSString*    password;//密码登录
 @property (nonatomic, copy)NSString*    type;//发送验证码
 @property (nonatomic, copy)NSString*    captcha;//验证码登录
+
+@property (nonatomic, copy)NSString*    version;
+@property (nonatomic, copy)NSString*    versionType;
+@property (nonatomic, copy)NSString*    lang;
 
 @end
 

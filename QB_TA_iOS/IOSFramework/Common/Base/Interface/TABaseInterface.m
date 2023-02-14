@@ -8,25 +8,9 @@
 #import "TABaseInterface.h"
 
 @interface TABaseInterface ()
-@property (nonatomic, copy)NSString *requestMethod;
 @end
 
-@implementation TABaseInterface 
-
-- (instancetype)init {
-    if (self = [super init]) {
-        _requestMethod = [self requestMethod];
-        if ([_requestMethod isEqualToString:@"POST"]) {
-            _formRequest = [[ASIFormDataRequest alloc] initWithURL:nil];
-            _httpRequest.requestMethod = _requestMethod;
-        }else if ([_requestMethod isEqualToString:@"GET"]) {
-            _httpRequest = [[ASIHTTPRequest alloc] initWithURL:nil];
-            _httpRequest.requestMethod = _requestMethod;
-        }else {
-        }
-    }
-    return self;
-}
+@implementation TABaseInterface
 
 - (void)dealloc {
 }
@@ -55,8 +39,10 @@
     self.finishedBlock = finishedBlock;
     self.failedBlock = failedBlock;
     self.dataModelClass = dataModelClass;
+        
+    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:nil];
+    request.requestMethod = self.requestMethod;
     
-    ASIHTTPRequest *request = nil;
     NSString *urlStr = [self urlStr];
     NSDictionary *pramDic = [parmModel mj_keyValues];
     //添加参数
@@ -64,10 +50,9 @@
         for (NSString *key in [pramDic allKeys]) {
             NSString *value = [pramDic objectForKey:key];
             if (value) {
-                [self.formRequest addPostValue:value forKey:key];
+                [request addPostValue:value forKey:key];
             }
         }
-        request = self.formRequest;
     }else if ([self.requestMethod isEqualToString:@"GET"]) {
         NSArray * keys = [pramDic allKeys];
         //拼接参数
@@ -81,14 +66,16 @@
             }
             [urlStr stringByAppendingString:string];
         }
-        urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        request = self.httpRequest;
-    }else{
-        
+        // 对除了这些特殊字符(!$&'()*+-./:;=?@_~%#[])以外的所有字符进行编码
+        urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet   characterSetWithCharactersInString:@"!$&'()*+-./:;=?@_~%#[]"]];
+        // 只编码 中文 字符(对所有字符都不进行编码，除了中文)
+        //[urlStr stringByAddingPercentEncodingWithAllowedCharacters:[[NSCharacterSet characterSetWithCharactersInString:@""] invertedSet]];
+
     }
-    
     [request setURL:[NSURL URLWithString:urlStr]];
     request.delegate = self;
+    [request setDefaultResponseEncoding:NSUTF8StringEncoding];
+    [request setResponseEncoding:NSUTF8StringEncoding];
     [request startAsynchronous];
 }
 
@@ -142,7 +129,7 @@
     self.finishedBlock();
 }
 
-//
+//  ASIHTTPRequest 参考代码
 //
 //+ (ASIHTTPRequest *)GET_Path:(NSString *)path completed:(KKCompletedBlock )completeBlock failed:(KKFailedBlock )failed
 //{

@@ -24,9 +24,6 @@ typedef void (^TAFinishedBlock)(void);
 
 @interface TABaseInterface : NSObject <ASIHTTPRequestDelegate>
 
-@property (nonatomic, retain)ASIFormDataRequest *   formRequest;
-@property (nonatomic, retain)ASIHTTPRequest *       httpRequest;
-
 @property (nonatomic, copy)TAFinishedBlock          finishedBlock;
 @property (nonatomic, copy)TAFailedBlock            failedBlock;
 @property (nonatomic, copy)TASucceededBlock         succeededBlock;

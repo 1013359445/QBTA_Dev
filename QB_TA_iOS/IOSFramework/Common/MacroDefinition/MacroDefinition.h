@@ -5,15 +5,17 @@
 //  Created by 白伟 on 2023/2/2.
 //
 
+
 #ifndef MacroDefinition_h
 #define MacroDefinition_h
 
-
+//获取图片资源
+#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 #define kBundleImage(imgName,folderName) [NSBundle mj_ImageWithName:imgName folder:folderName]
-//[UIimage imageNamed:name]
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
 
+//屏幕尺寸
 #define SCREEN_WIDTH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
 #define SCREENH_HEIGHT ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.height)
 #define SCREEN_SIZE ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?CGSizeMake([UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale):[UIScreen mainScreen].bounds.size)
@@ -22,7 +24,6 @@
 #define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 #endif
-
 
 //判断是否为iPhone
 #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
@@ -62,46 +63,44 @@
 #define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
 
 
-// 加载
-#define kShowNetworkActivityIndicator() [UIApplication sharedApplication].networkActivityIndicatorVisible = YES
-// 收起加载
-#define HideNetworkActivityIndicator()      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO
 // 设置加载
 #define NetworkActivityIndicatorVisible(x)  [UIApplication sharedApplication].networkActivityIndicatorVisible = x
+// 加载
+#define kShowNetworkActivityIndicator NetworkActivityIndicatorVisible(YES)
+// 收起加载
+#define HideNetworkActivityIndicator NetworkActivityIndicatorVisible(NO)
 
 #define kWindow [UIApplication sharedApplication].keyWindow
 
-#define kBackView         for (UIView *item in kWindow.subviews) { \
-if(item.tag == 10000) \
-{ \
-[item removeFromSuperview]; \
-UIView * aView = [[UIView alloc] init]; \
-aView.frame = [UIScreen mainScreen].bounds; \
-aView.tag = 10000; \
-aView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3]; \
-[kWindow addSubview:aView]; \
-} \
-} \
+//#define kBackView         for (UIView *item in kWindow.subviews) { \
+//if(item.tag == 10000) \
+//{ \
+//[item removeFromSuperview]; \
+//UIView * aView = [[UIView alloc] init]; \
+//aView.frame = [UIScreen mainScreen].bounds; \
+//aView.tag = 10000; \
+//aView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3]; \
+//[kWindow addSubview:aView]; \
+//} \
+//}
 
-#define kShowHUDAndActivity kBackView;[MBProgressHUD showHUDAddedTo:kWindow animated:YES];kShowNetworkActivityIndicator()
+#define kShowHUD [MBProgressHUD showHUDAddedTo:kWindow animated:YES]
+#define kShowHUDAndActivity kShowHUD;kShowNetworkActivityIndicator;
 
-#define kHiddenHUD [MBProgressHUD hideAllHUDsForView:kWindow animated:YES]
+//#define kRemoveBackView         for (UIView *item in kWindow.subviews) { \
+//if(item.tag == 10000) \
+//{ \
+//[UIView animateWithDuration:0.2 animations:^{ \
+//item.alpha = 0.0; \
+//} completion:^(BOOL finished) { \
+//[item removeFromSuperview]; \
+//}]; \
+//} \
+//}
 
-#define kRemoveBackView         for (UIView *item in kWindow.subviews) { \
-if(item.tag == 10000) \
-{ \
-[UIView animateWithDuration:0.4 animations:^{ \
-item.alpha = 0.0; \
-} completion:^(BOOL finished) { \
-[item removeFromSuperview]; \
-}]; \
-} \
-} \
+#define kHiddenHUD [MBProgressHUD hideHUDForView:kWindow animated:YES]
+#define kHiddenHUDAndAvtivity kHiddenHUD;HideNetworkActivityIndicator;
 
-#define kHiddenHUDAndAvtivity kRemoveBackView;kHiddenHUD;HideNetworkActivityIndicator()
-
-//获取图片资源
-#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
 //GCD - 一次性执行
 #define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&onceToken, onceBlock);

@@ -16,9 +16,17 @@ typedef void (^TaskFinishBlock) (id result);
 shareInstance_interface(TARouter)
 
 - (void)taskToPageWithParm:(NSDictionary*)parm
-successBlock:(TaskFinishBlock)successed
-failedBlock:(TaskFinishBlock)failed;
+              successBlock:(TaskFinishBlock)successed
+               failedBlock:(TaskFinishBlock)failed;
 
+- (void)taskToPageWithParm:(NSDictionary*)parm
+              successBlock:(TaskFinishBlock)successed
+               failedBlock:(TaskFinishBlock)failed
+             responseBlock:(TaskFinishBlock)response;
+
+//- (void)goBack;
+//
+//- (void)close;
 @end
 
 NS_ASSUME_NONNULL_END

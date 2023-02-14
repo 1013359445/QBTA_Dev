@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A0D28712995F2FB004BCDC6 /* NSBundle+MJImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */; };
-		7A0D28722995F2FB004BCDC6 /* NSBundle+MJImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */; };
+		7A0D28712995F2FB004BCDC6 /* NSBundle+TAImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */; };
+		7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -473,6 +473,8 @@
 		7A6BF76C298BDC47002EEDCA /* TABaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF76A298BDC47002EEDCA /* TABaseDataModel.m */; };
 		7A6BF76F298BDC5C002EEDCA /* TABaseParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF76D298BDC5C002EEDCA /* TABaseParmModel.h */; };
 		7A6BF770298BDC5C002EEDCA /* TABaseParmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF76E298BDC5C002EEDCA /* TABaseParmModel.m */; };
+		7AB3C5FA299A4FDB006F1E28 /* MBProgressHUD+TATips.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AB3C5F8299A4FDB006F1E28 /* MBProgressHUD+TATips.h */; };
+		7AB3C5FB299A4FDB006F1E28 /* MBProgressHUD+TATips.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB3C5F9299A4FDB006F1E28 /* MBProgressHUD+TATips.m */; };
 		7AC8D5FD29875A07001E9F12 /* IOSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D5FC29875A07001E9F12 /* IOSFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D60129875A23001E9F12 /* CommInterface.m */; };
 		7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D60229875A23001E9F12 /* CommInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -480,8 +482,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+MJImage.m"; sourceTree = "<group>"; };
-		7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+MJImage.h"; sourceTree = "<group>"; };
+		7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TAImage.m"; sourceTree = "<group>"; };
+		7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TAImage.h"; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -946,6 +948,8 @@
 		7A6BF76A298BDC47002EEDCA /* TABaseDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TABaseDataModel.m; sourceTree = "<group>"; };
 		7A6BF76D298BDC5C002EEDCA /* TABaseParmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseParmModel.h; sourceTree = "<group>"; };
 		7A6BF76E298BDC5C002EEDCA /* TABaseParmModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TABaseParmModel.m; sourceTree = "<group>"; };
+		7AB3C5F8299A4FDB006F1E28 /* MBProgressHUD+TATips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+TATips.h"; sourceTree = "<group>"; };
+		7AB3C5F9299A4FDB006F1E28 /* MBProgressHUD+TATips.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+TATips.m"; sourceTree = "<group>"; };
 		7AC8D5FA29875A07001E9F12 /* IOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC8D5FC29875A07001E9F12 /* IOSFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSFramework.h; sourceTree = "<group>"; };
 		7AC8D60129875A23001E9F12 /* CommInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommInterface.m; sourceTree = "<group>"; };
@@ -984,6 +988,7 @@
 		7A3CAD20298A2FA800DD1998 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7AB3C5FC299B300B006F1E28 /* TACategories */,
 				7A3CB1FF298B638300DD1998 /* MacroDefinition */,
 				7A3CAD1E298A2F0A00DD1998 /* Base */,
 				7A3CAD28298A3F3B00DD1998 /* Third */,
@@ -1052,8 +1057,6 @@
 		7A3CADCA298A426300DD1998 /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
-				7A0D28702995F2FB004BCDC6 /* NSBundle+MJImage.h */,
-				7A0D286F2995F2FB004BCDC6 /* NSBundle+MJImage.m */,
 				7A3CADD5298A426300DD1998 /* MJExtension.h */,
 				7A3CADD0298A426300DD1998 /* MJExtensionConst.h */,
 				7A3CADD6298A426300DD1998 /* MJExtensionConst.m */,
@@ -1512,12 +1515,12 @@
 		7A3CB07A298A565900DD1998 /* UIApplication */ = {
 			isa = PBXGroup;
 			children = (
-				7A3CB07B298A565900DD1998 /* UIApplication+JKKeyboardFrame.h */,
-				7A3CB07C298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.m */,
+				7A3CB080298A565900DD1998 /* UIApplication+JKApplicationSize.h */,
 				7A3CB07D298A565900DD1998 /* UIApplication+JKApplicationSize.m */,
+				7A3CB07B298A565900DD1998 /* UIApplication+JKKeyboardFrame.h */,
 				7A3CB07E298A565900DD1998 /* UIApplication+JKKeyboardFrame.m */,
 				7A3CB07F298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.h */,
-				7A3CB080298A565900DD1998 /* UIApplication+JKApplicationSize.h */,
+				7A3CB07C298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.m */,
 			);
 			path = UIApplication;
 			sourceTree = "<group>";
@@ -1876,6 +1879,17 @@
 			path = BaseUI;
 			sourceTree = "<group>";
 		};
+		7AB3C5FC299B300B006F1E28 /* TACategories */ = {
+			isa = PBXGroup;
+			children = (
+				7AB3C5F8299A4FDB006F1E28 /* MBProgressHUD+TATips.h */,
+				7AB3C5F9299A4FDB006F1E28 /* MBProgressHUD+TATips.m */,
+				7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */,
+				7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */,
+			);
+			path = TACategories;
+			sourceTree = "<group>";
+		};
 		7AC8D5FB29875A07001E9F12 /* IOSFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1944,7 +1958,7 @@
 				7A3CB201298B639700DD1998 /* MacroDefinition.h in Headers */,
 				7A3CB1F2298A565900DD1998 /* UITextField+JKShake.h in Headers */,
 				7A3CB004298A46EF00DD1998 /* SDImageCachesManagerOperation.h in Headers */,
-				7A0D28722995F2FB004BCDC6 /* NSBundle+MJImage.h in Headers */,
+				7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
@@ -2140,6 +2154,7 @@
 				7A3CB1B4298A565900DD1998 /* UIBarButtonItem+JKBadge.h in Headers */,
 				7A3CAE5D298A462900DD1998 /* IQUIView+Hierarchy.h in Headers */,
 				7A3CAE5A298A462900DD1998 /* IQUIScrollView+Additions.h in Headers */,
+				7AB3C5FA299A4FDB006F1E28 /* MBProgressHUD+TATips.h in Headers */,
 				7A3CB19F298A565900DD1998 /* UIFont+JKCustomLoader.h in Headers */,
 				7A3CB1ED298A565900DD1998 /* UITextField+JKInputLimit.h in Headers */,
 				7A3CAFAD298A46EF00DD1998 /* SDWebImageError.h in Headers */,
@@ -2235,6 +2250,7 @@
 				7A3CB003298A46EF00DD1998 /* SDFileAttributeHelper.m in Sources */,
 				7A3CB03C298A47AB00DD1998 /* MASViewConstraint.m in Sources */,
 				7A3CB137298A565900DD1998 /* UIImage+JKGIF.m in Sources */,
+				7AB3C5FB299A4FDB006F1E28 /* MBProgressHUD+TATips.m in Sources */,
 				7A3CB159298A565900DD1998 /* UIWindow+JKHierarchy.m in Sources */,
 				7A3CB178298A565900DD1998 /* UIButton+JKTouchAreaInsets.m in Sources */,
 				7A3CB199298A565900DD1998 /* UIView+JKDraggable.m in Sources */,
@@ -2417,7 +2433,7 @@
 				7A3CB1BF298A565900DD1998 /* UIBezierPath+JKSymbol.m in Sources */,
 				7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */,
 				7A3CB136298A565900DD1998 /* UIImage+JKVector.m in Sources */,
-				7A0D28712995F2FB004BCDC6 /* NSBundle+MJImage.m in Sources */,
+				7A0D28712995F2FB004BCDC6 /* NSBundle+TAImage.m in Sources */,
 				7A3CB1CD298A565900DD1998 /* UINavigationBar+JKAwesome.m in Sources */,
 				7A3CADE7298A426300DD1998 /* NSObject+MJKeyValue.m in Sources */,
 				7A3CB19C298A565900DD1998 /* UIView+JKRecursion.m in Sources */,

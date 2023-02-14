@@ -13,7 +13,7 @@
 #import "NSObject+MJKeyValue.h"
 #import "NSString+MJExtension.h"
 #import "MJExtensionConst.h"
-#import "NSBundle+MJImage.h"
+#import "NSBundle+TAImage.h"
 
 #import "MJFoundation.h"
 

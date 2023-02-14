@@ -8,6 +8,7 @@
 #import "TALoginViewController.h"
 #import "TALoginInterface.h"
 #import "TAUserInfoDataModel.h"
+#import "TALoginParmModel.h"
 
 @interface TALoginViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -17,8 +18,8 @@
 @property (nonatomic, retain)UIButton*          codeTab;
 @property (nonatomic, retain)UIButton*          passwordTab;
 
-@property (nonatomic, retain)UIView*            usernameInputVIew;
-@property (nonatomic, retain)UITextField*       usernameTextField;
+@property (nonatomic, retain)UIView*            phoneNumInputVIew;
+@property (nonatomic, retain)UITextField*       phoneNumTextField;
 
 @property (nonatomic, retain)UIView*            passwordInputVIew;
 @property (nonatomic, retain)UITextField*       passwordTextField;
@@ -88,16 +89,16 @@
         make.right.bottom.mas_equalTo(0);
     }];
     
-    [self.frameImageView addSubview:self.usernameInputVIew];
-    [self.usernameInputVIew mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.frameImageView addSubview:self.phoneNumInputVIew];
+    [self.phoneNumInputVIew mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kRelative(50));
         make.right.mas_equalTo(kRelative(-50));
         make.height.mas_equalTo(kRelative(70));
         make.top.mas_equalTo(kRelative(120));
     }];
     
-    [self.usernameInputVIew addSubview:self.usernameTextField];
-    [self.usernameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.phoneNumInputVIew addSubview:self.phoneNumTextField];
+    [self.phoneNumTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.bottom.mas_equalTo(0);
         make.left.mas_equalTo(kRelative(30));
     }];
@@ -107,7 +108,7 @@
         make.left.mas_equalTo(kRelative(50));
         make.right.mas_equalTo(kRelative(-50));
         make.height.mas_equalTo(kRelative(70));
-        make.top.mas_equalTo(_usernameInputVIew.mas_bottom).mas_offset(kRelative(40));
+        make.top.mas_equalTo(_phoneNumInputVIew.mas_bottom).mas_offset(kRelative(40));
         
     }];
     
@@ -187,18 +188,21 @@
     return YES;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    return NO;
+#pragma mark UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self verification:NO];
 }
 
-#pragma mark UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    [self verification:NO];
+
     return YES;
 }
 
-#pragma mark Action
+#pragma mark UIButton Actions
 - (void)codeTabClick:(UIButton *)sender
 {
     LRWeakSelf(self);
@@ -209,7 +213,11 @@
         [weakself.passwordTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
+        
+        weakself.passwordInputVIew.hidden = YES;
+        weakself.codeInputVIew.hidden = NO;
     }];
+    [self verification:NO];
 }
 
 - (void)passwordTabClick:(UIButton *)sender
@@ -223,40 +231,90 @@
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
+        
+        weakself.passwordInputVIew.hidden = NO;
+        weakself.codeInputVIew.hidden = YES;
     }];
+    [self verification:NO];
 }
 
 - (void)eyeBtnClick:(UIButton *)sender
 {
-    
+    //避免明文/密文切换后光标位置偏移
+    self.passwordTextField.enabled = NO;    // the first one;
+    self.passwordTextField.secureTextEntry = sender.selected;
+    sender.selected = !sender.selected;
+    self.passwordTextField.enabled = YES;  // the second one;
+    [self.passwordTextField becomeFirstResponder]; // the third one
 }
 
 - (void)getCodeBtnClick:(UIButton *)sender
 {
-
+    [self.codeTextField becomeFirstResponder];
 }
-
-
 
 - (void)loginBtnClick:(UIButton *)sender
 {
+    if (![self verification:YES]) {
+        return;
+    }
+    
+    TALoginParmModel *parmModel = [[TALoginParmModel alloc] init];
+    parmModel.phone = self.phoneNumTextField.text;
+    parmModel.password = self.passwordTextField.text;
+    
+    kShowHUDAndActivity;
     LRWeakSelf(self);
-    [[TALoginInterface shareInstance] loginWithParmModel:nil dataModelClass:[TAUserInfoDataModel class] finishedBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
-        
+    [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[NSString class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
+        [MBProgressHUD hideHUDForView:weakself.view animated:YES];
         weakself.taskFinishBlock(response);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakself goBack];
         });
-
-
-    } failedBlock:^(NSDictionary * _Nonnull response) {
+    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
         weakself.taskFinishBlock(response);
+        [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
+    } finishedBlock:^{
+        kHiddenHUDAndAvtivity;
     }];
 }
 
 - (void)agreeBtnClick:(UIButton *)sender
 {
+    [sender setSelected:!sender.selected];
     
+    [self verification:NO];
+}
+
+- (BOOL)verification:(BOOL)tips
+{
+    NSString *tipString = nil;
+    
+    if (self.phoneNumTextField.text.length == 0) {
+        tipString = @"请输入手机号";
+    }else if (self.phoneNumTextField.text.length < 11) {
+        tipString = @"手机号格式错误";
+    }else if (self.passwordInputVIew.isHidden == NO && self.passwordTextField.text.length == 0) {
+        tipString = @"请输入密码";
+    }else if (self.codeInputVIew.isHidden == NO && self.codeTextField.text.length == 0) {
+        tipString = @"请输入验证码";
+    }else if (self.agreeBtn.selected == NO) {
+        tipString = @"请阅读并同意《用户协议》和《隐私政策》";
+    }
+    
+    if (tips) {
+        [MBProgressHUD showTextDialog:self.frameImageView msg:tipString];
+    }
+    
+    BOOL isCorrect = !tipString ? YES : NO;
+    
+    if (isCorrect) {
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x49494A]] forState:UIControlStateNormal];
+    }else{
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateNormal];
+    }
+    
+    return isCorrect;
 }
 
 #pragma mark Getter/Setter
@@ -314,24 +372,25 @@
     return _passwordTab;
 }
 
--(UIView*     )usernameInputVIew{
-    if (!_usernameInputVIew){
-        _usernameInputVIew = [UIView new];
-        _usernameInputVIew.layer.cornerRadius = kRelative(35);
-        _usernameInputVIew.layer.masksToBounds = YES;
-        _usernameInputVIew.backgroundColor = [UIColor whiteColor];
+-(UIView*     )phoneNumInputVIew{
+    if (!_phoneNumInputVIew){
+        _phoneNumInputVIew = [UIView new];
+        _phoneNumInputVIew.layer.cornerRadius = kRelative(35);
+        _phoneNumInputVIew.layer.masksToBounds = YES;
+        _phoneNumInputVIew.backgroundColor = [UIColor whiteColor];
     }
-    return _usernameInputVIew;
+    return _phoneNumInputVIew;
 }
 
--(UITextField*)usernameTextField{
-    if (!_usernameTextField){
-        _usernameTextField = [UITextField new];
-        _usernameTextField.delegate = self;
-        _usernameTextField.placeholder = @"请输入手机号";
-        _usernameTextField.returnKeyType = UIReturnKeyNext;
+-(UITextField*)phoneNumTextField{
+    if (!_phoneNumTextField){
+        _phoneNumTextField = [UITextField new];
+        _phoneNumTextField.delegate = self;
+        _phoneNumTextField.keyboardType = UIKeyboardTypePhonePad;
+        _phoneNumTextField.placeholder = @"请输入手机号";
+        _phoneNumTextField.returnKeyType = UIReturnKeyNext;
     }
-    return _usernameTextField;
+    return _phoneNumTextField;
 }
 
 -(UIView*     )passwordInputVIew{
@@ -340,6 +399,7 @@
         _passwordInputVIew.layer.cornerRadius = kRelative(35);
         _passwordInputVIew.layer.masksToBounds = YES;
         _passwordInputVIew.backgroundColor = [UIColor whiteColor];
+        _passwordInputVIew.hidden = YES;
     }
     return _passwordInputVIew;
 }
@@ -348,6 +408,8 @@
     if (!_passwordTextField){
         _passwordTextField = [UITextField new];
         _passwordTextField.delegate = self;
+        _passwordTextField.keyboardType = UIKeyboardTypeASCIICapable;
+        _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.returnKeyType = UIReturnKeyDone;
     }
@@ -378,8 +440,12 @@
     if (!_codeTextField){
         _codeTextField = [UITextField new];
         _codeTextField.delegate = self;
+        _codeTextField.keyboardType = UIKeyboardTypeNumberPad;
         _codeTextField.placeholder = @"请输入验证码";
         _codeTextField.returnKeyType = UIReturnKeyDone;
+        if (@available(iOS 12.0, *)) {
+            _codeTextField.textContentType = UITextContentTypeOneTimeCode;
+        }
     }
     return _codeTextField;
 }
@@ -410,8 +476,7 @@
         [_loginBtn setTitleColor:[UIColor jk_colorWithHex:0xF0F0F3] forState:UIControlStateNormal];
         _loginBtn.layer.cornerRadius = kRelative(35);
         _loginBtn.layer.masksToBounds = YES;
-        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x49494A]] forState:UIControlStateNormal];
-        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateDisabled];
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateNormal];
         [_loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginBtn;
@@ -419,10 +484,11 @@
 
 -(UIButton*   )agreeBtn{
     if (!_agreeBtn){
-        _agreeBtn = [UIButton new];
+        _agreeBtn = [[UIButton alloc] init];
         [_agreeBtn setImage:kBundleImage(@"login_agree_n", @"Login") forState:UIControlStateNormal];
         [_agreeBtn setImage:kBundleImage(@"login_agree_s", @"Login") forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_agreeBtn setSelected:NO];
     }
     return _agreeBtn;
 }

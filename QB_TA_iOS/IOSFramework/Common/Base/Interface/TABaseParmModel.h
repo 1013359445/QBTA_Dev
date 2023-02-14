@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TABaseParmModel : NSObject
-
+- (void)assignDefaultValue;
 @end
 
 NS_ASSUME_NONNULL_END

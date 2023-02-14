@@ -37,8 +37,9 @@ shareInstance_implementation(TARouter)
 }
 
 - (void)taskToPageWithParm:(NSDictionary*)parm
-             successBlock:(TaskFinishBlock)successed
-              failedBlock:(TaskFinishBlock)failed
+              successBlock:(TaskFinishBlock)successed
+               failedBlock:(TaskFinishBlock)failed
+             responseBlock:(TaskFinishBlock)response
 {
     UIViewController *baseVC = [parm objectForKey:@"controller"];
     UIView *baseView = [parm objectForKey:@"baseView"];
@@ -69,10 +70,24 @@ shareInstance_implementation(TARouter)
             vc.modalPresentationStyle = UIModalPresentationFullScreen;
             [baseVC presentViewController:vc animated:animated completion:nil];
         }
-        vc.taskFinishBlock = successed;
+        vc.taskFinishBlock = response;
+        if (successed) {
+            successed(@"成功跳转");
+        }
     }else{
-        failed(@"{\"error\":\"未获取到承载页面的父视图\"}");
+        if (failed) {
+            failed(@"{\"error\":\"未获取到承载页面的父视图\"}");
+        }
     }
+}
+
+- (void)taskToPageWithParm:(NSDictionary*)parm
+             successBlock:(TaskFinishBlock)successed
+              failedBlock:(TaskFinishBlock)failed
+{
+    [self taskToPageWithParm:parm successBlock:successed failedBlock:failed responseBlock:^(id  _Nonnull result) {
+        
+    }];
 }
 
 @end

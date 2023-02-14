@@ -23,10 +23,15 @@ typedef void (^ResultBlock) (NSString *param);
 @interface CommInterface : NSObject
 
 //在视图上显示
++ (void)showViewOnWindowWithParam:(NSString *)param;
++ (void)showViewOnWindowWithParam:(NSString *)param delegate:(id<CommInterfaceDelegate>) delegate;
 + (void)showViewWithParam:(NSString *)param baseView:(UIView *)baseView delegate:(id<CommInterfaceDelegate>) delegate;
 
-//切入新页面
+//切入新页面，controller必传
 + (void)showViewWithParam:(NSString *)param controller:(UIViewController *)controller delegate:(id<CommInterfaceDelegate>) delegate;
+
+//+ (void)goBack;
+//+ (void)close;
 
 @end
 

@@ -14,6 +14,16 @@
 
 @implementation TABaseViewController
 
+- (void)goBack
+{
+    BOOL animated = [[self.params objectForKey:@"animated"] boolValue];
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:animated];
+    }else{
+        [self dismissViewControllerAnimated:animated completion:nil];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -56,14 +66,6 @@
 //    }
 //}
 
-- (void)goBack
-{
-    if (self.navigationController) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {

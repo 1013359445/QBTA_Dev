@@ -9,4 +9,16 @@
 
 @implementation TABaseParmModel
 
+-(instancetype)init
+{
+    if (self == [super init]) {
+        [self assignDefaultValue];
+    }
+    return self;
+}
+
+- (void)assignDefaultValue
+{
+    
+}
 @end

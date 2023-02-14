@@ -14,11 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TALoginInterface : TABaseInterface
 shareInstance_interface(TALoginInterface)
 
-- (void)loginWithParmModel:(TABaseParmModel*)parmModel
-   dataModelClass:(Class)dataModelClass
-    finishedBlock:(TAFinishedBlock)finishedBlock
-      failedBlock:(TAFailedBlock) failedBlock;
-
 @end
 
 NS_ASSUME_NONNULL_END

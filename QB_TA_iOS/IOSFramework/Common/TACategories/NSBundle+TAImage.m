@@ -1,11 +1,11 @@
 //
-//  NSBundle+MJImage.m
+//  NSBundle+TAImage.m
 //
 
-#import "NSBundle+MJImage.h"
+#import "NSBundle+TAImage.h"
 
 
-@implementation NSBundle (MJImage)
+@implementation NSBundle (TAImage)
 
 + (UIImage *)mj_ImageWithName:(NSString *)imageName folder:(NSString *)folder
 {

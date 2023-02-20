@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString*    phone;
 
 @property (nonatomic, copy)NSString*    password;//密码登录
-@property (nonatomic, copy)NSString*    type;//发送验证码
 @property (nonatomic, copy)NSString*    captcha;//验证码登录
+@property (nonatomic, copy)NSString*    loginMode;//登录模式；0:密码登录；1:验证码登录；
 
 @property (nonatomic, copy)NSString*    version;
 @property (nonatomic, copy)NSString*    versionType;

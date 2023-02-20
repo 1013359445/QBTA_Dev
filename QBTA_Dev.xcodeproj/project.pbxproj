@@ -14,8 +14,8 @@
 		7A3CACFE298A2E1700DD1998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFD298A2E1700DD1998 /* Assets.xcassets */; };
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
-		7ACB5A9A29964F820005E0D5 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACB5A9929964F820005E0D5 /* IOSFramework.framework */; };
-		7ACB5A9B29964FD20005E0D5 /* IOSFramework.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7ACB5A9929964F820005E0D5 /* IOSFramework.framework */; };
+		7AD8A61B299F97DD00257E1D /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8A61A299F97DD00257E1D /* IOSFramework.framework */; };
+		7AD8A61E299F985400257E1D /* TABundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AD8A61D299F985400257E1D /* TABundle.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,9 @@
 		7A3CAD00298A2E1700DD1998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A3CAD02298A2E1700DD1998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A3CAD03298A2E1700DD1998 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7ACB5A9929964F820005E0D5 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Debug-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
+		7AD8A61A299F97DD00257E1D /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Debug-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
+		7AD8A61D299F985400257E1D /* TABundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TABundle.bundle; path = QB_TA_iOS/IOSFramework/Resource/TABundle.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ACB5A9A29964F820005E0D5 /* IOSFramework.framework in Frameworks */,
+				7AD8A61B299F97DD00257E1D /* IOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +61,7 @@
 		7A3CACE5298A2E1600DD1998 = {
 			isa = PBXGroup;
 			children = (
+				7AD8A61D299F985400257E1D /* TABundle.bundle */,
 				7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */,
 				7A3CACF0298A2E1600DD1998 /* QBTA_Dev */,
 				7A3CACEF298A2E1600DD1998 /* Products */,
@@ -96,7 +98,7 @@
 		7A3CAD12298A2E7200DD1998 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7ACB5A9929964F820005E0D5 /* IOSFramework.framework */,
+				7AD8A61A299F97DD00257E1D /* IOSFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,7 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ACB5A9B29964FD20005E0D5 /* IOSFramework.framework in Resources */,
+				7AD8A61E299F985400257E1D /* TABundle.bundle in Resources */,
 				7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */,
 				7A3CACFE298A2E1700DD1998 /* Assets.xcassets in Resources */,
 				7A3CACFC298A2E1600DD1998 /* Main.storyboard in Resources */,
@@ -356,7 +358,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -393,7 +395,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

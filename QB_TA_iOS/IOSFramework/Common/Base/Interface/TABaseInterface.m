@@ -98,11 +98,13 @@
         if (code == 200) {
             TABaseDataModel *dataModel = nil;
             id data = [response objectForKey:@"data"];
-            if (data) {
+            if (data && self.dataModelClass) {
                 dataModel = [self.dataModelClass mj_objectWithKeyValues:data];
             }
             //请求成功
-            self.succeededBlock(dataModel, response);
+            if (self.succeededBlock) {
+                self.succeededBlock(dataModel, response);
+            }
             [self finished:request];
             return;
         }
@@ -110,7 +112,9 @@
     
     //请求失败
     NSString *msg = [response objectForKey:@"msg"];
-    self.failedBlock(msg, response);
+    if (self.failedBlock) {
+        self.failedBlock(msg, response);
+    }
     [self finished:request];
 }
 
@@ -119,14 +123,18 @@
     NSDictionary *response = [request.responseString mj_JSONObject];
     //请求失败
     NSString *msg = [response objectForKey:@"msg"];
-    self.failedBlock(msg, response);
+    if (self.failedBlock) {
+        self.failedBlock(msg, response);
+    }
     [self finished:request];
 }
 
 - (void)finished:(ASIHTTPRequest *)request
 {
     [request clearDelegatesAndCancel];
-    self.finishedBlock();
+    if (self.finishedBlock) {
+        self.finishedBlock();
+    }
 }
 
 //  ASIHTTPRequest 参考代码

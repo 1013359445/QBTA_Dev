@@ -18,6 +18,7 @@
     [super viewDidLoad];
 
     
+    ///....。。。。
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString *param = @"{\"page\":\"login\",\"parms\":{},\"animated\":0}";
         [CommInterface showViewWithParam:param controller:self delegate:self];
@@ -29,6 +30,7 @@
     [CommInterface showViewWithParam:param controller:self delegate:self];
 }
 
+///....。。。。
 - (void)iOSResult:(nonnull NSString *)result {
     
 }

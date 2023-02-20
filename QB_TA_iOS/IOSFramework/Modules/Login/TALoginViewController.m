@@ -9,6 +9,8 @@
 #import "TALoginInterface.h"
 #import "TAUserInfoDataModel.h"
 #import "TALoginParmModel.h"
+#import "TACaptchaParmModel.h"
+#import "TACaptchaInterface.h"
 
 @interface TALoginViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -176,7 +178,7 @@
     [self.agreementText layoutIfNeeded];
 }
 
-#pragma mark 富文本点击事件
+#pragma mark - 富文本点击事件
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     
     if ([[URL scheme] isEqualToString:@"yonghuxieyi"]) {
@@ -188,7 +190,7 @@
     return YES;
 }
 
-#pragma mark UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self verification:NO];
@@ -202,7 +204,7 @@
     return YES;
 }
 
-#pragma mark UIButton Actions
+#pragma mark - UIButton Actions
 - (void)codeTabClick:(UIButton *)sender
 {
     LRWeakSelf(self);
@@ -248,11 +250,39 @@
     [self.passwordTextField becomeFirstResponder]; // the third one
 }
 
+#pragma mark 获取验证码
 - (void)getCodeBtnClick:(UIButton *)sender
 {
+    NSString *tipString = nil;
+    if (self.phoneNumTextField.text.length == 0) {
+        tipString = @"请输入手机号";
+    }else if (self.phoneNumTextField.text.length != 11) {
+        tipString = @"手机号格式错误";
+    }
+    if (tipString) {
+        [MBProgressHUD showTextDialog:self.frameImageView msg:tipString];
+        return;
+    }
+
+    TACaptchaParmModel *parmModel = [[TACaptchaParmModel alloc] init];
+    parmModel.phone = self.phoneNumTextField.text;
+    parmModel.type = @"2";
+
+    kShowHUDAndActivity;
+    LRWeakSelf(self);
+    [[TACaptchaInterface shareInstance] requestWithParmModel:parmModel dataModelClass:nil succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
+        //收到验证码
+        
+    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
+        [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
+    } finishedBlock:^{
+        kHiddenHUDAndAvtivity;
+        [weakself.codeTextField becomeFirstResponder];
+    }];
     [self.codeTextField becomeFirstResponder];
 }
 
+#pragma mark 登录
 - (void)loginBtnClick:(UIButton *)sender
 {
     if (![self verification:YES]) {
@@ -261,12 +291,19 @@
     
     TALoginParmModel *parmModel = [[TALoginParmModel alloc] init];
     parmModel.phone = self.phoneNumTextField.text;
-    parmModel.password = self.passwordTextField.text;
+    if (self.passwordInputVIew.isHidden == NO) {
+        parmModel.loginMode = @"0";
+        parmModel.password = self.passwordTextField.text;
+
+    }else {
+        parmModel.loginMode = @"1";
+        parmModel.captcha = self.codeTextField.text;
+    }
     
     kShowHUDAndActivity;
     LRWeakSelf(self);
-    [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[NSString class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
-        [MBProgressHUD hideHUDForView:weakself.view animated:YES];
+    [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
+        
         weakself.taskFinishBlock(response);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakself goBack];
@@ -292,7 +329,7 @@
     
     if (self.phoneNumTextField.text.length == 0) {
         tipString = @"请输入手机号";
-    }else if (self.phoneNumTextField.text.length < 11) {
+    }else if (self.phoneNumTextField.text.length != 11) {
         tipString = @"手机号格式错误";
     }else if (self.passwordInputVIew.isHidden == NO && self.passwordTextField.text.length == 0) {
         tipString = @"请输入密码";

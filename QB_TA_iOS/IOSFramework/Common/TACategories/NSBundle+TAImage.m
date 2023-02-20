@@ -11,9 +11,10 @@
 {
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
     if (!bundlePath) {
-        bundlePath = [[NSBundle mainBundle] pathForResource:@"IOSFramework.framework/TABundle" ofType:@"bundle"];
+        bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
+        //bundlePath = [[NSBundle mainBundle] pathForResource:@"IOSFramework.framework/TABundle" ofType:@"bundle"];
     }
-    
+
     NSString *imagePath = [bundlePath stringByAppendingPathComponent:[NSString stringWithFormat:@"/Images.xcassets/%@/%@.imageset/%@@%dx.png",folder,imageName,imageName,(int)[UIScreen mainScreen].scale]];
     
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];

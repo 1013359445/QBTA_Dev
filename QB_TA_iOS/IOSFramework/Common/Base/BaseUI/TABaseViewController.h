@@ -7,14 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MacroDefinition.h"//宏定义
-
-#import "JKUIKit.h"//UI分类
-#import "MJExtension.h"//NS分类
-
-#import "Masonry.h"//布局
-#import "TARouter.h"//路由
-#import "MBProgressHUD+TATips.h"//弹出
+#import "TAHeader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

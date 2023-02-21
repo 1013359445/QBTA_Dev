@@ -1,13 +1,13 @@
 //
-//  MacroDefinition.h
+//  TAMacroDefinition.h
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/2/2.
 //
 
 
-#ifndef MacroDefinition_h
-#define MacroDefinition_h
+#ifndef TAMacroDefinition_h
+#define TAMacroDefinition_h
 
 //获取图片资源
 #define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
@@ -59,16 +59,15 @@
 #define LRLog(...)
 #endif
 
-#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
-#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
-
+#define kStrongSelf(type)  __strong typeof(type) type = weak##type;
+#define kWeakSelf(type)  __weak typeof(type) weak##type = type;
 
 // 设置加载
-#define NetworkActivityIndicatorVisible(x)  [UIApplication sharedApplication].networkActivityIndicatorVisible = x
+#define kNetworkActivityIndicatorVisible(x)  [UIApplication sharedApplication].networkActivityIndicatorVisible = x
 // 加载
-#define kShowNetworkActivityIndicator NetworkActivityIndicatorVisible(YES)
+#define kShowNetworkActivityIndicator kNetworkActivityIndicatorVisible(YES)
 // 收起加载
-#define HideNetworkActivityIndicator NetworkActivityIndicatorVisible(NO)
+#define kHideNetworkActivityIndicator kNetworkActivityIndicatorVisible(NO)
 
 #define kWindow [UIApplication sharedApplication].keyWindow
 
@@ -99,7 +98,7 @@
 //}
 
 #define kHiddenHUD [MBProgressHUD hideHUDForView:kWindow animated:YES]
-#define kHiddenHUDAndAvtivity kHiddenHUD;HideNetworkActivityIndicator;
+#define kHiddenHUDAndAvtivity kHiddenHUD;kHideNetworkActivityIndicator;
 
 
 //GCD - 一次性执行
@@ -126,4 +125,4 @@ static className *_instance##className; \
 }
 
 
-#endif /* MacroDefinition_h */
+#endif /* TAMacroDefinition_h */

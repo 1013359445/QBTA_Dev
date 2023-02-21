@@ -7,7 +7,7 @@
 
 #import "MBProgressHUD+TATips.h"
 #import "JKUIKit.h"
-#import "MacroDefinition.h"
+#import "TAMacroDefinition.h"
 #import "Masonry.h"
 
 @implementation MBProgressHUD (TATips)

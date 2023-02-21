@@ -228,6 +228,8 @@ float jk_radiansForDegrees(int degrees) {
 
 - (void)jk_addSubviewWithFadeAnimation:(UIView *)subview {
     
+    subview.frame = CGRectMake((self.bounds.size.width-subview.bounds.size.width)/2, (self.bounds.size.height-subview.bounds.size.height)/2, subview.bounds.size.width, subview.bounds.size.height);
+    
     CGFloat finalAlpha = subview.alpha;
     
     subview.alpha = 0.0;

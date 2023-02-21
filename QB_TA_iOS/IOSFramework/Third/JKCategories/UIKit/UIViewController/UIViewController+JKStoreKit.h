@@ -26,9 +26,6 @@
 
 + (NSURL*)jk_appURLForIdentifier:(NSInteger)identifier;
 
-+ (void)jk_openAppURLForIdentifier:(NSInteger)identifier;
-+ (void)jk_openAppReviewURLForIdentifier:(NSInteger)identifier;
-
 + (BOOL)jk_containsITunesURLString:(NSString*)URLString;
 + (NSInteger)jk_IDFromITunesURL:(NSString*)URLString;
 

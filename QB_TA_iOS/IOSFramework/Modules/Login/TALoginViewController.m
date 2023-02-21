@@ -11,8 +11,12 @@
 #import "TALoginParmModel.h"
 #import "TACaptchaParmModel.h"
 #import "TACaptchaInterface.h"
+#import "TAUserAgreementView.h"
 
-@interface TALoginViewController () <UITextFieldDelegate, UITextViewDelegate>
+extern NSString * const UserAgreementString = @"用户协议：\n到家了甲方i啊金额临汾IE登记理发手机打给哦in飞机卡拉季阿卡到哪国际卡垃圾发古拉克发几个四大金刚开了房间卡古拉； 1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。";
+extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。冻干粉金佛IG久啊发i加更；啊咖啡馆打客服金卡价；发is接待；放假四大金刚i及哦合计溶剂热i哦换季很尬办法金卡赌官方解决而韩国i和很尬hiu额和隔热管";
+
+@interface TALoginViewController () <UITextFieldDelegate, UITextViewDelegate, TAUserAgreementViewDelegate>
 
 @property (nonatomic, retain)UIImageView*       bgImageView;
 @property (nonatomic, retain)UIImageView*       frameImageView;
@@ -30,13 +34,18 @@
 @property (nonatomic, retain)UIView*            codeInputVIew;
 @property (nonatomic, retain)UITextField*       codeTextField;
 @property (nonatomic, retain)UIButton*          getCodeBtn;
-@property (nonatomic, retain)UILabel*           countDown;
+@property (nonatomic, retain)UILabel*           countDownLabel;
 
 @property (nonatomic, retain)UIButton*          loginBtn;
 
 @property (nonatomic, retain)UIButton*          agreeBtn;
 @property (nonatomic, retain)UITextView*        agreementText;
 
+@property (nonatomic, retain)NSTimer*           timer;
+@property (nonatomic, assign)int                cd;
+
+
+@property (nonatomic, retain)TAUserAgreementView*userAgreementView;
 @end
 
 @implementation TALoginViewController
@@ -70,7 +79,15 @@
     [self.frameImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(kRelative(600));
         make.centerY.mas_equalTo(0);
-        make.right.mas_equalTo(kRelative(-90));
+        make.right.mas_equalTo(self.bgImageView).mas_offset(kRelative(-90));
+    }];
+    
+    [self.bgImageView addSubview:self.userAgreementView];
+    [self.userAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo([TAUserAgreementView viewSize].width);
+        make.height.mas_equalTo([TAUserAgreementView viewSize].height);
+        make.centerY.mas_equalTo(0).offset(SCREENH_HEIGHT);
+        make.right.mas_equalTo(self.bgImageView).mas_offset(kRelative(-90));
     }];
     
     [self.frameImageView addSubview:self.tabView];
@@ -122,10 +139,11 @@
     }];
     
     [self.passwordInputVIew addSubview:self.eyeBtn];
-    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.eyeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(kRelative(-30));
         make.centerY.mas_equalTo(0);
-        make.width.height.mas_equalTo(kRelative(50));
+        make.width.mas_equalTo(kRelative(50));
+        make.height.mas_equalTo(kRelative(50));
     }];
     
     [self.frameImageView addSubview:self.codeInputVIew];
@@ -146,8 +164,8 @@
         make.centerY.mas_equalTo(0);
     }];
     
-    [self.codeInputVIew addSubview:self.countDown];
-    [self.countDown mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.codeInputVIew addSubview:self.countDownLabel];
+    [self.countDownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(kRelative(-30));
         make.centerY.mas_equalTo(0);
     }];
@@ -182,12 +200,44 @@
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     
     if ([[URL scheme] isEqualToString:@"yonghuxieyi"]) {
-        LRLog(@"富文本点击 用户协议");
     }else{
-        LRLog(@"富文本点击 隐私政策");
     }
+    [_userAgreementView setTitle:@"《用户协议》及《隐私政策》" ContentText:[NSString stringWithFormat:@"%@\n\n\n%@", UserAgreementString, PrivacyPolicyString]];
+
+    kWeakSelf(self);
+    [UIView animateWithDuration:0.5 animations:^{
+        [weakself.frameImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0).offset(-SCREENH_HEIGHT);
+        }];
+        [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+        }];
+        [weakself.bgImageView layoutIfNeeded];
+        [weakself.bgImageView layoutSubviews];
+    }];
     
     return YES;
+}
+
+#pragma mark - TAUserAgreementViewDelegate
+- (void)userAgreementViewDidClickCloseBtn
+{
+    kWeakSelf(self);
+    [UIView animateWithDuration:0.5 animations:^{
+        [weakself.frameImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+        }];
+        [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0).offset(SCREENH_HEIGHT);
+        }];
+        [weakself.bgImageView layoutIfNeeded];
+        [weakself.bgImageView layoutSubviews];
+    }];
+}
+
+- (void)userAgreementViewDidClickOKBtn
+{
+    [self.agreeBtn setSelected:YES];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -207,7 +257,7 @@
 #pragma mark - UIButton Actions
 - (void)codeTabClick:(UIButton *)sender
 {
-    LRWeakSelf(self);
+    kWeakSelf(self);
     [UIView animateWithDuration:0.2 animations:^{
         weakself.codeTab.selected = YES;
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
@@ -216,15 +266,15 @@
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
         
-        weakself.passwordInputVIew.hidden = YES;
-        weakself.codeInputVIew.hidden = NO;
+        weakself.passwordInputVIew.alpha = 0;
+        weakself.codeInputVIew.alpha = 1;
     }];
     [self verification:NO];
 }
 
 - (void)passwordTabClick:(UIButton *)sender
 {
-    LRWeakSelf(self);
+    kWeakSelf(self);
     [UIView animateWithDuration:0.2 animations:^{
         
         weakself.passwordTab.selected = YES;
@@ -234,8 +284,8 @@
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
         
-        weakself.passwordInputVIew.hidden = NO;
-        weakself.codeInputVIew.hidden = YES;
+        weakself.passwordInputVIew.alpha = 1;
+        weakself.codeInputVIew.alpha = 0;
     }];
     [self verification:NO];
 }
@@ -245,10 +295,18 @@
     //避免明文/密文切换后光标位置偏移
     self.passwordTextField.enabled = NO;    // the first one;
     self.passwordTextField.secureTextEntry = sender.selected;
-    sender.selected = !sender.selected;
+    [sender setSelected:!sender.selected];
     self.passwordTextField.enabled = YES;  // the second one;
     [self.passwordTextField becomeFirstResponder]; // the third one
 }
+
+- (void)agreeBtnClick:(UIButton *)sender
+{
+    [sender setSelected:!sender.selected];
+    
+    [self verification:NO];
+}
+
 
 #pragma mark 获取验证码
 - (void)getCodeBtnClick:(UIButton *)sender
@@ -269,17 +327,19 @@
     parmModel.type = @"2";
 
     kShowHUDAndActivity;
-    LRWeakSelf(self);
+    kWeakSelf(self);
     [[TACaptchaInterface shareInstance] requestWithParmModel:parmModel dataModelClass:nil succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
         //收到验证码
-        
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
     } finishedBlock:^{
-        kHiddenHUDAndAvtivity;
         [weakself.codeTextField becomeFirstResponder];
+        //开始倒计时
+        [weakself startCountdown];
+        
+        kHiddenHUDAndAvtivity;
     }];
-    [self.codeTextField becomeFirstResponder];
+    
 }
 
 #pragma mark 登录
@@ -301,7 +361,7 @@
     }
     
     kShowHUDAndActivity;
-    LRWeakSelf(self);
+    kWeakSelf(self);
     [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
         
         weakself.taskFinishBlock(response);
@@ -316,11 +376,25 @@
     }];
 }
 
-- (void)agreeBtnClick:(UIButton *)sender
-{
-    [sender setSelected:!sender.selected];
-    
-    [self verification:NO];
+- (void)startCountdown{
+    if (!_timer) {
+        _cd = 60;
+        self.getCodeBtn.hidden = YES;
+        self.countDownLabel.hidden = NO;
+        
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdownAction) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)countdownAction{
+    if (_cd == 0) {
+        [_timer invalidate];
+        _timer = nil;
+        self.getCodeBtn.hidden = NO;
+        self.countDownLabel.hidden = YES;
+    }
+    self.countDownLabel.text = [NSString stringWithFormat:@"%ds", _cd];
+    _cd --;
 }
 
 - (BOOL)verification:(BOOL)tips
@@ -354,7 +428,15 @@
     return isCorrect;
 }
 
-#pragma mark Getter/Setter
+#pragma mark - Getter/Setter
+-(TAUserAgreementView*)userAgreementView{
+    if (!_userAgreementView){
+        _userAgreementView = [TAUserAgreementView new];
+        _userAgreementView.delegate = self;
+    }
+    return _userAgreementView;
+}
+
 -(UIImageView*)bgImageView{
     if (!_bgImageView){
         _bgImageView = [UIImageView new];
@@ -436,7 +518,7 @@
         _passwordInputVIew.layer.cornerRadius = kRelative(35);
         _passwordInputVIew.layer.masksToBounds = YES;
         _passwordInputVIew.backgroundColor = [UIColor whiteColor];
-        _passwordInputVIew.hidden = YES;
+        _passwordInputVIew.hidden = 0;
     }
     return _passwordInputVIew;
 }
@@ -498,18 +580,21 @@
     return _getCodeBtn;
 }
 
--(UILabel*    )countDown{
-    if (!_countDown){
-        _countDown = [UILabel new];
+-(UILabel*    )countDownLabel{
+    if (!_countDownLabel){
+        _countDownLabel = [UILabel new];
+        _countDownLabel.textColor = [UIColor jk_colorWithHex:0x00629C];
+        _countDownLabel.font = [UIFont systemFontOfSize:12];
+
     }
-    return _countDown;
+    return _countDownLabel;
 }
 
 -(UIButton*   )loginBtn{
     if (!_loginBtn){
         _loginBtn = [UIButton new];
         [_loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
-        [_loginBtn.titleLabel setFont:[UIFont systemFontOfSize:26]];
+        [_loginBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [_loginBtn setTitleColor:[UIColor jk_colorWithHex:0xF0F0F3] forState:UIControlStateNormal];
         _loginBtn.layer.cornerRadius = kRelative(35);
         _loginBtn.layer.masksToBounds = YES;

@@ -12,62 +12,52 @@
 
 @implementation CommInterface
 
-+ (void)showViewOnWindowWithParam:(NSString *)param
++ (void)showPageName:(NSString *)pageName
+          controller:(UIViewController *)controller
+               param:(NSString *)param
+            animated:(BOOL)animated
+            delegate:(id<CommInterfaceDelegate>) delegate
 {
-    [self showViewWithParam:param base:kWindow baseType:@"baseView" delegate:nil];
-}
-+ (void)showViewOnWindowWithParam:(NSString *)param delegate:(id<CommInterfaceDelegate>) delegate
-{
-    [self showViewWithParam:param base:kWindow baseType:@"baseView" delegate:delegate];
-}
-
-+ (void)showViewWithParam:(NSString *)param baseView:(UIView *)baseView delegate:(id<CommInterfaceDelegate>) delegate
-{
-    [self showViewWithParam:param base:baseView baseType:@"baseView" delegate:delegate];
-}
-
-+ (void)showViewWithParam:(NSString *)param controller:(UIViewController *)controller delegate:(id<CommInterfaceDelegate>) delegate
-{
-    [self showViewWithParam:param base:controller baseType:@"controller" delegate:delegate];
-}
-
-+ (void)showViewWithParam:(NSString *)param base:(id)base baseType:(NSString *)baseType delegate:(id<CommInterfaceDelegate>) delegate
-{
-    NSDictionary *dic = [param mj_JSONObject];
-    if (!dic) {
-        NSLog(@"error:未得到参数 param:%@",param);
+    if (!pageName || !pageName.length) {
         return;
     }
-    
-    NSMutableDictionary *parmData = [NSMutableDictionary dictionaryWithDictionary:[param mj_JSONObject]];
-    if ([baseType isEqualToString:@"controller"] && !base){
-        NSLog(@"error:未指定上级视图控制器 param:%@",param);
+    if (!controller) {
         return;
-    }else if ([baseType isEqualToString:@"baseView"] && !base){
-        NSLog(@"warning:未指定父视图，已替换为window param:%@",param);
-        base = kWindow;
     }
-    [parmData setObject:base forKey:baseType];
+    TACmdModel *cmd = [TACmdModel new];
+    cmd.cmd = pageName;
+    cmd.param = [param mj_JSONObject];
+    cmd.animated = animated;
 
-    //路由跳转
-    [[TARouter shareInstance] taskToPageWithParm:parmData successBlock:^(id result) {
-        NSLog(@"success:%@",result);
+    [[TARouter shareInstance] taskToPageWithCmdModel:cmd controller:controller responseBlock:^(id  _Nonnull result) {
         if (delegate && [delegate respondsToSelector:@selector(iOSResult:)]) {
             [delegate performSelector:@selector(iOSResult:) withObject:result];
         }
-    } failedBlock:^(id result) {
-        NSLog(@"failed:%@",result);
     }];
 }
 
-//+ (void)goBack
-//{
-//    
-//}
-//
-//+ (void)close
-//{
-//    
-//}
++ (void)showViewName:(NSString *)viewName
+            baseView:(UIView *)baseView
+               param:(NSString *)param
+            animated:(BOOL)animated
+            delegate:(id<CommInterfaceDelegate>) delegate
+{
+    if (!viewName || !viewName.length) {
+        return;
+    }
+    if (!baseView) {
+        baseView = kWindow;
+    }
+    TACmdModel *cmd = [TACmdModel new];
+    cmd.cmd = viewName;
+    cmd.param = [param mj_JSONObject];
+    cmd.animated = animated;
+
+    [[TARouter shareInstance] taskToViewWithCmdModel:cmd baseView:baseView responseBlock:^(id  _Nonnull result) {
+        if (delegate && [delegate respondsToSelector:@selector(iOSResult:)]) {
+            [delegate performSelector:@selector(iOSResult:) withObject:result];
+        }
+    }];
+}
 
 @end

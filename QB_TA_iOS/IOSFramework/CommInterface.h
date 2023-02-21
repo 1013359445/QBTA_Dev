@@ -22,16 +22,36 @@ typedef void (^ResultBlock) (NSString *param);
 
 @interface CommInterface : NSObject
 
-//在视图上显示
-+ (void)showViewOnWindowWithParam:(NSString *)param;
-+ (void)showViewOnWindowWithParam:(NSString *)param delegate:(id<CommInterfaceDelegate>) delegate;
-+ (void)showViewWithParam:(NSString *)param baseView:(UIView *)baseView delegate:(id<CommInterfaceDelegate>) delegate;
+/*
+ *  pageName 页面名称
+ *  animated 动画
+ *  param 参数
+ *  controller 承载页面的controller
+ *  delegate 接收回调
+ */
++ (void)showPageName:(NSString * _Nonnull )pageName
+          controller:(UIViewController * _Nonnull)controller
+               param:(NSString * __nullable)param
+            animated:(BOOL)animated
+            delegate:(id<CommInterfaceDelegate>) delegate;
+/*
+ *  viewName 视图名称
+ *  animated 动画
+ *  param 参数
+ *  baseView 承载视图的父视图
+ *  delegate 接收回调
+ */
++ (void)showViewName:(NSString * __nonnull)viewName
+            baseView:(UIView * __nullable)baseView
+               param:(NSString * __nullable)param
+            animated:(BOOL)animated
+            delegate:(id<CommInterfaceDelegate>) delegate;
 
-//切入新页面，controller必传
-+ (void)showViewWithParam:(NSString *)param controller:(UIViewController *)controller delegate:(id<CommInterfaceDelegate>) delegate;
-
-//+ (void)goBack;
-//+ (void)close;
++ (void)showViewName:(NSString * __nonnull)viewName
+            baseView:(UIView * __nullable)baseView
+               param:(NSString * __nullable)param
+            animated:(BOOL)animated
+            delegate:(id<CommInterfaceDelegate>) delegate;
 
 @end
 

@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TABaseViewController : UIViewController
 
-@property (nonatomic, retain)NSDictionary *params;
+@property (nonatomic, retain)TACmdModel *cmdModel;
 
 @property (nonatomic, copy)TaskFinishBlock taskFinishBlock;
 
 + (NSString *)cmd;
+
 - (void)goBack;
 @end
 

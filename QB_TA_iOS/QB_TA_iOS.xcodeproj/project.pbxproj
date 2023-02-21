@@ -487,6 +487,8 @@
 		7AD8A63229A37B5800257E1D /* TADataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63029A37B5800257E1D /* TADataCenter.m */; };
 		7AD8A63529A37B7C00257E1D /* TAUserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A63329A37B7C00257E1D /* TAUserInfo.h */; };
 		7AD8A63629A37B7C00257E1D /* TAUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63429A37B7C00257E1D /* TAUserInfo.m */; };
+		7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A63829A4B1F100257E1D /* TACmdModel.h */; };
+		7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63929A4B1F100257E1D /* TACmdModel.m */; };
 		7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D086299BA47600D85074 /* TACaptchaInterface.h */; };
 		7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D087299BA47600D85074 /* TACaptchaInterface.m */; };
 		7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */; };
@@ -975,6 +977,8 @@
 		7AD8A63029A37B5800257E1D /* TADataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TADataCenter.m; sourceTree = "<group>"; };
 		7AD8A63329A37B7C00257E1D /* TAUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserInfo.h; sourceTree = "<group>"; };
 		7AD8A63429A37B7C00257E1D /* TAUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAUserInfo.m; sourceTree = "<group>"; };
+		7AD8A63829A4B1F100257E1D /* TACmdModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACmdModel.h; sourceTree = "<group>"; };
+		7AD8A63929A4B1F100257E1D /* TACmdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACmdModel.m; sourceTree = "<group>"; };
 		7AF8D086299BA47600D85074 /* TACaptchaInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaInterface.h; sourceTree = "<group>"; };
 		7AF8D087299BA47600D85074 /* TACaptchaInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACaptchaInterface.m; sourceTree = "<group>"; };
 		7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaParmModel.h; sourceTree = "<group>"; };
@@ -1043,6 +1047,8 @@
 			children = (
 				7A3CB1F6298A703500DD1998 /* TARouter.h */,
 				7A3CB1F7298A703500DD1998 /* TARouter.m */,
+				7AD8A63829A4B1F100257E1D /* TACmdModel.h */,
+				7AD8A63929A4B1F100257E1D /* TACmdModel.m */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -2200,6 +2206,7 @@
 				7A3CAFF6298A46EF00DD1998 /* NSBezierPath+SDRoundedCorners.h in Headers */,
 				7A3CB16C298A565900DD1998 /* UIButton+JKImagePosition.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
+				7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */,
 				7A3CB14A298A565900DD1998 /* UIImage+JKVector.h in Headers */,
 				7A3CB14D298A565900DD1998 /* UILabel+JKAdjustableLabel.h in Headers */,
 				7A3CB1B7298A565900DD1998 /* UIBezierPath+JKSVGString.h in Headers */,
@@ -2445,6 +2452,7 @@
 				7A3CB1B8298A565900DD1998 /* UIBezierPath+JKBasicShapes.m in Sources */,
 				7A3CAF66298A46EE00DD1998 /* SDImageLoader.m in Sources */,
 				7A3CB14C298A565900DD1998 /* UILabel+JKSuggestSize.m in Sources */,
+				7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */,
 				7A6BF760298BCAD4002EEDCA /* TAUserInfoDataModel.m in Sources */,
 				7A3CADF0298A426300DD1998 /* NSString+MJExtension.m in Sources */,
 				7A3CB169298A565900DD1998 /* UIButton+JKSubmitting.m in Sources */,

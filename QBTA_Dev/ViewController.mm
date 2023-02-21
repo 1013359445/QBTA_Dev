@@ -6,7 +6,6 @@
 //
 
 #import "ViewController.h"
-#import <IOSFramework/IOSFramework.h>
 
 @interface ViewController () <CommInterfaceDelegate>
 
@@ -20,20 +19,25 @@
     
     ///....。。。。
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *param = @"{\"page\":\"login\",\"parms\":{},\"animated\":0}";
-        [CommInterface showViewWithParam:param controller:self delegate:self];
+        UECommInterface *UE = [[UECommInterface alloc] init];
+        [CommInterface showPageName:@"login" controller:self param:nil animated:NO delegate:UE];
     });
 }
 
 - (IBAction)toLogin:(id)sender {
-    NSString *param = @"{\"page\":\"login\",\"parms\":{},\"animated\":0}";
-    [CommInterface showViewWithParam:param controller:self delegate:self];
+    UECommInterface *UE = [[UECommInterface alloc] init];
+    [CommInterface showPageName:@"login" controller:self param:nil animated:YES delegate:UE];
 }
+
+@end
+
+
+@implementation UECommInterface
 
 ///....。。。。
 - (void)iOSResult:(nonnull NSString *)result {
     
 }
 
-
 @end
+

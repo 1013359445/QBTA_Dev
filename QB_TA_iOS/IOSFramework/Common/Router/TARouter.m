@@ -7,6 +7,8 @@
 
 #import "TARouter.h"
 #import "TABaseViewController.h"
+#import "TABaseView.h"
+
 #import "TALoginViewController.h"
 
 @interface TARouter ()
@@ -28,7 +30,6 @@ shareInstance_implementation(TARouter)
     [[TARouter shareInstance].routerDic setObject:class forKey:[class cmd]];
 }
 
-
 - (instancetype)init{
     if (self = [super init]) {
         _routerDic = [[NSMutableDictionary alloc] init];
@@ -36,58 +37,64 @@ shareInstance_implementation(TARouter)
     return self;
 }
 
-- (void)taskToPageWithParm:(NSDictionary*)parm
-              successBlock:(TaskFinishBlock)successed
-               failedBlock:(TaskFinishBlock)failed
-             responseBlock:(TaskFinishBlock)response
+- (void)taskToPageWithCmdModel:(TACmdModel*)cmdModel
+                    controller:(UIViewController *)controller
+                 responseBlock:(TaskFinishBlock)response
 {
-    UIViewController *baseVC = [parm objectForKey:@"controller"];
-    UIView *baseView = [parm objectForKey:@"baseView"];
-    
     NSString *errorStr = @"{\"error\":\"未获取到目标页面\"}";
-    NSString *cmd = [parm objectForKey:@"page"];
-    if (!cmd) {failed(errorStr);return;}
+    NSString *cmd = cmdModel.cmd;
+    if (!cmd) {
+        if (response) {
+            response(errorStr);
+        }
+        return;
+    }
     Class class = [self.routerDic objectForKey:cmd];
-    if (!class) {failed(errorStr);return;};
+    if (!class) {
+        if (response) {
+            response(errorStr);
+        }
+        return;
+    }
 
-    if (baseView) {
-        
-    }else if(baseVC){
-        TABaseViewController *vc = [[class alloc] init];
-        if (!vc) {failed(errorStr);return;};
-        
-        NSDictionary *parmdic = [parm objectForKey:@"parms"];
-        if (parmdic && [parmdic allKeys].count > 0) {
-            vc.params = parmdic;
-        }
-        
-        BOOL animated = [[parm objectForKey:@"animated"] boolValue];
+    TABaseViewController *vc = [[class alloc] init];
+    vc.cmdModel = cmdModel;
+    vc.taskFinishBlock = response;
 
-        if (baseVC.navigationController) {
-            [baseVC.navigationController pushViewController:vc animated:animated];
-        }
-        else{
-            vc.modalPresentationStyle = UIModalPresentationFullScreen;
-            [baseVC presentViewController:vc animated:animated completion:nil];
-        }
-        vc.taskFinishBlock = response;
-        if (successed) {
-            successed(@"成功跳转");
-        }
-    }else{
-        if (failed) {
-            failed(@"{\"error\":\"未获取到承载页面的父视图\"}");
-        }
+    if (controller.navigationController) {
+        [controller.navigationController pushViewController:vc animated:cmdModel.animated];
+    }
+    else{
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [controller presentViewController:vc animated:cmdModel.animated completion:nil];
     }
 }
 
-- (void)taskToPageWithParm:(NSDictionary*)parm
-             successBlock:(TaskFinishBlock)successed
-              failedBlock:(TaskFinishBlock)failed
+- (void)taskToViewWithCmdModel:(TACmdModel*)cmdModel
+                      baseView:(UIView *)baseView
+                 responseBlock:(TaskFinishBlock)response
 {
-    [self taskToPageWithParm:parm successBlock:successed failedBlock:failed responseBlock:^(id  _Nonnull result) {
-        
-    }];
+    NSString *errorStr = @"{\"error\":\"未获取到目标视图\"}";
+    NSString *cmd = cmdModel.cmd;
+    if (!cmd) {
+        if (response) {
+            response(errorStr);
+        }
+        return;
+    }
+    Class class = [self.routerDic objectForKey:cmd];
+    if (!class) {
+        if (response) {
+            response(errorStr);
+        }
+        return;
+    }
+    
+    TABaseView *view = [[class alloc] init];
+    view.cmdModel = cmdModel;
+    view.taskFinishBlock = response;
+
+    [view showView:baseView animated:cmdModel.animated];
 }
 
 @end

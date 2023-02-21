@@ -6,9 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <IOSFramework/IOSFramework.h>
 
 @interface ViewController : UIViewController
 
-
 @end
 
+
+@interface UECommInterface : NSObject <CommInterfaceDelegate>
+
+@end

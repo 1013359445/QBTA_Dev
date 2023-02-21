@@ -7,6 +7,7 @@
 
 #import "TAHeader.h"
 #import "TAMacroDefinition.h"//宏定义
+#import "TACmdModel.h"
 
 #import <Foundation/Foundation.h>
 
@@ -17,18 +18,14 @@ typedef void (^TaskFinishBlock) (id result);
 @interface TARouter : NSObject
 shareInstance_interface(TARouter)
 
-- (void)taskToPageWithParm:(NSDictionary*)parm
-              successBlock:(TaskFinishBlock)successed
-               failedBlock:(TaskFinishBlock)failed;
+- (void)taskToPageWithCmdModel:(TACmdModel*)cmdModel
+                    controller:(UIViewController *)controller
+                 responseBlock:(TaskFinishBlock)response;
 
-- (void)taskToPageWithParm:(NSDictionary*)parm
-              successBlock:(TaskFinishBlock)successed
-               failedBlock:(TaskFinishBlock)failed
-             responseBlock:(TaskFinishBlock)response;
+- (void)taskToViewWithCmdModel:(TACmdModel*)cmdModel
+                      baseView:(UIView *)baseView
+                 responseBlock:(TaskFinishBlock)response;
 
-//- (void)goBack;
-//
-//- (void)close;
 @end
 
 NS_ASSUME_NONNULL_END

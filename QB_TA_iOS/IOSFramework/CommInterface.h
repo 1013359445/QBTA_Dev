@@ -39,50 +39,19 @@ typedef void (^ResultBlock) (NSString *param);
 /*  iOSViewController 默认承载iOS原生页面的视图控制器*/
 @property (nonatomic, retain)UIViewController *iOSViewController;
 /*  iOSView 默认承载iOS原生视图的父视图*/
-@property (nonatomic, retain)UIView *iOSView;
+@property (nonatomic, retain)UIView *iOSView;//（默认iOSView 承载，iOSView为空则承载到Window上）
 
-/*  跳转iOS页面（默认iOSViewController 承载）
- *  pageName 页面名称
- *  animated 动画
- *  param 参数
- */
-+ (void)showIOSPageName:(NSString * _Nonnull )pageName
-                  param:(NSString * __nullable)param
-               animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification;
-/*  跳转iOS页面
- *  pageName 页面名称
- *  animated 动画
- *  param 参数
- *  controller 承载页面的controller
- */
-+ (void)showIOSPageName:(NSString * _Nonnull )pageName
-             controller:(UIViewController * _Nonnull)controller
-                  param:(NSString * __nullable)param
-               animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification;
-
-/*  显示iOS视图（默认iOSView 承载，iOSView为空则承载到Window上）
- *  viewName 视图名称
- *  animated 动画
- *  param 参数
- */
-+ (void)showIOSViewName:(NSString * __nonnull)viewName
-                  param:(NSString * __nullable)param
-               animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification;
 
 /*  显示iOS视图
- *  viewName 视图名称
+ *  name 视图名称
  *  animated 动画
  *  param 参数
- *  baseView 承载视图的父视图
  */
-+ (void)showIOSViewName:(NSString * __nonnull)viewName
-               baseView:(UIView * __nullable)baseView
++ (void)showIOSWithName:(NSString * __nonnull)name
                   param:(NSString * __nullable)param
                animated:(BOOL)animated
            notification:(nullable NSNotificationName)notification;
+
 
 /*  UE发送信息给iOS（iOS端实现）
  *  msg 发送内容

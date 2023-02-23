@@ -19,8 +19,6 @@ class FIOSFrameworkModule
 public:
 
     ///----。。。。 显示iOS原生界面
-    void showViewWithIOSView(const char *name,const char *param, bool animated,const char *identifier);
-    void showPageWithIOSController(const char *name,const char *param, bool animated,const char *identifier);
+    void showIOSView(const char *name,const char *param, bool animated,const char *identifier);
 private:
-    void showIOS(const char *name,const char *param, bool animated,const char *identifier, bool page);
 };

@@ -6,10 +6,14 @@
 //
 
 #import "TARouter.h"
+
+#import "CommInterface.h"
+
 #import "TABaseViewController.h"
 #import "TABaseView.h"
 
 #import "TALoginViewController.h"
+#import "TACreatRoleViewController.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -22,7 +26,10 @@ shareInstance_implementation(TARouter)
 + (void)load
 {
     [TARouter saveViewIDWithClass:[TALoginViewController class]];
-//    [TARouter saveViewIDWithClass:[xxxxx class]];
+    [TARouter saveViewIDWithClass:[TACreatRoleViewController class]];
+    
+    //新增页面在此处添加代码
+    //[TARouter saveViewIDWithClass:[xxxxx class]];
 }
 
 + (void)saveViewIDWithClass:(Class)class
@@ -37,64 +44,62 @@ shareInstance_implementation(TARouter)
     return self;
 }
 
-- (void)taskToPageWithCmdModel:(TACmdModel*)cmdModel
-                    controller:(UIViewController *)controller
-                 responseBlock:(TaskFinishBlock)response
+- (void)autoTaskWithCmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response
 {
-    NSString *errorStr = @"{\"error\":\"未获取到目标页面\"}";
-    NSString *cmd = cmdModel.cmd;
-    if (!cmd) {
-        if (response) {
-            response(errorStr);
-        }
-        return;
-    }
-    Class class = [self.routerDic objectForKey:cmd];
+    Class class = [self getClass:cmdModel];
     if (!class) {
         if (response) {
-            response(errorStr);
-        }
-        return;
-    }
-
-    TABaseViewController *vc = [[class alloc] init];
-    vc.cmdModel = cmdModel;
-    vc.taskFinishBlock = response;
-
-    if (controller.navigationController) {
-        [controller.navigationController pushViewController:vc animated:cmdModel.animated];
-    }
-    else{
-        vc.modalPresentationStyle = UIModalPresentationFullScreen;
-        [controller presentViewController:vc animated:cmdModel.animated completion:nil];
-    }
-}
-
-- (void)taskToViewWithCmdModel:(TACmdModel*)cmdModel
-                      baseView:(UIView *)baseView
-                 responseBlock:(TaskFinishBlock)response
-{
-    NSString *errorStr = @"{\"error\":\"未获取到目标视图\"}";
-    NSString *cmd = cmdModel.cmd;
-    if (!cmd) {
-        if (response) {
-            response(errorStr);
-        }
-        return;
-    }
-    Class class = [self.routerDic objectForKey:cmd];
-    if (!class) {
-        if (response) {
+            NSString *errorStr = @"{\"error\":\"未获取到目标视图\"}";
             response(errorStr);
         }
         return;
     }
     
-    TABaseView *view = [[class alloc] init];
-    view.cmdModel = cmdModel;
-    view.taskFinishBlock = response;
-
-    [view showView:baseView animated:cmdModel.animated];
+    [self showView:class cmdModel:cmdModel responseBlock:response];
 }
+
+- (void)showView:(Class)class cmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response
+{
+    if ([class isKindOfClass:[TABaseView class]]) {
+        TABaseView *view = [[class alloc] init];
+        view.cmdModel = cmdModel;
+        view.taskFinishBlock = response;
+        
+        UIView *superView = [CommInterface shareInstance].iOSView ?: kWindow;
+        [view showView:superView animated:cmdModel.animated];
+    }else if ([class isKindOfClass:[TABaseViewController class]]) {
+        TABaseViewController *vc = [[class alloc] init];
+        vc.cmdModel = cmdModel;
+        vc.taskFinishBlock = response;
+
+        UIViewController *controller = [CommInterface shareInstance].iOSViewController;
+        if (!controller) {
+            if (response) {
+                NSString *errorStr = @"{\"error\":\"未配置iOSViewController\"}";
+                response(errorStr);
+            }
+            return;
+        }
+        if (controller.navigationController) {
+            [controller.navigationController pushViewController:vc animated:cmdModel.animated];
+        }else{
+            vc.modalPresentationStyle = UIModalPresentationFullScreen;
+            [controller presentViewController:vc animated:cmdModel.animated completion:nil];
+        }
+    }
+}
+
+- (Class)getClass:(TACmdModel*)cmdModel{
+    NSString *cmd = cmdModel.cmd;
+    if (!cmd) {
+        return nil;
+    }
+    Class class = [self.routerDic objectForKey:cmd];
+    if (!class) {
+        return nil;
+    }
+    return class;
+}
+
 
 @end

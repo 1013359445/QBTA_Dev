@@ -18,13 +18,7 @@ typedef void (^TaskFinishBlock) (id result);
 @interface TARouter : NSObject
 shareInstance_interface(TARouter)
 
-- (void)taskToPageWithCmdModel:(TACmdModel*)cmdModel
-                    controller:(UIViewController *)controller
-                 responseBlock:(TaskFinishBlock)response;
-
-- (void)taskToViewWithCmdModel:(TACmdModel*)cmdModel
-                      baseView:(UIView *)baseView
-                 responseBlock:(TaskFinishBlock)response;
+- (void)autoTaskWithCmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response;
 
 @end
 

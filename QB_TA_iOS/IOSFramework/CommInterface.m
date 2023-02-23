@@ -21,71 +21,26 @@ static CommInterface *_instanceCommInterface;
     return _instanceCommInterface;
 }
 
-+ (void)showIOSPageName:(NSString * _Nonnull )pageName
++ (void)showIOSWithName:(NSString * __nonnull)name
                   param:(NSString * __nullable)param
                animated:(BOOL)animated
            notification:(nullable NSNotificationName)notification
 {
-    [self showIOSPageName:pageName controller:[CommInterface shareInstance].iOSViewController param:param animated:animated notification:notification];
-}
-+ (void)showIOSPageName:(NSString *)pageName
-          controller:(UIViewController *)controller
-               param:(NSString *)param
-            animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification
-{
-    if (!pageName || !pageName.length) {
-        return;
-    }
-    if (!controller) {
+    if (!name || !name.length) {
         return;
     }
     TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = pageName;
+    cmd.cmd = name;
     cmd.param = [param mj_JSONObject];
     cmd.animated = animated;
     id<CommInterfaceDelegate> delegate = [self shareInstance].ueDelegate;
-    
-    [[TARouter shareInstance] taskToPageWithCmdModel:cmd controller:controller responseBlock:^(id  _Nonnull result) {
+
+    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
         if (delegate && [delegate respondsToSelector:@selector(sendMessagesToUE:type:notification:)]) {
             [delegate sendMessagesToUE:result type:1 notification:notification];
         }
     }];
 }
-
-+ (void)showIOSViewName:(NSString *)viewName
-               param:(NSString *)param
-               animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification
-{
-    UIView *baseVIew = [CommInterface shareInstance].iOSView ?: kWindow;
-    [self showIOSViewName:viewName baseView:baseVIew param:param animated:animated notification:notification];
-}
-+ (void)showIOSViewName:(NSString *)viewName
-            baseView:(UIView *)baseView
-               param:(NSString *)param
-            animated:(BOOL)animated
-           notification:(nullable NSNotificationName)notification
-{
-    if (!viewName || !viewName.length) {
-        return;
-    }
-    if (!baseView) {
-        return;
-    }
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = viewName;
-    cmd.param = [param mj_JSONObject];
-    cmd.animated = animated;
-    id<CommInterfaceDelegate> delegate = [self shareInstance].ueDelegate;
-
-    [[TARouter shareInstance] taskToViewWithCmdModel:cmd baseView:baseView responseBlock:^(id  _Nonnull result) {
-        if (delegate && [delegate respondsToSelector:@selector(sendMessagesToUE:type:notification:)]) {
-            [delegate sendMessagesToUE:result type:1 notification:notification];
-        }
-    }];
-}
-
      
 /*  UE发送信息给iOS（iOS端实现）
  *  msg 发送内容

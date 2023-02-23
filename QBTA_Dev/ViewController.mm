@@ -20,23 +20,22 @@
     [CommInterface shareInstance].ueDelegate = [CommInterfaceResult shareInstance];
     [CommInterface shareInstance].iOSViewController = self;
     [CommInterface shareInstance].iOSView = self.view;
-
     
     FIOSFrameworkModule *module = new FIOSFrameworkModule();
     const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
     const char *cParam = NULL;
     const char *cIdentifier = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
     bool animated = false;
-    module->showPageWithIOSController(cName, cParam, animated , cIdentifier);
+    module->showIOSView(cName, cParam, animated , cIdentifier);
 }
 
 - (IBAction)toLogin:(id)sender {
-    FIOSFrameworkModule *module = new FIOSFrameworkModule();
-    const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
-    const char *cParam = NULL;
-    const char *cIdentifier = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
-    bool animated = true;
-    module->showPageWithIOSController(cName, cParam, animated , cIdentifier);
+//    FIOSFrameworkModule *module = new FIOSFrameworkModule();
+//    const char *cName = [@"creatRole" cStringUsingEncoding:NSUTF8StringEncoding];
+//    const char *cParam = NULL;
+//    const char *cIdentifier = [@"creatRole" cStringUsingEncoding:NSUTF8StringEncoding];
+//    bool animated = true;
+//    module->showIOS(cName, cParam, animated , cIdentifier);
 }
 
 @end

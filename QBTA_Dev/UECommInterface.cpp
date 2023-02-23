@@ -39,34 +39,35 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             const char *cParam = NULL;
             const char *cIdentifier = "creatRole";
             bool animated = true;
-            module->showPageWithIOSController(cName, cParam, animated , cIdentifier);
+            module->showIOSView(cName, cParam, animated , cIdentifier);
         }else{
             //有角色信息
             //...
             //直接进入场景
             //...
             
-            //进入场景后调用静态库，显示iOS原生操作面板
+            //进入场景后调用静态库，显示iOS原生控制面板
             FIOSFrameworkModule *module = new FIOSFrameworkModule();//可改为单例
-            const char *cName = "creatRole";
+            const char *cName = "controlPanel";
             const char *cParam = NULL;
-            const char *cIdentifier = "creatRole";
+            const char *cIdentifier = "controlPanel";
             bool animated = false;
-            module->showViewWithIOSView(cName, cParam, animated, cIdentifier);
+            module->showIOSView(cName, cParam, animated, cIdentifier);
         }
     }else if(strcmp(cNotification, "creatRole"))
     {
+        //根据msg返回信息判断，
         //角色创建成功
         //...
         //进入场景
         //...
-        //进入场景后调用静态库，显示iOS原生操作面板
+        //进入场景后调用静态库，显示iOS原生控制面板
         FIOSFrameworkModule *module = new FIOSFrameworkModule();//可改为单例
-        const char *cName = "creatRole";
+        const char *cName = "controlPanel";
         const char *cParam = NULL;
-        const char *cIdentifier = "creatRole";
+        const char *cIdentifier = "controlPanel";
         bool animated = false;
-        module->showViewWithIOSView(cName, cParam, animated, cIdentifier);
+        module->showIOSView(cName, cParam, animated, cIdentifier);
     }
 }
 @end
@@ -82,19 +83,7 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
      [CommInterface shareInstance].iOSController = [IOSAppDelegate GetDelegate].IOSController;
  });
  */
-
-void FIOSFrameworkModule::showPageWithIOSController(const char *name,const char *param, bool animated,const char *identifier)
-{
-    this->showIOS(name, param, animated, identifier, true);
-}
-
-
-void FIOSFrameworkModule::showViewWithIOSView(const char *name,const char *param, bool animated,const char *identifier)
-{
-    this->showIOS(name, param, animated, identifier, false);
-}
-
-void FIOSFrameworkModule::showIOS(const char *name,const char *param, bool animated,const char *identifier, bool page)
+void FIOSFrameworkModule::showIOSView(const char *name,const char *param, bool animated,const char *identifier)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *ocName = nil;
@@ -110,10 +99,6 @@ void FIOSFrameworkModule::showIOS(const char *name,const char *param, bool anima
             ocIdentifier = [NSString stringWithCString:identifier encoding:NSUTF8StringEncoding];
         }
         
-        if (page) {
-            [CommInterface showIOSPageName:ocName param:ocParam animated:animated notification:ocIdentifier];
-        }else{
-            [CommInterface showIOSViewName:ocName param:ocParam animated:animated notification:ocIdentifier];
-        }
+        [CommInterface showIOSWithName:ocName param:ocParam animated:animated notification:ocIdentifier];
     });
 }

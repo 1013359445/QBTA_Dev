@@ -11,8 +11,3 @@
 @interface ViewController : UIViewController
 
 @end
-
-
-@interface UECommInterface : NSObject <CommInterfaceDelegate>
-
-@end

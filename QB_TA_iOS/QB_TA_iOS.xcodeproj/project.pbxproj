@@ -489,6 +489,10 @@
 		7AD8A63629A37B7C00257E1D /* TAUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63429A37B7C00257E1D /* TAUserInfo.m */; };
 		7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A63829A4B1F100257E1D /* TACmdModel.h */; };
 		7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63929A4B1F100257E1D /* TACmdModel.m */; };
+		7AD8A64A29A4D04F00257E1D /* TARoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A64829A4D04F00257E1D /* TARoleViewController.h */; };
+		7AD8A64B29A4D04F00257E1D /* TARoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A64929A4D04F00257E1D /* TARoleViewController.m */; };
+		7AD8A64E29A4D05D00257E1D /* TACreatRoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */; };
+		7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */; };
 		7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D086299BA47600D85074 /* TACaptchaInterface.h */; };
 		7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D087299BA47600D85074 /* TACaptchaInterface.m */; };
 		7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */; };
@@ -979,6 +983,10 @@
 		7AD8A63429A37B7C00257E1D /* TAUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAUserInfo.m; sourceTree = "<group>"; };
 		7AD8A63829A4B1F100257E1D /* TACmdModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACmdModel.h; sourceTree = "<group>"; };
 		7AD8A63929A4B1F100257E1D /* TACmdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACmdModel.m; sourceTree = "<group>"; };
+		7AD8A64829A4D04F00257E1D /* TARoleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARoleViewController.h; sourceTree = "<group>"; };
+		7AD8A64929A4D04F00257E1D /* TARoleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARoleViewController.m; sourceTree = "<group>"; };
+		7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACreatRoleViewController.h; sourceTree = "<group>"; };
+		7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACreatRoleViewController.m; sourceTree = "<group>"; };
 		7AF8D086299BA47600D85074 /* TACaptchaInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaInterface.h; sourceTree = "<group>"; };
 		7AF8D087299BA47600D85074 /* TACaptchaInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACaptchaInterface.m; sourceTree = "<group>"; };
 		7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaParmModel.h; sourceTree = "<group>"; };
@@ -1056,6 +1064,7 @@
 		7A3CAD24298A303D00DD1998 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7AD8A64729A4CFB600257E1D /* Role */,
 				7A3CAD25298A304500DD1998 /* Login */,
 			);
 			path = Modules;
@@ -1979,6 +1988,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7AD8A64729A4CFB600257E1D /* Role */ = {
+			isa = PBXGroup;
+			children = (
+				7AD8A64829A4D04F00257E1D /* TARoleViewController.h */,
+				7AD8A64929A4D04F00257E1D /* TARoleViewController.m */,
+				7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */,
+				7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */,
+			);
+			path = Role;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1989,6 +2009,7 @@
 				7A3CAFFF298A46EF00DD1998 /* SDImageIOAnimatedCoderInternal.h in Headers */,
 				7A3CB1E1298A565900DD1998 /* UISearchBar+JKBlocks.h in Headers */,
 				7A3CB17F298A565900DD1998 /* UIColor+JKModify.h in Headers */,
+				7AD8A62A29A3685700257E1D /* TAHeader.h in Headers */,
 				7A3CAFAC298A46EF00DD1998 /* SDImageAPNGCoder.h in Headers */,
 				7A3CB1DE298A565900DD1998 /* UINavigationController+JKKeyboardFix.h in Headers */,
 				7A3CB19E298A565900DD1998 /* UIView+JKConstraints.h in Headers */,
@@ -2140,6 +2161,7 @@
 				7A3CAE21298A444800DD1998 /* Reachability.h in Headers */,
 				7A3CB008298A46EF00DD1998 /* SDImageAssetManager.h in Headers */,
 				7A3CAFF2298A46EF00DD1998 /* SDDeviceHelper.h in Headers */,
+				7AD8A64E29A4D05D00257E1D /* TACreatRoleViewController.h in Headers */,
 				7A3CB030298A47AB00DD1998 /* MASViewConstraint.h in Headers */,
 				7A3CAFAE298A46EF00DD1998 /* SDWebImageCompat.h in Headers */,
 				7A3CB02C298A47AB00DD1998 /* NSArray+MASAdditions.h in Headers */,
@@ -2216,10 +2238,10 @@
 				7A3CAE62298A462900DD1998 /* IQUIView+IQKeyboardToolbar.h in Headers */,
 				7A3CAF59298A46EE00DD1998 /* SDImageCache.h in Headers */,
 				7A3CB186298A565900DD1998 /* UIView+JKScreenshot.h in Headers */,
-				7AD8A62A29A3685700257E1D /* TAHeader.h in Headers */,
 				7A3CAFA0298A46EF00DD1998 /* SDAnimatedImagePlayer.h in Headers */,
 				7A3CB1B4298A565900DD1998 /* UIBarButtonItem+JKBadge.h in Headers */,
 				7A3CAE5D298A462900DD1998 /* IQUIView+Hierarchy.h in Headers */,
+				7AD8A64A29A4D04F00257E1D /* TARoleViewController.h in Headers */,
 				7A3CAE5A298A462900DD1998 /* IQUIScrollView+Additions.h in Headers */,
 				7AB3C5FA299A4FDB006F1E28 /* MBProgressHUD+TATips.h in Headers */,
 				7A3CB19F298A565900DD1998 /* UIFont+JKCustomLoader.h in Headers */,
@@ -2339,6 +2361,7 @@
 				7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */,
 				7A3CAFA5298A46EF00DD1998 /* SDWebImageDefine.m in Sources */,
 				7A3CB164298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.m in Sources */,
+				7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */,
 				7A3CB153298A565900DD1998 /* UIScrollView+JKAddition.m in Sources */,
 				7A3CAE63298A462900DD1998 /* IQToolbar.m in Sources */,
 				7A3CAF97298A46EF00DD1998 /* SDImageGraphics.m in Sources */,
@@ -2513,6 +2536,7 @@
 				7AD8A63629A37B7C00257E1D /* TAUserInfo.m in Sources */,
 				7A3CB1B5298A565900DD1998 /* UIBarButtonItem+JKAction.m in Sources */,
 				7A3CB188298A565900DD1998 /* UIView+JKAnimation.m in Sources */,
+				7AD8A64B29A4D04F00257E1D /* TARoleViewController.m in Sources */,
 				7A3CB1B9298A565900DD1998 /* UIBezierPath+JKThroughPointsBezier.m in Sources */,
 				7A3CAF94298A46EF00DD1998 /* UIImageView+WebCache.m in Sources */,
 				7A3CAF54298A46EE00DD1998 /* SDImageIOAnimatedCoder.m in Sources */,

@@ -363,13 +363,16 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     kShowHUDAndActivity;
     kWeakSelf(self);
     [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
-        
-        weakself.taskFinishBlock(response);
+        if (weakself.taskFinishBlock) {
+            weakself.taskFinishBlock(response);
+        }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakself goBack];
         });
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
-        weakself.taskFinishBlock(response);
+        if (weakself.taskFinishBlock) {
+            weakself.taskFinishBlock(response);
+        }
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
     } finishedBlock:^{
         kHiddenHUDAndAvtivity;
@@ -405,10 +408,14 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         tipString = @"请输入手机号";
     }else if (self.phoneNumTextField.text.length != 11) {
         tipString = @"手机号格式错误";
-    }else if (self.passwordInputVIew.isHidden == NO && self.passwordTextField.text.length == 0) {
-        tipString = @"请输入密码";
-    }else if (self.codeInputVIew.isHidden == NO && self.codeTextField.text.length == 0) {
-        tipString = @"请输入验证码";
+    }else if (self.passwordInputVIew.isHidden == NO) {
+        if (self.passwordTextField.text.length == 0) {
+            tipString = @"请输入密码";
+        }
+    }else if (self.codeInputVIew.isHidden == NO) {
+        if (self.codeTextField.text.length == 0) {
+            tipString = @"请输入验证码";
+        }
     }else if (self.agreeBtn.selected == NO) {
         tipString = @"请阅读并同意《用户协议》和《隐私政策》";
     }

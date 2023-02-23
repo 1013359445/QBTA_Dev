@@ -36,7 +36,7 @@
 		7A3CACF4298A2E1600DD1998 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		7A3CACF5298A2E1600DD1998 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		7A3CACF7298A2E1600DD1998 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7A3CACF8298A2E1600DD1998 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		7A3CACF8298A2E1600DD1998 /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		7A3CACFB298A2E1600DD1998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A3CACFD298A2E1700DD1998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A3CAD00298A2E1700DD1998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,8 +45,8 @@
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
 		7AD8A61A299F97DD00257E1D /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Debug-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
 		7AD8A61D299F985400257E1D /* TABundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TABundle.bundle; path = QB_TA_iOS/IOSFramework/Resource/TABundle.bundle; sourceTree = "<group>"; };
-		7AD8A64429A4CC4F00257E1D /* UECommInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UECommInterface.cpp; sourceTree = "<group>"; };
-		7AD8A64529A4CC4F00257E1D /* UECommInterface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UECommInterface.hpp; sourceTree = "<group>"; };
+		7AD8A64429A4CC4F00257E1D /* UECommInterface.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = UECommInterface.cpp; sourceTree = "<group>"; };
+		7AD8A64529A4CC4F00257E1D /* UECommInterface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = UECommInterface.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +89,8 @@
 				7A3CACF5298A2E1600DD1998 /* SceneDelegate.m */,
 				7A3CACF7298A2E1600DD1998 /* ViewController.h */,
 				7A3CACF8298A2E1600DD1998 /* ViewController.mm */,
+				7AD8A64529A4CC4F00257E1D /* UECommInterface.h */,
 				7AD8A64429A4CC4F00257E1D /* UECommInterface.cpp */,
-				7AD8A64529A4CC4F00257E1D /* UECommInterface.hpp */,
 				7A3CACFA298A2E1600DD1998 /* Main.storyboard */,
 				7A3CACFD298A2E1700DD1998 /* Assets.xcassets */,
 				7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */,

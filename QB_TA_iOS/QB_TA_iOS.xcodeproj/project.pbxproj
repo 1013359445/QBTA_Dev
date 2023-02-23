@@ -1944,10 +1944,10 @@
 				7AC8D5FC29875A07001E9F12 /* IOSFramework.h */,
 				7AC8D60229875A23001E9F12 /* CommInterface.h */,
 				7AC8D60129875A23001E9F12 /* CommInterface.m */,
-				7A3CAD28298A3F3B00DD1998 /* Third */,
 				7A3CAD24298A303D00DD1998 /* Modules */,
 				7A3CAD20298A2FA800DD1998 /* Common */,
 				7A3CAD1F298A2F2F00DD1998 /* Resource */,
+				7A3CAD28298A3F3B00DD1998 /* Third */,
 			);
 			path = IOSFramework;
 			sourceTree = "<group>";

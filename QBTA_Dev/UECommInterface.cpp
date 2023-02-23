@@ -7,8 +7,6 @@
 
 #include "UECommInterface.h"
 
-//#import "ViewController.h"
-
 @implementation CommInterfaceResult
 static CommInterfaceResult *_instanceCommInterfaceResult;
 + (CommInterfaceResult *)shareInstance {
@@ -21,9 +19,55 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
 
 - (void)sendMessagesToUE:(NSString * _Nonnull)msg type:(int)type notification:(nullable NSNotificationName)notification
 {
-    NSLog(@"result: %@", msg);
-    const char *cString = [msg cStringUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"msg: %@", msg);
+    NSLog(@"notification: %@", notification);
+    const char *cMsg = [msg cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cNotification = [notification cStringUsingEncoding:NSUTF8StringEncoding];
     
+    
+    //伪代码，仿照此逻辑 使用UE开发习惯修改
+    if(strcmp(cNotification, "login"))
+    {
+        //根据返回值msg中的登录信息，连接游戏服务器获取角色信息数据
+        
+//        if("伪代码" == NULL)//有角色信息数据
+        if("伪代码" != NULL)//无角色信息数据
+        {
+            //打开创建角色并监听创建返回
+            FIOSFrameworkModule *module = new FIOSFrameworkModule();//可改为单例
+            const char *cName = "creatRole";
+            const char *cParam = NULL;
+            const char *cIdentifier = "creatRole";
+            bool animated = true;
+            module->showPageWithIOSController(cName, cParam, animated , cIdentifier);
+        }else{
+            //有角色信息
+            //...
+            //直接进入场景
+            //...
+            
+            //进入场景后调用静态库，显示iOS原生操作面板
+            FIOSFrameworkModule *module = new FIOSFrameworkModule();//可改为单例
+            const char *cName = "creatRole";
+            const char *cParam = NULL;
+            const char *cIdentifier = "creatRole";
+            bool animated = false;
+            module->showViewWithIOSView(cName, cParam, animated, cIdentifier);
+        }
+    }else if(strcmp(cNotification, "creatRole"))
+    {
+        //角色创建成功
+        //...
+        //进入场景
+        //...
+        //进入场景后调用静态库，显示iOS原生操作面板
+        FIOSFrameworkModule *module = new FIOSFrameworkModule();//可改为单例
+        const char *cName = "creatRole";
+        const char *cParam = NULL;
+        const char *cIdentifier = "creatRole";
+        bool animated = false;
+        module->showViewWithIOSView(cName, cParam, animated, cIdentifier);
+    }
 }
 @end
 
@@ -41,39 +85,35 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
 
 void FIOSFrameworkModule::showPageWithIOSController(const char *name,const char *param, bool animated,const char *identifier)
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *ocName = @"";
-        if (name != NULL) {
-            ocName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-        }
-        NSString *ocParam = @"";
-        if (param != NULL) {
-            ocParam = [NSString stringWithCString:param encoding:NSUTF8StringEncoding];
-        }
-        NSString *ocIdentifier = @"";
-        if (identifier != NULL) {
-            ocIdentifier = [NSString stringWithCString:identifier encoding:NSUTF8StringEncoding];
-        }
-        [CommInterface showIOSPageName:ocName param:ocParam animated:animated notification:ocIdentifier];
-    });
+    this->showIOS(name, param, animated, identifier, true);
 }
 
 
 void FIOSFrameworkModule::showViewWithIOSView(const char *name,const char *param, bool animated,const char *identifier)
 {
+    this->showIOS(name, param, animated, identifier, false);
+}
+
+void FIOSFrameworkModule::showIOS(const char *name,const char *param, bool animated,const char *identifier, bool page)
+{
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *ocName = @"";
+        NSString *ocName = nil;
         if (name != NULL) {
             ocName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
         }
-        NSString *ocParam = @"";
+        NSString *ocParam = nil;
         if (param != NULL) {
             ocParam = [NSString stringWithCString:param encoding:NSUTF8StringEncoding];
         }
-        NSString *ocIdentifier = @"";
+        NSString *ocIdentifier = nil;
         if (identifier != NULL) {
             ocIdentifier = [NSString stringWithCString:identifier encoding:NSUTF8StringEncoding];
         }
-        [CommInterface showIOSViewName:ocName param:ocParam animated:animated notification:ocIdentifier];
+        
+        if (page) {
+            [CommInterface showIOSPageName:ocName param:ocParam animated:animated notification:ocIdentifier];
+        }else{
+            [CommInterface showIOSViewName:ocName param:ocParam animated:animated notification:ocIdentifier];
+        }
     });
 }

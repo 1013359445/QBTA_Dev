@@ -19,7 +19,7 @@ typedef void (^ResultBlock) (NSString *param);
 
 /*  iOS发送信息给UE（UE端实现）
  *  msg 发送内容
- *  type 消息类型     1发送通知 2请求数据 3页面跳转(场景转换)
+ *  type 消息类型     1:iOS回复UE   2:iOS主动调UE
  *  notification    用于找到通知/接收对象
  */
 - (void)sendMessagesToUE:(NSString * _Nonnull)msg type:(int)type notification:(nullable NSNotificationName)notification;
@@ -55,7 +55,7 @@ typedef void (^ResultBlock) (NSString *param);
 
 /*  UE发送信息给iOS（iOS端实现）
  *  msg 发送内容
- *  type 消息类型     1发送通知 2请求数据 3页面跳转 4弹出视图
+ *  type 消息类型     1:UE主动调iOS   2:UE回复iOS
  *  notification    用于找到通知/接收对象
  */
 + (void)sendMessagesToIOS:(id __nullable)msg type:(int)type notification:(nullable NSNotificationName)notification;

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 //默认域名
 #define DOMAIN_URL @"vmeeting-dev.newmin.cn"
 
-typedef void (^TASucceededBlock)(TABaseDataModel *dataModel, NSDictionary *response);
+typedef void (^TASucceededBlock)(TABaseDataModel *dataModel, NSDictionary *response, NSString *jsonStr);
 typedef void (^TAFailedBlock)(NSString *msg, NSDictionary *response);
 typedef void (^TAFinishedBlock)(void);
 

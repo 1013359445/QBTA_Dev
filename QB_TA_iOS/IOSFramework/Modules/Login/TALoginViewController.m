@@ -12,6 +12,10 @@
 #import "TACaptchaParmModel.h"
 #import "TACaptchaInterface.h"
 #import "TAUserAgreementView.h"
+#import "CommInterface.h"
+
+NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"IOSFrameworkWaitingRoleDataNotification";
+NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"IOSFrameworkCreatRoleRoleNotification";
 
 extern NSString * const UserAgreementString = @"用户协议：\n到家了甲方i啊金额临汾IE登记理发手机打给哦in飞机卡拉季阿卡到哪国际卡垃圾发古拉克发几个四大金刚开了房间卡古拉； 1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。";
 extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。冻干粉金佛IG久啊发i加更；啊咖啡馆打客服金卡价；发is接待；放假四大金刚i及哦合计溶剂热i哦换季很尬办法金卡赌官方解决而韩国i和很尬hiu额和隔热管";
@@ -328,7 +332,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 
     kShowHUDAndActivity;
     kWeakSelf(self);
-    [[TACaptchaInterface shareInstance] requestWithParmModel:parmModel dataModelClass:nil succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
+    [[TACaptchaInterface shareInstance] requestWithParmModel:parmModel dataModelClass:nil succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
         //收到验证码
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
@@ -362,21 +366,52 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     
     kShowHUDAndActivity;
     kWeakSelf(self);
-    [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response) {
+    [[TALoginInterface shareInstance] requestWithParmModel:parmModel dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
         if (weakself.taskFinishBlock) {
-            weakself.taskFinishBlock(response);
+            weakself.taskFinishBlock(jsonStr);
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakself goBack];
-        });
+        [weakself waitingForRoleData];
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
         if (weakself.taskFinishBlock) {
             weakself.taskFinishBlock(response);
         }
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
-    } finishedBlock:^{
         kHiddenHUDAndAvtivity;
+    } finishedBlock:^{
     }];
+}
+
+- (void)waitingForRoleData{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRoleDataBack:) name:IOSFrameworkWaitingRoleDataNotification object:nil];
+    //获取角色信息
+    [[CommInterface shareInstance].ueDelegate sendMessagesToUE:@"getRoleData" type:2 notification:IOSFrameworkWaitingRoleDataNotification];
+}
+
+- (void)creatRoleDataBack:(NSNotification*)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    if (userInfo) {
+        [self close];
+    }
+}
+
+- (void)getRoleDataBack:(NSNotification*)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    if (!userInfo) {
+        TACmdModel *cmd = [TACmdModel new];
+        cmd.cmd = @"creatRole";
+        cmd.animated = YES;
+
+        [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkWaitingRoleDataNotification object:nil];
+            //请求创建角色
+            [[CommInterface shareInstance].ueDelegate sendMessagesToUE:result type:2 notification:IOSFrameworkCreatRoleRoleNotification];
+        }];
+
+    }else{
+        [self goBack];
+    }
 }
 
 - (void)startCountdown{

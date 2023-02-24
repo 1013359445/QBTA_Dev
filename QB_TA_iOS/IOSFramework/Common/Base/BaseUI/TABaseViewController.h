@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)cmd;
 
 - (void)goBack;
+- (void)close;
 @end
 
 NS_ASSUME_NONNULL_END

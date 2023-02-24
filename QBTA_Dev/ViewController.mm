@@ -24,7 +24,7 @@
     FIOSFrameworkModule *module = new FIOSFrameworkModule();
     const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
     const char *cParam = NULL;
-    const char *cIdentifier = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cIdentifier = [@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
     bool animated = false;
     module->showIOSView(cName, cParam, animated , cIdentifier);
 }

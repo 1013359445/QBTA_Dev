@@ -60,14 +60,14 @@ shareInstance_implementation(TARouter)
 
 - (void)showView:(Class)class cmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response
 {
-    if ([class isKindOfClass:[TABaseView class]]) {
+    if ([class isSubclassOfClass:[TABaseView class]]) {
         TABaseView *view = [[class alloc] init];
         view.cmdModel = cmdModel;
         view.taskFinishBlock = response;
         
         UIView *superView = [CommInterface shareInstance].iOSView ?: kWindow;
         [view showView:superView animated:cmdModel.animated];
-    }else if ([class isKindOfClass:[TABaseViewController class]]) {
+    }else if ([class isSubclassOfClass:[TABaseViewController class]]) {
         TABaseViewController *vc = [[class alloc] init];
         vc.cmdModel = cmdModel;
         vc.taskFinishBlock = response;

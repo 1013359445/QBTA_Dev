@@ -103,7 +103,7 @@
             }
             //请求成功
             if (self.succeededBlock) {
-                self.succeededBlock(dataModel, response);
+                self.succeededBlock(dataModel, response, request.responseString);
             }
             [self finished:request];
             return;

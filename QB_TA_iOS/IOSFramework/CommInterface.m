@@ -33,9 +33,9 @@ static CommInterface *_instanceCommInterface;
     cmd.cmd = name;
     cmd.param = [param mj_JSONObject];
     cmd.animated = animated;
-    id<CommInterfaceDelegate> delegate = [self shareInstance].ueDelegate;
 
     [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
+        id<CommInterfaceDelegate> delegate = [self shareInstance].ueDelegate;
         if (delegate && [delegate respondsToSelector:@selector(sendMessagesToUE:type:notification:)]) {
             [delegate sendMessagesToUE:result type:1 notification:notification];
         }
@@ -44,12 +44,13 @@ static CommInterface *_instanceCommInterface;
      
 /*  UE发送信息给iOS（iOS端实现）
  *  msg 发送内容
- *  type 消息类型   1发送通知 2请求数据 3页面跳转 4弹出视图
+ *  type 消息类型   1发送通知 2请求数据 3显示iOS原生页面(以后规范好格式可以只用这一个接口实现页面跳转、数据传递)
  *  notification 用于找到通知对象
  */
 + (void)sendMessagesToIOS:(id __nullable)msg type:(int)type notification:(nullable NSNotificationName)notification
 {
-    
+    NSDictionary *userInfo = [msg mj_JSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil userInfo:userInfo];
 }
 
 @end

@@ -81,6 +81,7 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
         }
         else if([notification isEqualToString:@"creatRoleData"])
         {
+            //msg:{"roleid":"1、2、3、4、5","name":"张三"}
             //根据msg返回信息创角色
             //...
             //角色创建成功
@@ -97,6 +98,11 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             const char *cIdentifier = "controlPanel";
             bool animated = false;
             module->showIOSView(cName, NULL, animated, cIdentifier);
+        }
+        else if([notification isEqualToString:@"changeRoleData"])
+        {
+            //msg:{"roleid":"1、2、3、4、5","name":"张三"}
+            //根据msg返回信息更改角色信息
         }
     }
 }

@@ -461,6 +461,8 @@
 		7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB1F6298A703500DD1998 /* TARouter.h */; };
 		7A3CB1F9298A703500DD1998 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB1F7298A703500DD1998 /* TARouter.m */; };
 		7A3CB201298B639700DD1998 /* TAMacroDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB200298B639700DD1998 /* TAMacroDefinition.h */; };
+		7A4B34B029A89AB3009753FC /* TACommonColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4B34AE29A89AB3009753FC /* TACommonColor.h */; };
+		7A4B34B129A89AB3009753FC /* TACommonColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34AF29A89AB3009753FC /* TACommonColor.m */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
 		7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */; };
@@ -954,6 +956,8 @@
 		7A3CB1F6298A703500DD1998 /* TARouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouter.h; sourceTree = "<group>"; };
 		7A3CB1F7298A703500DD1998 /* TARouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARouter.m; sourceTree = "<group>"; };
 		7A3CB200298B639700DD1998 /* TAMacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMacroDefinition.h; sourceTree = "<group>"; };
+		7A4B34AE29A89AB3009753FC /* TACommonColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACommonColor.h; sourceTree = "<group>"; };
+		7A4B34AF29A89AB3009753FC /* TACommonColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACommonColor.m; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
 		7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginInterface.m; sourceTree = "<group>"; };
 		7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserInfoDataModel.h; sourceTree = "<group>"; };
@@ -1046,6 +1050,8 @@
 		7A3CAD22298A301300DD1998 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				7A4B34AE29A89AB3009753FC /* TACommonColor.h */,
+				7A4B34AF29A89AB3009753FC /* TACommonColor.m */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -2168,6 +2174,7 @@
 				7A3CAF8D298A46EF00DD1998 /* SDImageIOAnimatedCoder.h in Headers */,
 				7A3CAE60298A462900DD1998 /* IQTextView.h in Headers */,
 				7A3CAF40298A46EE00DD1998 /* UIImage+ExtendedCacheData.h in Headers */,
+				7A4B34B029A89AB3009753FC /* TACommonColor.h in Headers */,
 				7A3CB146298A565900DD1998 /* UIImage+JKRemoteSize.h in Headers */,
 				7A3CB183298A565900DD1998 /* UISplitViewController+JKQuickAccess.h in Headers */,
 				7A3CAF5A298A46EE00DD1998 /* SDWebImageDownloaderConfig.h in Headers */,
@@ -2487,6 +2494,7 @@
 				7A3CB00A298A46EF00DD1998 /* SDAssociatedObject.m in Sources */,
 				7A3CB1E6298A565900DD1998 /* UIControl+JKSound.m in Sources */,
 				7A3CB141298A565900DD1998 /* UIImage+JKAlpha.m in Sources */,
+				7A4B34B129A89AB3009753FC /* TACommonColor.m in Sources */,
 				7A3CADEA298A426300DD1998 /* NSObject+MJCoding.m in Sources */,
 				7A3CB17B298A565900DD1998 /* UIColor+JKModify.m in Sources */,
 				7A3CAE5C298A462900DD1998 /* IQUIViewController+Additions.m in Sources */,

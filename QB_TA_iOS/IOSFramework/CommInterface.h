@@ -4,7 +4,7 @@
 //
 //  Created by 白伟 on 2023/1/28.
 //  Copyright © 2023 Epic Games, Inc. All rights reserved.
-//
+//  通信接口
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -34,12 +34,12 @@ typedef void (^ResultBlock) (NSString *param);
 /*  获取单例*/
 + (CommInterface *)shareInstance;
 
-/*  ueDelegate 必须赋值才能接收到来自iOS的消息*/
+/*  ueDelegate 必须赋值，并实现sendMessagesToUE:type:notification方法，才能接收到来自iOS的消息*/
 @property (nonatomic, weak)id<CommInterfaceDelegate> ueDelegate;
 /*  iOSViewController 默认承载iOS原生页面的视图控制器*/
 @property (nonatomic, retain)UIViewController *iOSViewController;
 /*  iOSView 默认承载iOS原生视图的父视图*/
-@property (nonatomic, retain)UIView *iOSView;//（默认iOSView 承载，iOSView为空则承载到Window上）
+@property (nonatomic, retain)UIView *iOSView;//（默认iOSView 承载，iOSView为空则承载到kWindow上）
 
 
 /*  显示iOS视图

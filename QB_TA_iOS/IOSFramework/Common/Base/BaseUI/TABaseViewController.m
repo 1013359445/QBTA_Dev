@@ -26,6 +26,42 @@
     }
 }
 
+- (void)close
+{
+    BOOL animated = self.cmdModel.animated;
+    if (self.navigationController) {
+        [self.navigationController popToRootViewControllerAnimated:animated];
+    }else{
+        UIViewController *controller = self;
+        int num = 0;
+        int inDo = YES;
+        do {
+            if (controller.presentingViewController) {
+                num++;
+                controller = controller.presentingViewController;
+            }else{
+                inDo = NO;
+            }
+        } while (inDo);
+        
+        inDo = YES;
+        controller = self;
+        do {
+            if (controller.presentedViewController) {
+                num++;
+                controller = controller.presentedViewController;
+            }else{
+                inDo = NO;
+            }
+        } while (inDo);
+
+        for (int i = 0; i < num; i++) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }

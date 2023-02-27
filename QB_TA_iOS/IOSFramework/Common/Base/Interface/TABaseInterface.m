@@ -113,7 +113,7 @@
     //请求失败
     NSString *msg = [response objectForKey:@"msg"];
     if (self.failedBlock) {
-        self.failedBlock(msg, response);
+        self.failedBlock(msg, response, request.responseString);
     }
     [self finished:request];
 }
@@ -124,7 +124,7 @@
     //请求失败
     NSString *msg = [response objectForKey:@"msg"];
     if (self.failedBlock) {
-        self.failedBlock(msg, response);
+        self.failedBlock(msg, response, request.responseString);
     }
     [self finished:request];
 }

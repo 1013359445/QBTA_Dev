@@ -60,11 +60,11 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             if("伪代码" != NULL)//无角色信息数据
             {
                 //发送通知
-                const char *roleData = "roleData:无角色数据";//JSON数据
-                module->callBackToIOS("", cNotification);
+                const char *roleData = "";//JSON数据
+                module->callBackToIOS(roleData, cNotification);
 
             }else{            //有角色信息
-                const char *roleData = "roleData:角色数据";//JSON数据
+                const char *roleData = "{\"roleData\":{}}";//JSON数据
                 //发送通知
                 module->callBackToIOS(roleData, cNotification);
 
@@ -85,7 +85,7 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             //根据msg返回信息创角色
             //...
             //角色创建成功
-            const char *roleData = "roleData:角色数据";//JSON数据
+            const char *roleData = "{\"roleData\":{}}";//JSON数据
             //发送通知
             module->callBackToIOS(roleData, cNotification);
 
@@ -117,7 +117,6 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
  */
 void FIOSFrameworkModule::showIOSView(const char *name,const char *param, bool animated,const char *identifier)
 {
-#if PLATFORM_IOS
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *ocName = nil;
         if (name == NULL) {
@@ -136,7 +135,6 @@ void FIOSFrameworkModule::showIOSView(const char *name,const char *param, bool a
 
         [CommInterface showIOSWithName:ocName param:ocParam animated:animated notification:ocIdentifier];
     });
-#endif
 }
 
 /* UE发送信息给iOS（UE主动调iOS）
@@ -159,7 +157,6 @@ void FIOSFrameworkModule::callBackToIOS(const char *msg, const char *identifier)
 
 void FIOSFrameworkModule::toIOS(const char *msg, int type, const char *identifier)
 {
-#if PLATFORM_IOS
    dispatch_async(dispatch_get_main_queue(), ^{
        NSString *ocMsg = nil;
        if (msg == NULL) {
@@ -173,5 +170,4 @@ void FIOSFrameworkModule::toIOS(const char *msg, int type, const char *identifie
        }
        [CommInterface sendMessagesToIOS:ocMsg type:2 notification:ocIdentifier];
    });
-#endif
 }

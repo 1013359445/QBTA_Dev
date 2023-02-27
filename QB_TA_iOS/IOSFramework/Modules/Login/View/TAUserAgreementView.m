@@ -154,7 +154,7 @@
 {
     if (!_titleLabel){
         _titleLabel = [UILabel new];
-        _titleLabel.textColor = [UIColor jk_colorWithHex:0x49494A];
+        _titleLabel.textColor = kTAColor.c_49;
         _titleLabel.font = [UIFont systemFontOfSize:17];
     }
     return _titleLabel;
@@ -164,7 +164,7 @@
     if (!_textView){
         _textView = [UITextView new];
         _textView.editable = NO;
-        _textView.textColor = [UIColor jk_colorWithHex:0x49494A];
+        _textView.textColor = kTAColor.c_49;
         _textView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
         _textView.font = [UIFont systemFontOfSize:13];
         _textView.delegate = self;
@@ -193,13 +193,13 @@
 -(UIButton*     )cancelBtn{
     if (!_cancelBtn){
         _cancelBtn = [UIButton new];
-        [_cancelBtn setImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0xF0F0F3]] forState:UIControlStateNormal];
+        [_cancelBtn setImage:[UIImage jk_imageWithColor:kTAColor.c_F0] forState:UIControlStateNormal];
         [_cancelBtn setTitle:@"不继续" forState:UIControlStateNormal];
         [_cancelBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-        [_cancelBtn setTitleColor:[UIColor jk_colorWithHex:0x49494A] forState:UIControlStateNormal];
+        [_cancelBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
         _cancelBtn.layer.cornerRadius = kRelative(35);
         _cancelBtn.layer.borderWidth = 1;
-        _cancelBtn.layer.borderColor = [UIColor jk_colorWithHex:0x49494A].CGColor;
+        _cancelBtn.layer.borderColor = kTAColor.c_49.CGColor;
         _cancelBtn.layer.masksToBounds = YES;
 
         [_cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -210,13 +210,13 @@
 -(UIButton*     )okBtn{
     if (!_okBtn){
         _okBtn = [UIButton new];
-        [_cancelBtn setImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x49494A]] forState:UIControlStateNormal];
+        [_cancelBtn setImage:[UIImage jk_imageWithColor:kTAColor.c_49] forState:UIControlStateNormal];
         [_okBtn setTitle:@"同意并继续" forState:UIControlStateNormal];
         [_okBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-        [_okBtn setTitleColor:[UIColor jk_colorWithHex:0xF0F0F3] forState:UIControlStateNormal];
+        [_okBtn setTitleColor:kTAColor.c_F0 forState:UIControlStateNormal];
         _okBtn.layer.cornerRadius = kRelative(35);
         _okBtn.layer.masksToBounds = YES;
-        [_okBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateNormal];
+        [_okBtn setBackgroundImage:[UIImage jk_imageWithColor:kTAColor.c_9C] forState:UIControlStateNormal];
         [_okBtn addTarget:self action:@selector(okBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _okBtn;

@@ -17,4 +17,6 @@
 #import "TARouter.h"//路由
 #import "MBProgressHUD+TATips.h"//弹出提示
 
+#import "TACommonColor.h"//通用颜色
+
 #endif /* TAHeader_h */

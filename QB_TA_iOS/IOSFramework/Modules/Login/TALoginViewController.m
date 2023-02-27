@@ -13,9 +13,10 @@
 #import "TACaptchaInterface.h"
 #import "TAUserAgreementView.h"
 #import "CommInterface.h"
+#import "TACreatRoleViewController.h"
 
-NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"IOSFrameworkWaitingRoleDataNotification";
-NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"IOSFrameworkCreatRoleRoleNotification";
+NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
+NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
 
 extern NSString * const UserAgreementString = @"用户协议：\n到家了甲方i啊金额临汾IE登记理发手机打给哦in飞机卡拉季阿卡到哪国际卡垃圾发古拉克发几个四大金刚开了房间卡古拉； 1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。";
 extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。冻干粉金佛IG久啊发i加更；啊咖啡馆打客服金卡价；发is接待；放假四大金刚i及哦合计溶剂热i哦换季很尬办法金卡赌官方解决而韩国i和很尬hiu额和隔热管";
@@ -58,15 +59,14 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     return @"login";
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self layoutViews];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 - (void)layoutViews
@@ -198,10 +198,26 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 
     }];
     [self.agreementText layoutIfNeeded];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.phoneNumTextField];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.codeTextField];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.passwordTextField];
+}
+
+- (void)textFieldTextDidChange:(NSNotification *)notification
+{
+    [self verification:NO];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - 富文本点击事件
--(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+    interaction:(UITextItemInteraction)interaction {
+    [self.view endEditing:YES];
     
     if ([[URL scheme] isEqualToString:@"yonghuxieyi"]) {
     }else{
@@ -245,6 +261,12 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 }
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [self verification:NO];
+    return true;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self verification:NO];
@@ -263,15 +285,17 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 {
     kWeakSelf(self);
     [UIView animateWithDuration:0.2 animations:^{
-        weakself.codeTab.selected = YES;
+        [weakself.codeTab setSelected:YES];
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        weakself.passwordTab.selected = NO;
+
+        [weakself.passwordTab setSelected:NO];
         [weakself.passwordTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [weakself.tabView layoutIfNeeded];
-        [weakself.tabView layoutSubviews];
         
         weakself.passwordInputVIew.alpha = 0;
         weakself.codeInputVIew.alpha = 1;
+
+        [weakself.tabView layoutIfNeeded];
+        [weakself.tabView layoutSubviews];
     }];
     [self verification:NO];
 }
@@ -281,15 +305,17 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     kWeakSelf(self);
     [UIView animateWithDuration:0.2 animations:^{
         
-        weakself.passwordTab.selected = YES;
+        [weakself.passwordTab setSelected:YES];
         [weakself.passwordTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        weakself.codeTab.selected = NO;
+        
+        [weakself.codeTab setSelected:NO];
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [weakself.tabView layoutIfNeeded];
-        [weakself.tabView layoutSubviews];
         
         weakself.passwordInputVIew.alpha = 1;
         weakself.codeInputVIew.alpha = 0;
+        
+        [weakself.tabView layoutIfNeeded];
+        [weakself.tabView layoutSubviews];
     }];
     [self verification:NO];
 }
@@ -298,15 +324,17 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 {
     //避免明文/密文切换后光标位置偏移
     self.passwordTextField.enabled = NO;    // the first one;
-    self.passwordTextField.secureTextEntry = sender.selected;
-    [sender setSelected:!sender.selected];
+    self.passwordTextField.secureTextEntry = sender.isSelected;
+    [sender setSelected:!sender.isSelected];
     self.passwordTextField.enabled = YES;  // the second one;
     [self.passwordTextField becomeFirstResponder]; // the third one
 }
 
 - (void)agreeBtnClick:(UIButton *)sender
 {
-    [sender setSelected:!sender.selected];
+    [self.agreeBtn setSelected:!sender.isSelected];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@(self.agreeBtn.isSelected).stringValue forKey:@"agreement"];
     
     [self verification:NO];
 }
@@ -334,7 +362,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     kWeakSelf(self);
     [[TACaptchaInterface shareInstance] requestWithParmModel:parmModel dataModelClass:nil succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
         //收到验证码
-    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
+    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response, NSString *jsonStr) {
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
     } finishedBlock:^{
         [weakself.codeTextField becomeFirstResponder];
@@ -355,7 +383,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     
     TALoginParmModel *parmModel = [[TALoginParmModel alloc] init];
     parmModel.phone = self.phoneNumTextField.text;
-    if (self.passwordInputVIew.isHidden == NO) {
+    if (self.passwordInputVIew.alpha == 1) {
         parmModel.loginMode = @"0";
         parmModel.password = self.passwordTextField.text;
 
@@ -370,10 +398,11 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         if (weakself.taskFinishBlock) {
             weakself.taskFinishBlock(jsonStr);
         }
-        [weakself waitingForRoleData];
-    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response) {
+        kHiddenHUDAndAvtivity;
+        [weakself getRoleData];
+    } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response, NSString *jsonStr) {
         if (weakself.taskFinishBlock) {
-            weakself.taskFinishBlock(response);
+            weakself.taskFinishBlock(jsonStr);
         }
         [MBProgressHUD showTextDialog:weakself.frameImageView msg:msg];
         kHiddenHUDAndAvtivity;
@@ -381,36 +410,57 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     }];
 }
 
-- (void)waitingForRoleData{
+- (void)getRoleData{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRoleDataBack:) name:IOSFrameworkWaitingRoleDataNotification object:nil];
     //获取角色信息
     [[CommInterface shareInstance].ueDelegate sendMessagesToUE:@"getRoleData" type:2 notification:IOSFrameworkWaitingRoleDataNotification];
-}
-
-- (void)creatRoleDataBack:(NSNotification*)notification
-{
-    NSDictionary *userInfo = notification.userInfo;
-    if (userInfo) {
-        [self close];
-    }
+    kShowHUDAndActivity;
 }
 
 - (void)getRoleDataBack:(NSNotification*)notification
 {
+    kHiddenHUDAndAvtivity;
     NSDictionary *userInfo = notification.userInfo;
-    if (!userInfo) {
-        TACmdModel *cmd = [TACmdModel new];
-        cmd.cmd = @"creatRole";
-        cmd.animated = YES;
-
-        [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkWaitingRoleDataNotification object:nil];
-            //请求创建角色
-            [[CommInterface shareInstance].ueDelegate sendMessagesToUE:result type:2 notification:IOSFrameworkCreatRoleRoleNotification];
-        }];
-
+    if ([userInfo objectForKey:@"roleData"] == nil) {
+        [self tocReatRoleView];
     }else{
         [self goBack];
+    }
+}
+
+- (void)tocReatRoleView
+{
+//    修改路由
+//    TACmdModel *cmd = [TACmdModel new];
+//    cmd.cmd = @"creatRole";
+//    cmd.animated = YES;
+//
+//    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkCreatRoleRoleNotification object:nil];
+//        //请求创建角色
+//        [[CommInterface shareInstance].ueDelegate sendMessagesToUE:result type:2 notification:IOSFrameworkCreatRoleRoleNotification];
+//        kShowHUDAndActivity;
+//    }];
+    
+    TACreatRoleViewController *vc = [[TACreatRoleViewController alloc] init];
+    vc.taskFinishBlock = ^(id  _Nonnull result) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkCreatRoleRoleNotification object:nil];
+        //请求创建角色
+        [[CommInterface shareInstance].ueDelegate sendMessagesToUE:result type:2 notification:IOSFrameworkCreatRoleRoleNotification];
+        kShowHUDAndActivity;
+    };
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)creatRoleDataBack:(NSNotification*)notification
+{
+    kHiddenHUDAndAvtivity;
+    NSDictionary *userInfo = notification.userInfo;
+    if ([userInfo objectForKey:@"roleData"]) {
+        [self close];//未实现
+    }else{
+        [MBProgressHUD showTextDialog:kWindow msg:@"创建角色失败"];
     }
 }
 
@@ -443,28 +493,30 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         tipString = @"请输入手机号";
     }else if (self.phoneNumTextField.text.length != 11) {
         tipString = @"手机号格式错误";
-    }else if (self.passwordInputVIew.isHidden == NO) {
+    }else if (self.passwordInputVIew.alpha == 1) {
         if (self.passwordTextField.text.length == 0) {
             tipString = @"请输入密码";
         }
-    }else if (self.codeInputVIew.isHidden == NO) {
+    }else if (self.codeInputVIew.alpha == 1) {
         if (self.codeTextField.text.length == 0) {
             tipString = @"请输入验证码";
         }
-    }else if (self.agreeBtn.selected == NO) {
+    }
+    
+    if (self.agreeBtn.isSelected == NO) {
         tipString = @"请阅读并同意《用户协议》和《隐私政策》";
     }
-    
     if (tips && tipString) {
         [MBProgressHUD showTextDialog:self.frameImageView msg:tipString];
+        return NO;
     }
+
     
     BOOL isCorrect = !tipString ? YES : NO;
-    
     if (isCorrect) {
-        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x49494A]] forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:kTAColor.c_49] forState:UIControlStateNormal];
     }else{
-        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:kTAColor.c_9C] forState:UIControlStateNormal];
     }
     
     return isCorrect;
@@ -513,8 +565,8 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         _codeTab = [UIButton buttonWithType:UIButtonTypeCustom];
         [_codeTab setTitle:@"验证码登录" forState:UIControlStateNormal];
         [_codeTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        [_codeTab setTitleColor:[UIColor jk_colorWithHex:0x9C9C9E] forState:UIControlStateNormal];
-        [_codeTab setTitleColor:[UIColor jk_colorWithHex:0x49494A] forState:UIControlStateSelected];
+        [_codeTab setTitleColor:kTAColor.c_9C forState:UIControlStateNormal];
+        [_codeTab setTitleColor:kTAColor.c_49 forState:UIControlStateSelected];
         [_codeTab addTarget:self action:@selector(codeTabClick:) forControlEvents:UIControlEventTouchUpInside];
         _codeTab.selected = YES;
     }
@@ -526,8 +578,8 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         _passwordTab = [UIButton buttonWithType:UIButtonTypeCustom];
         [_passwordTab setTitle:@"密码登录" forState:UIControlStateNormal];
         [_passwordTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [_passwordTab setTitleColor:[UIColor jk_colorWithHex:0x9C9C9E] forState:UIControlStateNormal];
-        [_passwordTab setTitleColor:[UIColor jk_colorWithHex:0x49494A] forState:UIControlStateSelected];
+        [_passwordTab setTitleColor:kTAColor.c_9C forState:UIControlStateNormal];
+        [_passwordTab setTitleColor:kTAColor.c_49 forState:UIControlStateSelected];
         [_passwordTab addTarget:self action:@selector(passwordTabClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _passwordTab;
@@ -560,7 +612,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         _passwordInputVIew.layer.cornerRadius = kRelative(35);
         _passwordInputVIew.layer.masksToBounds = YES;
         _passwordInputVIew.backgroundColor = [UIColor whiteColor];
-        _passwordInputVIew.hidden = 0;
+        _passwordInputVIew.alpha = 0;
     }
     return _passwordInputVIew;
 }
@@ -616,7 +668,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         _getCodeBtn = [UIButton new];
         [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_getCodeBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [_getCodeBtn setTitleColor:[UIColor jk_colorWithHex:0x49494A] forState:UIControlStateNormal];
+        [_getCodeBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
         [_getCodeBtn addTarget:self action:@selector(getCodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _getCodeBtn;
@@ -625,7 +677,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 -(UILabel*    )countDownLabel{
     if (!_countDownLabel){
         _countDownLabel = [UILabel new];
-        _countDownLabel.textColor = [UIColor jk_colorWithHex:0x00629C];
+        _countDownLabel.textColor = kTAColor.c_629C;
         _countDownLabel.font = [UIFont systemFontOfSize:12];
 
     }
@@ -637,10 +689,10 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         _loginBtn = [UIButton new];
         [_loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
         [_loginBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-        [_loginBtn setTitleColor:[UIColor jk_colorWithHex:0xF0F0F3] forState:UIControlStateNormal];
+        [_loginBtn setTitleColor:kTAColor.c_F0 forState:UIControlStateNormal];
         _loginBtn.layer.cornerRadius = kRelative(35);
         _loginBtn.layer.masksToBounds = YES;
-        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:[UIColor jk_colorWithHex:0x9C9C9E]] forState:UIControlStateNormal];
+        [_loginBtn setBackgroundImage:[UIImage jk_imageWithColor:kTAColor.c_9C] forState:UIControlStateNormal];
         [_loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginBtn;
@@ -652,7 +704,9 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
         [_agreeBtn setImage:kBundleImage(@"login_agree_n", @"Login") forState:UIControlStateNormal];
         [_agreeBtn setImage:kBundleImage(@"login_agree_s", @"Login") forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_agreeBtn setSelected:NO];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *isAgreeStr = [defaults objectForKey:@"agreement"];
+        [_agreeBtn setSelected:isAgreeStr.boolValue];
     }
     return _agreeBtn;
 }
@@ -668,7 +722,7 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
     self.agreementText = [[UITextView alloc] init];
     [self.frameImageView addSubview:self.agreementText];
     
-    UIColor *gray = [UIColor jk_colorWithHex:0x49494A];
+    UIColor *gray = kTAColor.c_49;
     UIColor *blue = [UIColor blueColor];
     self.agreementText.font = [UIFont systemFontOfSize:10];
     self.agreementText.text = info_str;

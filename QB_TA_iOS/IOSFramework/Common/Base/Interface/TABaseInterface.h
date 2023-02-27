@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define DOMAIN_URL @"vmeeting-dev.newmin.cn"
 
 typedef void (^TASucceededBlock)(TABaseDataModel *dataModel, NSDictionary *response, NSString *jsonStr);
-typedef void (^TAFailedBlock)(NSString *msg, NSDictionary *response);
+typedef void (^TAFailedBlock)(NSString *msg, NSDictionary *response, NSString *jsonStr);
 typedef void (^TAFinishedBlock)(void);
 
 @interface TABaseInterface : NSObject <ASIHTTPRequestDelegate>

@@ -9,8 +9,9 @@
 #ifndef TAMacroDefinition_h
 #define TAMacroDefinition_h
 
+#define kTAColor [TACommonColor shareInstance]
+
 //获取图片资源
-#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 #define kBundleImage(imgName,folderName) [NSBundle mj_ImageWithName:imgName folder:folderName]
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上

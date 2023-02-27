@@ -29,13 +29,5 @@
     module->showIOSView(cName, cParam, animated , cIdentifier);
 }
 
-- (IBAction)toLogin:(id)sender {
-//    FIOSFrameworkModule *module = new FIOSFrameworkModule();
-//    const char *cName = [@"creatRole" cStringUsingEncoding:NSUTF8StringEncoding];
-//    const char *cParam = NULL;
-//    const char *cIdentifier = [@"creatRole" cStringUsingEncoding:NSUTF8StringEncoding];
-//    bool animated = true;
-//    module->showIOS(cName, cParam, animated , cIdentifier);
-}
 
 @end

@@ -34,7 +34,7 @@ public:
     
     /* UE回复iOS
      *  msg 发送内容
-     *  identifier    用于iOS区分UE通知类型，sendMessagesToUE传过来是什么，原值返回；
+     *  identifier    用于iOS区分UE通知类型，sendMessagesToUE:type:notification: 传过来是什么原值返回；
      */
     void callBackToIOS(const char *msg, const char *identifier);
 

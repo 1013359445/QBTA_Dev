@@ -430,11 +430,10 @@ extern NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1
 
 - (void)tocReatRoleView
 {
-//    修改路由
 //    TACmdModel *cmd = [TACmdModel new];
 //    cmd.cmd = @"creatRole";
 //    cmd.animated = YES;
-//
+//      需修改路由，支持从当前最上层VC加载
 //    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkCreatRoleRoleNotification object:nil];
 //        //请求创建角色

@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.view addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
@@ -48,7 +48,7 @@
     [self.userAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo([TAUserAgreementView viewSize].width);
         make.height.mas_equalTo([TAUserAgreementView viewSize].height);
-        make.centerY.mas_equalTo(0).offset(SCREENH_HEIGHT);
+        make.centerY.mas_equalTo(0).offset(SCREEN_HEIGHT);
         make.right.mas_equalTo(self.loginView.mas_right);
     }];
 }
@@ -77,7 +77,7 @@
             make.centerY.mas_equalTo(0);
         }];
         [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(0).offset(SCREENH_HEIGHT);
+            make.centerY.mas_equalTo(0).offset(SCREEN_HEIGHT);
         }];
         [weakself.bgImageView layoutIfNeeded];
         [weakself.bgImageView layoutSubviews];
@@ -98,7 +98,7 @@
     kWeakSelf(self);
     [UIView animateWithDuration:0.5 animations:^{
         [weakself.loginView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.mas_equalTo(0).offset(-SCREENH_HEIGHT);
+            make.centerY.mas_equalTo(0).offset(-SCREEN_HEIGHT);
         }];
         [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);

@@ -7,6 +7,9 @@
 
 
 #import "TACreatRoleViewController.h"
+#import "CommInterface.h"
+
+NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
 
 @interface TACreatRoleViewController () <UITextFieldDelegate>
 @property (nonatomic, retain)UIImageView*       bgImageView;
@@ -119,11 +122,28 @@
         [MBProgressHUD showTextDialog:self.view msg:@"请输入角色名称"];
         return;
     }
-    if (self.taskFinishBlock) {
-        NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        [result setValue:@(self.selectHeadIndex).stringValue forKey:@"roleid"];
-        [result setValue:self.nameTextField.text forKey:@"name"];
-        self.taskFinishBlock(result.mj_JSONString);
+    
+    NSString *sendStr = @{
+                            @"roleid"   :@(self.selectHeadIndex).stringValue,
+                            @"name"     :self.nameTextField.text
+                        }.mj_JSONString;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkCreatRoleRoleNotification object:nil];
+    //请求创建角色
+    [[CommInterface shareInstance].ueDelegate sendMessagesToUE:sendStr type:2 notification:IOSFrameworkCreatRoleRoleNotification];
+    kShowHUDAndActivity;
+    
+    [self.view endEditing:YES];
+}
+
+- (void)creatRoleDataBack:(NSNotification*)notification
+{
+    kHiddenHUDAndAvtivity;
+    NSDictionary *userInfo = notification.userInfo;
+    if ([userInfo objectForKey:@"roleData"]) {
+        [[TARouter shareInstance] close];
+    }else{
+        [MBProgressHUD showTextDialog:kWindow msg:@"创建角色失败"];
     }
 }
 

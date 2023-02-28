@@ -56,28 +56,32 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             
             //正在连接游戏服务器需等连接成功后发送结果
             //...
-    //        if("伪代码" == NULL)//有角色信息数据
-            if("伪代码" != NULL)//无角色信息数据
-            {
-                //发送通知
-                const char *roleData = "";//JSON数据
-                module->callBackToIOS(roleData, cNotification);
-
-            }else{            //有角色信息
-                const char *roleData = "{\"roleData\":{}}";//JSON数据
-                //发送通知
-                module->callBackToIOS(roleData, cNotification);
-
-                //...
-                //直接进入场景
-                //...
-                
-                //进入场景后调用静态库，显示iOS原生控制面板
-                const char *cName = "controlPanel";
-                const char *cIdentifier = "controlPanel";
-                bool animated = false;
-                module->showIOSView(cName, NULL, animated, cIdentifier);
-            }
+            
+            //延时0.2秒模拟连接过程
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //        if("伪代码" == NULL)//有角色信息数据
+                if("伪代码" != NULL)//无角色信息数据
+                {
+                    //发送通知
+                    const char *roleData = "";//JSON数据
+                    module->callBackToIOS(roleData, cNotification);
+                    
+                }else{            //有角色信息
+                    const char *roleData = "{\"roleData\":{}}";//JSON数据
+                    //发送通知
+                    module->callBackToIOS(roleData, cNotification);
+                    
+                    //...
+                    //直接进入场景
+                    //...
+                    
+                    //进入场景后调用静态库，显示iOS原生控制面板
+                    const char *cName = "controlPanel";
+                    const char *cIdentifier = "controlPanel";
+                    bool animated = false;
+                    module->showIOSView(cName, NULL, animated, cIdentifier);
+                }
+            });
         }
         else if([notification isEqualToString:@"creatRoleData"])
         {
@@ -93,11 +97,15 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             //进入场景
             //...
             
-            //进入场景后调用静态库，显示iOS原生控制面板
-            const char *cName = "controlPanel";
-            const char *cIdentifier = "controlPanel";
-            bool animated = false;
-            module->showIOSView(cName, NULL, animated, cIdentifier);
+            //延时.2秒模拟加载过程
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //进入场景后调用静态库，显示iOS原生控制面板
+                const char *cName = "controlPanel";
+                const char *cIdentifier = "controlPanelBack";
+                bool animated = false;
+                module->showIOSView(cName, NULL, animated, cIdentifier);
+            });
+
         }
         else if([notification isEqualToString:@"changeRoleData"])
         {

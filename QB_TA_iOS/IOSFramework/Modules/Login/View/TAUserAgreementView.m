@@ -162,7 +162,7 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
         _textView = [UITextView new];
         _textView.editable = NO;
         _textView.textColor = kTAColor.c_49;
-        _textView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
+//        _textView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
         _textView.font = [UIFont systemFontOfSize:13];
         _textView.delegate = self;
     }
@@ -212,7 +212,6 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
         [_okBtn setTitleColor:kTAColor.c_F0 forState:UIControlStateNormal];
         _okBtn.layer.cornerRadius = kRelative(35);
         _okBtn.layer.masksToBounds = YES;
-        [_okBtn setBackgroundImage:[UIImage jk_imageWithColor:kTAColor.c_9C] forState:UIControlStateNormal];
         [_okBtn addTarget:self action:@selector(okBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _okBtn;

@@ -308,6 +308,8 @@
     }
     
     [self.presenter loginWithParam:parmModel];
+
+    [self endEditing:YES];
 }
 
 

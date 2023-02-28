@@ -58,7 +58,7 @@ typedef void (^ResultBlock) (NSString *param);
  *  type 消息类型     1:UE主动调iOS   2:UE回复iOS
  *  notification    用于找到通知/接收对象
  */
-+ (void)sendMessagesToIOS:(id __nullable)msg type:(int)type notification:(nullable NSNotificationName)notification;
++ (void)sendMessagesToIOS:(id __nonnull)msg type:(int)type notification:(__nullable NSNotificationName)notification;
 
 
 @end

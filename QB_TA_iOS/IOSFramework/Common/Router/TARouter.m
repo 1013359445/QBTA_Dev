@@ -14,6 +14,7 @@
 
 #import "TALoginViewController.h"
 #import "TACreatRoleViewController.h"
+#import "TAControlPanelView.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -29,7 +30,8 @@ shareInstance_implementation(TARouter)
 {
     [TARouter saveViewIDWithClass:[TALoginViewController class]];
     [TARouter saveViewIDWithClass:[TACreatRoleViewController class]];
-    
+    [TARouter saveViewIDWithClass:[TAControlPanelView class]];
+
     //新增页面在此处添加代码
     //[TARouter saveViewIDWithClass:[xxxxx class]];
 }
@@ -107,20 +109,12 @@ shareInstance_implementation(TARouter)
     return _controller;
 }
 
-- (void)goBack
-{
-    UIViewController *currentVC = [self getCurrentVC];
-    if ([currentVC isKindOfClass:[TABaseViewController class]]) {
-        [(TABaseViewController *)currentVC goBack];
-    }else{
-        LRLog(@"Controller未继承TABaseViewController");
-    }
-}
 - (void)close
 {
     UIViewController *currentVC = [self getCurrentVC];
     if ([currentVC isKindOfClass:[TABaseViewController class]]) {
         [(TABaseViewController *)currentVC close];
+        self.controller = nil;
     }else{
         LRLog(@"Controller未继承TABaseViewController");
     }

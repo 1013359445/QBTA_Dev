@@ -13,7 +13,7 @@
 
 + (CGSize)viewSize
 {
-    return CGSizeMake(0, 0);
+    return SCREEN_SIZE;
 }
 
 - (void)dealloc

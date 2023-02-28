@@ -17,12 +17,14 @@
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
 
 //屏幕尺寸
-#define SCREEN_WIDTH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
-#define SCREENH_HEIGHT ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.height)
-#define SCREEN_SIZE ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?CGSizeMake([UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale):[UIScreen mainScreen].bounds.size)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
+
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.height)
+
+#define SCREEN_SIZE ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?CGSizeMake([UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale):[UIScreen mainScreen].bounds.size)
 #else
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 #endif
 
@@ -51,7 +53,7 @@
 #define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] >=8.0)? (YES):(NO))
 
 //根据设计图2倍像素自动计算相对逻辑分辨率
-#define kRelative(x) x/2.0f*(SCREEN_WIDTH/375.0f)
+#define kRelative(x) x/2.0f*(SCREEN_HEIGHT/375.0f)
 
 
 #ifdef DEBUG

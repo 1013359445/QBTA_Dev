@@ -18,9 +18,8 @@ typedef void (^TaskFinishBlock) (id result);
 @interface TARouter : NSObject
 shareInstance_interface(TARouter)
 
-- (void)autoTaskWithCmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response;
+- (void)autoTaskWithCmdModel:(TACmdModel*)cmdModel responseBlock:(nullable TaskFinishBlock)response;
 
-- (void)goBack;
 - (void)close;//关闭所有iOS视图
 
 @end

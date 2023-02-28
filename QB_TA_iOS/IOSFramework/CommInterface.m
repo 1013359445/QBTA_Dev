@@ -47,7 +47,7 @@ static CommInterface *_instanceCommInterface;
  *  type 消息类型   1发送通知 2请求数据 3显示iOS原生页面(以后规范好格式可以只用这一个接口实现页面跳转、数据传递)
  *  notification 用于找到通知对象
  */
-+ (void)sendMessagesToIOS:(id __nullable)msg type:(int)type notification:(nullable NSNotificationName)notification
++ (void)sendMessagesToIOS:(id __nonnull)msg type:(int)type notification:(__nullable NSNotificationName)notification
 {
     NSDictionary *userInfo = [msg mj_JSONObject];
     [[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil userInfo:userInfo];

@@ -14,7 +14,6 @@
 #import "CommInterface.h"
 
 NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
-NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
 
 @implementation TALoginPresenter
 
@@ -77,22 +76,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     TACmdModel *cmd = [TACmdModel new];
     cmd.cmd = @"creatRole";
     cmd.animated = YES;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:^(id  _Nonnull result) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(creatRoleDataBack:) name:IOSFrameworkCreatRoleRoleNotification object:nil];
-        //请求创建角色
-        [[CommInterface shareInstance].ueDelegate sendMessagesToUE:result type:2 notification:IOSFrameworkCreatRoleRoleNotification];
-        kShowHUDAndActivity;
-    }];
+    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
 
-- (void)creatRoleDataBack:(NSNotification*)notification
-{
-    kHiddenHUDAndAvtivity;
-    NSDictionary *userInfo = notification.userInfo;
-    if ([userInfo objectForKey:@"roleData"]) {
-        [[TARouter shareInstance] close];
-    }else{
-        [MBProgressHUD showTextDialog:kWindow msg:@"创建角色失败"];
-    }
-}
 @end

@@ -156,7 +156,7 @@
     if(!_roleImageView){
         _roleImageView = [UIImageView new];
         _roleImageView.image = kBundleImage(@"role_1", @"Role");
-        _roleImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_roleImageView setContentMode:UIViewContentModeScaleAspectFit];
     }
     return _roleImageView;
 }

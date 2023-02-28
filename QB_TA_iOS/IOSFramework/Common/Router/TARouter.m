@@ -17,6 +17,8 @@
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
+@property (nonatomic, retain)UIViewController       *controller;
+
 @end
 
 @implementation TARouter
@@ -72,20 +74,15 @@ shareInstance_implementation(TARouter)
         vc.cmdModel = cmdModel;
         vc.taskFinishBlock = response;
 
-        UIViewController *controller = [CommInterface shareInstance].iOSViewController;
-        if (!controller) {
-            if (response) {
-                NSString *errorStr = @"{\"error\":\"未配置iOSViewController\"}";
-                response(errorStr);
-            }
-            return;
-        }
-        if (controller.navigationController) {
-            [controller.navigationController pushViewController:vc animated:cmdModel.animated];
+        UIViewController *currentVC = [self getCurrentVC];
+
+        if (currentVC.navigationController) {
+            [currentVC.navigationController pushViewController:vc animated:cmdModel.animated];
         }else{
             vc.modalPresentationStyle = UIModalPresentationFullScreen;
-            [controller presentViewController:vc animated:cmdModel.animated completion:nil];
+            [currentVC presentViewController:vc animated:cmdModel.animated completion:nil];
         }
+        self.controller = vc;
     }
 }
 
@@ -101,5 +98,32 @@ shareInstance_implementation(TARouter)
     return class;
 }
 
+//获取当前屏幕显示的 View Controller
+- (UIViewController *)getCurrentVC
+{
+    if (!_controller) {
+        _controller = [CommInterface shareInstance].iOSViewController;
+    }
+    return _controller;
+}
+
+- (void)goBack
+{
+    UIViewController *currentVC = [self getCurrentVC];
+    if ([currentVC isKindOfClass:[TABaseViewController class]]) {
+        [(TABaseViewController *)currentVC goBack];
+    }else{
+        LRLog(@"Controller未继承TABaseViewController");
+    }
+}
+- (void)close
+{
+    UIViewController *currentVC = [self getCurrentVC];
+    if ([currentVC isKindOfClass:[TABaseViewController class]]) {
+        [(TABaseViewController *)currentVC close];
+    }else{
+        LRLog(@"Controller未继承TABaseViewController");
+    }
+}
 
 @end

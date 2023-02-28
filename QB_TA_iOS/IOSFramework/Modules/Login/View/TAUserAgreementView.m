@@ -7,6 +7,9 @@
 
 #import "TAUserAgreementView.h"
 
+NSString * const UserAgreementString = @"用户协议：\n到家了甲方i啊金额临汾IE登记理发手机打给哦in飞机卡拉季阿卡到哪国际卡垃圾发古拉克发几个四大金刚开了房间卡古拉； 1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。";
+NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。冻干粉金佛IG久啊发i加更；啊咖啡馆打客服金卡价；发is接待；放假四大金刚i及哦合计溶剂热i哦换季很尬办法金卡赌官方解决而韩国i和很尬hiu额和隔热管";
+
 @interface TAUserAgreementView () <UITextViewDelegate>
 
 @property (nonatomic, retain)UIImageView    *bgImageView;
@@ -62,13 +65,12 @@
         make.right.mas_equalTo(kRelative(-40));
         make.bottom.mas_equalTo(kRelative(-38));
     }];
-
     
     [self.textView addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.textView.contentSize.height);
         make.left.mas_equalTo(0);
-        make.width.mas_equalTo([TAUserAgreementView viewSize].width);
+        make.width.mas_equalTo([TAUserAgreementView viewSize].width-kRelative(80));
         make.height.mas_equalTo(kRelative(100));
     }];
 
@@ -76,15 +78,18 @@
     [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(kRelative(445));
         make.height.mas_equalTo(kRelative(70));
-        make.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(kRelative(40));
+        make.left.bottom.mas_equalTo(0);
     }];
     
     [self.bottomView addSubview:self.okBtn];
     [self.okBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.bottom.mas_equalTo(self.cancelBtn);
-        make.right.mas_equalTo(kRelative(-40));
+        make.right.mas_equalTo(0);
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setTitle:@"《用户协议》及《隐私政策》" ContentText:[NSString stringWithFormat:@"%@\n\n\n%@", UserAgreementString, PrivacyPolicyString]];
+    });
 }
 
 - (void)setTitle:(NSString *)title ContentText:(NSString *)content
@@ -95,14 +100,6 @@
 }
 
 - (void)setAttributedContent:(NSAttributedString *)attributedString{
-//    NSString *htmlString = @"HeaderSubheader<p>Some text</p><img src='http://blogs.babble.com/famecrawler/files/2010/11/mickey_mouse-1097.jpg' width=70 height=100 />";
-//    attributedString = [[NSAttributedString alloc]
-//              initWithData: [htmlString dataUsingEncoding:NSUnicodeStringEncoding]
-//                   options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-//        documentAttributes: nil
-//                     error: nil
-//    ];
-    
     self.textView.attributedText = attributedString;
     [self updateBottomViewConstraints];
 }
@@ -185,7 +182,6 @@
 {
     if (!_bottomView) {
         _bottomView = [[UIView alloc] init];
-        _bottomView.backgroundColor = [UIColor redColor];
     }
     return _bottomView;
 }
@@ -223,6 +219,3 @@
 }
 
 @end
-
-
-

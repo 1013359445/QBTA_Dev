@@ -28,16 +28,17 @@
 
 - (void)close
 {
-    BOOL animated = self.cmdModel.animated;
     if (self.navigationController) {
-        [self.navigationController popToRootViewControllerAnimated:animated];
+        [self.navigationController popToRootViewControllerAnimated:self.cmdModel.animated];
     }else{
+        self.cmdModel.animated = NO;
+        
+        NSMutableArray *vcArray = [NSMutableArray array];
         UIViewController *controller = self;
-        int num = 0;
         int inDo = YES;
         do {
             if (controller.presentingViewController) {
-                num++;
+                [vcArray addObject:controller];
                 controller = controller.presentingViewController;
             }else{
                 inDo = NO;
@@ -48,15 +49,18 @@
         controller = self;
         do {
             if (controller.presentedViewController) {
-                num++;
+                [vcArray insertObject:controller atIndex:0];
                 controller = controller.presentedViewController;
             }else{
                 inDo = NO;
             }
         } while (inDo);
 
-        for (int i = 0; i < num; i++) {
-            [self dismissViewControllerAnimated:NO completion:nil];
+        for (TABaseViewController *vc in vcArray) {
+            if ([vc isKindOfClass:[TABaseViewController class]]) {
+                [vc goBack];
+
+            }
         }
     }
 }

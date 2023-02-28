@@ -20,6 +20,9 @@ shareInstance_interface(TARouter)
 
 - (void)autoTaskWithCmdModel:(TACmdModel*)cmdModel responseBlock:(TaskFinishBlock)response;
 
+- (void)goBack;
+- (void)close;//关闭所有iOS视图
+
 @end
 
 NS_ASSUME_NONNULL_END

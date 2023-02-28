@@ -29,11 +29,10 @@
 }
 
 -(void)requestWithParmModel:(TABaseParmModel*)parmModel
-             dataModelClass:(Class)dataModelClass
-             succeededBlock:(TASucceededBlock)succeededBlock
-             failedBlock:(TAFailedBlock) failedBlock
-             finishedBlock:(TAFinishedBlock)finishedBlock;
-
+             dataModelClass:(nullable Class)dataModelClass
+             succeededBlock:(nullable TASucceededBlock)succeededBlock
+                failedBlock:(nullable TAFailedBlock) failedBlock
+              finishedBlock:(nullable TAFinishedBlock)finishedBlock
 {
     self.succeededBlock = succeededBlock;
     self.finishedBlock = finishedBlock;

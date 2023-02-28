@@ -33,10 +33,10 @@ typedef void (^TAFinishedBlock)(void);
 @property (nonatomic, retain)Class                  dataModelClass;
 
 -(void)requestWithParmModel:(TABaseParmModel*)parmModel
-dataModelClass:(Class)dataModelClass
-succeededBlock:(TASucceededBlock)succeededBlock
-failedBlock:(TAFailedBlock) failedBlock
-finishedBlock:(TAFinishedBlock)finishedBlock;
+dataModelClass:(nullable Class)dataModelClass
+succeededBlock:(nullable TASucceededBlock)succeededBlock
+failedBlock:(nullable TAFailedBlock) failedBlock
+finishedBlock:(nullable TAFinishedBlock)finishedBlock;
 
 - (NSString *)link;//子类必须实现 link
 

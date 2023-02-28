@@ -22,9 +22,12 @@
 @property (nonatomic, retain)UIButton*          eyeBtn;
 
 @property (nonatomic, retain)UIView*            codeInputVIew;
+@property (nonatomic, retain)UITextField*       codeTextField;
 @property (nonatomic, retain)UIButton*          getCodeBtn;
 @property (nonatomic, retain)UILabel*           countDownLabel;
 
+@property (nonatomic, retain)UIButton*          loginBtn;
+@property (nonatomic, retain)UIButton*          agreeBtn;
 
 @property (nonatomic, retain)UITextView*        agreementText;
 
@@ -255,6 +258,15 @@
     [self verification:NO];
 }
 
+- (void)agreeBtnSelected
+{
+    [self.agreeBtn setSelected:YES];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@(self.agreeBtn.isSelected).stringValue forKey:@"agreement"];
+    [self verification:NO];
+}
+
+
 
 #pragma mark 获取验证码
 - (void)getCodeBtnClick:(UIButton *)sender
@@ -301,6 +313,9 @@
 
 - (void)startCountdown
 {
+    //收到验证码，开始倒计时
+    [self.codeTextField becomeFirstResponder];
+
     if (!_timer) {
         _cd = 60;
         self.getCodeBtn.hidden = YES;

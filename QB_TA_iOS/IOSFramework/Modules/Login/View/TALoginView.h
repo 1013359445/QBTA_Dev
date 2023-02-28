@@ -20,12 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain)TALoginPresenter*  presenter;
 
-@property (nonatomic, retain)UIButton*          loginBtn;
-@property (nonatomic, retain)UIButton*          agreeBtn;
-@property (nonatomic, retain)UITextField*       codeTextField;
 
 - (void)startCountdown;
-
+- (void)agreeBtnSelected;
 @end
 
 NS_ASSUME_NONNULL_END

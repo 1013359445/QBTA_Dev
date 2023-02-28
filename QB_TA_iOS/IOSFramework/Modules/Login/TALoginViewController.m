@@ -64,8 +64,6 @@
 
 - (void)getVCodeSuccess:(id)data
 {
-    //收到验证码
-    [self.loginView.codeTextField becomeFirstResponder];
     //开始倒计时
     [self.loginView startCountdown];
 }
@@ -88,7 +86,7 @@
 
 - (void)userAgreementViewDidClickOKBtn
 {
-    [self.loginView.agreeBtn setSelected:YES];
+    [self.loginView agreeBtnSelected];//同意隐私协议
 }
 
 #pragma mark - TALoginViewDelegate

@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TABaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TATopMenuView : UIView
+@interface TATopMenuView : TABaseView
 
 @end
 

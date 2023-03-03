@@ -22,9 +22,10 @@
     [CommInterface shareInstance].iOSView = self.view;
     
     FIOSFrameworkModule *module = new FIOSFrameworkModule();
-    const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
-    const char *cParam = NULL;
-    const char *cIdentifier = [@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
+//    const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cName = [@"controlPanel" cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cIdentifier = nil;//[@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cParam = nil;
     bool animated = false;
     module->showIOSView(cName, cParam, animated , cIdentifier);
 }

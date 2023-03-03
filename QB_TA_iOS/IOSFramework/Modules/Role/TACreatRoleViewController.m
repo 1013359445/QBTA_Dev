@@ -119,7 +119,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
 - (void)confirmBtnClick:(UIButton *)sender
 {
     if (self.nameTextField.text.length == 0) {
-        [MBProgressHUD showTextDialog:self.view msg:@"请输入角色名称"];
+        [TAToast showTextDialog:self.view msg:@"请输入角色名称"];
         return;
     }
     
@@ -143,7 +143,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     if ([userInfo objectForKey:@"roleData"]) {
         [[TARouter shareInstance] close];
     }else{
-        [MBProgressHUD showTextDialog:kWindow msg:@"创建角色失败"];
+        [TAToast showTextDialog:kWindow msg:@"创建角色失败"];
     }
 }
 

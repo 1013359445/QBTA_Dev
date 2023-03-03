@@ -47,7 +47,7 @@ NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
             [weakself.view onLoginSuccess:dataModel jsonStr:jsonStr];
         }
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response, NSString *jsonStr) {
-        [MBProgressHUD showTextDialog:kWindow msg:msg];
+        [TAToast showTextDialog:kWindow msg:msg];
     } finishedBlock:^{
         kHiddenHUDAndAvtivity;
     }];
@@ -63,7 +63,7 @@ NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
             [weakself.view getVCodeSuccess:response];
         }
     } failedBlock:^(NSString * _Nonnull msg, NSDictionary * _Nonnull response, NSString *jsonStr) {
-        [MBProgressHUD showTextDialog:kWindow msg:msg];
+        [TAToast showTextDialog:kWindow msg:msg];
     } finishedBlock:^{
         kHiddenHUDAndAvtivity;
     }];

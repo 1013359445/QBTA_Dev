@@ -363,7 +363,7 @@
         tipString = @"手机号格式错误";
     }
     if (tipString) {
-        [MBProgressHUD showTextDialog:self.frameImageView msg:tipString];
+        [TAToast showTextDialog:self.frameImageView msg:tipString];
         return;
     }
 
@@ -385,7 +385,7 @@
     parmModel.phone = self.phoneNumTextField.text;
     if (_isPasswordMode) {
         parmModel.loginMode = @"0";
-        parmModel.password = self.passwordTextField.text;
+        parmModel.password = (NSString *)self.passwordTextField.text;
 
     }else {
         parmModel.loginMode = @"1";
@@ -445,7 +445,7 @@
         tipString = @"请阅读并同意《用户协议》和《隐私政策》";
     }
     if (tips && tipString) {
-        [MBProgressHUD showTextDialog:self.frameImageView msg:tipString];
+        [TAToast showTextDialog:self.frameImageView msg:tipString];
         return NO;
     }
 
@@ -550,10 +550,10 @@
         _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.returnKeyType = UIReturnKeyDone;
 
-        NSString *defaultPassword = [self.presenter getDefaultPassword];
-        if (defaultPassword) {
-            _passwordTextField.text = defaultPassword;
-        }
+//        NSString *defaultPassword = [self.presenter getDefaultPassword];
+//        if (defaultPassword) {
+//            _passwordTextField.text = defaultPassword;
+//        }
     }
     return _passwordTextField;
 }

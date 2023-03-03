@@ -72,7 +72,7 @@
 - (void)userAgreementViewDidClickCloseBtn
 {
     kWeakSelf(self);
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [weakself.loginView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
         }];
@@ -96,7 +96,7 @@
     }else{
     }
     kWeakSelf(self);
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         [weakself.loginView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0).offset(-SCREEN_HEIGHT);
         }];

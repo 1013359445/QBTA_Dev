@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface TALoginPresenter : TABasePresenter <id<TALoginViewProtocol>>
 
 - (void)loginWithParam:(TALoginParmModel *)param;
@@ -19,6 +20,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getVCodeWithParam:(TACaptchaParmModel *)param;
 
 - (void)getRoleData;
+
+
+- (NSString *)getDefaultAgreement;
+- (NSString *)getDefaultPhoneNumber;
+- (NSString *)getDefaultPassword;
+- (NSString *)getDefaultLoginMode;
+- (void)setDefaultAgreement:(nullable NSString *)value;
+- (void)setDefaultPhoneNumber:(nullable NSString *)value;
+- (void)setDefaultPassword:(nullable NSString *)value;
+- (void)setDefaultLoginMode:(nullable NSString *)value;
 
 @end
 

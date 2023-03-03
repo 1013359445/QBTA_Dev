@@ -7,6 +7,7 @@
 
 #import "TALoginView.h"
 
+
 @interface TALoginView () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, retain)UIImageView*       frameImageView;
@@ -33,6 +34,7 @@
 
 @property (nonatomic, retain)NSTimer*           timer;
 @property (nonatomic, assign)int                cd;
+@property (nonatomic, assign)BOOL               isPasswordMode;
 
 @end
 
@@ -88,11 +90,11 @@
     
     [self.frameImageView addSubview:self.passwordInputVIew];
     [self.passwordInputVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(kRelative(50));
-        make.right.mas_equalTo(kRelative(-50));
-        make.height.mas_equalTo(kRelative(70));
+        make.left.mas_equalTo([TALoginView viewSize].width*2);
         make.top.mas_equalTo(_phoneNumInputVIew.mas_bottom).mas_offset(kRelative(40));
-        
+        make.height.mas_equalTo(kRelative(70));
+        make.width.mas_equalTo(_phoneNumInputVIew.mas_width);
+
     }];
     
     [self.passwordInputVIew addSubview:self.passwordTextField];
@@ -112,7 +114,10 @@
     
     [self.frameImageView addSubview:self.codeInputVIew];
     [self.codeInputVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.mas_equalTo(_passwordInputVIew);
+        make.left.mas_equalTo(kRelative(50));
+        make.top.mas_equalTo(_phoneNumInputVIew.mas_bottom).mas_offset(kRelative(40));
+        make.height.mas_equalTo(kRelative(70));
+        make.width.mas_equalTo(_phoneNumInputVIew.mas_width);
     }];
     
     [self.codeInputVIew addSubview:self.codeTextField];
@@ -162,6 +167,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.phoneNumTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.codeTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.passwordTextField];
+    
+    
+    NSString *defaultLoginMode = [self.presenter getDefaultLoginMode];
+    if (!defaultLoginMode ) {
+        [self codeTabClick:nil];
+    }else if (defaultLoginMode.integerValue == 1) {
+        [self codeTabClick:nil];
+    }else{
+        [self passwordTabClick:nil];
+    }
 }
 
 - (void)textFieldTextDidChange:(NSNotification *)notification
@@ -202,17 +217,56 @@
 #pragma mark - UIButton Actions
 - (void)codeTabClick:(UIButton *)sender
 {
+    if (!_isPasswordMode) {
+        return;
+    }
+    _isPasswordMode = NO;
     kWeakSelf(self);
-    [UIView animateWithDuration:0.2 animations:^{
+
+    void (^change)(void)  = ^{
         [weakself.codeTab setSelected:YES];
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
-
         [weakself.passwordTab setSelected:NO];
         [weakself.passwordTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        
-        weakself.passwordInputVIew.alpha = 0;
-        weakself.codeInputVIew.alpha = 1;
+    };
+    if (sender == nil) {
+        change ();
+        [self.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo([TALoginView viewSize].width*2);
+        }];
+        [self.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(kRelative(50));
+        }];
+        [self verification:NO];
+        return;
+    }
+    
 
+    [UIView animateWithDuration:0.2 animations:^{
+        weakself.passwordInputVIew.alpha = 0.5;
+
+        [weakself.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo([TALoginView viewSize].width*2);
+        }];
+        
+        [weakself.frameImageView layoutIfNeeded];
+        [weakself.frameImageView layoutSubviews];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                weakself.passwordInputVIew.alpha = 1;
+
+                [weakself.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(kRelative(50));
+                }];
+                [weakself.frameImageView layoutIfNeeded];
+                [weakself.frameImageView layoutSubviews];
+            }];
+        }
+    }];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        change();
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
     }];
@@ -221,18 +275,54 @@
 
 - (void)passwordTabClick:(UIButton *)sender
 {
+    if (_isPasswordMode) {
+        return;
+    }
+    _isPasswordMode = YES;
     kWeakSelf(self);
-    [UIView animateWithDuration:0.2 animations:^{
-        
+
+    void (^change)(void)  = ^{
         [weakself.passwordTab setSelected:YES];
         [weakself.passwordTab.titleLabel setFont:[UIFont systemFontOfSize:14]];
-        
         [weakself.codeTab setSelected:NO];
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    };
+    
+    if (sender == nil) {
+        change ();
+        [self.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(kRelative(50));
+        }];
+        [self.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo([TALoginView viewSize].width*2);
+        }];
+        [self verification:NO];
+        return;
+    }
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        weakself.codeInputVIew.alpha = 0.5;
+        [weakself.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo([TALoginView viewSize].width*2);
+        }];
+        [weakself.frameImageView layoutIfNeeded];
+        [weakself.frameImageView layoutSubviews];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                weakself.codeInputVIew.alpha = 1;
+
+                [weakself.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(kRelative(50));
+                }];
+                [weakself.frameImageView layoutIfNeeded];
+                [weakself.frameImageView layoutSubviews];
+            }];
+        }
+    }];
         
-        weakself.passwordInputVIew.alpha = 1;
-        weakself.codeInputVIew.alpha = 0;
-        
+    [UIView animateWithDuration:0.3 animations:^{
+        change();
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
     }];
@@ -241,28 +331,23 @@
 
 - (void)eyeBtnClick:(UIButton *)sender
 {
-    //避免明文/密文切换后光标位置偏移
-    self.passwordTextField.enabled = NO;    // the first one;
+    //明文/密文切换
     self.passwordTextField.secureTextEntry = sender.isSelected;
     [sender setSelected:!sender.isSelected];
-    self.passwordTextField.enabled = YES;  // the second one;
-    [self.passwordTextField becomeFirstResponder]; // the third one
 }
 
 - (void)agreeBtnClick:(UIButton *)sender
 {
     [self.agreeBtn setSelected:!sender.isSelected];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(self.agreeBtn.isSelected).stringValue forKey:@"agreement"];
-    
+
+    [self.presenter setDefaultAgreement:@((int)self.agreeBtn.isSelected).stringValue];
     [self verification:NO];
 }
 
 - (void)agreeBtnSelected
 {
     [self.agreeBtn setSelected:YES];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(self.agreeBtn.isSelected).stringValue forKey:@"agreement"];
+    [self.presenter setDefaultAgreement:@((int)self.agreeBtn.isSelected).stringValue];
     [self verification:NO];
 }
 
@@ -298,7 +383,7 @@
     
     TALoginParmModel *parmModel = [[TALoginParmModel alloc] init];
     parmModel.phone = self.phoneNumTextField.text;
-    if (self.passwordInputVIew.alpha == 1) {
+    if (_isPasswordMode) {
         parmModel.loginMode = @"0";
         parmModel.password = self.passwordTextField.text;
 
@@ -346,11 +431,11 @@
         tipString = @"请输入手机号";
     }else if (self.phoneNumTextField.text.length != 11) {
         tipString = @"手机号格式错误";
-    }else if (self.passwordInputVIew.alpha == 1) {
+    }else if (_isPasswordMode) {
         if (self.passwordTextField.text.length == 0) {
             tipString = @"请输入密码";
         }
-    }else if (self.codeInputVIew.alpha == 1) {
+    }else if (!_isPasswordMode) {
         if (self.codeTextField.text.length == 0) {
             tipString = @"请输入验证码";
         }
@@ -376,12 +461,12 @@
 }
 
 #pragma mark - lazy load
-
 -(UIImageView*)frameImageView{
     if (!_frameImageView){
         _frameImageView = [UIImageView new];
         [_frameImageView setImage:kBundleImage(@"login_frame", @"Login")];
         [_frameImageView setUserInteractionEnabled:YES];
+        _frameImageView.clipsToBounds = YES;
     }
     return _frameImageView;
 }
@@ -436,6 +521,11 @@
         _phoneNumTextField.keyboardType = UIKeyboardTypePhonePad;
         _phoneNumTextField.placeholder = @"请输入手机号";
         _phoneNumTextField.returnKeyType = UIReturnKeyNext;
+        
+        NSString *defaultPhoneNumber = [self.presenter getDefaultPhoneNumber];
+        if (defaultPhoneNumber) {
+            _phoneNumTextField.text = defaultPhoneNumber;
+        }
     }
     return _phoneNumTextField;
 }
@@ -446,7 +536,7 @@
         _passwordInputVIew.layer.cornerRadius = kRelative(35);
         _passwordInputVIew.layer.masksToBounds = YES;
         _passwordInputVIew.backgroundColor = [UIColor whiteColor];
-        _passwordInputVIew.alpha = 0;
+//        _passwordInputVIew.alpha = 0;
     }
     return _passwordInputVIew;
 }
@@ -459,6 +549,11 @@
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.returnKeyType = UIReturnKeyDone;
+
+        NSString *defaultPassword = [self.presenter getDefaultPassword];
+        if (defaultPassword) {
+            _passwordTextField.text = defaultPassword;
+        }
     }
     return _passwordTextField;
 }
@@ -538,9 +633,9 @@
         [_agreeBtn setImage:kBundleImage(@"login_agree_n", @"Login") forState:UIControlStateNormal];
         [_agreeBtn setImage:kBundleImage(@"login_agree_s", @"Login") forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *isAgreeStr = [defaults objectForKey:@"agreement"];
-        [_agreeBtn setSelected:isAgreeStr.boolValue];
+
+        BOOL isAgreeStr = @([self.presenter getDefaultAgreement].integerValue).boolValue;
+        [_agreeBtn setSelected:isAgreeStr];
     }
     return _agreeBtn;
 }

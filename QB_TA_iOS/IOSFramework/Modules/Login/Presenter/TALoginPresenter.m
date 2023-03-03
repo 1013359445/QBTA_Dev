@@ -15,6 +15,14 @@
 
 NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
 
+NSNotificationName const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
+NSNotificationName const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
+NSNotificationName const DefaultsKeyPassword = @"DefaultsKeyPassword";
+NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
+
+@interface TALoginPresenter ()
+
+@end
 @implementation TALoginPresenter
 
 - (void)dealloc{
@@ -26,6 +34,15 @@ NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData
     kShowHUDAndActivity;
     kWeakSelf(self);
     [[TALoginInterface shareInstance] requestWithParmModel:param dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
+        
+        [self setDefaultPhoneNumber:param.phone];
+        if (param.loginMode.integerValue == 0) {
+            [self setDefaultPassword:param.password];
+        }else{
+            [self setDefaultPassword:nil];
+        }
+        [self setDefaultLoginMode:param.loginMode];
+
         if ([weakself.view respondsToSelector:@selector(onLoginSuccess:jsonStr:)]) {
             [weakself.view onLoginSuccess:dataModel jsonStr:jsonStr];
         }
@@ -78,5 +95,54 @@ NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData
     cmd.animated = YES;
     [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
+
+- (NSString *)getDefaultAgreement
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:DefaultsKeyAgreement];
+}
+
+- (NSString *)getDefaultPhoneNumber
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:DefaultsKeyPhoneNumber];
+}
+
+- (NSString *)getDefaultPassword
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:DefaultsKeyPassword];
+}
+
+- (NSString *)getDefaultLoginMode
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:DefaultsKeyLoginMode];
+}
+
+- (void)setDefaultAgreement:(NSString *)value
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:DefaultsKeyAgreement];
+}
+
+- (void)setDefaultPhoneNumber:(NSString *)value
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:DefaultsKeyPhoneNumber];
+}
+
+- (void)setDefaultPassword:(NSString *)value
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:DefaultsKeyPassword];
+}
+
+- (void)setDefaultLoginMode:(NSString *)value
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:DefaultsKeyLoginMode];
+}
+
 
 @end

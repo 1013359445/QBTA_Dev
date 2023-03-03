@@ -76,15 +76,16 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
 
     [self.bottomView addSubview:self.cancelBtn];
     [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(kRelative(445));
+        make.width.mas_equalTo(kRelative(400));
         make.height.mas_equalTo(kRelative(70));
-        make.left.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.left.mas_equalTo(kRelative(20));
     }];
     
     [self.bottomView addSubview:self.okBtn];
     [self.okBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.bottom.mas_equalTo(self.cancelBtn);
-        make.right.mas_equalTo(0);
+        make.right.mas_equalTo(-kRelative(20));
     }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -134,7 +135,7 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
     [self closeBtnClick];
 }
 
-#pragma mark - Getter/Setter
+#pragma mark - lazy load
 -(UIImageView*)bgImageView{
     if (!_bgImageView){
         _bgImageView = [UIImageView new];
@@ -162,9 +163,19 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
         _textView = [UITextView new];
         _textView.editable = NO;
         _textView.textColor = kTAColor.c_49;
-//        _textView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
+        _textView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.2];
         _textView.font = [UIFont systemFontOfSize:13];
         _textView.delegate = self;
+
+        _textView.layer.cornerRadius = kRelative(20);
+        _textView.layer.masksToBounds = YES;
+        CGFloat xMargin = kRelative(20), yMargin = kRelative(20);
+        // 使用textContainerInset设置top、left、right
+        _textView.textContainerInset = UIEdgeInsetsMake(yMargin, xMargin, 0, xMargin);
+        //当光标在最后一行时，始终显示低边距，需使用contentInset设置bottom.
+        _textView.contentInset = UIEdgeInsetsMake(0, 0, yMargin, 0);
+        //防止在拼音打字时抖动
+        _textView.layoutManager.allowsNonContiguousLayout=NO;
     }
     return _textView;
 }
@@ -189,12 +200,12 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
 -(UIButton*     )cancelBtn{
     if (!_cancelBtn){
         _cancelBtn = [UIButton new];
-        [_cancelBtn setImage:[UIImage jk_imageWithColor:kTAColor.c_F0] forState:UIControlStateNormal];
+        [_cancelBtn jk_setBackgroundColor:kTAColor.c_F0 forState:UIControlStateNormal];
         [_cancelBtn setTitle:@"不继续" forState:UIControlStateNormal];
         [_cancelBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [_cancelBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
         _cancelBtn.layer.cornerRadius = kRelative(35);
-        _cancelBtn.layer.borderWidth = 1;
+        _cancelBtn.layer.borderWidth = kRelative(1);
         _cancelBtn.layer.borderColor = kTAColor.c_49.CGColor;
         _cancelBtn.layer.masksToBounds = YES;
 
@@ -206,7 +217,7 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
 -(UIButton*     )okBtn{
     if (!_okBtn){
         _okBtn = [UIButton new];
-        [_cancelBtn setImage:[UIImage jk_imageWithColor:kTAColor.c_49] forState:UIControlStateNormal];
+        [_okBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateNormal];
         [_okBtn setTitle:@"同意并继续" forState:UIControlStateNormal];
         [_okBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [_okBtn setTitleColor:kTAColor.c_F0 forState:UIControlStateNormal];

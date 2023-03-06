@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "tmenu_large_g@2x.png",
+      "filename" : "icon_chat@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tmenu_large_g@3x.png",
+      "filename" : "icon_chat@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

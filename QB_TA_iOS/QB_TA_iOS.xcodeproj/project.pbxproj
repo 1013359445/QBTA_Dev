@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7A0D28712995F2FB004BCDC6 /* NSBundle+TAImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */; };
 		7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */; };
+		7A1FD33629B5B7F9006C352F /* TAAnnouncementView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD33429B5B7F9006C352F /* TAAnnouncementView.h */; };
+		7A1FD33729B5B7F9006C352F /* TAAnnouncementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD33529B5B7F9006C352F /* TAAnnouncementView.m */; };
+		7A1FD33A29B5B82A006C352F /* TAMiniMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD33829B5B82A006C352F /* TAMiniMapView.h */; };
+		7A1FD33B29B5B82A006C352F /* TAMiniMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD33929B5B82A006C352F /* TAMiniMapView.m */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -517,6 +521,10 @@
 /* Begin PBXFileReference section */
 		7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TAImage.m"; sourceTree = "<group>"; };
 		7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TAImage.h"; sourceTree = "<group>"; };
+		7A1FD33429B5B7F9006C352F /* TAAnnouncementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAnnouncementView.h; sourceTree = "<group>"; };
+		7A1FD33529B5B7F9006C352F /* TAAnnouncementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAnnouncementView.m; sourceTree = "<group>"; };
+		7A1FD33829B5B82A006C352F /* TAMiniMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMiniMapView.h; sourceTree = "<group>"; };
+		7A1FD33929B5B82A006C352F /* TAMiniMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMiniMapView.m; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -1983,6 +1991,10 @@
 				7A85949629ACB43300D6B51A /* TATopMenuView.m */,
 				7A85949929ACB44400D6B51A /* TARightMenuView.h */,
 				7A85949A29ACB44400D6B51A /* TARightMenuView.m */,
+				7A1FD33429B5B7F9006C352F /* TAAnnouncementView.h */,
+				7A1FD33529B5B7F9006C352F /* TAAnnouncementView.m */,
+				7A1FD33829B5B82A006C352F /* TAMiniMapView.h */,
+				7A1FD33929B5B82A006C352F /* TAMiniMapView.m */,
 			);
 			path = ControlPanel;
 			sourceTree = "<group>";
@@ -2256,6 +2268,7 @@
 				7A3CAF49298A46EE00DD1998 /* NSButton+WebCache.h in Headers */,
 				7A3CADE3298A426300DD1998 /* NSString+MJExtension.h in Headers */,
 				7A3CB1A5298A565900DD1998 /* UINavigationItem+JKLock.h in Headers */,
+				7A1FD33629B5B7F9006C352F /* TAAnnouncementView.h in Headers */,
 				7A3CAF95298A46EF00DD1998 /* SDWebImageDownloaderDecryptor.h in Headers */,
 				7A3CAE23298A444800DD1998 /* ASIProgressDelegate.h in Headers */,
 				7A3CAE5B298A462900DD1998 /* IQUITextFieldView+Additions.h in Headers */,
@@ -2346,6 +2359,7 @@
 				7A3CB02C298A47AB00DD1998 /* NSArray+MASAdditions.h in Headers */,
 				7A3CAF8D298A46EF00DD1998 /* SDImageIOAnimatedCoder.h in Headers */,
 				7A3CAE60298A462900DD1998 /* IQTextView.h in Headers */,
+				7A1FD33A29B5B82A006C352F /* TAMiniMapView.h in Headers */,
 				7A3CAF40298A46EE00DD1998 /* UIImage+ExtendedCacheData.h in Headers */,
 				7A4B34B029A89AB3009753FC /* TACommonColor.h in Headers */,
 				7A3CB146298A565900DD1998 /* UIImage+JKRemoteSize.h in Headers */,
@@ -2678,6 +2692,7 @@
 				7A3CB16E298A565900DD1998 /* UIButton+JKMiddleAligning.m in Sources */,
 				7A3CAF5D298A46EE00DD1998 /* UIImage+ForceDecode.m in Sources */,
 				7A3CADEF298A426300DD1998 /* NSObject+MJClass.m in Sources */,
+				7A1FD33B29B5B82A006C352F /* TAMiniMapView.m in Sources */,
 				7A3CAE57298A462900DD1998 /* IQUIScrollView+Additions.m in Sources */,
 				7A3CB1F9298A703500DD1998 /* TARouter.m in Sources */,
 				7A3CB19D298A565900DD1998 /* UIView+JKFind.m in Sources */,
@@ -2687,6 +2702,7 @@
 				7A3CAE65298A462A00DD1998 /* IQTitleBarButtonItem.m in Sources */,
 				7A3CB009298A46EF00DD1998 /* SDAsyncBlockOperation.m in Sources */,
 				7A3CB184298A565900DD1998 /* UISplitViewController+JKQuickAccess.m in Sources */,
+				7A1FD33729B5B7F9006C352F /* TAAnnouncementView.m in Sources */,
 				7A3CAE67298A462A00DD1998 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				7A3CB1A8298A565900DD1998 /* UINavigationItem+JKLoading.m in Sources */,
 				7A3CAF8E298A46EF00DD1998 /* SDImageLoadersManager.m in Sources */,

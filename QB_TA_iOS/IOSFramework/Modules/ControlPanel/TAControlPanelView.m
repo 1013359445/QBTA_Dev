@@ -8,6 +8,8 @@
 #import "TAControlPanelView.h"
 #import "TATopMenuView.h"
 #import "TARightMenuView.h"
+#import "TAAnnouncementView.h"
+#import "TAMiniMapView.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -15,16 +17,27 @@
 @property (nonatomic, retain)TATopMenuView      *topMenuView;
 @property (nonatomic, retain)TARightMenuView    *rightMenuView;
 
+@property (nonatomic, retain)UIButton           *putAwayBtn;
+@property (nonatomic, assign)BOOL               isPutAway;
+
+@property (nonatomic, retain)TAAnnouncementView *announcementView;
+//@property (nonatomic, retain)TAMiniMapView      *miniMapView;
+@property (nonatomic, retain)UIButton           *changeSpaceBtn;
+@property (nonatomic, retain)UIButton           *chatBtn;
+
 @end
 
 @implementation TAControlPanelView
+
 + (NSString *)cmd{
     return @"controlPanel";
 }
 
 - (void)loadSubViews
 {
-    self.userInteractionEnabled = NO;
+    self.userInteractionEnabled = YES;
+    self.isPutAway = NO;
+    
     [self addSubview:self.headImageView];
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(kRelative(80));
@@ -46,13 +59,98 @@
         make.top.mas_equalTo(_headImageView.mas_bottom).mas_offset(kRelative(30));
     }];
 
+    [self addSubview:self.putAwayBtn];
+    [_putAwayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(kRelative(60));
+        make.centerX.mas_equalTo(_rightMenuView.mas_centerX);
+        make.top.mas_equalTo(_rightMenuView.mas_bottom);
+    }];
+    
+    
+    [self addSubview:self.changeSpaceBtn];
+    [_changeSpaceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(kRelative(80));
+        make.left.mas_equalTo(kRelative(60));
+        make.top.mas_equalTo(kRelative(30));
+    }];
+    
+    [self addSubview:self.announcementView];
+    [_announcementView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(kRelative(80));
+        make.left.mas_equalTo(_changeSpaceBtn.mas_right).offset(kRelative(30));
+        make.centerY.mas_equalTo(_changeSpaceBtn.mas_centerY);
+    }];
+    
+    [self addSubview:self.chatBtn];
+    [_chatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(kRelative(44));
+        make.left.mas_equalTo(kRelative(80));
+        make.bottom.mas_equalTo(kRelative(-30));
+    }];
 }
+
+
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *hitView = [super hitTest:point withEvent:event];
+    if(hitView == self){
+        return nil;
+    }
+    return hitView;
+}
+
+
 #pragma mark - action
 - (void)headClick
 {
     
 }
 
+- (void)changeSpaceBtnClick
+{
+    
+}
+
+- (void)chatBtnClick
+{
+    
+}
+
+- (void)putAwayBtnClick
+{
+    self.isPutAway = !self.isPutAway;
+    
+    CGFloat rotation;
+    CGFloat width;
+    CGFloat height;
+    CGFloat alpha;
+    
+    if (self.isPutAway) {
+        rotation = M_PI;
+        width = 0;
+        height = 0;
+        alpha = 0.2;
+    }else{
+        rotation = 0;
+        width = [TATopMenuView viewSize].width;
+        height = [TARightMenuView viewSize].height;
+        alpha = 1;
+    }
+    
+    [UIView animateWithDuration:.3 animations:^{
+        self.putAwayBtn.transform = CGAffineTransformMakeRotation(rotation);
+        self.topMenuView.alpha = alpha;
+        self.rightMenuView.alpha = alpha;
+        
+        [self.topMenuView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(width);
+        }];
+        [self.rightMenuView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(height);
+        }];
+        [self layoutIfNeeded];
+        [self layoutSubviews];
+    }];
+}
 
 #pragma mark - lazy load
 -(TATopMenuView *)topMenuView{
@@ -69,6 +167,16 @@
     return _rightMenuView;
 }
 
+-(UIButton           *)putAwayBtn
+{
+    if (!_putAwayBtn){
+        _putAwayBtn = [UIButton new];
+        [_putAwayBtn setImage:kBundleImage(@"arrow_up", @"ControlPanel") forState:UIControlStateNormal];
+        [_putAwayBtn addTarget:self action:@selector(putAwayBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _putAwayBtn;
+}
+
 -(UIImageView        *)headImageView
 {
     if (!_headImageView){
@@ -76,6 +184,7 @@
         _headImageView.backgroundColor = [UIColor grayColor];
         _headImageView.layer.cornerRadius = kRelative(40);
         _headImageView.layer.masksToBounds = YES;
+        _headImageView.userInteractionEnabled = YES;
         
         UIButton *btn = [UIButton new];
         [_headImageView addSubview:btn];
@@ -86,4 +195,35 @@
     }
     return _headImageView;
 }
+
+-(UIButton *)changeSpaceBtn
+{
+    if (!_changeSpaceBtn) {
+        _changeSpaceBtn = [UIButton new];
+        [_changeSpaceBtn setBackgroundImage:kBundleImage(@"frame_white_80", @"Commom") forState:UIControlStateNormal];
+        [_changeSpaceBtn setImage:kBundleImage(@"icon_change_space", @"ControlPanel") forState:UIControlStateNormal];
+        [_changeSpaceBtn addTarget:self action:@selector(changeSpaceBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _changeSpaceBtn;
+}
+
+-(TAAnnouncementView *)announcementView
+{
+    if (!_announcementView) {
+        _announcementView = [TAAnnouncementView new];
+    }
+    return _announcementView;
+}
+
+-(UIButton *)chatBtn
+{
+    if (!_chatBtn) {
+        _chatBtn = [UIButton new];
+        [_chatBtn setImage:kBundleImage(@"icon_chat", @"ControlPanel") forState:UIControlStateNormal];
+        [_chatBtn addTarget:self action:@selector(chatBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _chatBtn;
+}
+
+
 @end

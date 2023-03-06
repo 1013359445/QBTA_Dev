@@ -11,7 +11,6 @@ int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
 int const IconID_Member         = 1003;
 int const IconID_Mike           = 1004;
-int const IconID_Large_Screen   = 1005;
 int const IconID_Share_Screen   = 1006;
 
 @interface TATopMenuView ()
@@ -25,14 +24,16 @@ int const IconID_Share_Screen   = 1006;
 
 + (CGSize)viewSize
 {
-    return CGSizeMake(kRelative(500), kRelative(80));
+    CGFloat width = [TATopMenuView iconConfig].count * kRelative(80);
+    return CGSizeMake(width, kRelative(80));
 }
 
 - (void)loadSubViews
 {
-    self.backgroundColor = [UIColor colorWithRed:30 green:30 blue:220 alpha:0.2];
+    [self setUserInteractionEnabled:YES];
+    self.clipsToBounds = YES;
 
-    self.iconArray = [self iconConfig];
+    self.iconArray = [self iconArray];
 
     [self addSubview:self.frameImageView];
     [self.frameImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,11 +82,6 @@ int const IconID_Share_Screen   = 1006;
             
         }
             break;
-        case IconID_Large_Screen:
-        {
-            
-        }
-            break;
         case IconID_Share_Screen:
         {
             
@@ -98,7 +94,7 @@ int const IconID_Share_Screen   = 1006;
 
 
 #pragma mark - lazy load
--(UIImageView*)frameImageView{
+- (UIImageView*)frameImageView{
     if (!_frameImageView){
         _frameImageView = [UIImageView new];
         //设置拉伸位置
@@ -114,7 +110,7 @@ int const IconID_Share_Screen   = 1006;
 #pragma mark - 配置
 - (NSArray *)iconArray
 {
-    NSArray *config = [self iconConfig];
+    NSArray *config = [TATopMenuView iconConfig];
     NSMutableArray *iconArray = [NSMutableArray array];
 
     //根据配置创建icon
@@ -125,27 +121,35 @@ int const IconID_Share_Screen   = 1006;
             continue;
         }
 
+        UIButton *icon = [[UIButton alloc] init];
+
         NSString *n = [btnConfig objectForKey:@"normal"];
         NSString *h = [btnConfig objectForKey:@"highlight"];
         NSString *d = [btnConfig objectForKey:@"disable"];
         NSString *s = [btnConfig objectForKey:@"selected"];
-        NSString *icon_id = [btnConfig objectForKey:@"icon_id"];
-        
-        UIButton *icon = [[UIButton alloc] init];
-        [icon setImage:kBundleImage(n, @"ControlPanel") forState:UIControlStateNormal];
-        [icon setImage:kBundleImage(h, @"ControlPanel") forState:UIControlStateHighlighted];
-        [icon setImage:kBundleImage(d, @"ControlPanel") forState:UIControlStateDisabled];
-        [icon setImage:kBundleImage(s, @"ControlPanel") forState:UIControlStateSelected];
-        
-        [icon addTarget:self action:@selector(iconDidClick:) forControlEvents:UIControlEventTouchUpInside];
+        if (n) {
+            [icon setImage:kBundleImage(n, @"ControlPanel") forState:UIControlStateNormal];
+        }
+        if (h) {
+            [icon setImage:kBundleImage(h, @"ControlPanel") forState:UIControlStateHighlighted];
+        }
+        if (d) {
+            [icon setImage:kBundleImage(d, @"ControlPanel") forState:UIControlStateDisabled];
+        }
+        if (s) {
+            [icon setImage:kBundleImage(s, @"ControlPanel") forState:UIControlStateSelected];
+        }
         
         BOOL isEnabled = [[btnConfig objectForKey:@"isEnabled"] boolValue];
         [icon setEnabled:isEnabled];
         
+        NSString *icon_id = [btnConfig objectForKey:@"icon_id"];
         [icon setTag:icon_id.integerValue];
-                
+        
+        [icon addTarget:self action:@selector(iconDidClick:) forControlEvents:UIControlEventTouchUpInside];
+
         //加竖线
-        if ([config indexOfObject:btnConfig] < config.count) {
+        if ([config indexOfObject:btnConfig] < config.count - 1) {
             UIView *line = [UIView new];
             line.backgroundColor = [UIColor whiteColor];
             [icon addSubview:line];
@@ -160,11 +164,12 @@ int const IconID_Share_Screen   = 1006;
         [iconArray addObject:icon];
     }
     
-    return iconArray;}
+    return iconArray;
+}
 
-- (NSArray *)iconConfig
++ (NSArray *)iconConfig
 {
-    return
+    NSMutableArray *config = [NSMutableArray arrayWithArray:
     @[
         @{
             @"icon_name":@"setting",
@@ -172,7 +177,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_setting_b",//常规
             @"highlight":@"tmenu_setting_g",//按下
             @"disable":@"tmenu_setting_g",//无效
-            @"authority":@"1",//权限-显示隐藏
+            @"authority":@"1",//权限-1：普通权限 0：管理员权限
             @"isEnabled":@"1"//是否有效
         },
         @{
@@ -190,7 +195,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_member_b",
             @"highlight":@"",//缺
             @"disable":@"",
-            @"authority":@"1",
+            @"authority":@"0",
             @"isEnabled":@"1"
         },
         @{
@@ -204,15 +209,6 @@ int const IconID_Share_Screen   = 1006;
             @"isEnabled":@"1"
         },
         @{
-            @"icon_name":@"large_screen",
-            @"icon_id":@(IconID_Large_Screen),
-            @"normal":@"tmenu_large_g",//缺
-            @"highlight":@"tmenu_large_g",
-            @"disable":@"tmenu_large_g",
-            @"authority":@"1",
-            @"isEnabled":@"1"
-        },
-        @{
             @"icon_name":@"share_screen",
             @"icon_id":@(IconID_Share_Screen),
             @"normal":@"tmenu_shar_b",
@@ -221,7 +217,20 @@ int const IconID_Share_Screen   = 1006;
             @"authority":@"1",
             @"isEnabled":@"1"
         }
-    ];
+    ]];
+    
+    //伪代码
+    if(@"如果不是管理员"){
+        for (int i = 0; i < config.count; i++) {
+            NSDictionary *btnConfig = config[i];
+            int authority = [[btnConfig objectForKey:@"authority"] intValue];
+            if (authority == 0) {
+                [config removeObject:btnConfig];
+                i--;
+            }
+        }
+    }
+    return config;
 }
 
 @end

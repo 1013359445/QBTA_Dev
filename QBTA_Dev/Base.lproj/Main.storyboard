@@ -17,40 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游戏场景页面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYI-rh-mn2">
-                                <rect key="frame" x="381" y="176.5" width="134" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9vl-R1-zY4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" systemColor="tintColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="游戏画面" translatesAutoresizingMaskIntoConstraints="NO" id="5QN-xC-B18">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="95H-Dn-b3O">
-                                <rect key="frame" x="382.5" y="282" width="131" height="32"/>
+                                <rect key="frame" x="382.5" y="40" width="131" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="tintColor"/>
                             </segmentedControl>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="GWi-XB-P2u">
+                                <rect key="frame" x="510" y="228" width="320" height="162"/>
+                            </datePicker>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-1G-Olm">
+                                <rect key="frame" x="85" y="294" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="23o-5H-M4G"/>
+                                </constraints>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.81960422499999996" green="0.92978024410000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="95H-Dn-b3O" secondAttribute="bottom" constant="80" id="HLe-re-TbU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GWi-XB-P2u" secondAttribute="bottom" constant="3" id="Fpy-zO-zTU"/>
+                            <constraint firstItem="95H-Dn-b3O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="H4E-2t-O0S"/>
                             <constraint firstItem="95H-Dn-b3O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J22-8a-sg2"/>
-                            <constraint firstItem="nYI-rh-mn2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="d8f-M3-pvi"/>
-                            <constraint firstItem="nYI-rh-mn2" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ru8-Dt-Mjl"/>
+                            <constraint firstItem="yzB-1G-Olm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="dMQ-Ep-Km6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yzB-1G-Olm" secondAttribute="bottom" constant="69" id="dgV-bg-TbZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GWi-XB-P2u" secondAttribute="trailing" constant="22" id="sl0-Uu-EZd"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-386.38392857142856" y="37.681159420289859"/>
+            <point key="canvasLocation" x="-494.19642857142856" y="95.652173913043484"/>
         </scene>
     </scenes>
     <resources>
+        <image name="游戏画面" width="1680" height="750"/>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

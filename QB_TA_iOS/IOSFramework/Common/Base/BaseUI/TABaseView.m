@@ -23,7 +23,6 @@
 
 - (void)loadSubViews
 {
-    
 }
 
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview
@@ -78,6 +77,23 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+
+- (UIVisualEffectView *)effectView
+{
+    if (!_effectView) {
+        // 定义毛玻璃效果
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+        _effectView.frame = CGRectMake(0,0, [[self class] viewSize].width, [[self class] viewSize].height);
+        _effectView.alpha = 0.8;
+        [self addSubview:_effectView];
+    }
+    return _effectView;
+}
+- (void)showEffectView:(BOOL)show
+{
+    self.effectView.hidden = !show;
 }
 
 @end

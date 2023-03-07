@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TABaseView : UIView
 @property (nonatomic, retain)TACmdModel *cmdModel;
 @property (nonatomic, copy)TaskFinishBlock taskFinishBlock;
+@property (nonatomic, retain)UIVisualEffectView *effectView;
 
 + (NSString *)cmd;
 
@@ -22,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated;
 - (void)hideViewAnimated:(BOOL)animated;
+
+- (void)showEffectView:(BOOL)show;
+
 @end
 
 NS_ASSUME_NONNULL_END

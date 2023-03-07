@@ -15,6 +15,7 @@
 #import "TALoginViewController.h"
 #import "TACreatRoleViewController.h"
 #import "TAControlPanelView.h"
+#import "TAPersonalView.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -31,6 +32,7 @@ shareInstance_implementation(TARouter)
     [TARouter saveViewIDWithClass:[TALoginViewController class]];
     [TARouter saveViewIDWithClass:[TACreatRoleViewController class]];
     [TARouter saveViewIDWithClass:[TAControlPanelView class]];
+    [TARouter saveViewIDWithClass:[TAPersonalView class]];
 
     //新增页面在此处添加代码
     //[TARouter saveViewIDWithClass:[xxxxx class]];

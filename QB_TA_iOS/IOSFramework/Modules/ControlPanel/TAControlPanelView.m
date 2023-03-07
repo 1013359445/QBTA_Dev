@@ -11,6 +11,8 @@
 #import "TAAnnouncementView.h"
 #import "TAMiniMapView.h"
 
+#import "TAPersonalView.h"
+
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
 
@@ -102,7 +104,10 @@
 #pragma mark - action
 - (void)headClick
 {
-    
+    TACmdModel *cmd = [TACmdModel new];
+    cmd.cmd = [TAPersonalView cmd];
+    cmd.animated = YES;
+    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
 
 - (void)changeSpaceBtnClick

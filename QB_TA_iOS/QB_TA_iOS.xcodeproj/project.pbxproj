@@ -23,6 +23,8 @@
 		7A1FD34B29B5D426006C352F /* TAPersonalCharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD34929B5D426006C352F /* TAPersonalCharacterView.m */; };
 		7A1FD34E29B5D439006C352F /* TAPersonalInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD34C29B5D439006C352F /* TAPersonalInfoView.h */; };
 		7A1FD34F29B5D439006C352F /* TAPersonalInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */; };
+		7A1FD35329B72D02006C352F /* TAPersonalPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD35129B72D02006C352F /* TAPersonalPresenter.h */; };
+		7A1FD35429B72D02006C352F /* TAPersonalPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD35229B72D02006C352F /* TAPersonalPresenter.m */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -545,6 +547,8 @@
 		7A1FD34929B5D426006C352F /* TAPersonalCharacterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalCharacterView.m; sourceTree = "<group>"; };
 		7A1FD34C29B5D439006C352F /* TAPersonalInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPersonalInfoView.h; sourceTree = "<group>"; };
 		7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalInfoView.m; sourceTree = "<group>"; };
+		7A1FD35129B72D02006C352F /* TAPersonalPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPersonalPresenter.h; sourceTree = "<group>"; };
+		7A1FD35229B72D02006C352F /* TAPersonalPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalPresenter.m; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -1063,6 +1067,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1FD35029B72CCE006C352F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7A1FD35129B72D02006C352F /* TAPersonalPresenter.h */,
+				7A1FD35229B72D02006C352F /* TAPersonalPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		7A3CAD1E298A2F0A00DD1998 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -1921,16 +1934,16 @@
 		7A3CB120298A565900DD1998 /* UITextField */ = {
 			isa = PBXGroup;
 			children = (
-				7A3CB121298A565900DD1998 /* UITextField+JKShake.m */,
-				7A3CB122298A565900DD1998 /* UITextField+JKInputLimit.h */,
-				7A3CB123298A565900DD1998 /* UITextField+JKSelect.h */,
 				7A3CB124298A565900DD1998 /* UITextField+JKBlocks.h */,
-				7A3CB125298A565900DD1998 /* UITextField+JKHistory.m */,
-				7A3CB126298A565900DD1998 /* UITextField+JKInputLimit.m */,
-				7A3CB127298A565900DD1998 /* UITextField+JKShake.h */,
-				7A3CB128298A565900DD1998 /* UITextField+JKSelect.m */,
-				7A3CB129298A565900DD1998 /* UITextField+JKHistory.h */,
 				7A3CB12A298A565900DD1998 /* UITextField+JKBlocks.m */,
+				7A3CB129298A565900DD1998 /* UITextField+JKHistory.h */,
+				7A3CB125298A565900DD1998 /* UITextField+JKHistory.m */,
+				7A3CB122298A565900DD1998 /* UITextField+JKInputLimit.h */,
+				7A3CB126298A565900DD1998 /* UITextField+JKInputLimit.m */,
+				7A3CB123298A565900DD1998 /* UITextField+JKSelect.h */,
+				7A3CB128298A565900DD1998 /* UITextField+JKSelect.m */,
+				7A3CB127298A565900DD1998 /* UITextField+JKShake.h */,
+				7A3CB121298A565900DD1998 /* UITextField+JKShake.m */,
 			);
 			path = UITextField;
 			sourceTree = "<group>";
@@ -2065,6 +2078,7 @@
 				7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */,
 				7A1FD34829B5D426006C352F /* TAPersonalCharacterView.h */,
 				7A1FD34929B5D426006C352F /* TAPersonalCharacterView.m */,
+				7A1FD35029B72CCE006C352F /* Presenter */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -2421,6 +2435,7 @@
 				7A3CB02A298A47AB00DD1998 /* MASConstraintMaker.h in Headers */,
 				7A3CAE27298A444800DD1998 /* ASIHTTPRequest-Prefix.pch in Headers */,
 				7A3CB042298A484100DD1998 /* MBProgressHUD.h in Headers */,
+				7A1FD35329B72D02006C352F /* TAPersonalPresenter.h in Headers */,
 				7A3CAF9B298A46EF00DD1998 /* SDImageLoader.h in Headers */,
 				7A3CB1D4298A565900DD1998 /* UIViewController+JKBackButtonTouched.h in Headers */,
 				7A3CAF58298A46EE00DD1998 /* SDImageGIFCoder.h in Headers */,
@@ -2613,6 +2628,7 @@
 				7A3CAF5F298A46EE00DD1998 /* SDImageAWebPCoder.m in Sources */,
 				7A3CAFA1298A46EF00DD1998 /* SDImageCacheConfig.m in Sources */,
 				7A3CB17E298A565900DD1998 /* UIColor+JKGradient.m in Sources */,
+				7A1FD35429B72D02006C352F /* TAPersonalPresenter.m in Sources */,
 				7A3CAE1C298A444800DD1998 /* ASIAuthenticationDialog.m in Sources */,
 				7A3CAF74298A46EF00DD1998 /* SDWebImageError.m in Sources */,
 				7A3CB1C7298A565900DD1998 /* UIImageView+JKLetters.m in Sources */,

@@ -16,6 +16,8 @@
 
 - (void)loadSubViews
 {
+    self.alpha = 0.2;
+    self.backgroundColor = [UIColor blueColor];
 }
 
 @end

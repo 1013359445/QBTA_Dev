@@ -39,7 +39,7 @@ typedef void (^ResultBlock) (NSString *param);
 /*  iOSViewController 默认承载iOS原生页面的视图控制器*/
 @property (nonatomic, retain)UIViewController *iOSViewController;
 /*  iOSView 默认承载iOS原生视图的父视图*/
-@property (nonatomic, retain)UIView *iOSView;//（默认iOSView 承载，iOSView为空则承载到kWindow上）
+@property (nonatomic, retain)UIView *iOSView;
 
 
 /*  显示iOS视图

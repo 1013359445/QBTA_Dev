@@ -521,7 +521,10 @@
         _phoneNumTextField.keyboardType = UIKeyboardTypePhonePad;
         _phoneNumTextField.placeholder = @"请输入手机号";
         _phoneNumTextField.returnKeyType = UIReturnKeyNext;
-        
+        _phoneNumTextField.textColor = kTAColor.c_49;
+        _phoneNumTextField.font = [UIFont systemFontOfSize:12];
+
+        _phoneNumTextField.jk_maxLength = 11;
         NSString *defaultPhoneNumber = [self.presenter getDefaultPhoneNumber];
         if (defaultPhoneNumber) {
             _phoneNumTextField.text = defaultPhoneNumber;
@@ -549,11 +552,13 @@
         _passwordTextField.secureTextEntry = YES;
         _passwordTextField.placeholder = @"请输入密码";
         _passwordTextField.returnKeyType = UIReturnKeyDone;
+        _passwordTextField.textColor = kTAColor.c_49;
+        _passwordTextField.font = [UIFont systemFontOfSize:12];
 
-//        NSString *defaultPassword = [self.presenter getDefaultPassword];
-//        if (defaultPassword) {
-//            _passwordTextField.text = defaultPassword;
-//        }
+        NSString *defaultPassword = [self.presenter getDefaultPassword];
+        if (defaultPassword) {
+            _passwordTextField.text = defaultPassword;
+        }
     }
     return _passwordTextField;
 }
@@ -585,6 +590,8 @@
         _codeTextField.keyboardType = UIKeyboardTypeNumberPad;
         _codeTextField.placeholder = @"请输入验证码";
         _codeTextField.returnKeyType = UIReturnKeyDone;
+        _codeTextField.textColor = kTAColor.c_49;
+        _codeTextField.font = [UIFont systemFontOfSize:12];
         if (@available(iOS 12.0, *)) {
             _codeTextField.textContentType = UITextContentTypeOneTimeCode;
         }

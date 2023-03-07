@@ -71,7 +71,15 @@ shareInstance_implementation(TARouter)
         view.cmdModel = cmdModel;
         view.taskFinishBlock = response;
         
-        UIView *superView = [CommInterface shareInstance].iOSView ?: kWindow;
+        UIView *superView = [CommInterface shareInstance].iOSView;
+        if (!superView) {
+            if (response) {
+                NSString *errorStr = @"{\"error\":\"没有可加载视图，尝试给iOSView赋值\"}";
+                response(errorStr);
+            }
+            return;
+        }
+
         [view showView:superView animated:cmdModel.animated];
     }else if ([class isSubclassOfClass:[TABaseViewController class]]) {
         TABaseViewController *vc = [[class alloc] init];
@@ -79,6 +87,13 @@ shareInstance_implementation(TARouter)
         vc.taskFinishBlock = response;
 
         UIViewController *currentVC = [self getCurrentVC];
+        if (!currentVC) {
+            if (response) {
+                NSString *errorStr = @"{\"error\":\"没有可加载视图控制器，尝试给iOSViewController赋值\"}";
+                response(errorStr);
+            }
+            return;
+        }
 
         if (currentVC.navigationController) {
             [currentVC.navigationController pushViewController:vc animated:cmdModel.animated];
@@ -119,6 +134,11 @@ shareInstance_implementation(TARouter)
         self.controller = nil;
     }else{
         LRLog(@"Controller未继承TABaseViewController");
+    }
+    
+    NSArray *subViews = [[CommInterface shareInstance].iOSView subviews];
+    for (UIView *v in subViews) {
+        [v removeFromSuperview];
     }
 }
 

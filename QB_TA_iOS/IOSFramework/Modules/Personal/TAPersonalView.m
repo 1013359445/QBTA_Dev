@@ -11,7 +11,7 @@
 
 #import "TAPersonalPresenter.h"
 
-@interface TAPersonalView ()
+@interface TAPersonalView () <TAPersonalCharacterViewDelegate>
 @property (nonatomic, retain)UIImageView             *bgImageView;
 @property (nonatomic, retain)UIImageView             *roleImageView;
 
@@ -24,6 +24,8 @@
 @property (nonatomic, assign)BOOL isShowInfo;
 
 @property (nonatomic, retain)TAPersonalPresenter     *personalPresenter;
+@property (nonatomic, retain)id     characterData;
+
 @end
 
 @implementation TAPersonalView
@@ -39,6 +41,8 @@
 
 - (void)loadSubViews
 {
+    self.characterData = @"123";
+
     self.userInteractionEnabled = YES;
     self.isShowInfo = YES;
     [self showEffectView:YES];
@@ -90,15 +94,25 @@
     return hitView;
 }
 
+- (void)changeCharacter:(id)character
+{
+    self.characterData = character;
+    character = [character stringByReplacingOccurrencesOfString:@"_head" withString:@""];
+    _roleImageView.image = kBundleImage(character, @"Role");
+}
+
 - (void)changeContentBtnClick:(UIButton *)sender
 {
     self.isShowInfo = !self.isShowInfo;
     
     if (self.isShowInfo) {
+        if (![self.characterData isEqualToString:@"123"]) {
+            [self.personalPresenter modifyCharacter:@""];
+        }
+
         [_changeContentBtn setImage:kBundleImage(@"personal_change_btn_w", @"Personal") forState:UIControlStateNormal];
         _personalInfoView.hidden = NO;
         _personalCharacterView.hidden = YES;
-
     }else {
         [_changeContentBtn setImage:kBundleImage(@"personal_change_btn_b", @"Personal") forState:UIControlStateNormal];
         _personalCharacterView.hidden = NO;
@@ -151,6 +165,7 @@
         _personalCharacterView = [TAPersonalCharacterView new];
         _personalCharacterView.hidden = YES;
         _personalCharacterView.presenter = self.personalPresenter;
+        _personalCharacterView.delegate = self;
     }
     return _personalCharacterView;
 }

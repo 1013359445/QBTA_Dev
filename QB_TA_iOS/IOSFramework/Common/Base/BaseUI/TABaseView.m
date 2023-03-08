@@ -33,7 +33,9 @@
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
-    [self loadSubViews];
+    if (newSuperview) {
+        [self loadSubViews];
+    }
 }
 
 

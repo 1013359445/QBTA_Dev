@@ -96,7 +96,7 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             //进入场景
             //...
             
-            //延时.2秒模拟加载过程
+            //dispatch_after延时.2秒模拟加载过程
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //进入场景后调用静态库，显示iOS原生控制面板
                 const char *cName = "controlPanel";
@@ -105,10 +105,16 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             });
 
         }
-        else if([notification isEqualToString:@"changeRoleData"])
+        else if([notification isEqualToString:@"modifyRoleData"])
         {
             //msg:{"roleid":"1、2、3、4、5","name":"张三"}
             //根据msg返回信息更改角色信息
+            //dispatch_after延时.2秒模拟修改过程
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //进入场景后调用静态库，显示iOS原生控制面板
+                const char *data = "{\"msg\":\"修改成功\"}";//JSON数据
+                module->callBackToIOS(data, cNotification);
+            });
         }
     }
 }

@@ -52,7 +52,7 @@
     
     [self addSubview:self.logOutBtn];
     [self.logOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(_nameTextField.mas_centerX);
+        make.centerX.mas_equalTo(self.mas_centerX);
         make.width.mas_equalTo(kRelative(460));
         make.height.mas_equalTo(kRelative(97));
         make.bottom.mas_equalTo(0);
@@ -63,6 +63,7 @@
 {
     [self.presenter logOut];
 }
+
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *hitView = [super hitTest:point withEvent:event];
     if (hitView == self.nameTextField) {
@@ -78,7 +79,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    [self.presenter modifyInfo:textField.text];
+    if (![textField.text isEqualToString:@"name"]) {
+        [self.presenter modifyInfo:textField.text];
+    }
     return YES;
 }
 

@@ -25,6 +25,8 @@
 		7A1FD34F29B5D439006C352F /* TAPersonalInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */; };
 		7A1FD35329B72D02006C352F /* TAPersonalPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD35129B72D02006C352F /* TAPersonalPresenter.h */; };
 		7A1FD35429B72D02006C352F /* TAPersonalPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD35229B72D02006C352F /* TAPersonalPresenter.m */; };
+		7A1FD35829B82E9F006C352F /* TAPersonalCharacterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD35629B82E9F006C352F /* TAPersonalCharacterCell.h */; };
+		7A1FD35929B82E9F006C352F /* TAPersonalCharacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD35729B82E9F006C352F /* TAPersonalCharacterCell.m */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -549,6 +551,8 @@
 		7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalInfoView.m; sourceTree = "<group>"; };
 		7A1FD35129B72D02006C352F /* TAPersonalPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPersonalPresenter.h; sourceTree = "<group>"; };
 		7A1FD35229B72D02006C352F /* TAPersonalPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalPresenter.m; sourceTree = "<group>"; };
+		7A1FD35629B82E9F006C352F /* TAPersonalCharacterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAPersonalCharacterCell.h; sourceTree = "<group>"; };
+		7A1FD35729B82E9F006C352F /* TAPersonalCharacterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAPersonalCharacterCell.m; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -2078,6 +2082,8 @@
 				7A1FD34D29B5D439006C352F /* TAPersonalInfoView.m */,
 				7A1FD34829B5D426006C352F /* TAPersonalCharacterView.h */,
 				7A1FD34929B5D426006C352F /* TAPersonalCharacterView.m */,
+				7A1FD35629B82E9F006C352F /* TAPersonalCharacterCell.h */,
+				7A1FD35729B82E9F006C352F /* TAPersonalCharacterCell.m */,
 				7A1FD35029B72CCE006C352F /* Presenter */,
 			);
 			path = Personal;
@@ -2352,6 +2358,7 @@
 				7A3CAE59298A462900DD1998 /* IQNSArray+Sort.h in Headers */,
 				7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */,
 				7A3CB1AE298A565900DD1998 /* UITextView+JKSelect.h in Headers */,
+				7A1FD35829B82E9F006C352F /* TAPersonalCharacterCell.h in Headers */,
 				7A3CAF4C298A46EE00DD1998 /* UIImageView+WebCache.h in Headers */,
 				7A3CADF2298A426300DD1998 /* MJProperty.h in Headers */,
 				7A6BF767298BCB22002EEDCA /* TABaseInterface.h in Headers */,
@@ -2613,6 +2620,7 @@
 				7A3CB026298A47AB00DD1998 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				7A3CAE66298A462A00DD1998 /* IQBarButtonItem.m in Sources */,
 				7A3CAE54298A462900DD1998 /* IQNSArray+Sort.m in Sources */,
+				7A1FD35929B82E9F006C352F /* TAPersonalCharacterCell.m in Sources */,
 				7A3CAF71298A46EF00DD1998 /* SDWebImageCompat.m in Sources */,
 				7A3CB02F298A47AB00DD1998 /* ViewController+MASAdditions.m in Sources */,
 				7A3CAF80298A46EF00DD1998 /* SDDiskCache.m in Sources */,

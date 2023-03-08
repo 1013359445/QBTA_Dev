@@ -43,7 +43,7 @@ FOUNDATION_EXPORT const unsigned char IOSFrameworkVersionString[];
  
  3、 更改角色信息
  ---msg:{"roleid":"1、2、3、4、5","name":"张三"}
- ---notification:changeRoleData
+ ---notification:modifyRoleData
 
  -----------------------------iOS-end---------------------------
  

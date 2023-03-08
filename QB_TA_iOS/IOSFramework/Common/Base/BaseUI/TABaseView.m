@@ -119,17 +119,9 @@
         _effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
         _effectView.frame = CGRectMake(0,0, 2000, 2000);
         _effectView.alpha = 0.9;
-//        UIButton *btn = [[UIButton alloc] initWithFrame:_effectView.bounds];
-//        [_effectView.contentView addSubview:btn];
-//        [btn addTarget:self action:@selector(effectViewTouch) forControlEvents:UIControlEventTouchUpInside];
     }
     return _effectView;
 }
-
-//- (void)effectViewTouch
-//{
-//    [self hideViewAnimated:YES];
-//}
 
 - (void)showEffectView:(BOOL)show
 {

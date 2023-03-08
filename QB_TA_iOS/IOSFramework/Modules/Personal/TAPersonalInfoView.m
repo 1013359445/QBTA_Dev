@@ -135,7 +135,7 @@
         _nameTextField.enabled = YES;
         _nameTextField.text = @"name";
         UIImageView *editIcon = [[UIImageView alloc] init];
-        editIcon.image = kBundleImage(@"personal_edit", @"Personal");
+        editIcon.image = kBundleImage(@"icon_edit", @"Commom");
         [_nameTextField addSubview:editIcon];
         [editIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(kRelative(44));

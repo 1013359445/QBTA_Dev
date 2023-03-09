@@ -175,7 +175,7 @@
 - (TAPersonalPresenter     *)personalPresenter
 {
     if (!_personalPresenter) {
-        _personalPresenter = [TAPersonalPresenter new];
+        _personalPresenter = [[TAPersonalPresenter alloc] initWithView:self];
     }
     return _personalPresenter;
 }

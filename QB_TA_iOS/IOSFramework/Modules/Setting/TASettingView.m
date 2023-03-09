@@ -90,8 +90,6 @@
     [self showContentWithSelectedIndex:0];
 }
 
-
-
 -(void)showContentWithSelectedIndex:(NSInteger)index
 {
     [UIView animateWithDuration:0.2 animations:^{
@@ -109,6 +107,7 @@
     }];
     
     //右侧内容变化
+    
 }
 
 

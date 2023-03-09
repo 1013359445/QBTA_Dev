@@ -186,7 +186,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     if(!_nameTextField){
         _nameTextField = [UITextField new];
         _nameTextField.delegate = self;
-        _nameTextField.placeholder = @"输入ta的名字";
+        _nameTextField.placeholder = @"请输入ta的名字";
         _nameTextField.returnKeyType = UIReturnKeyDone;
         _nameTextField.textAlignment = NSTextAlignmentCenter;
         _nameTextField.font = [UIFont systemFontOfSize:11];

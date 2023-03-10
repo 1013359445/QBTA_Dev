@@ -39,8 +39,6 @@
 		7A1FD37029B9A6FA006C352F /* TASettingLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD36E29B9A6FA006C352F /* TASettingLightView.m */; };
 		7A1FD37329B9A706006C352F /* TASettingAboutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD37129B9A706006C352F /* TASettingAboutView.h */; };
 		7A1FD37429B9A706006C352F /* TASettingAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD37229B9A706006C352F /* TASettingAboutView.m */; };
-		7A1FD37729B9A70F006C352F /* TASettingPrivacyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD37529B9A70F006C352F /* TASettingPrivacyView.h */; };
-		7A1FD37829B9A70F006C352F /* TASettingPrivacyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD37629B9A70F006C352F /* TASettingPrivacyView.m */; };
 		7A1FD37D29B9C72B006C352F /* TATextFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD37B29B9C72B006C352F /* TATextFieldView.h */; };
 		7A1FD37E29B9C72B006C352F /* TATextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD37C29B9C72B006C352F /* TATextFieldView.m */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
@@ -581,8 +579,6 @@
 		7A1FD36E29B9A6FA006C352F /* TASettingLightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASettingLightView.m; sourceTree = "<group>"; };
 		7A1FD37129B9A706006C352F /* TASettingAboutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASettingAboutView.h; sourceTree = "<group>"; };
 		7A1FD37229B9A706006C352F /* TASettingAboutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASettingAboutView.m; sourceTree = "<group>"; };
-		7A1FD37529B9A70F006C352F /* TASettingPrivacyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASettingPrivacyView.h; sourceTree = "<group>"; };
-		7A1FD37629B9A70F006C352F /* TASettingPrivacyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASettingPrivacyView.m; sourceTree = "<group>"; };
 		7A1FD37B29B9C72B006C352F /* TATextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TATextFieldView.h; sourceTree = "<group>"; };
 		7A1FD37C29B9C72B006C352F /* TATextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TATextFieldView.m; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
@@ -1132,8 +1128,6 @@
 				7A1FD36E29B9A6FA006C352F /* TASettingLightView.m */,
 				7A1FD37129B9A706006C352F /* TASettingAboutView.h */,
 				7A1FD37229B9A706006C352F /* TASettingAboutView.m */,
-				7A1FD37529B9A70F006C352F /* TASettingPrivacyView.h */,
-				7A1FD37629B9A70F006C352F /* TASettingPrivacyView.m */,
 			);
 			path = SubModules;
 			sourceTree = "<group>";
@@ -2425,7 +2419,6 @@
 				7A3CB12D298A565900DD1998 /* UIImage+JKAnimatedGIF.h in Headers */,
 				7A3CB1D3298A565900DD1998 /* UIViewController+JKBlockSegue.h in Headers */,
 				7A3CB17C298A565900DD1998 /* UIColor+JKGradient.h in Headers */,
-				7A1FD37729B9A70F006C352F /* TASettingPrivacyView.h in Headers */,
 				7A3CB15F298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.h in Headers */,
 				7A3CADF3298A426300DD1998 /* NSObject+MJKeyValue.h in Headers */,
 				7A3CB175298A565900DD1998 /* UIButton+JKMiddleAligning.h in Headers */,
@@ -2705,7 +2698,6 @@
 				7A3CAF71298A46EF00DD1998 /* SDWebImageCompat.m in Sources */,
 				7A3CB02F298A47AB00DD1998 /* ViewController+MASAdditions.m in Sources */,
 				7A3CAF80298A46EF00DD1998 /* SDDiskCache.m in Sources */,
-				7A1FD37829B9A70F006C352F /* TASettingPrivacyView.m in Sources */,
 				7A3CAF52298A46EE00DD1998 /* SDWebImageManager.m in Sources */,
 				7A3CB165298A565900DD1998 /* UIResponder+JKFirstResponder.m in Sources */,
 				7A3CB037298A47AB00DD1998 /* View+MASAdditions.m in Sources */,

@@ -7,7 +7,6 @@
 
 #import "TASettingView.h"
 #import "TASettingBasicsView.h"
-#import "TASettingPrivacyView.h"
 #import "TASettingAboutView.h"
 #import "TASettingLightView.h"
 #import "TASettingVoiceView.h"
@@ -20,7 +19,7 @@
 @property (nonatomic, retain)NSMutableArray *leftItemsArray;
 
 @property (nonatomic, retain)TASettingBasicsView    *basicsView;
-@property (nonatomic, retain)TASettingPrivacyView   *privacyView;
+@property (nonatomic, retain)TASettingAboutView   *privacyView;
 @property (nonatomic, retain)TASettingAboutView     *aboutView;
 @property (nonatomic, retain)TASettingLightView     *lightView;
 @property (nonatomic, retain)TASettingVoiceView     *voicView;
@@ -174,12 +173,14 @@
     }
     return _basicsView;
 }
--(TASettingPrivacyView   *)privacyView
+-(TASettingAboutView   *)privacyView
 {
     if (!_privacyView)
     {
-        _privacyView = [TASettingPrivacyView new];
+        _privacyView = [TASettingAboutView new];
         _privacyView.tag = 104;
+        _privacyView.title = @"隐私政策";
+        _privacyView.content = @"隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。";
     }
     return _privacyView;
 }
@@ -189,6 +190,8 @@
     {
         _aboutView = [TASettingAboutView new];
         _aboutView.tag = 103;
+        _aboutView.title = @"关于我们";
+        _aboutView.content = @"关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。";
     }
     return _aboutView;
 }

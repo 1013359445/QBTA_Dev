@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TASettingAboutView : TABaseView
 
+@property (nonatomic, copy)NSString *title;
+@property (nonatomic, copy)NSString *content;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TAAnnouncementView : TABaseView
+shareInstance_interface(TAAnnouncementView);
+
+- (void)addContent:(NSString *)content;
 
 @end
 

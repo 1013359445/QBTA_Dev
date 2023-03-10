@@ -159,7 +159,7 @@ int const IconID_Confetti       = 1006;//喝彩
             @"selected":@"rmenu_large",
             @"highlight":@"",//不需要
             @"disable":@"",//不需要
-            @"authority":@"0",
+            @"authority":@"1",
             @"isEnabled":@"1"
         },
         @{

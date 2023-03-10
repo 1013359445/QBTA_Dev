@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A1FD38129BB2622006C352F /* XxxxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD38029BB2622006C352F /* XxxxView.m */; };
 		7A3CACF3298A2E1600DD1998 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF2298A2E1600DD1998 /* AppDelegate.m */; };
 		7A3CACF6298A2E1600DD1998 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF5298A2E1600DD1998 /* SceneDelegate.m */; };
 		7A3CACF9298A2E1600DD1998 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF8298A2E1600DD1998 /* ViewController.mm */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A1FD37F29BB2622006C352F /* XxxxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XxxxView.h; sourceTree = "<group>"; };
+		7A1FD38029BB2622006C352F /* XxxxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XxxxView.m; sourceTree = "<group>"; };
 		7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QBTA_Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3CACF1298A2E1600DD1998 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A3CACF2298A2E1600DD1998 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				7A3CACF5298A2E1600DD1998 /* SceneDelegate.m */,
 				7A3CACF7298A2E1600DD1998 /* ViewController.h */,
 				7A3CACF8298A2E1600DD1998 /* ViewController.mm */,
+				7A1FD37F29BB2622006C352F /* XxxxView.h */,
+				7A1FD38029BB2622006C352F /* XxxxView.m */,
 				7A4B34A829A887C1009753FC /* UECommInterface.h */,
 				7A4B34A729A887C1009753FC /* UECommInterface.cpp */,
 				7A3CACFA298A2E1600DD1998 /* Main.storyboard */,
@@ -207,6 +212,7 @@
 				7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */,
 				7A3CACF3298A2E1600DD1998 /* AppDelegate.m in Sources */,
 				7A3CAD04298A2E1700DD1998 /* main.m in Sources */,
+				7A1FD38129BB2622006C352F /* XxxxView.m in Sources */,
 				7A3CACF6298A2E1600DD1998 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

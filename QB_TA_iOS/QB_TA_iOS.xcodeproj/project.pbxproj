@@ -41,6 +41,8 @@
 		7A1FD37429B9A706006C352F /* TASettingAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD37229B9A706006C352F /* TASettingAboutView.m */; };
 		7A1FD37D29B9C72B006C352F /* TATextFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD37B29B9C72B006C352F /* TATextFieldView.h */; };
 		7A1FD37E29B9C72B006C352F /* TATextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD37C29B9C72B006C352F /* TATextFieldView.m */; };
+		7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1FD38429BB37E4006C352F /* KJMarqueeLabel.h */; };
+		7A1FD38729BB37E4006C352F /* KJMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD38529BB37E4006C352F /* KJMarqueeLabel.m */; };
 		7A3CAD18298A2EE500DD1998 /* TALoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */; };
 		7A3CAD19298A2EE500DD1998 /* TALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */; };
 		7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */; };
@@ -581,6 +583,8 @@
 		7A1FD37229B9A706006C352F /* TASettingAboutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASettingAboutView.m; sourceTree = "<group>"; };
 		7A1FD37B29B9C72B006C352F /* TATextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TATextFieldView.h; sourceTree = "<group>"; };
 		7A1FD37C29B9C72B006C352F /* TATextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TATextFieldView.m; sourceTree = "<group>"; };
+		7A1FD38429BB37E4006C352F /* KJMarqueeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJMarqueeLabel.h; sourceTree = "<group>"; };
+		7A1FD38529BB37E4006C352F /* KJMarqueeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJMarqueeLabel.m; sourceTree = "<group>"; };
 		7A3CAD16298A2EE500DD1998 /* TALoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginViewController.h; sourceTree = "<group>"; };
 		7A3CAD17298A2EE500DD1998 /* TALoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginViewController.m; sourceTree = "<group>"; };
 		7A3CAD1A298A2EFC00DD1998 /* TABaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseViewController.h; sourceTree = "<group>"; };
@@ -1143,6 +1147,15 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
+		7A1FD38329BB37C4006C352F /* KJMarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				7A1FD38429BB37E4006C352F /* KJMarqueeLabel.h */,
+				7A1FD38529BB37E4006C352F /* KJMarqueeLabel.m */,
+			);
+			path = KJMarqueeLabel;
+			sourceTree = "<group>";
+		};
 		7A3CAD1E298A2F0A00DD1998 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,6 +1252,7 @@
 		7A3CAD28298A3F3B00DD1998 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7A1FD38329BB37C4006C352F /* KJMarqueeLabel */,
 				7A3CB043298A565900DD1998 /* JKCategories */,
 				7A3CB03E298A484100DD1998 /* MBProgressHUD */,
 				7A3CB00B298A47AB00DD1998 /* Masonry */,
@@ -1667,14 +1681,14 @@
 		7A3CB066298A565900DD1998 /* UILable */ = {
 			isa = PBXGroup;
 			children = (
-				7A3CB067298A565900DD1998 /* UILabel+JKAutoSize.h */,
-				7A3CB068298A565900DD1998 /* UILabel+JKSuggestSize.m */,
 				7A3CB069298A565900DD1998 /* UILabel+JKAdjustableLabel.h */,
+				7A3CB06E298A565900DD1998 /* UILabel+JKAdjustableLabel.m */,
+				7A3CB06D298A565900DD1998 /* UILabel+JKAutomaticWriting.h */,
 				7A3CB06A298A565900DD1998 /* UILabel+JKAutomaticWriting.m */,
+				7A3CB067298A565900DD1998 /* UILabel+JKAutoSize.h */,
 				7A3CB06B298A565900DD1998 /* UILabel+JKAutoSize.m */,
 				7A3CB06C298A565900DD1998 /* UILabel+JKSuggestSize.h */,
-				7A3CB06D298A565900DD1998 /* UILabel+JKAutomaticWriting.h */,
-				7A3CB06E298A565900DD1998 /* UILabel+JKAdjustableLabel.m */,
+				7A3CB068298A565900DD1998 /* UILabel+JKSuggestSize.m */,
 			);
 			path = UILable;
 			sourceTree = "<group>";
@@ -2550,6 +2564,7 @@
 				7A3CAFA3298A46EF00DD1998 /* SDImageAWebPCoder.h in Headers */,
 				7A3CAFF6298A46EF00DD1998 /* NSBezierPath+SDRoundedCorners.h in Headers */,
 				7A3CB16C298A565900DD1998 /* UIButton+JKImagePosition.h in Headers */,
+				7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
 				7A1FD36B29B9A6F0006C352F /* TASettingVoiceView.h in Headers */,
 				7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */,
@@ -2803,6 +2818,7 @@
 				7A3CB1E9298A565900DD1998 /* UIPopoverController+iPhone.m in Sources */,
 				7A3CAF9C298A46EF00DD1998 /* SDImageCacheDefine.m in Sources */,
 				7A3CB1EC298A565900DD1998 /* UITextField+JKShake.m in Sources */,
+				7A1FD38729BB37E4006C352F /* KJMarqueeLabel.m in Sources */,
 				7A6BF76C298BDC47002EEDCA /* TABaseDataModel.m in Sources */,
 				7A3CB131298A565900DD1998 /* UIImage+JKBlur.m in Sources */,
 				7A6BF764298BCAF2002EEDCA /* TALoginParmModel.m in Sources */,

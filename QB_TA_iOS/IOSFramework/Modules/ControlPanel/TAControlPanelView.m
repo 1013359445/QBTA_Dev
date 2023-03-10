@@ -78,6 +78,7 @@
     
     [self addSubview:self.announcementView];
     [_announcementView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kRelative(800));
         make.height.mas_equalTo(kRelative(80));
         make.left.mas_equalTo(_changeSpaceBtn.mas_right).offset(kRelative(30));
         make.centerY.mas_equalTo(_changeSpaceBtn.mas_centerY);
@@ -216,6 +217,8 @@
 {
     if (!_announcementView) {
         _announcementView = [TAAnnouncementView new];
+        [_announcementView addContent:@"官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，可在此空间举行，啦啦啦啦啦啦啦啦啦。"];
+        [_announcementView addContent:@"啦啦啦啦啦啦啦啦啦。官方公告：1231231231231231231231231231231231231231231231231231"];
     }
     return _announcementView;
 }

@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "UECommInterface.h"
+#import "XxxxView.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *iOSView = [[UIView alloc] init];
+    XxxxView *iOSView = [[XxxxView alloc] init];
+    iOSView.userInteractionEnabled = YES;
     [self.view addSubview:iOSView];
     iOSView.frame = self.view.bounds;
     
@@ -34,5 +36,9 @@
     module->showIOSView(cName, cParam, animated , cIdentifier);
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
+}
 
 @end

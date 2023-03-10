@@ -199,7 +199,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_member_b",
             @"highlight":@"",//缺
             @"disable":@"",
-            @"authority":@"0",
+            @"authority":@"1",
             @"isEnabled":@"1"
         },
         @{

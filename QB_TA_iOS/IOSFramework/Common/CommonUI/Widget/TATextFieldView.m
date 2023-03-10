@@ -60,6 +60,18 @@
     return self;
 }
 
+- (void)setTag:(NSInteger)tag
+{
+    [super setTag:tag];
+    _textField.tag = tag;
+}
+
+- (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled
+{
+    [super setUserInteractionEnabled:userInteractionEnabled];
+    _editIcon.hidden = !userInteractionEnabled;
+}
+
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *hitView = [super hitTest:point withEvent:event];
     if (hitView == _textField) {
@@ -70,13 +82,8 @@
 
 - (void)setText:(NSString *)text
 {
+    _text = text;
     _textField.text = text;
-}
-
-- (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled
-{
-    [super setUserInteractionEnabled:userInteractionEnabled];
-    _editIcon.hidden = !userInteractionEnabled;
 }
 
 @end

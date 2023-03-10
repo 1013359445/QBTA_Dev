@@ -6,6 +6,11 @@
 //
 
 #import "TASettingView.h"
+#import "TASettingBasicsView.h"
+#import "TASettingPrivacyView.h"
+#import "TASettingAboutView.h"
+#import "TASettingLightView.h"
+#import "TASettingVoiceView.h"
 
 @interface TASettingView ()
 
@@ -13,6 +18,12 @@
 @property (nonatomic, retain)UIButton       *closeBtn;
 @property (nonatomic, retain)UIImageView    *selectBGView;
 @property (nonatomic, retain)NSMutableArray *leftItemsArray;
+
+@property (nonatomic, retain)TASettingBasicsView    *basicsView;
+@property (nonatomic, retain)TASettingPrivacyView   *privacyView;
+@property (nonatomic, retain)TASettingAboutView     *aboutView;
+@property (nonatomic, retain)TASettingLightView     *lightView;
+@property (nonatomic, retain)TASettingVoiceView     *voicView;
 
 @end
 
@@ -36,13 +47,6 @@
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
-    }];
-    
-    [self addSubview:self.closeBtn];
-    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kRelative(12));
-        make.right.mas_equalTo(kRelative(-12));
-        make.width.height.mas_equalTo(kRelative(66));
     }];
     
     [self.bgImageView addSubview:self.selectBGView];
@@ -87,6 +91,38 @@
         [self.leftItemsArray addObject:btn];
     }
     
+    [self addSubview:self.basicsView];
+    [self.basicsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.width.mas_equalTo([TASettingBasicsView viewSize].width);
+        make.height.mas_equalTo([TASettingBasicsView viewSize].height);
+    }];
+    
+    [self addSubview:self.privacyView];
+    [self.privacyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.width.height.mas_equalTo(self.basicsView);
+    }];
+    [self addSubview:self.aboutView];
+    [self.aboutView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.width.height.mas_equalTo(self.basicsView);
+    }];
+    [self addSubview:self.lightView];
+    [self.lightView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.width.height.mas_equalTo(self.basicsView);
+    }];
+    [self addSubview:self.voicView];
+    [self.voicView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.width.height.mas_equalTo(self.basicsView);
+    }];
+    
+    [self addSubview:self.closeBtn];
+    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kRelative(12));
+        make.right.mas_equalTo(kRelative(-12));
+        make.width.height.mas_equalTo(kRelative(66));
+    }];
+
     [self showContentWithSelectedIndex:0];
 }
 
@@ -107,7 +143,14 @@
     }];
     
     //右侧内容变化
-    
+    for (int tag = 100; tag < 105; tag++) {
+        UIView *view = [self viewWithTag:tag];
+        if (tag - 100 == index) {
+            view.hidden = NO;
+        }else{
+            view.hidden = YES;
+        }
+    }
 }
 
 
@@ -122,8 +165,52 @@
     [self showContentWithSelectedIndex:index];
 }
 
-
 #pragma mark - lazy load
+-(TASettingBasicsView *)basicsView
+{
+    if(!_basicsView){
+        _basicsView = [TASettingBasicsView new];
+        _basicsView.tag = 100;
+    }
+    return _basicsView;
+}
+-(TASettingPrivacyView   *)privacyView
+{
+    if (!_privacyView)
+    {
+        _privacyView = [TASettingPrivacyView new];
+        _privacyView.tag = 104;
+    }
+    return _privacyView;
+}
+-(TASettingAboutView     *)aboutView
+{
+    if (!_aboutView)
+    {
+        _aboutView = [TASettingAboutView new];
+        _aboutView.tag = 103;
+    }
+    return _aboutView;
+}
+-(TASettingLightView     *)lightView
+{
+    if (!_lightView)
+    {
+        _lightView = [TASettingLightView new];
+        _lightView.tag = 102;
+    }
+    return _lightView;
+}
+-(TASettingVoiceView     *)voicView
+{
+    if (!_voicView)
+    {
+        _voicView = [TASettingVoiceView new];
+        _voicView.tag = 101;
+    }
+    return _voicView;
+}
+
 -(UIImageView *)bgImageView
 {
     if(!_bgImageView){

@@ -1112,15 +1112,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		7A1FD35A29B98E87006C352F /* Segmented */ = {
-			isa = PBXGroup;
-			children = (
-				7A1FD35B29B98EDD006C352F /* TASegmentedControl.h */,
-				7A1FD35C29B98EDD006C352F /* TASegmentedControl.m */,
-			);
-			path = Segmented;
-			sourceTree = "<group>";
-		};
 		7A1FD35F29B9A173006C352F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,6 +1143,8 @@
 			children = (
 				7A1FD37B29B9C72B006C352F /* TATextFieldView.h */,
 				7A1FD37C29B9C72B006C352F /* TATextFieldView.m */,
+				7A1FD35B29B98EDD006C352F /* TASegmentedControl.h */,
+				7A1FD35C29B98EDD006C352F /* TASegmentedControl.m */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1199,7 +1192,6 @@
 			isa = PBXGroup;
 			children = (
 				7A1FD37A29B9C693006C352F /* Widget */,
-				7A1FD35A29B98E87006C352F /* Segmented */,
 				7A8594C429B1F7C200D6B51A /* Toast */,
 				7A8594A829ACB74400D6B51A /* Alert */,
 				7A8594A729ACB73400D6B51A /* Color */,

@@ -8,10 +8,10 @@
 #import "TASettingBasicsView.h"
 #import "TATextFieldView.h"
 
-@interface TASettingBasicsView ()
+@interface TASettingBasicsView () <UITextFieldDelegate>
 
-@property (nonatomic, retain)TATextFieldView    *bgImageView;
-@property (nonatomic, retain)TATextFieldView    *closeBtn;
+@property (nonatomic, retain)TATextFieldView    *nameText;
+@property (nonatomic, retain)TATextFieldView    *storeyText;
 
 @end
 
@@ -19,11 +19,56 @@
 
 + (CGSize)viewSize
 {
-    return CGSizeMake(kRelative(816), kRelative(410));
+    return CGSizeMake(kRelative(816), kRelative(570));
 }
 
 - (void)loadSubViews
 {
+    [self addSubview:self.nameText];
+    [self.nameText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(kRelative(115));
+        make.height.mas_equalTo(kRelative(70));
+        make.right.mas_equalTo(kRelative(-54));
+    }];
+    
+    [self addSubview:self.storeyText];
+    [self.storeyText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(_nameText.mas_bottom).mas_offset(kRelative(75));
+        make.height.mas_equalTo(kRelative(70));
+        make.right.mas_equalTo(kRelative(-54));
+    }];
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    if (![textField.text isEqualToString:@"name"]) {
+//        [self.presenter modifyInfo:textField.text];
+    }
+    return YES;
+}
+
+- (TATextFieldView *)nameText
+{
+    if (!_nameText) {
+        _nameText = [[TATextFieldView alloc] initWithDelegate:self title:@"时空名称"];
+        _nameText.text = @"房间名称";
+        _nameText.userInteractionEnabled = YES;
+    }
+    return _nameText;
+}
+
+- (TATextFieldView *)storeyText
+{
+    if (!_storeyText) {
+        _storeyText = [[TATextFieldView alloc] initWithDelegate:self title:@"所属楼层"];
+        _storeyText.text = @"102层";
+        _storeyText.userInteractionEnabled = NO;
+    }
+    return _storeyText;
 }
 
 @end

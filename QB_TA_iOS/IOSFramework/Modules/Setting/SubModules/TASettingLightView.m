@@ -11,7 +11,7 @@
 
 + (CGSize)viewSize
 {
-    return CGSizeMake(kRelative(816), kRelative(410));
+    return CGSizeMake(kRelative(816), kRelative(570));
 }
 
 

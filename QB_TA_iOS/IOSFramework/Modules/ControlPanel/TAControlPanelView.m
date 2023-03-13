@@ -105,6 +105,9 @@
 #pragma mark - action
 - (void)headClick
 {
+    //测试代码
+    [[TAAnnouncementView shareInstance] addContent:@"用户点击：头像"];
+
     TACmdModel *cmd = [TACmdModel new];
     cmd.cmd = [TAPersonalView cmd];
     cmd.animated = YES;
@@ -113,16 +116,22 @@
 
 - (void)changeSpaceBtnClick
 {
-    
+    //测试代码
+    [[TAAnnouncementView shareInstance] addContent:@"官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，可在此空间举行，啦啦啦啦啦啦啦啦啦。"];
 }
 
 - (void)chatBtnClick
 {
-    
+    //测试代码
+    [[TAAnnouncementView shareInstance] addContent:@"啦啦啦啦啦啦啦啦啦。官方公告：1231231231231231231231231231231231231231231231231231"];
 }
 
+//收起、展开
 - (void)putAwayBtnClick
 {
+    //测试代码
+    [[TAAnnouncementView shareInstance] addContent:@"用户点击：收起、展开"];
+
     self.isPutAway = !self.isPutAway;
     
     CGFloat rotation;
@@ -216,9 +225,7 @@
 -(TAAnnouncementView *)announcementView
 {
     if (!_announcementView) {
-        _announcementView = [TAAnnouncementView new];
-        [_announcementView addContent:@"官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，可在此空间举行，啦啦啦啦啦啦啦啦啦。"];
-        [_announcementView addContent:@"啦啦啦啦啦啦啦啦啦。官方公告：1231231231231231231231231231231231231231231231231231"];
+        _announcementView = [TAAnnouncementView shareInstance];
     }
     return _announcementView;
 }

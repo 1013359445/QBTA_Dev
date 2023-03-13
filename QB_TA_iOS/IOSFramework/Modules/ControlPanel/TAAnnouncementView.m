@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain)UIImageView *bgImageView;
 @property (nonatomic, retain)NSMutableArray *contentQueue;
+@property (nonatomic, assign)BOOL isInAction;
 
 @end
 
@@ -39,17 +40,27 @@ shareInstance_implementation(TAAnnouncementView);
     UIImage *handsomeImage = kBundleImage(@"frame_white_80", @"Commom");
     handsomeImage = [handsomeImage stretchableImageWithLeftCapWidth:handsomeImage.size.width / 2 topCapHeight:handsomeImage.size.width / 2];
     _bgImageView.image = handsomeImage;
-    _bgImageView.alpha = 0.5;
+    _bgImageView.alpha = 0;
     [self addSubview:_bgImageView];
     [_bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
 }
 
+- (void)loadSubViews
+{
+    if (_contentQueue.count > 0) {
+        [self showText];
+    }
+}
+
 - (void)addContent:(NSString *)content
 {
     [_contentQueue addObject:content];
-    if (_contentQueue.count == 1) {
+    if (self.superview == nil) {
+        return;
+    }
+    if (_contentQueue.count > 0 && _isInAction == NO) {
         [self showText];
     }
 }
@@ -57,8 +68,11 @@ shareInstance_implementation(TAAnnouncementView);
 - (void)showText
 {
     if (_contentQueue.count == 0) {
+        _isInAction = NO;
         return;
     }
+    
+    _isInAction = YES;
     _bgImageView.alpha = 0.5;
     NSString *text = [_contentQueue firstObject];
     

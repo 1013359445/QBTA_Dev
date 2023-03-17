@@ -57,6 +57,7 @@
         _nameText = [[TATextFieldView alloc] initWithDelegate:self title:@"时空名称"];
         _nameText.text = @"房间名称";
         _nameText.userInteractionEnabled = YES;
+        _nameText.textField.returnKeyType = UIReturnKeyDone;
     }
     return _nameText;
 }

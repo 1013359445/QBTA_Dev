@@ -187,7 +187,6 @@
 #pragma mark - 富文本点击事件
 -(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
     interaction:(UITextItemInteraction)interaction {
-    [self endEditing:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(loginViewDidClickUserAgreement:)]) {
         [self.delegate loginViewDidClickUserAgreement:[URL scheme]];
     }
@@ -220,6 +219,7 @@
     if (!_isPasswordMode) {
         return;
     }
+    [self endEditing:YES];
     _isPasswordMode = NO;
     kWeakSelf(self);
 

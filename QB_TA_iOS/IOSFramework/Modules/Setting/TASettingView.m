@@ -127,6 +127,7 @@
 
 -(void)showContentWithSelectedIndex:(NSInteger)index
 {
+    [self endEditing:YES];
     [UIView animateWithDuration:0.2 animations:^{
         for (UIButton *btn in self.leftItemsArray) {
             [btn setSelected:NO];

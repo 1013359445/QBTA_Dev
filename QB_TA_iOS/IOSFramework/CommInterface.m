@@ -8,6 +8,7 @@
 
 #import "CommInterface.h"
 #import "TAHeader.h"
+#import "IQKeyboardManager.h"
 
 @implementation CommInterface
 
@@ -19,6 +20,18 @@ static CommInterface *_instanceCommInterface;
         _instanceCommInterface = [[self alloc] init];
     });
     return _instanceCommInterface;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //配置键盘
+        [[IQKeyboardManager sharedManager] setEnable:YES];
+        [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+        [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+    }
+    return self;
 }
 
 + (void)showIOSWithName:(NSString * __nonnull)name

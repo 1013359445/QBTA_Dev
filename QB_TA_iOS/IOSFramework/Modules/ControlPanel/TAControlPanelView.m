@@ -10,8 +10,8 @@
 #import "TARightMenuView.h"
 #import "TAAnnouncementView.h"
 #import "TAMiniMapView.h"
-
 #import "TAPersonalView.h"
+#import "TAChatView.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -105,33 +105,32 @@
 #pragma mark - action
 - (void)headClick
 {
-    //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"用户点击：头像"];
-
     TACmdModel *cmd = [TACmdModel new];
     cmd.cmd = [TAPersonalView cmd];
     cmd.animated = YES;
     [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
 
+//切换场景
 - (void)changeSpaceBtnClick
 {
     //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，可在此空间举行，啦啦啦啦啦啦啦啦啦。"];
+    [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送-官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，您可在此空间举行。文字过长滚动显示"];
 }
 
 - (void)chatBtnClick
 {
     //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"啦啦啦啦啦啦啦啦啦。官方公告：1231231231231231231231231231231231231231231231231231"];
+    [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送：欢迎来到无尽之塔Amazing space无限拓展户外空间"];
+    TACmdModel *cmd = [TACmdModel new];
+    cmd.cmd = [TAChatView cmd];
+    cmd.animated = YES;
+    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
 
 //收起、展开
 - (void)putAwayBtnClick
 {
-    //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"用户点击：收起、展开"];
-
     self.isPutAway = !self.isPutAway;
     
     CGFloat rotation;
@@ -151,7 +150,7 @@
         alpha = 1;
     }
     
-    [UIView animateWithDuration:.3 animations:^{
+    [UIView animateWithDuration:.2 animations:^{
         self.putAwayBtn.transform = CGAffineTransformMakeRotation(rotation);
         self.topMenuView.alpha = alpha;
         self.rightMenuView.alpha = alpha;

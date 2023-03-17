@@ -495,6 +495,8 @@
 		7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB1F6298A703500DD1998 /* TARouter.h */; };
 		7A3CB1F9298A703500DD1998 /* TARouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CB1F7298A703500DD1998 /* TARouter.m */; };
 		7A3CB201298B639700DD1998 /* TAMacroDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CB200298B639700DD1998 /* TAMacroDefinition.h */; };
+		7A452BD429C2EB9C00257826 /* NSString+Size.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A452BD229C2EB9C00257826 /* NSString+Size.h */; };
+		7A452BD529C2EB9C00257826 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A452BD329C2EB9C00257826 /* NSString+Size.m */; };
 		7A4B34B029A89AB3009753FC /* TACommonColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4B34AE29A89AB3009753FC /* TACommonColor.h */; };
 		7A4B34B129A89AB3009753FC /* TACommonColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34AF29A89AB3009753FC /* TACommonColor.m */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
@@ -1037,6 +1039,8 @@
 		7A3CB1F6298A703500DD1998 /* TARouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARouter.h; sourceTree = "<group>"; };
 		7A3CB1F7298A703500DD1998 /* TARouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARouter.m; sourceTree = "<group>"; };
 		7A3CB200298B639700DD1998 /* TAMacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMacroDefinition.h; sourceTree = "<group>"; };
+		7A452BD229C2EB9C00257826 /* NSString+Size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
+		7A452BD329C2EB9C00257826 /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		7A4B34AE29A89AB3009753FC /* TACommonColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACommonColor.h; sourceTree = "<group>"; };
 		7A4B34AF29A89AB3009753FC /* TACommonColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACommonColor.m; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
@@ -2249,6 +2253,8 @@
 			children = (
 				7A0D28702995F2FB004BCDC6 /* NSBundle+TAImage.h */,
 				7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */,
+				7A452BD229C2EB9C00257826 /* NSString+Size.h */,
+				7A452BD329C2EB9C00257826 /* NSString+Size.m */,
 			);
 			path = TACategories;
 			sourceTree = "<group>";
@@ -2427,6 +2433,7 @@
 				7A3CAF87298A46EF00DD1998 /* SDAnimatedImage.h in Headers */,
 				7A3CB031298A47AB00DD1998 /* MASConstraint.h in Headers */,
 				7A1FD36229B9A1C2006C352F /* TASettingPresenter.h in Headers */,
+				7A452BD429C2EB9C00257826 /* NSString+Size.h in Headers */,
 				7A3CB1A1298A565900DD1998 /* UIFont+JKDynamicFontControl.h in Headers */,
 				7A3CB13E298A565900DD1998 /* UIImage+JKOrientation.h in Headers */,
 				7A3CAF98298A46EF00DD1998 /* SDGraphicsImageRenderer.h in Headers */,
@@ -2816,6 +2823,7 @@
 				7A3CB1E5298A565900DD1998 /* UIControl+JKBlock.m in Sources */,
 				7A3CAFA8298A46EF00DD1998 /* UIView+WebCacheOperation.m in Sources */,
 				7A3CB1E9298A565900DD1998 /* UIPopoverController+iPhone.m in Sources */,
+				7A452BD529C2EB9C00257826 /* NSString+Size.m in Sources */,
 				7A3CAF9C298A46EF00DD1998 /* SDImageCacheDefine.m in Sources */,
 				7A3CB1EC298A565900DD1998 /* UITextField+JKShake.m in Sources */,
 				7A1FD38729BB37E4006C352F /* KJMarqueeLabel.m in Sources */,

@@ -38,11 +38,6 @@
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self endEditing:YES];
-}
-
 - (void)showView:(UIView *)superView animated:(BOOL)animated
 {
     if (self.superview) {
@@ -109,9 +104,9 @@
         if (finished)
         {
             weakself.inAnimateds = NO;
+            [weakself.effectView removeFromSuperview];
+            [weakself removeFromSuperview];
         }
-        [weakself.effectView removeFromSuperview];
-        [weakself removeFromSuperview];
     }];
 }
 

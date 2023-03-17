@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TACommonColor : NSObject
 shareInstance_interface(TACommonColor)
 
+- (UIColor *)c_32;
 - (UIColor *)c_49;
 - (UIColor *)c_9C;
 - (UIColor *)c_629C;

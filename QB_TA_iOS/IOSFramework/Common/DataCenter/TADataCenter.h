@@ -6,20 +6,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TAMacroDefinition.h"
 #import "TAUserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSNotificationName ChatPeopleWhoSpeakChange = @"ChatPeopleWhoSpeakChange";
+
 @interface TADataCenter : NSObject
+shareInstance_interface(TADataCenter)
 
 @property (nonatomic, retain)TAUserInfo *userInfo;
 
 @property (nonatomic, copy)NSString *cookie;
 @property (nonatomic, copy)NSString *token;
 
-//本地信息
-@property (nonatomic, copy)NSString *autoLogon;//自动登录？
-@property (nonatomic, copy)NSString *isAgreeAgreement;
+@property (nonatomic, retain)NSMutableArray *chatMessages;
+@property (nonatomic, retain)NSMutableArray *peopleWhoSpeakArray;
+- (void)addChatMessage:(NSString *)msg;
+- (void)addPeopleWhoSpeak:(NSString *)name;
 
 @end
 

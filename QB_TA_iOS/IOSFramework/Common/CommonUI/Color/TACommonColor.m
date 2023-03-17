@@ -10,6 +10,11 @@
 @implementation TACommonColor
 shareInstance_implementation(TACommonColor)
 
+- (UIColor *)c_32
+{
+    return [UIColor jk_colorWithHex:0x323232];
+}
+
 - (UIColor *)c_49
 {
     return [UIColor jk_colorWithHex:0x49494A];

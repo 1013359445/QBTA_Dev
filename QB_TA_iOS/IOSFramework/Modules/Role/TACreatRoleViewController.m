@@ -8,21 +8,20 @@
 
 #import "TACreatRoleViewController.h"
 #import "CommInterface.h"
+#import "TAPersonalCharacterCell.h"
 
 NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
 
-@interface TACreatRoleViewController () <UITextFieldDelegate>
+@interface TACreatRoleViewController () <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, retain)UIImageView*       bgImageView;
 @property (nonatomic, retain)UIImageView*       roleImageView;
 @property (nonatomic, retain)UITextField*       nameTextField;
 
 @property (nonatomic, retain)UILabel*           titleLabel;
-@property (nonatomic, retain)UIView*            headSelectShadowView;
 
 @property (nonatomic, retain)UIButton*          confirmBtn;
-@property (nonatomic, retain)NSMutableArray*    headBtnArray;
-
-@property (nonatomic, assign)int selectHeadIndex;
+@property (nonatomic, retain)UICollectionView   *collectionView;
+@property (nonatomic, assign)NSInteger          selectIndex;
 
 @end
 
@@ -34,7 +33,6 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self layoutViews];
 }
 
@@ -82,38 +80,13 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
         make.right.mas_equalTo(kRelative(-300));
     }];
     
-    [self.bgImageView addSubview:self.headSelectShadowView];
-
-    self.headBtnArray = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= 5; i++) {
-        UIButton *roleHead = [[UIButton alloc] init];
-        roleHead.tag = 9000+i;
-        NSString *imageName = [NSString stringWithFormat:@"role_head_%d",i];
-        [roleHead setImage:kBundleImage(imageName, @"Role") forState:UIControlStateNormal];
-        [roleHead addTarget:self action:@selector(roleHeadClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.bgImageView addSubview:roleHead];
-
-        [roleHead mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kRelative(138));
-            make.width.height.mas_equalTo(kRelative(96));
-            make.left.mas_equalTo(kRelative(730)+kRelative(156)*(i-1));
-        }];
-        
-        [self.headBtnArray addObject:roleHead];
-    }
-    
-
-    self.selectHeadIndex = 1;
-    [self.headSelectShadowView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kRelative(138));
-        make.width.height.mas_equalTo(kRelative(96));
+    [self.bgImageView addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kRelative(730));
+        make.right.mas_equalTo(kRelative(-80));
+        make.top.mas_equalTo(kRelative(138));
+        make.bottom.mas_equalTo(kRelative(-120));
     }];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
 }
 
 - (void)confirmBtnClick:(UIButton *)sender
@@ -124,7 +97,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     }
     
     NSString *sendStr = @{
-                            @"roleid"   :@(self.selectHeadIndex).stringValue,
+                            @"roleid"   :@(self.selectIndex).stringValue,
                             @"name"     :self.nameTextField.text
                         }.mj_JSONString;
     
@@ -147,26 +120,81 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     }
 }
 
-- (void)roleHeadClick:(UIButton *)sender
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.view endEditing:YES];
-
-    self.selectHeadIndex = (int)sender.tag-9000;
-
-    [self.headSelectShadowView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(kRelative(730)+kRelative(156)*(self.selectHeadIndex-1));
-    }];
-
-    NSString *imageName = [NSString stringWithFormat:@"role_%d",self.selectHeadIndex];
-    _roleImageView.image = kBundleImage(imageName, @"Role");
+    [textField resignFirstResponder];
+    return YES;
 }
 
+
+- (void)setSelectIndex:(NSInteger)selectIndex
+{
+    _selectIndex = selectIndex;
+    NSString *imgName = [NSString stringWithFormat:@"role_%ld",selectIndex + 1];
+    _roleImageView.image = kBundleImage(imgName, @"Role");
+    [self.collectionView reloadData];
+}
+
+// 点击Item
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectIndex = indexPath.row;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.data.count;
+}
+// 返回每一个item的cell对象
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    TAPersonalCharacterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TAPersonalCharacterCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.isSelected = (indexPath.row == _selectIndex);
+    cell.image = self.data[indexPath.row];
+
+    return cell;
+}
+
+- (NSArray *)data
+{
+    return @[@"role_head_1",@"role_head_2",@"role_head_3",@"role_head_4",@"role_head_5"];
+}
+
+- (UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        // 定义collectionView的样式
+        UICollectionViewFlowLayout *myFlowLayout = [[UICollectionViewFlowLayout alloc] init];
+        // 设置属性
+        // 给定Item的大小（单元格）
+        myFlowLayout.itemSize = CGSizeMake(kRelative(80), kRelative(80));
+        // 每两个Item的最小间隙（垂直滚动）
+        myFlowLayout.minimumInteritemSpacing = kRelative(50);
+        // 每两个Item的最小间隙（水平滚动方向）
+        myFlowLayout.minimumLineSpacing = kRelative(50);
+        // 设置滚动方向(Vertical垂直方向，horizontal水平方向)
+        myFlowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        // 设置视图的内边距（逆时针顺序）
+        myFlowLayout.sectionInset = UIEdgeInsetsMake(kRelative(4), kRelative(4), kRelative(4), kRelative(4));
+        
+        // 创建对象，并指定样式
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:myFlowLayout];
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+        _collectionView.backgroundColor = [UIColor clearColor];
+        // 注册cell
+        [_collectionView registerClass:[TAPersonalCharacterCell class] forCellWithReuseIdentifier:@"TAPersonalCharacterCell"];
+    }
+    return _collectionView;
+}
 -(UIImageView*)bgImageView
 {
     if(!_bgImageView){
         _bgImageView = [UIImageView new];
         _bgImageView.userInteractionEnabled = YES;
         _bgImageView.image = kBundleImage(@"role_bg", @"Role");
+        _bgImageView.contentMode = UIViewContentModeLeft;
     }
     return _bgImageView;
 }
@@ -228,28 +256,4 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
     return _titleLabel;
 }
 
--(UIView *)headSelectShadowView{
-    if (!_headSelectShadowView) {
-        _headSelectShadowView = [[UIView alloc] init];
-        UIImageView *shadowImage = [[UIImageView alloc] initWithImage:kBundleImage(@"role_head_s", @"Role")];
-        [_headSelectShadowView addSubview:shadowImage];
-        [shadowImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.centerX.mas_equalTo(0);
-            make.height.width.mas_equalTo(kRelative(118));
-        }];
-        
-        UIView *border = [[UIView alloc] init];
-        border.backgroundColor = [UIColor clearColor];
-        border.layer.borderWidth = kRelative(2);
-        border.layer.borderColor = kTAColor.c_49.CGColor;
-        border.layer.cornerRadius = kRelative(50);
-        [_headSelectShadowView addSubview:border];
-        [border mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(kRelative(-2));
-            make.centerX.mas_equalTo(0);
-            make.width.height.mas_equalTo(kRelative(100));
-        }];
-    }
-    return _headSelectShadowView;
-}
 @end

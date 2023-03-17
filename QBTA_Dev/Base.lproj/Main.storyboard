@@ -22,17 +22,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="95H-Dn-b3O">
-                                <rect key="frame" x="382.5" y="40" width="131" height="32"/>
+                                <rect key="frame" x="375.5" y="40" width="145" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="模拟测试"/>
+                                    <segment title="操作相应"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="tintColor"/>
                             </segmentedControl>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="GWi-XB-P2u">
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="GWi-XB-P2u">
                                 <rect key="frame" x="510" y="228" width="320" height="162"/>
                             </datePicker>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-1G-Olm">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-1G-Olm">
                                 <rect key="frame" x="85" y="294" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="23o-5H-M4G"/>

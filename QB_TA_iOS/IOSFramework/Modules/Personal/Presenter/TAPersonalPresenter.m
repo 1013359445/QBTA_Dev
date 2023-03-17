@@ -15,8 +15,10 @@ NSNotificationName const IOSFrameworkModifyRoleDataNotification = @"modifyRoleDa
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-- (instancetype)init {
-    if (self = [super init]) {
+
+- (instancetype)initWithView:(id)view {
+    self = [super initWithView:view];
+    if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modifyRoleDataBack:) name:IOSFrameworkModifyRoleDataNotification object:nil];
     }
     return self;

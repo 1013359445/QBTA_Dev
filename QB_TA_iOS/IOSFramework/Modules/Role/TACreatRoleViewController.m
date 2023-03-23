@@ -145,6 +145,7 @@ NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData
 {
     return self.data.count;
 }
+
 // 返回每一个item的cell对象
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {

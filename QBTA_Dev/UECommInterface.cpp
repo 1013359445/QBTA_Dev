@@ -59,8 +59,8 @@ static CommInterfaceResult *_instanceCommInterfaceResult;
             
             //延时0.2秒模拟连接过程
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                if("伪代码" == NULL)//有角色信息数据
-//                if("伪代码" != NULL)//无角色信息数据
+//                if("伪代码" == NULL)//有角色信息数据
+                if("伪代码" != NULL)//无角色信息数据
                 {
                     //发送通知
                     const char *roleData = "";//JSON数据

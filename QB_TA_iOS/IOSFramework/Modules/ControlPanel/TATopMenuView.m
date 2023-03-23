@@ -7,12 +7,14 @@
 
 #import "TATopMenuView.h"
 #import "TASettingView.h"
+#import "TAVoiceChat.h"
 
 int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
 int const IconID_Member         = 1003;
 int const IconID_Mike           = 1004;
 int const IconID_Share_Screen   = 1006;
+
 
 @interface TATopMenuView ()
 
@@ -30,12 +32,12 @@ int const IconID_Share_Screen   = 1006;
 }
 
 - (void)loadSubViews
-{
+{    
     [self setUserInteractionEnabled:YES];
     self.clipsToBounds = YES;
-
+    
     self.iconArray = [self iconArray];
-
+    
     [self addSubview:self.frameImageView];
     [self.frameImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.mas_equalTo(0);
@@ -44,7 +46,7 @@ int const IconID_Share_Screen   = 1006;
     
     //添加icon
     UIButton *temp = nil;
-    for (UIButton *icon in _iconArray) {
+    for (UIButton *icon in self.iconArray) {
         [self.frameImageView addSubview:icon];
         [icon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
@@ -84,18 +86,52 @@ int const IconID_Share_Screen   = 1006;
         case IconID_Mike:
         {
             
+            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+            switch (authStatus) {
+                case AVAuthorizationStatusNotDetermined:{
+                    //没有询问是否开启麦克风
+                    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {}];
+                }   break;
+                case AVAuthorizationStatusRestricted:
+                    //未授权，家长限制
+                    [TAToast showTextDialog:kWindow msg:@"家长限制，App无法访问麦克风"];
+                    break;
+                case AVAuthorizationStatusDenied:{
+                    //玩家未授权
+                    [TAToast showTextDialog:kWindow msg:@"App无法访问麦克风，请到设置中授权后才能使用语音功能"];
+                }   break;
+                case AVAuthorizationStatusAuthorized:{
+                    //玩家已授权
+                    [sender setSelected:!sender.isSelected];
+                    if ([TAVoiceChat shareInstance].isStartLocalAudio) {
+                        [[TAVoiceChat shareInstance] stopLocalAudio];
+                    }else{
+                        [[TAVoiceChat shareInstance] startLocalAudio];
+                    }
+                }
+                    break;
+                default:
+                    break;
+            }
         }
             break;
         case IconID_Share_Screen:
         {
-            
+//            self.trtcCloud = [TRTCCloud sharedInstance];
+//            // 将 denny 的主路画面切换到一个悬浮的小窗口中（假如该迷你小窗口为 miniFloatingView）
+//            [self.trtcCloud updateRemoteView:miniFloatingView streamType:TRTCVideoStreamTypeBig forUser:@"denny"];
+//            // 将远端用户 denny 的主路画面设置为填充模式，并开启左右镜像模式
+//            TRTCRenderParams *param = [[TRTCRenderParams alloc] init];
+//            param.fillMode     = TRTCVideoFillMode_Fill;
+//            param.mirrorType   = TRTCVideoMirrorTypeDisable;
+//            [self.trtcCloud setRemoteRenderParams:@"denny" streamType:TRTCVideoStreamTypeBig params:param];
+
         }
             break;
         default:
             break;
     }
 }
-
 
 #pragma mark - lazy load
 - (UIImageView*)frameImageView{
@@ -116,17 +152,17 @@ int const IconID_Share_Screen   = 1006;
 {
     NSArray *config = [TATopMenuView iconConfig];
     NSMutableArray *iconArray = [NSMutableArray array];
-
+    
     //根据配置创建icon
     for (NSDictionary *btnConfig in config) {
-
+        
         BOOL authority = [[btnConfig objectForKey:@"authority"] boolValue];
         if (!authority) {
             continue;
         }
-
+        
         UIButton *icon = [[UIButton alloc] init];
-
+        
         NSString *n = [btnConfig objectForKey:@"normal"];
         NSString *h = [btnConfig objectForKey:@"highlight"];
         NSString *d = [btnConfig objectForKey:@"disable"];
@@ -151,7 +187,7 @@ int const IconID_Share_Screen   = 1006;
         [icon setTag:icon_id.integerValue];
         
         [icon addTarget:self action:@selector(iconDidClick:) forControlEvents:UIControlEventTouchUpInside];
-
+        
         //加竖线
         if ([config indexOfObject:btnConfig] < config.count - 1) {
             UIView *line = [UIView new];
@@ -174,7 +210,7 @@ int const IconID_Share_Screen   = 1006;
 + (NSArray *)iconConfig
 {
     NSMutableArray *config = [NSMutableArray arrayWithArray:
-    @[
+                              @[
         @{
             @"icon_name":@"setting",
             @"icon_id":@(IconID_Setting),
@@ -203,6 +239,15 @@ int const IconID_Share_Screen   = 1006;
             @"isEnabled":@"1"
         },
         @{
+            @"icon_name":@"share_screen",
+            @"icon_id":@(IconID_Share_Screen),
+            @"normal":@"tmenu_shar_b",
+            @"highlight":@"tmenu_shar_g",
+            @"disable":@"tmenu_shar_g",
+            @"authority":@"1",
+            @"isEnabled":@"1"
+        },
+        @{
             @"icon_name":@"mike",
             @"icon_id":@(IconID_Mike),
             @"normal":@"tmenu_mike_disable_b",
@@ -212,15 +257,6 @@ int const IconID_Share_Screen   = 1006;
             @"authority":@"1",
             @"isEnabled":@"1"
         },
-        @{
-            @"icon_name":@"share_screen",
-            @"icon_id":@(IconID_Share_Screen),
-            @"normal":@"tmenu_shar_b",
-            @"highlight":@"tmenu_shar_g",
-            @"disable":@"tmenu_shar_g",
-            @"authority":@"1",
-            @"isEnabled":@"1"
-        }
     ]];
     
     //伪代码

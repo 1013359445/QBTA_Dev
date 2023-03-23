@@ -40,10 +40,10 @@
         [CommInterface shareInstance].iOSView = iOSView;
 
         FIOSFrameworkModule *module = new FIOSFrameworkModule();
-        const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
-        const char *cIdentifier = [@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
-    //    const char *cName = [@"controlPanel" cStringUsingEncoding:NSUTF8StringEncoding];
-    //    const char *cIdentifier = nil;
+//        const char *cName = [@"login" cStringUsingEncoding:NSUTF8StringEncoding];
+//        const char *cIdentifier = [@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
+        const char *cName = [@"controlPanel" cStringUsingEncoding:NSUTF8StringEncoding];
+        const char *cIdentifier = nil;
         
         const char *cParam = nil;
         bool animated = false;

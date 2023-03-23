@@ -22,7 +22,6 @@ shareInstance_implementation(TADataCenter);
     if (self) {
         self.chatMessages = [[NSMutableArray alloc] init];
         self.peopleWhoSpeakArray = [[NSMutableArray alloc] init];
-        
         [self loadPeopleWhoSpeakData];
     }
     return self;
@@ -31,6 +30,8 @@ shareInstance_implementation(TADataCenter);
 - (void)loadPeopleWhoSpeakData
 {
     //假数据
+    self.userInfo = [[TAUserInfo alloc] init];
+
     [self addPeopleWhoSpeak:@"张三"];
     [self addPeopleWhoSpeak:@"李四"];
     [self addPeopleWhoSpeak:@"王五"];

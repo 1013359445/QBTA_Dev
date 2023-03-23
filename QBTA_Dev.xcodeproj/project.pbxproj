@@ -16,7 +16,35 @@
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
 		7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34A729A887C1009753FC /* UECommInterface.cpp */; };
-		7AD8A61B299F97DD00257E1D /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD8A61A299F97DD00257E1D /* IOSFramework.framework */; };
+		7AC5E8AE29CAFFD7006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8AD29CAFFD7006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
+		7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
+		7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
+		7AD4C21A29CAC83600AFE5A4 /* TXFFmpeg.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AD4C21B29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
+		7AD4C21C29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AD4C21E29CACB7A00AFE5A4 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */; };
+		7AD4C23529CACC2C00AFE5A4 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23429CACC2C00AFE5A4 /* libbz2.1.0.tbd */; };
+		7AD4C23629CACC2C00AFE5A4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22B29CACC2C00AFE5A4 /* libresolv.tbd */; };
+		7AD4C23729CACC2C00AFE5A4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23329CACC2C00AFE5A4 /* libsqlite3.0.tbd */; };
+		7AD4C23829CACC2C00AFE5A4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */; };
+		7AD4C23929CACC2C00AFE5A4 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22C29CACC2C00AFE5A4 /* libiconv.2.4.0.tbd */; };
+		7AD4C23A29CACC2C00AFE5A4 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22829CACC2C00AFE5A4 /* libiconv.tbd */; };
+		7AD4C23B29CACC5400AFE5A4 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22229CACC2C00AFE5A4 /* Photos.framework */; };
+		7AD4C23C29CACC5400AFE5A4 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22E29CACC2C00AFE5A4 /* Metal.framework */; };
+		7AD4C23D29CACC5400AFE5A4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22529CACC2C00AFE5A4 /* CoreServices.framework */; };
+		7AD4C23E29CACC5400AFE5A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22629CACC2C00AFE5A4 /* AudioToolbox.framework */; };
+		7AD4C23F29CACC5400AFE5A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22129CACC2C00AFE5A4 /* CoreGraphics.framework */; };
+		7AD4C24029CACC5400AFE5A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22729CACC2C00AFE5A4 /* QuartzCore.framework */; };
+		7AD4C24129CACC5400AFE5A4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22929CACC2C00AFE5A4 /* OpenAL.framework */; };
+		7AD4C24229CACC5400AFE5A4 /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22A29CACC2C00AFE5A4 /* MediaToolbox.framework */; };
+		7AD4C24329CACC5400AFE5A4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */; };
+		7AD4C24429CACC5400AFE5A4 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */; };
+		7AD4C24529CACC5400AFE5A4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22D29CACC2C00AFE5A4 /* CoreMedia.framework */; };
+		7AD4C24629CACC5400AFE5A4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22F29CACC2C00AFE5A4 /* MetalKit.framework */; };
+		7AD4C24729CACC5400AFE5A4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
+		7AD4C24829CACC5400AFE5A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23229CACC2C00AFE5A4 /* AVFoundation.framework */; };
+		7AD4C24929CACC5400AFE5A4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22429CACC2C00AFE5A4 /* CoreTelephony.framework */; };
+		7AD4C24A29CACC5400AFE5A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21F29CACC2C00AFE5A4 /* SystemConfiguration.framework */; };
 		7AD8A61E299F985400257E1D /* TABundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AD8A61D299F985400257E1D /* TABundle.bundle */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +57,21 @@
 			remoteInfo = IOSFramework;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7AD4C1E329CAC50200AFE5A4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7AD4C21A29CAC83600AFE5A4 /* TXFFmpeg.xcframework in Embed Frameworks */,
+				7AD4C21C29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7A1FD37F29BB2622006C352F /* XxxxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XxxxView.h; sourceTree = "<group>"; };
@@ -47,8 +90,34 @@
 		7A3CAD03298A2E1700DD1998 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A4B34A729A887C1009753FC /* UECommInterface.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = UECommInterface.cpp; sourceTree = "<group>"; };
 		7A4B34A829A887C1009753FC /* UECommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UECommInterface.h; sourceTree = "<group>"; };
+		7AC5E8AD29CAFFD7006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_ReplayKitExt.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_ReplayKitExt.framework; sourceTree = "<group>"; };
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
-		7AD8A61A299F97DD00257E1D /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Debug-iphonesimulator/IOSFramework.framework"; sourceTree = "<group>"; };
+		7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXSoundTouch.xcframework; sourceTree = "<group>"; };
+		7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXFFmpeg.xcframework; sourceTree = "<group>"; };
+		7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_TRTC.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_TRTC.framework; sourceTree = "<group>"; };
+		7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
+		7AD4C21F29CACC2C00AFE5A4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7AD4C22129CACC2C00AFE5A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7AD4C22229CACC2C00AFE5A4 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		7AD4C22429CACC2C00AFE5A4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7AD4C22529CACC2C00AFE5A4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		7AD4C22629CACC2C00AFE5A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7AD4C22729CACC2C00AFE5A4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7AD4C22829CACC2C00AFE5A4 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		7AD4C22929CACC2C00AFE5A4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		7AD4C22A29CACC2C00AFE5A4 /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
+		7AD4C22B29CACC2C00AFE5A4 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		7AD4C22C29CACC2C00AFE5A4 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		7AD4C22D29CACC2C00AFE5A4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		7AD4C22E29CACC2C00AFE5A4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		7AD4C22F29CACC2C00AFE5A4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		7AD4C23229CACC2C00AFE5A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7AD4C23329CACC2C00AFE5A4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7AD4C23429CACC2C00AFE5A4 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		7AD8A61D299F985400257E1D /* TABundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TABundle.bundle; path = QB_TA_iOS/IOSFramework/Resource/TABundle.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,7 +126,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AD8A61B299F97DD00257E1D /* IOSFramework.framework in Frameworks */,
+				7AD4C23B29CACC5400AFE5A4 /* Photos.framework in Frameworks */,
+				7AD4C23C29CACC5400AFE5A4 /* Metal.framework in Frameworks */,
+				7AD4C23D29CACC5400AFE5A4 /* CoreServices.framework in Frameworks */,
+				7AD4C23E29CACC5400AFE5A4 /* AudioToolbox.framework in Frameworks */,
+				7AD4C23F29CACC5400AFE5A4 /* CoreGraphics.framework in Frameworks */,
+				7AD4C24029CACC5400AFE5A4 /* QuartzCore.framework in Frameworks */,
+				7AD4C24129CACC5400AFE5A4 /* OpenAL.framework in Frameworks */,
+				7AD4C24229CACC5400AFE5A4 /* MediaToolbox.framework in Frameworks */,
+				7AD4C24329CACC5400AFE5A4 /* VideoToolbox.framework in Frameworks */,
+				7AD4C24429CACC5400AFE5A4 /* ReplayKit.framework in Frameworks */,
+				7AD4C24529CACC5400AFE5A4 /* CoreMedia.framework in Frameworks */,
+				7AD4C24629CACC5400AFE5A4 /* MetalKit.framework in Frameworks */,
+				7AD4C24729CACC5400AFE5A4 /* Accelerate.framework in Frameworks */,
+				7AD4C24829CACC5400AFE5A4 /* AVFoundation.framework in Frameworks */,
+				7AD4C24929CACC5400AFE5A4 /* CoreTelephony.framework in Frameworks */,
+				7AD4C24A29CACC5400AFE5A4 /* SystemConfiguration.framework in Frameworks */,
+				7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */,
+				7AD4C21B29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Frameworks */,
+				7AC5E8AE29CAFFD7006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
+				7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
+				7AD4C23529CACC2C00AFE5A4 /* libbz2.1.0.tbd in Frameworks */,
+				7AD4C23829CACC2C00AFE5A4 /* libc++.tbd in Frameworks */,
+				7AD4C23A29CACC2C00AFE5A4 /* libiconv.tbd in Frameworks */,
+				7AD4C23929CACC2C00AFE5A4 /* libiconv.2.4.0.tbd in Frameworks */,
+				7AD4C23629CACC2C00AFE5A4 /* libresolv.tbd in Frameworks */,
+				7AD4C23729CACC2C00AFE5A4 /* libsqlite3.0.tbd in Frameworks */,
+				7AD4C21E29CACB7A00AFE5A4 /* IOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +203,33 @@
 		7A3CAD12298A2E7200DD1998 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AD8A61A299F97DD00257E1D /* IOSFramework.framework */,
+				7AC5E8AD29CAFFD7006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */,
+				7AD4C22C29CACC2C00AFE5A4 /* libiconv.2.4.0.tbd */,
+				7AD4C23429CACC2C00AFE5A4 /* libbz2.1.0.tbd */,
+				7AD4C22829CACC2C00AFE5A4 /* libiconv.tbd */,
+				7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */,
+				7AD4C22B29CACC2C00AFE5A4 /* libresolv.tbd */,
+				7AD4C23329CACC2C00AFE5A4 /* libsqlite3.0.tbd */,
+				7AD4C22229CACC2C00AFE5A4 /* Photos.framework */,
+				7AD4C22E29CACC2C00AFE5A4 /* Metal.framework */,
+				7AD4C22529CACC2C00AFE5A4 /* CoreServices.framework */,
+				7AD4C22629CACC2C00AFE5A4 /* AudioToolbox.framework */,
+				7AD4C22129CACC2C00AFE5A4 /* CoreGraphics.framework */,
+				7AD4C22729CACC2C00AFE5A4 /* QuartzCore.framework */,
+				7AD4C22929CACC2C00AFE5A4 /* OpenAL.framework */,
+				7AD4C22A29CACC2C00AFE5A4 /* MediaToolbox.framework */,
+				7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */,
+				7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */,
+				7AD4C22D29CACC2C00AFE5A4 /* CoreMedia.framework */,
+				7AD4C22F29CACC2C00AFE5A4 /* MetalKit.framework */,
+				7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */,
+				7AD4C23229CACC2C00AFE5A4 /* AVFoundation.framework */,
+				7AD4C22429CACC2C00AFE5A4 /* CoreTelephony.framework */,
+				7AD4C21F29CACC2C00AFE5A4 /* SystemConfiguration.framework */,
+				7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */,
+				7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */,
+				7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */,
+				7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,6 +252,7 @@
 				7A3CACEA298A2E1600DD1998 /* Sources */,
 				7A3CACEB298A2E1600DD1998 /* Frameworks */,
 				7A3CACEC298A2E1600DD1998 /* Resources */,
+				7AD4C1E329CAC50200AFE5A4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,13 +482,17 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/QB_TA_iOS/IOSFramework/Third/TX",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要访问您的相机权限，开启后录制才会有画面";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要访问您的麦克风权限，开启后才能使用语音功能";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -380,9 +506,9 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qvr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = qvrDev;
+				PROVISIONING_PROFILE_SPECIFIER = qingmetaDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -397,13 +523,17 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/QB_TA_iOS/IOSFramework/Third/TX",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要访问您的相机权限，开启后录制才会有画面";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要访问您的麦克风权限，开启后才能使用语音功能";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -417,9 +547,9 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qvr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = qvrDev;
+				PROVISIONING_PROFILE_SPECIFIER = qingmetaDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

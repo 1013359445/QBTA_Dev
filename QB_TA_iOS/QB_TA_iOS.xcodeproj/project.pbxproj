@@ -528,9 +528,19 @@
 		7A8594C029AE0A5200D6B51A /* TAControlPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */; };
 		7A8594C729B1F7DD00D6B51A /* TAToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A8594C529B1F7DD00D6B51A /* TAToast.h */; };
 		7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594C629B1F7DD00D6B51A /* TAToast.m */; };
+		7AC5E8B129CC2C0B006FB4C0 /* TASharScreenManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC5E8AF29CC2C0B006FB4C0 /* TASharScreenManager.h */; };
+		7AC5E8B229CC2C0B006FB4C0 /* TASharScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E8B029CC2C0B006FB4C0 /* TASharScreenManager.m */; };
 		7AC8D5FD29875A07001E9F12 /* IOSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D5FC29875A07001E9F12 /* IOSFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D60129875A23001E9F12 /* CommInterface.m */; };
 		7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D60229875A23001E9F12 /* CommInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7AD4C04229C41C6800AFE5A4 /* TAControlCenterPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD4C04029C41C6800AFE5A4 /* TAControlCenterPresenter.h */; };
+		7AD4C04329C41C6800AFE5A4 /* TAControlCenterPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4C04129C41C6800AFE5A4 /* TAControlCenterPresenter.m */; };
+		7AD4C07129C4421700AFE5A4 /* TAVoiceChat.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD4C06F29C4421700AFE5A4 /* TAVoiceChat.h */; };
+		7AD4C07229C4421700AFE5A4 /* TAVoiceChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4C07029C4421700AFE5A4 /* TAVoiceChat.m */; };
+		7AD4C07529C463BF00AFE5A4 /* GenerateTestUserSig.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD4C07329C463BF00AFE5A4 /* GenerateTestUserSig.h */; };
+		7AD4C07629C463BF00AFE5A4 /* GenerateTestUserSig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4C07429C463BF00AFE5A4 /* GenerateTestUserSig.m */; };
+		7AD4C07B29C46EE600AFE5A4 /* TADisplayScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD4C07929C46EE600AFE5A4 /* TADisplayScreen.h */; };
+		7AD4C07C29C46EE600AFE5A4 /* TADisplayScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4C07A29C46EE600AFE5A4 /* TADisplayScreen.m */; };
 		7AD8A62729A362DF00257E1D /* TAUserAgreementView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A62529A362DF00257E1D /* TAUserAgreementView.h */; };
 		7AD8A62829A362DF00257E1D /* TAUserAgreementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A62629A362DF00257E1D /* TAUserAgreementView.m */; };
 		7AD8A62A29A3685700257E1D /* TAHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A62929A3685700257E1D /* TAHeader.h */; };
@@ -549,6 +559,19 @@
 		7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */; };
 		7AF8D08D299BA4C900D85074 /* TACaptchaParmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D08B299BA4C900D85074 /* TACaptchaParmModel.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7AD4C06B29C4310900AFE5A4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7A0D286F2995F2FB004BCDC6 /* NSBundle+TAImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TAImage.m"; sourceTree = "<group>"; };
@@ -1072,10 +1095,20 @@
 		7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAControlPanelView.m; sourceTree = "<group>"; };
 		7A8594C529B1F7DD00D6B51A /* TAToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAToast.h; sourceTree = "<group>"; };
 		7A8594C629B1F7DD00D6B51A /* TAToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAToast.m; sourceTree = "<group>"; };
+		7AC5E8AF29CC2C0B006FB4C0 /* TASharScreenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASharScreenManager.h; sourceTree = "<group>"; };
+		7AC5E8B029CC2C0B006FB4C0 /* TASharScreenManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASharScreenManager.m; sourceTree = "<group>"; };
 		7AC8D5FA29875A07001E9F12 /* IOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC8D5FC29875A07001E9F12 /* IOSFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSFramework.h; sourceTree = "<group>"; };
 		7AC8D60129875A23001E9F12 /* CommInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommInterface.m; sourceTree = "<group>"; };
 		7AC8D60229875A23001E9F12 /* CommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommInterface.h; sourceTree = "<group>"; };
+		7AD4C04029C41C6800AFE5A4 /* TAControlCenterPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAControlCenterPresenter.h; sourceTree = "<group>"; };
+		7AD4C04129C41C6800AFE5A4 /* TAControlCenterPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAControlCenterPresenter.m; sourceTree = "<group>"; };
+		7AD4C06F29C4421700AFE5A4 /* TAVoiceChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAVoiceChat.h; sourceTree = "<group>"; };
+		7AD4C07029C4421700AFE5A4 /* TAVoiceChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAVoiceChat.m; sourceTree = "<group>"; };
+		7AD4C07329C463BF00AFE5A4 /* GenerateTestUserSig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateTestUserSig.h; sourceTree = "<group>"; };
+		7AD4C07429C463BF00AFE5A4 /* GenerateTestUserSig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateTestUserSig.m; sourceTree = "<group>"; };
+		7AD4C07929C46EE600AFE5A4 /* TADisplayScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TADisplayScreen.h; sourceTree = "<group>"; };
+		7AD4C07A29C46EE600AFE5A4 /* TADisplayScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TADisplayScreen.m; sourceTree = "<group>"; };
 		7AD8A62529A362DF00257E1D /* TAUserAgreementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserAgreementView.h; sourceTree = "<group>"; };
 		7AD8A62629A362DF00257E1D /* TAUserAgreementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAUserAgreementView.m; sourceTree = "<group>"; };
 		7AD8A62929A3685700257E1D /* TAHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAHeader.h; sourceTree = "<group>"; };
@@ -1181,10 +1214,10 @@
 		7A3CAD20298A2FA800DD1998 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7A3CB1FF298B638300DD1998 /* MacroDefinition */,
 				7AD8A61F29A3422A00257E1D /* DataCenter */,
 				7A3CAD1E298A2F0A00DD1998 /* Base */,
 				7AB3C5FC299B300B006F1E28 /* TACategories */,
-				7A3CB1FF298B638300DD1998 /* MacroDefinition */,
 				7A3CAD23298A301F00DD1998 /* Router */,
 				7A3CAD22298A301300DD1998 /* CommonUI */,
 				7A3CAD21298A2FED00DD1998 /* Mediator */,
@@ -1256,6 +1289,7 @@
 		7A3CAD28298A3F3B00DD1998 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7AD4C04529C42F6900AFE5A4 /* TX */,
 				7A1FD38329BB37C4006C352F /* KJMarqueeLabel */,
 				7A3CB043298A565900DD1998 /* JKCategories */,
 				7A3CB03E298A484100DD1998 /* MBProgressHUD */,
@@ -2111,6 +2145,7 @@
 				7A85949A29ACB44400D6B51A /* TARightMenuView.m */,
 				7A1FD33429B5B7F9006C352F /* TAAnnouncementView.h */,
 				7A1FD33529B5B7F9006C352F /* TAAnnouncementView.m */,
+				7AD4C04429C41C7100AFE5A4 /* Presenter */,
 			);
 			path = ControlPanel;
 			sourceTree = "<group>";
@@ -2120,6 +2155,8 @@
 			children = (
 				7A85949D29ACB49F00D6B51A /* TAChatView.h */,
 				7A85949E29ACB49F00D6B51A /* TAChatView.m */,
+				7AD4C06F29C4421700AFE5A4 /* TAVoiceChat.h */,
+				7AD4C07029C4421700AFE5A4 /* TAVoiceChat.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2127,6 +2164,8 @@
 		7A8594A229ACB51800D6B51A /* SharScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7AC5E8AF29CC2C0B006FB4C0 /* TASharScreenManager.h */,
+				7AC5E8B029CC2C0B006FB4C0 /* TASharScreenManager.m */,
 			);
 			path = SharScreen;
 			sourceTree = "<group>";
@@ -2206,6 +2245,8 @@
 		7A8594AB29ACB89500D6B51A /* LargeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7AD4C07929C46EE600AFE5A4 /* TADisplayScreen.h */,
+				7AD4C07A29C46EE600AFE5A4 /* TADisplayScreen.m */,
 			);
 			path = LargeScreen;
 			sourceTree = "<group>";
@@ -2273,11 +2314,37 @@
 			path = IOSFramework;
 			sourceTree = "<group>";
 		};
+		7AD4C04429C41C7100AFE5A4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4C04029C41C6800AFE5A4 /* TAControlCenterPresenter.h */,
+				7AD4C04129C41C6800AFE5A4 /* TAControlCenterPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7AD4C04529C42F6900AFE5A4 /* TX */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4C07329C463BF00AFE5A4 /* GenerateTestUserSig.h */,
+				7AD4C07429C463BF00AFE5A4 /* GenerateTestUserSig.m */,
+			);
+			path = TX;
+			sourceTree = "<group>";
+		};
+		7AD4C04E29C4304F00AFE5A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7AD8608B29765008002B65E1 = {
 			isa = PBXGroup;
 			children = (
 				7AC8D5FB29875A07001E9F12 /* IOSFramework */,
 				7AD8609529765008002B65E1 /* Products */,
+				7AD4C04E29C4304F00AFE5A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2366,8 +2433,10 @@
 				7A3CB004298A46EF00DD1998 /* SDImageCachesManagerOperation.h in Headers */,
 				7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
+				7AD4C04229C41C6800AFE5A4 /* TAControlCenterPresenter.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
+				7AD4C07129C4421700AFE5A4 /* TAVoiceChat.h in Headers */,
 				7A3CAF9A298A46EF00DD1998 /* SDWebImageCacheSerializer.h in Headers */,
 				7A3CB1E4298A565900DD1998 /* UIControl+JKSound.h in Headers */,
 				7A3CAE6A298A462A00DD1998 /* IQBarButtonItem.h in Headers */,
@@ -2390,6 +2459,7 @@
 				7A3CB1E8298A565900DD1998 /* UIControl+JKBlock.h in Headers */,
 				7A3CB148298A565900DD1998 /* UIImage+JKFXImage.h in Headers */,
 				7A3CADE6298A426300DD1998 /* MJExtensionConst.h in Headers */,
+				7AD4C07B29C46EE600AFE5A4 /* TADisplayScreen.h in Headers */,
 				7A3CB172298A565900DD1998 /* UIButton+JKIndicator.h in Headers */,
 				7A3CAE1E298A444800DD1998 /* ASIDownloadCache.h in Headers */,
 				7A3CB14B298A565900DD1998 /* UILabel+JKAutoSize.h in Headers */,
@@ -2487,6 +2557,7 @@
 				7A3CAE6B298A462A00DD1998 /* IQTitleBarButtonItem.h in Headers */,
 				7A3CAFAA298A46EF00DD1998 /* SDWebImagePrefetcher.h in Headers */,
 				7A3CADEE298A426300DD1998 /* MJPropertyType.h in Headers */,
+				7AC5E8B129CC2C0B006FB4C0 /* TASharScreenManager.h in Headers */,
 				7A3CB173298A565900DD1998 /* UIButton+JKSubmitting.h in Headers */,
 				7A3CAFB1298A46EF00DD1998 /* UIImage+MultiFormat.h in Headers */,
 				7A3CADEB298A426300DD1998 /* MJExtension.h in Headers */,
@@ -2557,6 +2628,7 @@
 				7A3CAF46298A46EE00DD1998 /* SDImageIOCoder.h in Headers */,
 				7AD8A62729A362DF00257E1D /* TAUserAgreementView.h in Headers */,
 				7A3CB12C298A565900DD1998 /* UIImage+JKColor.h in Headers */,
+				7AD4C07529C463BF00AFE5A4 /* GenerateTestUserSig.h in Headers */,
 				7A3CAF7F298A46EF00DD1998 /* SDAnimatedImageView+WebCache.h in Headers */,
 				7AD8A62D29A3712400257E1D /* TABaseView.h in Headers */,
 				7A3CB135298A565900DD1998 /* UIImage+JKSuperCompress.h in Headers */,
@@ -2621,7 +2693,7 @@
 				7AC8D5F529875A07001E9F12 /* Headers */,
 				7AC8D5F629875A07001E9F12 /* Sources */,
 				7AC8D5F729875A07001E9F12 /* Frameworks */,
-				7AC8D5F829875A07001E9F12 /* Resources */,
+				7AD4C06B29C4310900AFE5A4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2664,16 +2736,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		7AC8D5F829875A07001E9F12 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		7AC8D5F629875A07001E9F12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2702,12 +2764,14 @@
 				7A3CAE1A298A444800DD1998 /* ASIDataDecompressor.m in Sources */,
 				7A1FD36829B9A6E2006C352F /* TASettingBasicsView.m in Sources */,
 				7A3CAE58298A462900DD1998 /* IQUIView+Hierarchy.m in Sources */,
+				7AD4C07C29C46EE600AFE5A4 /* TADisplayScreen.m in Sources */,
 				7A3CB167298A565900DD1998 /* UIResponder+JKChain.m in Sources */,
 				7A3CAF41298A46EE00DD1998 /* SDImageHEICCoder.m in Sources */,
 				7A3CB190298A565900DD1998 /* UIView+JKFrame.m in Sources */,
 				7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */,
 				7A3CAFA5298A46EF00DD1998 /* SDWebImageDefine.m in Sources */,
 				7A3CB164298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.m in Sources */,
+				7AD4C07229C4421700AFE5A4 /* TAVoiceChat.m in Sources */,
 				7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */,
 				7A3CB153298A565900DD1998 /* UIScrollView+JKAddition.m in Sources */,
 				7A3CAE63298A462900DD1998 /* IQToolbar.m in Sources */,
@@ -2734,8 +2798,10 @@
 				7A3CB17E298A565900DD1998 /* UIColor+JKGradient.m in Sources */,
 				7A1FD35429B72D02006C352F /* TAPersonalPresenter.m in Sources */,
 				7A3CAE1C298A444800DD1998 /* ASIAuthenticationDialog.m in Sources */,
+				7AD4C04329C41C6800AFE5A4 /* TAControlCenterPresenter.m in Sources */,
 				7A3CAF74298A46EF00DD1998 /* SDWebImageError.m in Sources */,
 				7A3CB1C7298A565900DD1998 /* UIImageView+JKLetters.m in Sources */,
+				7AC5E8B229CC2C0B006FB4C0 /* TASharScreenManager.m in Sources */,
 				7A3CAF84298A46EF00DD1998 /* UIImage+ExtendedCacheData.m in Sources */,
 				7A3CB13B298A565900DD1998 /* UIImage+JKMerge.m in Sources */,
 				7A3CB1B0298A565900DD1998 /* UITextView+JKInputLimit.m in Sources */,
@@ -2930,6 +2996,7 @@
 				7A3CAF6A298A46EE00DD1998 /* UIImage+GIF.m in Sources */,
 				7A3CB16A298A565900DD1998 /* UIButton+JKIndicator.m in Sources */,
 				7A3CAF92298A46EF00DD1998 /* SDImageTransformer.m in Sources */,
+				7AD4C07629C463BF00AFE5A4 /* GenerateTestUserSig.m in Sources */,
 				7A3CB192298A565900DD1998 /* UIView+JKBlockGesture.m in Sources */,
 				7A3CB1C4298A565900DD1998 /* UIImageView+JKFaceAwareFill.m in Sources */,
 				7A3CAF7B298A46EF00DD1998 /* NSButton+WebCache.m in Sources */,
@@ -2948,13 +3015,20 @@
 		7AC8D5FF29875A07001E9F12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IOSFramework/Third/TX",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2966,7 +3040,10 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta.IOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2974,6 +3051,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2982,13 +3060,20 @@
 		7AC8D60029875A07001E9F12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IOSFramework/Third/TX",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -3000,7 +3085,10 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta.IOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3008,6 +3096,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3048,6 +3137,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3107,6 +3197,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

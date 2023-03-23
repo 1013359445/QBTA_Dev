@@ -14,8 +14,8 @@
  初始化函数
  */
 - (instancetype)initWithView:(id)view{
-
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         _view = view;
     }
     return self;
@@ -24,7 +24,7 @@
  * 绑定视图
  * @param view 要绑定的视图
  */
-- (void) attachView:(id)view {
+- (void)attachView:(id)view {
     _view = view;
 }
 

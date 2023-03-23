@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TABaseParmModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TAUserInfo : NSObject
+@interface TAUserInfo : TABaseParmModel
 
 @property (nonatomic, copy)NSString *pkid;//"1611305322018619394",
 @property (nonatomic, copy)NSString *phone;//"15077833133",

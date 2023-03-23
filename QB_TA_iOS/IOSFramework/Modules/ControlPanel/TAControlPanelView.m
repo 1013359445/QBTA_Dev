@@ -12,6 +12,7 @@
 #import "TAMiniMapView.h"
 #import "TAPersonalView.h"
 #import "TAChatView.h"
+#import "TAVoiceChat.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -37,6 +38,9 @@
 
 - (void)loadSubViews
 {
+    //加入默认房间
+    [[TAVoiceChat shareInstance] enterRoom:666777];
+
     self.userInteractionEnabled = YES;
     self.isPutAway = NO;
     

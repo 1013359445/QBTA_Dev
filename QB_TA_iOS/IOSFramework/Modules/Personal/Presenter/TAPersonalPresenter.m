@@ -6,10 +6,7 @@
 //
 
 #import "TAPersonalPresenter.h"
-#import "TARouter.h"
-#import "CommInterface.h"
-
-NSNotificationName const IOSFrameworkModifyRoleDataNotification = @"modifyRoleData";
+#import "TAHeader.h"
 
 @implementation TAPersonalPresenter
 - (void)dealloc{

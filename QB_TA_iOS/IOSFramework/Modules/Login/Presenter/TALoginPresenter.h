@@ -12,7 +12,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 @interface TALoginPresenter : TABasePresenter <id<TALoginViewProtocol>>
 
 - (void)loginWithParam:(TALoginParmModel *)param;

@@ -7,6 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TAHeader.h"
 
 @interface TABasePresenter<E>: NSObject{
 

@@ -14,8 +14,17 @@ FOUNDATION_EXPORT double IOSFrameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char IOSFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IOSFramework/PublicHeader.h>
-#import <IOSFramework/CommInterface.h>
+#import <IOSFramework/CommInterface.h>      //原生&UE通信接口
 
+static NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
+static NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
+static NSNotificationName const IOSFrameworkModifyRoleDataNotification = @"modifyRoleData";
+
+static NSNotificationName const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
+static NSNotificationName const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
+static NSNotificationName const DefaultsKeyPassword = @"DefaultsKeyPassword";
+static NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
+static NSNotificationName const IOSFrameworkScreenStatusChangeNotification = @"ScreenStatusChange";
 
 /*
                          iOS & UE 通信协议

@@ -6,19 +6,10 @@
 //
 
 #import "TALoginPresenter.h"
+
 #import "TALoginInterface.h"
 #import "TACaptchaInterface.h"
-
 #import "TAUserInfoDataModel.h"
-
-#import "CommInterface.h"
-
-NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
-
-NSNotificationName const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
-NSNotificationName const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
-NSNotificationName const DefaultsKeyPassword = @"DefaultsKeyPassword";
-NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
 
 @interface TALoginPresenter ()
 

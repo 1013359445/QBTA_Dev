@@ -6,8 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TAHeader.h"
-
 #import "TAMacroDefinition.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"

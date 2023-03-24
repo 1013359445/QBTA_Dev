@@ -10,8 +10,6 @@
 #import "CommInterface.h"
 #import "TAPersonalCharacterCell.h"
 
-NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
-
 @interface TACreatRoleViewController () <UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, retain)UIImageView*       bgImageView;
 @property (nonatomic, retain)UIImageView*       roleImageView;

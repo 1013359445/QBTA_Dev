@@ -7,7 +7,7 @@
 
 #import "TATopMenuView.h"
 #import "TASettingView.h"
-#import "TAVoiceChat.h"
+#import "TASharScreenManager.h"
 
 int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
@@ -103,10 +103,10 @@ int const IconID_Share_Screen   = 1006;
                 case AVAuthorizationStatusAuthorized:{
                     //玩家已授权
                     [sender setSelected:!sender.isSelected];
-                    if ([TAVoiceChat shareInstance].isStartLocalAudio) {
-                        [[TAVoiceChat shareInstance] stopLocalAudio];
+                    if ([TASharScreenManager shareInstance].isStartLocalAudio) {
+                        [[TASharScreenManager shareInstance] stopLocalAudio];
                     }else{
-                        [[TAVoiceChat shareInstance] startLocalAudio];
+                        [[TASharScreenManager shareInstance] startLocalAudio];
                     }
                 }
                     break;
@@ -117,19 +117,28 @@ int const IconID_Share_Screen   = 1006;
             break;
         case IconID_Share_Screen:
         {
-//            self.trtcCloud = [TRTCCloud sharedInstance];
-//            // 将 denny 的主路画面切换到一个悬浮的小窗口中（假如该迷你小窗口为 miniFloatingView）
-//            [self.trtcCloud updateRemoteView:miniFloatingView streamType:TRTCVideoStreamTypeBig forUser:@"denny"];
-//            // 将远端用户 denny 的主路画面设置为填充模式，并开启左右镜像模式
-//            TRTCRenderParams *param = [[TRTCRenderParams alloc] init];
-//            param.fillMode     = TRTCVideoFillMode_Fill;
-//            param.mirrorType   = TRTCVideoMirrorTypeDisable;
-//            [self.trtcCloud setRemoteRenderParams:@"denny" streamType:TRTCVideoStreamTypeBig params:param];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
 
+            if ([TASharScreenManager shareInstance].screenStatus == ScreenStart) {
+                [[TASharScreenManager shareInstance] stopSharScreen];
+            }else{
+                [[TASharScreenManager shareInstance] startSharScreen];
+            }
         }
             break;
         default:
             break;
+    }
+}
+
+- (void)onScreenStatusChange
+{
+    UIButton *btn = [self.frameImageView viewWithTag:IconID_Share_Screen];
+
+    if ([TASharScreenManager shareInstance].screenStatus == ScreenStart) {
+        [btn setEnabled:NO];
+    }else{
+        [btn setEnabled:YES];
     }
 }
 

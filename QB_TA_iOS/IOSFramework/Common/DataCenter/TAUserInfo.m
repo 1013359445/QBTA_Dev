@@ -6,6 +6,7 @@
 //
 
 #import "TAUserInfo.h"
+#import "IOSFramework.h"
 
 @implementation TAUserInfo
 
@@ -14,8 +15,9 @@
     [super assignDefaultValue];
     
     self.nickname = @"张三";
-    self.phone = @"15077833133";
-    self.pkid = @"15077833133";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
+    self.pkid = self.phone ?: @(random() % 999 + 10000).stringValue;
 }
 
 @end

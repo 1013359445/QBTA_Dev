@@ -71,11 +71,12 @@ shareInstance_implementation(TASharScreenManager);
     self.encParams.videoResolution = TRTCVideoResolution_1280_720;
     self.encParams.videoBitrate = 550;
     self.encParams.videoFps = 10;
-    
+    //等待分享屏幕
+//    [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
+    [self.trtcCloud startScreenCaptureByReplaykit:self.encParams appGroup:APPGROUP];
+
     ///TRTCAppSceneVideoCall视频通话场景，支持720P、1080P高清画质，单个房间最多支持300人同时在线，最高支持50人同时发言。
     [self.trtcCloud enterRoom:params appScene:TRTCAppSceneVideoCall];
-    
-    [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
 }
 
 - (NSMutableOrderedSet *)anchorIdSet {
@@ -114,7 +115,10 @@ shareInstance_implementation(TASharScreenManager);
 # pragma mark - 共享屏幕
 - (void)startSharScreen
 {
-    [TABroadcastExtensionLauncher launch];
+    if (_screenStatus == ScreenStop) {
+        [self.trtcCloud startScreenCaptureByReplaykit:self.encParams appGroup:APPGROUP];
+        [TABroadcastExtensionLauncher launch];
+    }
 }
 
 // 停止屏幕分享

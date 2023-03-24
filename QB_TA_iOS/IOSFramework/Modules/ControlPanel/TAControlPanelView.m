@@ -39,7 +39,7 @@
 - (void)loadSubViews
 {
     //加入默认房间
-    [[TASharScreenManager shareInstance] enterRoom:666777];
+    [[TASharScreenManager shareInstance] enterRoom:135678];
 
     self.userInteractionEnabled = YES;
     self.isPutAway = NO;

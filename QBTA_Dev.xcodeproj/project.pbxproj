@@ -16,16 +16,16 @@
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
 		7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34A729A887C1009753FC /* UECommInterface.cpp */; };
-		7AC5E93C29CD55CB006FB4C0 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */; };
-		7AC5E94029CD55CB006FB4C0 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E93F29CD55CB006FB4C0 /* SampleHandler.m */; };
-		7AC5E94429CD55CB006FB4C0 /* QBTA_Ext.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7AC5E93B29CD55CB006FB4C0 /* QBTA_Ext.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7AC5E94829CD55F8006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
-		7AC5E94929CD55F8006FB4C0 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */; };
-		7AC5E94A29CD5604006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
-		7AC5E94B29CD5607006FB4C0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */; };
-		7AC5E94C29CD5611006FB4C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
-		7AC5E94D29CD5618006FB4C0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
-		7AC5E94E29CD5618006FB4C0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
+		7AC5E95529CD6FB8006FB4C0 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */; };
+		7AC5E95929CD6FB8006FB4C0 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */; };
+		7AC5E95D29CD6FB9006FB4C0 /* TXReplayKit_Screen.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
+		7AC5E96229CD7063006FB4C0 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */; };
+		7AC5E96329CD706A006FB4C0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */; };
+		7AC5E96429CD706E006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
+		7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
+		7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
+		7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
 		7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
 		7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
 		7AD4C21A29CAC83600AFE5A4 /* TXFFmpeg.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,12 +57,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7AC5E94229CD55CB006FB4C0 /* PBXContainerItemProxy */ = {
+		7AC5E95B29CD6FB8006FB4C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A3CACE6298A2E1600DD1998 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7AC5E93A29CD55CB006FB4C0;
-			remoteInfo = QBTA_Ext;
+			remoteGlobalIDString = 7AC5E95329CD6FB8006FB4C0;
+			remoteInfo = TXReplayKit_Screen;
 		};
 		7ACB5AA029964FE80005E0D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -80,7 +80,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7AC5E94429CD55CB006FB4C0 /* QBTA_Ext.appex in Embed App Extensions */,
+				7AC5E95D29CD6FB9006FB4C0 /* TXReplayKit_Screen.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +102,7 @@
 /* Begin PBXFileReference section */
 		7A1FD37F29BB2622006C352F /* XxxxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XxxxView.h; sourceTree = "<group>"; };
 		7A1FD38029BB2622006C352F /* XxxxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XxxxView.m; sourceTree = "<group>"; };
+		7A23EE8F29CD813C00BB3A95 /* TXReplayKit_Screen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TXReplayKit_Screen.entitlements; sourceTree = "<group>"; };
 		7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QBTA_Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3CACF1298A2E1600DD1998 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A3CACF2298A2E1600DD1998 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,11 +119,10 @@
 		7A4B34A829A887C1009753FC /* UECommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UECommInterface.h; sourceTree = "<group>"; };
 		7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_ReplayKitExt.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_ReplayKitExt.framework; sourceTree = "<group>"; };
 		7AC5E93629CD5303006FB4C0 /* QBTA_Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QBTA_Dev.entitlements; sourceTree = "<group>"; };
-		7AC5E93B29CD55CB006FB4C0 /* QBTA_Ext.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QBTA_Ext.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		7AC5E93E29CD55CB006FB4C0 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
-		7AC5E93F29CD55CB006FB4C0 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
-		7AC5E94129CD55CB006FB4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AC5E94F29CD56B1006FB4C0 /* QBTA_Ext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QBTA_Ext.entitlements; sourceTree = "<group>"; };
+		7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TXReplayKit_Screen.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AC5E95729CD6FB8006FB4C0 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
+		7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
+		7AC5E95A29CD6FB8006FB4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
 		7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXFFmpeg.xcframework; sourceTree = "<group>"; };
@@ -186,18 +186,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AC5E93829CD55CB006FB4C0 /* Frameworks */ = {
+		7AC5E95129CD6FB8006FB4C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AC5E94829CD55F8006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
-				7AC5E94B29CD5607006FB4C0 /* libc++.tbd in Frameworks */,
-				7AC5E94A29CD5604006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
-				7AC5E94C29CD5611006FB4C0 /* Accelerate.framework in Frameworks */,
-				7AC5E93C29CD55CB006FB4C0 /* ReplayKit.framework in Frameworks */,
-				7AC5E94D29CD5618006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
-				7AC5E94929CD55F8006FB4C0 /* VideoToolbox.framework in Frameworks */,
-				7AC5E94E29CD5618006FB4C0 /* TXSoundTouch.xcframework in Frameworks */,
+				7AC5E96429CD706E006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
+				7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
+				7AC5E95529CD6FB8006FB4C0 /* ReplayKit.framework in Frameworks */,
+				7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */,
+				7AC5E96329CD706A006FB4C0 /* libc++.tbd in Frameworks */,
+				7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
+				7AC5E96229CD7063006FB4C0 /* VideoToolbox.framework in Frameworks */,
+				7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +210,7 @@
 				7AD8A61D299F985400257E1D /* TABundle.bundle */,
 				7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */,
 				7A3CACF0298A2E1600DD1998 /* QBTA_Dev */,
-				7AC5E93D29CD55CB006FB4C0 /* QBTA_Ext */,
+				7AC5E95629CD6FB8006FB4C0 /* TXReplayKit_Screen */,
 				7A3CACEF298A2E1600DD1998 /* Products */,
 				7A3CAD12298A2E7200DD1998 /* Frameworks */,
 			);
@@ -220,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */,
-				7AC5E93B29CD55CB006FB4C0 /* QBTA_Ext.appex */,
+				7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,26 +271,26 @@
 				7AD4C23229CACC2C00AFE5A4 /* AVFoundation.framework */,
 				7AD4C22429CACC2C00AFE5A4 /* CoreTelephony.framework */,
 				7AD4C21F29CACC2C00AFE5A4 /* SystemConfiguration.framework */,
-				7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */,
 				7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */,
+				7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */,
 				7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */,
+				7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */,
 				7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */,
 				7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */,
-				7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */,
 				7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7AC5E93D29CD55CB006FB4C0 /* QBTA_Ext */ = {
+		7AC5E95629CD6FB8006FB4C0 /* TXReplayKit_Screen */ = {
 			isa = PBXGroup;
 			children = (
-				7AC5E94F29CD56B1006FB4C0 /* QBTA_Ext.entitlements */,
-				7AC5E93E29CD55CB006FB4C0 /* SampleHandler.h */,
-				7AC5E93F29CD55CB006FB4C0 /* SampleHandler.m */,
-				7AC5E94129CD55CB006FB4C0 /* Info.plist */,
+				7A23EE8F29CD813C00BB3A95 /* TXReplayKit_Screen.entitlements */,
+				7AC5E95729CD6FB8006FB4C0 /* SampleHandler.h */,
+				7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */,
+				7AC5E95A29CD6FB8006FB4C0 /* Info.plist */,
 			);
-			path = QBTA_Ext;
+			path = TXReplayKit_Screen;
 			sourceTree = "<group>";
 		};
 		7ACB5A9D29964FE80005E0D5 /* Products */ = {
@@ -317,28 +317,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				7AC5E94329CD55CB006FB4C0 /* PBXTargetDependency */,
+				7AC5E95C29CD6FB8006FB4C0 /* PBXTargetDependency */,
 			);
 			name = QBTA_Dev;
 			productName = QBTA_Dev;
 			productReference = 7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7AC5E93A29CD55CB006FB4C0 /* QBTA_Ext */ = {
+		7AC5E95329CD6FB8006FB4C0 /* TXReplayKit_Screen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7AC5E94529CD55CB006FB4C0 /* Build configuration list for PBXNativeTarget "QBTA_Ext" */;
+			buildConfigurationList = 7AC5E95E29CD6FB9006FB4C0 /* Build configuration list for PBXNativeTarget "TXReplayKit_Screen" */;
 			buildPhases = (
-				7AC5E93729CD55CB006FB4C0 /* Sources */,
-				7AC5E93829CD55CB006FB4C0 /* Frameworks */,
-				7AC5E93929CD55CB006FB4C0 /* Resources */,
+				7AC5E95029CD6FB8006FB4C0 /* Sources */,
+				7AC5E95129CD6FB8006FB4C0 /* Frameworks */,
+				7AC5E95229CD6FB8006FB4C0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = QBTA_Ext;
-			productName = QBTA_Ext;
-			productReference = 7AC5E93B29CD55CB006FB4C0 /* QBTA_Ext.appex */;
+			name = TXReplayKit_Screen;
+			productName = TXReplayKit_Screen;
+			productReference = 7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -353,7 +353,7 @@
 					7A3CACED298A2E1600DD1998 = {
 						CreatedOnToolsVersion = 13.2;
 					};
-					7AC5E93A29CD55CB006FB4C0 = {
+					7AC5E95329CD6FB8006FB4C0 = {
 						CreatedOnToolsVersion = 13.2;
 					};
 				};
@@ -378,7 +378,7 @@
 			projectRoot = "";
 			targets = (
 				7A3CACED298A2E1600DD1998 /* QBTA_Dev */,
-				7AC5E93A29CD55CB006FB4C0 /* QBTA_Ext */,
+				7AC5E95329CD6FB8006FB4C0 /* TXReplayKit_Screen */,
 			);
 		};
 /* End PBXProject section */
@@ -405,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AC5E93929CD55CB006FB4C0 /* Resources */ = {
+		7AC5E95229CD6FB8006FB4C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -428,21 +428,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AC5E93729CD55CB006FB4C0 /* Sources */ = {
+		7AC5E95029CD6FB8006FB4C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AC5E94029CD55CB006FB4C0 /* SampleHandler.m in Sources */,
+				7AC5E95929CD6FB8006FB4C0 /* SampleHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7AC5E94329CD55CB006FB4C0 /* PBXTargetDependency */ = {
+		7AC5E95C29CD6FB8006FB4C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7AC5E93A29CD55CB006FB4C0 /* QBTA_Ext */;
-			targetProxy = 7AC5E94229CD55CB006FB4C0 /* PBXContainerItemProxy */;
+			target = 7AC5E95329CD6FB8006FB4C0 /* TXReplayKit_Screen */;
+			targetProxy = 7AC5E95B29CD6FB8006FB4C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -605,7 +605,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,7 +647,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,12 +662,12 @@
 			};
 			name = Release;
 		};
-		7AC5E94629CD55CB006FB4C0 /* Debug */ = {
+		7AC5E95F29CD6FB9006FB4C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = QBTA_Ext/QBTA_Ext.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TXReplayKit_Screen/TXReplayKit_Screen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -676,9 +676,10 @@
 					"$(PROJECT_DIR)/QB_TA_iOS/IOSFramework/Third/TX",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QBTA_Ext/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QBTA_Ext;
+				INFOPLIST_FILE = TXReplayKit_Screen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "清元宇宙";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,18 +688,19 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingMetaverse.QBTA-Ext";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = QBTAExtDev;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		7AC5E94729CD55CB006FB4C0 /* Release */ = {
+		7AC5E96029CD6FB9006FB4C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = QBTA_Ext/QBTA_Ext.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = TXReplayKit_Screen/TXReplayKit_Screen.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -707,9 +709,10 @@
 					"$(PROJECT_DIR)/QB_TA_iOS/IOSFramework/Third/TX",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = QBTA_Ext/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = QBTA_Ext;
+				INFOPLIST_FILE = TXReplayKit_Screen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "清元宇宙";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,6 +721,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingMetaverse.QBTA-Ext";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = QBTAExtAdHoc;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -745,11 +749,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7AC5E94529CD55CB006FB4C0 /* Build configuration list for PBXNativeTarget "QBTA_Ext" */ = {
+		7AC5E95E29CD6FB9006FB4C0 /* Build configuration list for PBXNativeTarget "TXReplayKit_Screen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7AC5E94629CD55CB006FB4C0 /* Debug */,
-				7AC5E94729CD55CB006FB4C0 /* Release */,
+				7AC5E95F29CD6FB9006FB4C0 /* Debug */,
+				7AC5E96029CD6FB9006FB4C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

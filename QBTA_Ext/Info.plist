@@ -5,7 +5,7 @@
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
-		<string>group.com.gsdata.qingReplay</string>
+		<string>com.gsdata.qingMetaverse.QBTA-Ext</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>SampleHandler</string>
 		<key>RPBroadcastProcessMode</key>

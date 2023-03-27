@@ -32,18 +32,35 @@ int const IconID_Share_Screen   = 1006;
 }
 
 - (void)loadSubViews
-{    
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
+
     [self setUserInteractionEnabled:YES];
     self.clipsToBounds = YES;
-    
-    self.iconArray = [self iconArray];
-    
+        
     [self addSubview:self.frameImageView];
     [self.frameImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.mas_equalTo(0);
+        make.width.mas_equalTo(0);
+    }];
+    [self reLoadMenus];
+}
+
+- (void)reLoadMenus
+{
+    for (UIView *view in [self.frameImageView subviews]) {
+        [view removeFromSuperview];
+    }
+    self.iconArray = [self iconArray];
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        CGFloat width = self.iconArray.count * kRelative(80);
+        make.width.mas_equalTo(width);
+    }];
+    [self.superview layoutIfNeeded];
+    [self.superview layoutSubviews];
+    [self.frameImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(kRelative(80*self.iconArray.count));
     }];
-    
     //添加icon
     UIButton *temp = nil;
     for (UIButton *icon in self.iconArray) {
@@ -60,6 +77,7 @@ int const IconID_Share_Screen   = 1006;
         temp = icon;
     }
 }
+
 
 #pragma mark - icon点击
 - (void)iconDidClick:(UIButton *)sender
@@ -117,9 +135,7 @@ int const IconID_Share_Screen   = 1006;
             break;
         case IconID_Share_Screen:
         {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
-
-            if ([TASharScreenManager shareInstance].screenStatus == ScreenStart) {
+            if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
                 [[TASharScreenManager shareInstance] stopSharScreen];
             }else{
                 [[TASharScreenManager shareInstance] startSharScreen];
@@ -135,10 +151,12 @@ int const IconID_Share_Screen   = 1006;
 {
     UIButton *btn = [self.frameImageView viewWithTag:IconID_Share_Screen];
 
-    if ([TASharScreenManager shareInstance].screenStatus == ScreenStart) {
+    if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
         [btn setEnabled:NO];
-    }else{
+    }else if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStop) {
         [btn setEnabled:YES];
+    }else{
+        [btn setEnabled:NO];
     }
 }
 
@@ -165,8 +183,8 @@ int const IconID_Share_Screen   = 1006;
     //根据配置创建icon
     for (NSDictionary *btnConfig in config) {
         
-        BOOL authority = [[btnConfig objectForKey:@"authority"] boolValue];
-        if (!authority) {
+        BOOL visible = [[btnConfig objectForKey:@"visible"] boolValue];
+        if (!visible) {
             continue;
         }
         
@@ -226,7 +244,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_setting_b",//常规
             @"highlight":@"tmenu_setting_g",//按下
             @"disable":@"tmenu_setting_g",//无效
-            @"authority":@"1",//权限-1：普通权限 0：管理员权限
+            @"visible":@"1",//权限-1：普通权限 0：管理员权限
             @"isEnabled":@"1"//是否有效
         },
         @{
@@ -235,7 +253,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_file_b",
             @"highlight":@"tmenu_file_g",
             @"disable":@"tmenu_file_g",
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
         @{
@@ -244,7 +262,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_member_b",
             @"highlight":@"",//缺
             @"disable":@"",
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
         @{
@@ -253,7 +271,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_shar_b",
             @"highlight":@"tmenu_shar_g",
             @"disable":@"tmenu_shar_g",
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
         @{
@@ -263,20 +281,17 @@ int const IconID_Share_Screen   = 1006;
             @"selected":@"tmenu_mike_enable_b",
             @"highlight":@"",//不需要
             @"disable":@"",//不需要
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
     ]];
     
-    //伪代码
-    if(@"如果不是管理员"){
-        for (int i = 0; i < config.count; i++) {
-            NSDictionary *btnConfig = config[i];
-            int authority = [[btnConfig objectForKey:@"authority"] intValue];
-            if (authority == 0) {
-                [config removeObject:btnConfig];
-                i--;
-            }
+    for (int i = 0; i < config.count; i++) {
+        NSDictionary *btnConfig = config[i];
+        int visible = [[btnConfig objectForKey:@"visible"] intValue];
+        if (visible == 0) {
+            [config removeObject:btnConfig];
+            i--;
         }
     }
     return config;

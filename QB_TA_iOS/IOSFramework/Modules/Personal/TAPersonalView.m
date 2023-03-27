@@ -41,7 +41,7 @@
 
 - (void)loadSubViews
 {
-    self.characterData = @"123";
+    self.characterData = @"123";//获取角色信息
 
     self.userInteractionEnabled = YES;
     self.isShowInfo = YES;
@@ -88,8 +88,8 @@
 
 - (void)changeCharacter:(id)character
 {
-    self.characterData = character;
-    character = [character stringByReplacingOccurrencesOfString:@"_head" withString:@""];
+    self.characterData = character;//新的角色信息
+    character = [character stringByReplacingOccurrencesOfString:@"_head" withString:@""];//根据点击角色头像改变角色立相
     _roleImageView.image = kBundleImage(character, @"Role");
 }
 
@@ -98,8 +98,9 @@
     self.isShowInfo = !self.isShowInfo;
     
     if (self.isShowInfo) {
-        if (![self.characterData isEqualToString:@"123"]) {
-            [self.personalPresenter modifyCharacter:@""];
+        if (![self.characterData isEqualToString:@"123"])//如果角色信息有改变
+        {
+            [self.personalPresenter modifyCharacter:@"321"];//保存角色信息
         }
 
         [_changeContentBtn setImage:kBundleImage(@"personal_change_btn_w", @"Personal") forState:UIControlStateNormal];

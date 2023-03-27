@@ -14,6 +14,10 @@
 @interface TASharScreenManager ()<TRTCCloudDelegate>
 @property (strong, nonatomic) TRTCCloud *trtcCloud;
 @property (strong, nonatomic) TRTCVideoEncParam *encParams;
+@property (weak, nonatomic) UIView *remoteView;
+//分享屏幕用户的id
+@property (copy, nonatomic) NSString *remoteUserId;
+
 @end
 
 #define APPGROUP @"group.com.gsdata.qingReplay"
@@ -25,14 +29,14 @@ shareInstance_implementation(TASharScreenManager);
 {
     self = [super init];
     if (self) {
-        self.screenStatus = ScreenStop;
+        self.shareScreenStatus = ScreenStop;
         self.trtcCloud.delegate = self;
     }
     return self;
 }
 
 
-# pragma mark - 场景
+# pragma mark - 房间-场景
 - (void)dealloc
 {
     [self exitRoom];
@@ -65,16 +69,14 @@ shareInstance_implementation(TASharScreenManager);
     params.roomId = roomId;
     params.userId = userId;
     params.userSig = [GenerateTestUserSig genTestUserSig:userId];
-    params.role = TRTCRoleAnchor;//主播
+//    params.role = TRTCRoleAudience;
     self.isStartLocalAudio = NO;
-    
     self.encParams.videoResolution = TRTCVideoResolution_1280_720;
     self.encParams.videoBitrate = 550;
     self.encParams.videoFps = 10;
     //等待分享屏幕
-//    [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
-    [self.trtcCloud startScreenCaptureByReplaykit:self.encParams appGroup:APPGROUP];
-
+    [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
+    
     ///TRTCAppSceneVideoCall视频通话场景，支持720P、1080P高清画质，单个房间最多支持300人同时在线，最高支持50人同时发言。
     [self.trtcCloud enterRoom:params appScene:TRTCAppSceneVideoCall];
 }
@@ -115,8 +117,8 @@ shareInstance_implementation(TASharScreenManager);
 # pragma mark - 共享屏幕
 - (void)startSharScreen
 {
-    if (_screenStatus == ScreenStop) {
-        [self.trtcCloud startScreenCaptureByReplaykit:self.encParams appGroup:APPGROUP];
+    if (_shareScreenStatus == ScreenStop) {
+        [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
         [TABroadcastExtensionLauncher launch];
     }
 }
@@ -124,7 +126,7 @@ shareInstance_implementation(TASharScreenManager);
 // 停止屏幕分享
 - (void)stopSharScreen
 {
-    if (_screenStatus == ScreenStart) {
+    if (_shareScreenStatus == ScreenStart) {
         [self.trtcCloud stopScreenCapture];
     }
 }
@@ -145,23 +147,53 @@ shareInstance_implementation(TASharScreenManager);
     }
     return _encParams;
 }
+#pragma mark - set
+- (void)setShareScreenStatus:(ScreenStatus)shareScreenStatus
+{
+    _shareScreenStatus = shareScreenStatus;
+    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkScreenStatusChangeNotification object:nil userInfo:nil];
+}
 
 #pragma mark - TRTCCloudDelegate
+//开始分享自己的屏幕
 - (void)onScreenCaptureStarted {
-    _screenStatus = ScreenStart;
-    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkScreenStatusChangeNotification object:nil userInfo:nil];
+    self.shareScreenStatus = ScreenStart;
 }
-
+//结束分享自己的屏幕
 - (void)onScreenCaptureStoped:(int)reason {
-    _screenStatus = ScreenStop;
-    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkScreenStatusChangeNotification object:nil userInfo:nil];
+    self.shareScreenStatus = ScreenStop;
 }
 
-// 如果切换角色失败，onSwitchRole 回调的错误码便不是 0
-// If switching operation failed, the error code of the 'onSwitchRole' is not zero
-- (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(nullable NSString *)errMsg {
-    if (errCode != 0) {
-        NSLog(@"Switching operation failed... ");
+//有其他人开始或结束分享屏幕
+- (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available {
+    if (available) {
+        self.remoteUserId = userId;
+        self.shareScreenStatus = ScreenWait;
+        if (self.remoteView) {
+            [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeSub view:self.remoteView];
+        }
+    } else {
+        self.remoteUserId = nil;
+        self.shareScreenStatus = ScreenStop;
+        for (UIView *view in [self.remoteView subviews]) {
+            [view removeFromSuperview];
+        }
+    }
+}
+- (void)onUserSubStreamAvailable:(NSString *)userId available:(BOOL)available {
+    if (available) {
+        self.remoteUserId = userId;
+        self.shareScreenStatus = ScreenWait;
+        if (self.remoteView) {
+            self.remoteView.hidden = NO;
+            [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeSub view:self.remoteView];
+        }
+    } else {
+        self.remoteUserId = nil;
+        self.shareScreenStatus = ScreenStop;
+        if (self.remoteView) {
+            self.remoteView.hidden = YES;
+        }
     }
 }
 
@@ -202,4 +234,125 @@ shareInstance_implementation(TASharScreenManager);
     [self.userList removeObject:userId];
 }
 
+#pragma mark - 大屏观看
+- (void)seeUserVideoWithRemoteView:(UIView *)remoteView
+{
+    self.remoteView = remoteView;
+    if (_shareScreenStatus == ScreenWait && self.remoteUserId != nil) {
+        [self.trtcCloud startRemoteView:self.remoteUserId streamType:TRTCVideoStreamTypeSub view:remoteView];
+    }
+}
+
+// 如果切换角色失败，onSwitchRole 回调的错误码便不是 0
+// If switching operation failed, the error code of the 'onSwitchRole' is not zero
+- (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(nullable NSString *)errMsg {
+    if (errCode != 0) {
+        NSString *msg = [self errorMsgWithErrorCode:errCode];
+        if (msg && msg.length) {
+            [TAToast showTextDialog:kWindow msg:msg];
+        }
+    }
+}
+
+- (NSString *)errorMsgWithErrorCode:(TXLiteAVError)errorCode
+{
+    NSString *errorMsg;
+    switch (errorCode) {
+            /////////////////////////////////////////////////////////////////////////////////
+            //       视频相关错误码
+            /////////////////////////////////////////////////////////////////////////////////
+            ///打开摄像头失败，例如在 Windows 或 Mac 设备，摄像头的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+        case ERR_CAMERA_START_FAIL:// = -1301
+            errorMsg = @"打开摄像头失败";
+            break;
+            ///摄像头设备未授权，通常在移动设备出现，可能是权限被用户拒绝了
+            case ERR_CAMERA_NOT_AUTHORIZED:// = -1314,
+            errorMsg = @"摄像头设备未授权";
+            break;
+            ///摄像头参数设置出错（参数不支持或其它）
+            case ERR_CAMERA_SET_PARAM_FAIL:// = -1315,
+            errorMsg = @"摄像头参数设置出错";
+            break;
+            ///摄像头正在被占用中，可尝试打开其他摄像头
+            case ERR_CAMERA_OCCUPY:// = -1316,
+            errorMsg = @"摄像头正在被占用中";
+            break;
+            ///开始录屏失败，如果在移动设备出现，可能是权限被用户拒绝了，如果在 Windows 或 Mac 系统的设备出现，请检查录屏接口的参数是否符合要求
+            case ERR_SCREEN_CAPTURE_START_FAIL:// = -1308,
+            errorMsg = @"开始录屏失败";
+            break;
+            ///录屏失败，在 Android 平台，需要5.0以上的系统，在 iOS 平台，需要11.0以上的系统
+            case ERR_SCREEN_CAPTURE_UNSURPORT:// = -1309,
+            errorMsg = @"录屏失败，需要11.0以上的系统";
+            break;
+            ///录屏被系统中止
+            case ERR_SCREEN_CAPTURE_STOPPED:// = -7001,
+            errorMsg = @"录屏被系统中止";
+            break;
+            ///没有权限上行辅路
+            case ERR_SCREEN_SHARE_NOT_AUTHORIZED:// = -102015,
+            errorMsg = @"没有权限上行辅路";
+            break;
+            ///其他用户正在上行辅路
+            case ERR_SCREEN_SHRAE_OCCUPIED_BY_OTHER:// = -102016,
+            errorMsg = @"其他用户正在分享屏幕";
+            break;
+            ///视频帧编码失败，例如 iOS 设备切换到其他应用时，硬编码器可能被系统释放，再切换回来时，硬编码器重启前，可能会抛出
+            case ERR_VIDEO_ENCODE_FAIL:// = -1303,
+            errorMsg = @"频帧编码失败，请重试";
+            break;
+            ///不支持的视频分辨率
+            case ERR_UNSUPPORTED_RESOLUTION:// = -1305,
+            errorMsg = @"不支持的视频分辨率";
+            break;
+            
+            /////////////////////////////////////////////////////////////////////////////////
+            //       音频相关错误码
+            /////////////////////////////////////////////////////////////////////////////////
+            ///打开麦克风失败，例如在 Windows 或 Mac 设备，麦克风的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+            case ERR_MIC_START_FAIL:// = -1302,
+            errorMsg = @"打开麦克风失败";
+            break;
+            ///麦克风设备未授权，通常在移动设备出现，可能是权限被用户拒绝了
+            case ERR_MIC_NOT_AUTHORIZED:// = -1317,
+            errorMsg = @"麦克风设备未授权";
+            break;
+            ///麦克风设置参数失败
+            case ERR_MIC_SET_PARAM_FAIL:// = -1318,
+            errorMsg = @"麦克风设置参数失败";
+            break;
+            ///麦克风正在被占用中，例如移动设备正在通话时，打开麦克风会失败
+            case ERR_MIC_OCCUPY:// = -1319,
+            errorMsg = @"麦克风正在被占用中";
+            break;
+            ///停止麦克风失败
+            case ERR_MIC_STOP_FAIL:// = -1320,
+            errorMsg = @"停止麦克风失败";
+            break;
+            ///打开扬声器失败，例如在 Windows 或 Mac 设备，扬声器的配置程序（驱动程序）异常，禁用后重新启用设备，或者重启机器，或者更新配置程序
+            case ERR_SPEAKER_START_FAIL:// = -1321,
+            errorMsg = @"打开扬声器失败";
+            break;
+            ///扬声器设置参数失败
+            case ERR_SPEAKER_SET_PARAM_FAIL:// = -1322,
+            errorMsg = @"扬声器设置参数失败";
+            break;
+            ///停止扬声器失败
+            case ERR_SPEAKER_STOP_FAIL:// = -1323,
+            errorMsg = @"停止扬声器失败";
+            break;
+            ///开启系统声音录制失败，例如音频驱动插件不可用
+            case ERR_AUDIO_PLUGIN_START_FAIL:// = -1330,
+            errorMsg = @"开启系统声音录制失败";
+            break;
+            ///不支持的音频采样率
+            case ERR_UNSUPPORTED_SAMPLERATE:// = -1306,
+            errorMsg = @"不支持的音频采样率";
+            break;
+        default:
+            errorMsg = nil;
+            break;
+    }
+    return errorMsg;
+}
 @end

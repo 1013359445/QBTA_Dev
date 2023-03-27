@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, ScreenStatus) {
     ScreenStart,
-    ScreenWait,
     ScreenStop,
+    ScreenWait,
 };
 
 @interface TASharScreenManager : NSObject
@@ -32,9 +32,12 @@ shareInstance_interface(TASharScreenManager);
 - (void)stopLocalAudio;
 
 // 分享屏幕
-@property (assign, nonatomic) ScreenStatus screenStatus;//分享屏幕状态
+@property (assign, nonatomic) ScreenStatus shareScreenStatus;//分享屏幕状态
 - (void)startSharScreen;
 - (void)stopSharScreen;
+
+// 大屏观看
+- (void)seeUserVideoWithRemoteView:(UIView *)remoteView;
 
 @end
 

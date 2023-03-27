@@ -6,6 +6,8 @@
 //
 
 #import "TARightMenuView.h"
+#import "TASharScreenManager.h"
+#import "TADisplayScreen.h"
 
 int const IconID_Hi             = 1001;//hi
 int const IconID_Emoji          = 1002;//表情
@@ -30,6 +32,8 @@ int const IconID_Confetti       = 1006;//喝彩
 
 - (void)loadSubViews
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
+    
     [self setUserInteractionEnabled:YES];
     self.clipsToBounds = YES;
 
@@ -65,11 +69,29 @@ int const IconID_Confetti       = 1006;//喝彩
         case IconID_Applause://挥手
         {}break;
         case IconID_Large_Screen://大屏
-        {}break;
+        {
+            TACmdModel *cmd = [TACmdModel new];
+            cmd.cmd = [TADisplayScreen cmd];
+            cmd.animated = YES;
+            [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+        }break;
         case IconID_Confetti://喝彩
         {}break;
         default:
             break;
+    }
+}
+
+- (void)onScreenStatusChange
+{
+    UIButton *btn = [self viewWithTag:IconID_Large_Screen];
+
+    if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
+        [btn setEnabled:NO];
+    }else if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStop) {
+        [btn setEnabled:YES];
+    }else{
+        [btn setEnabled:YES];
     }
 }
 

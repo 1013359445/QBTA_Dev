@@ -17,7 +17,7 @@
     self.nickname = @"张三";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
-    self.pkid = self.phone ?: @(random() % 999 + 10000).stringValue;
+    self.pkid = [NSString stringWithFormat:@"%d",arc4random() % (999999 - 100000 + 1) + 100000];
 }
 
 @end

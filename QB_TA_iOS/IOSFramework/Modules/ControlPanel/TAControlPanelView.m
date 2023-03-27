@@ -39,8 +39,11 @@
 - (void)loadSubViews
 {
     //加入默认房间
-    [[TASharScreenManager shareInstance] enterRoom:135678];
-
+    [TASharScreenManager shareInstance];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[TASharScreenManager shareInstance] enterRoom:332243];
+    });
+    
     self.userInteractionEnabled = YES;
     self.isPutAway = NO;
     

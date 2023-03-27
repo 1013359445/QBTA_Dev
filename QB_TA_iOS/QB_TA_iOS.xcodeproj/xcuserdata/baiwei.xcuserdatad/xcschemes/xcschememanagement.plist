@@ -6,8 +6,6 @@
 	<dict>
 		<key>IOSFramework.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -15,11 +13,6 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>7A65B20A2977D21800B62F59</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7AC8D5F929875A07001E9F12</key>
 		<dict>
 			<key>primary</key>
 			<true/>

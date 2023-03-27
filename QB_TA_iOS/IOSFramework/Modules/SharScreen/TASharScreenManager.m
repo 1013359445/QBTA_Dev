@@ -69,7 +69,6 @@ shareInstance_implementation(TASharScreenManager);
     params.roomId = roomId;
     params.userId = userId;
     params.userSig = [GenerateTestUserSig genTestUserSig:userId];
-//    params.role = TRTCRoleAudience;
     self.isStartLocalAudio = NO;
     self.encParams.videoResolution = TRTCVideoResolution_1280_720;
     self.encParams.videoBitrate = 550;
@@ -83,13 +82,13 @@ shareInstance_implementation(TASharScreenManager);
 
 - (NSMutableOrderedSet *)anchorIdSet {
     if (!_anchorIdSet) {
-        _anchorIdSet = [[NSMutableOrderedSet alloc] initWithCapacity:6];
+        _anchorIdSet = [[NSMutableOrderedSet alloc] initWithCapacity:6];//6人以上同时说话过于混乱
     }
     return _anchorIdSet;
 }
 - (NSMutableOrderedSet *)userList {
     if (!_userList) {
-        _userList = [[NSMutableOrderedSet alloc] initWithCapacity:50];
+        _userList = [[NSMutableOrderedSet alloc] initWithCapacity:299];
     }
     return _userList;
 }
@@ -101,16 +100,13 @@ shareInstance_implementation(TASharScreenManager);
         [TAToast showTextDialog:kWindow msg:@"请稍等~当前对话人数过多"];
         return;
     }
-    // 开启麦克风采集
-    [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
-    
+    [self.trtcCloud muteLocalAudio:NO];//开始本地音频采集
     self.isStartLocalAudio = YES;
 }
 
 - (void)stopLocalAudio
 {
-    [self.trtcCloud stopLocalAudio];
-
+    [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
     self.isStartLocalAudio = NO;
 }
 
@@ -166,27 +162,22 @@ shareInstance_implementation(TASharScreenManager);
 
 //有其他人开始或结束分享屏幕
 - (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available {
-    if (available) {
-        self.remoteUserId = userId;
-        self.shareScreenStatus = ScreenWait;
-        if (self.remoteView) {
-            [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeSub view:self.remoteView];
-        }
-    } else {
-        self.remoteUserId = nil;
-        self.shareScreenStatus = ScreenStop;
-        for (UIView *view in [self.remoteView subviews]) {
-            [view removeFromSuperview];
-        }
-    }
+    [self onUserSubStreamAvailable:userId available:available];
 }
+
 - (void)onUserSubStreamAvailable:(NSString *)userId available:(BOOL)available {
     if (available) {
         self.remoteUserId = userId;
         self.shareScreenStatus = ScreenWait;
         if (self.remoteView) {
             self.remoteView.hidden = NO;
+//            // 将 denny 的主路画面切换到一个悬浮的小窗口中（假如该迷你小窗口为 miniFloatingView）
+//            [self.trtcCloud updateRemoteView:miniFloatingView streamType:TRTCVideoStreamTypeBig forUser:@"denny"];
             [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeSub view:self.remoteView];
+            // 将远端用户 的主路画面设置为填充模式
+            TRTCRenderParams *param = [[TRTCRenderParams alloc] init];
+            param.fillMode = TRTCVideoFillMode_Fit;
+            [self.trtcCloud setRemoteRenderParams:userId streamType:TRTCVideoStreamTypeSub params:param];
         }
     } else {
         self.remoteUserId = nil;
@@ -202,6 +193,10 @@ shareInstance_implementation(TASharScreenManager);
 - (void)onEnterRoom:(NSInteger)result {
     if (result > 0) {
         [TAToast showTextDialog:kWindow msg:@"Enter room succeed!"];
+        // 开启麦克风采集
+        [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
+        [self.trtcCloud muteLocalAudio:YES];
+        
     } else {
         [TAToast showTextDialog:kWindow msg:@"Enter room failed!"];
     }
@@ -239,7 +234,7 @@ shareInstance_implementation(TASharScreenManager);
 {
     self.remoteView = remoteView;
     if (_shareScreenStatus == ScreenWait && self.remoteUserId != nil) {
-        [self.trtcCloud startRemoteView:self.remoteUserId streamType:TRTCVideoStreamTypeSub view:remoteView];
+        [self onUserSubStreamAvailable:self.remoteUserId available:YES];
     }
 }
 

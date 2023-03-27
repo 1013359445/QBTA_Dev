@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0930BD29D15A190091623E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
+		7A0930BE29D15A2B0091623E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
 		7A1FD38129BB2622006C352F /* XxxxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD38029BB2622006C352F /* XxxxView.m */; };
 		7A3CACF3298A2E1600DD1998 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF2298A2E1600DD1998 /* AppDelegate.m */; };
 		7A3CACF6298A2E1600DD1998 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF5298A2E1600DD1998 /* SceneDelegate.m */; };
@@ -16,7 +18,6 @@
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
 		7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34A729A887C1009753FC /* UECommInterface.cpp */; };
-		7AC5E95529CD6FB8006FB4C0 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */; };
 		7AC5E95929CD6FB8006FB4C0 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */; };
 		7AC5E95D29CD6FB9006FB4C0 /* TXReplayKit_Screen.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
@@ -46,7 +47,6 @@
 		7AD4C24029CACC5400AFE5A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22729CACC2C00AFE5A4 /* QuartzCore.framework */; };
 		7AD4C24129CACC5400AFE5A4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22929CACC2C00AFE5A4 /* OpenAL.framework */; };
 		7AD4C24229CACC5400AFE5A4 /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22A29CACC2C00AFE5A4 /* MediaToolbox.framework */; };
-		7AD4C24429CACC5400AFE5A4 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */; };
 		7AD4C24529CACC5400AFE5A4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22D29CACC2C00AFE5A4 /* CoreMedia.framework */; };
 		7AD4C24629CACC5400AFE5A4 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22F29CACC2C00AFE5A4 /* MetalKit.framework */; };
 		7AD4C24729CACC5400AFE5A4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
@@ -100,6 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A0930BC29D15A190091623E /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		7A1FD37F29BB2622006C352F /* XxxxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XxxxView.h; sourceTree = "<group>"; };
 		7A1FD38029BB2622006C352F /* XxxxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XxxxView.m; sourceTree = "<group>"; };
 		7A23EE8F29CD813C00BB3A95 /* TXReplayKit_Screen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TXReplayKit_Screen.entitlements; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		7AD4C22E29CACC2C00AFE5A4 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		7AD4C22F29CACC2C00AFE5A4 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		7AD4C23229CACC2C00AFE5A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7AD4C23329CACC2C00AFE5A4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		7AD4C23429CACC2C00AFE5A4 /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
@@ -158,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0930BD29D15A190091623E /* ReplayKit.framework in Frameworks */,
 				7AD4C23B29CACC5400AFE5A4 /* Photos.framework in Frameworks */,
 				7AD4C23C29CACC5400AFE5A4 /* Metal.framework in Frameworks */,
 				7AD4C23D29CACC5400AFE5A4 /* CoreServices.framework in Frameworks */,
@@ -166,7 +167,6 @@
 				7AD4C24029CACC5400AFE5A4 /* QuartzCore.framework in Frameworks */,
 				7AD4C24129CACC5400AFE5A4 /* OpenAL.framework in Frameworks */,
 				7AD4C24229CACC5400AFE5A4 /* MediaToolbox.framework in Frameworks */,
-				7AD4C24429CACC5400AFE5A4 /* ReplayKit.framework in Frameworks */,
 				7AD4C24529CACC5400AFE5A4 /* CoreMedia.framework in Frameworks */,
 				7AD4C24629CACC5400AFE5A4 /* MetalKit.framework in Frameworks */,
 				7AD4C24729CACC5400AFE5A4 /* Accelerate.framework in Frameworks */,
@@ -192,9 +192,9 @@
 			files = (
 				7AC5E96429CD706E006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
 				7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
-				7AC5E95529CD6FB8006FB4C0 /* ReplayKit.framework in Frameworks */,
 				7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */,
 				7AC5E96329CD706A006FB4C0 /* libc++.tbd in Frameworks */,
+				7A0930BE29D15A2B0091623E /* ReplayKit.framework in Frameworks */,
 				7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
 				7AC5E96229CD7063006FB4C0 /* VideoToolbox.framework in Frameworks */,
 				7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */,
@@ -274,7 +274,7 @@
 				7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */,
 				7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */,
 				7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */,
-				7AD4C23129CACC2C00AFE5A4 /* ReplayKit.framework */,
+				7A0930BC29D15A190091623E /* ReplayKit.framework */,
 				7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */,
 				7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */,
 				7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */,
@@ -602,7 +602,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -644,7 +644,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

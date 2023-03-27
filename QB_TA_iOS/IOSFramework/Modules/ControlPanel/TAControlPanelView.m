@@ -41,7 +41,7 @@
     //加入默认房间
     [TASharScreenManager shareInstance];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TASharScreenManager shareInstance] enterRoom:332243];
+        [[TASharScreenManager shareInstance] enterRoom:332244];
     });
     
     self.userInteractionEnabled = YES;

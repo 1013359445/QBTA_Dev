@@ -111,6 +111,7 @@ shareInstance_implementation(TASharScreenManager);
 }
 
 # pragma mark - 共享屏幕
+// 开始屏幕分享
 - (void)startSharScreen
 {
     if (_shareScreenStatus == ScreenStop) {
@@ -127,8 +128,16 @@ shareInstance_implementation(TASharScreenManager);
     }
 }
 
+// 大屏观看
+- (void)seeUserVideoWithRemoteView:(UIView *)remoteView
+{
+    self.remoteView = remoteView;
+    if (_shareScreenStatus == ScreenWait && self.remoteUserId != nil) {
+        [self onUserSubStreamAvailable:self.remoteUserId available:YES];
+    }
+}
 
-# pragma mark - 懒加载
+# pragma mark - getter
 - (TRTCCloud *)trtcCloud {
     if (!_trtcCloud) {
         // 创建 SDK 实例（单例模式）并设置事件监听器
@@ -143,7 +152,7 @@ shareInstance_implementation(TASharScreenManager);
     }
     return _encParams;
 }
-#pragma mark - set
+#pragma mark - setter
 - (void)setShareScreenStatus:(ScreenStatus)shareScreenStatus
 {
     _shareScreenStatus = shareScreenStatus;
@@ -227,15 +236,6 @@ shareInstance_implementation(TASharScreenManager);
     NSInteger index = [self.anchorIdSet indexOfObject:userId];
     if (index != NSNotFound) { return; }
     [self.userList removeObject:userId];
-}
-
-#pragma mark - 大屏观看
-- (void)seeUserVideoWithRemoteView:(UIView *)remoteView
-{
-    self.remoteView = remoteView;
-    if (_shareScreenStatus == ScreenWait && self.remoteUserId != nil) {
-        [self onUserSubStreamAvailable:self.remoteUserId available:YES];
-    }
 }
 
 // 如果切换角色失败，onSwitchRole 回调的错误码便不是 0

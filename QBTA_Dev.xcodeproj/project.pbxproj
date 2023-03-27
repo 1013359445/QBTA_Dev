@@ -104,7 +104,7 @@
 		7A1FD37F29BB2622006C352F /* XxxxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XxxxView.h; sourceTree = "<group>"; };
 		7A1FD38029BB2622006C352F /* XxxxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XxxxView.m; sourceTree = "<group>"; };
 		7A23EE8F29CD813C00BB3A95 /* TXReplayKit_Screen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TXReplayKit_Screen.entitlements; sourceTree = "<group>"; };
-		7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QBTA_Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3CACEE298A2E1600DD1998 /* 清元宇宙.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "清元宇宙.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3CACF1298A2E1600DD1998 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A3CACF2298A2E1600DD1998 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7A3CACF4298A2E1600DD1998 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		7A3CACEF298A2E1600DD1998 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */,
+				7A3CACEE298A2E1600DD1998 /* 清元宇宙.app */,
 				7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */,
 			);
 			name = Products;
@@ -321,7 +321,7 @@
 			);
 			name = QBTA_Dev;
 			productName = QBTA_Dev;
-			productReference = 7A3CACEE298A2E1600DD1998 /* QBTA_Dev.app */;
+			productReference = 7A3CACEE298A2E1600DD1998 /* 清元宇宙.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7AC5E95329CD6FB8006FB4C0 /* TXReplayKit_Screen */ = {
@@ -613,7 +613,7 @@
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingMetaverse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "清元宇宙";
 				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -655,7 +655,7 @@
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingMetaverse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "清元宇宙";
 				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;

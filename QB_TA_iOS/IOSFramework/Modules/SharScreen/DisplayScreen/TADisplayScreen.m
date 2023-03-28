@@ -23,7 +23,8 @@
 
 + (CGSize)viewSize
 {
-    return CGSizeMake(kRelative(1100), kRelative(570));
+    
+    return CGSizeMake(SCREEN_HEIGHT * (16.0/9.0), SCREEN_HEIGHT);
 }
 
 - (void)loadSubViews

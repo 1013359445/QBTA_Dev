@@ -43,10 +43,13 @@
 {
     [self.view addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(SCREEN_HEIGHT * (1680.0f/750.0f));
+        make.height.mas_equalTo(SCREEN_HEIGHT);
     }];
     
-    [self.bgImageView addSubview:self.roleImageView];
+    [self.view addSubview:self.roleImageView];
     [self.roleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.bgImageView.mas_left).mas_offset(kRelative(300));
         make.bottom.mas_equalTo(kRelative(-75));
@@ -54,7 +57,7 @@
         make.height.mas_equalTo(kRelative(600));
     }];
 
-    [self.bgImageView addSubview:self.nameTextField];
+    [self.view addSubview:self.nameTextField];
     [self.nameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.roleImageView.mas_right).mas_offset(kRelative(-40));
         make.top.mas_equalTo(self.roleImageView.mas_top);
@@ -62,7 +65,7 @@
         make.height.mas_equalTo(kRelative(70));
     }];
 
-    [self.bgImageView addSubview:self.titleLabel];
+    [self.view addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kRelative(60));
         make.left.mas_equalTo(kRelative(730));
@@ -78,7 +81,7 @@
         make.right.mas_equalTo(kRelative(-300));
     }];
     
-    [self.bgImageView addSubview:self.collectionView];
+    [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(kRelative(730));
         make.right.mas_equalTo(kRelative(-80));
@@ -193,7 +196,7 @@
         _bgImageView = [UIImageView new];
         _bgImageView.userInteractionEnabled = YES;
         _bgImageView.image = kBundleImage(@"role_bg", @"Role");
-        _bgImageView.contentMode = UIViewContentModeLeft;
+        _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _bgImageView;
 }

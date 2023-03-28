@@ -17,6 +17,8 @@
 		7A3CAD01298A2E1700DD1998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3CACFF298A2E1700DD1998 /* LaunchScreen.storyboard */; };
 		7A3CAD04298A2E1700DD1998 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CAD03298A2E1700DD1998 /* main.m */; };
 		7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34A729A887C1009753FC /* UECommInterface.cpp */; };
+		7A7328F729D2F23200DBFC4F /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7328F629D2F23200DBFC4F /* IOSFramework.framework */; };
+		7A7328F829D2F23200DBFC4F /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7328F629D2F23200DBFC4F /* IOSFramework.framework */; };
 		7AC5E95929CD6FB8006FB4C0 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */; };
 		7AC5E95D29CD6FB9006FB4C0 /* TXReplayKit_Screen.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
@@ -26,7 +28,6 @@
 		7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
 		7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
 		7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
-		7AC611B729D19D8C00833933 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC611B629D19D8C00833933 /* IOSFramework.framework */; };
 		7AC611B829D19DDB00833933 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
 		7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
 		7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
@@ -118,13 +119,13 @@
 		7A3CAD03298A2E1700DD1998 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A4B34A729A887C1009753FC /* UECommInterface.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = UECommInterface.cpp; sourceTree = "<group>"; };
 		7A4B34A829A887C1009753FC /* UECommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UECommInterface.h; sourceTree = "<group>"; };
+		7A7328F629D2F23200DBFC4F /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
 		7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_ReplayKitExt.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_ReplayKitExt.framework; sourceTree = "<group>"; };
 		7AC5E93629CD5303006FB4C0 /* QBTA_Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QBTA_Dev.entitlements; sourceTree = "<group>"; };
 		7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TXReplayKit_Screen.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC5E95729CD6FB8006FB4C0 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
 		7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
 		7AC5E95A29CD6FB8006FB4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AC611B629D19D8C00833933 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
 		7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXFFmpeg.xcframework; sourceTree = "<group>"; };
@@ -182,7 +183,7 @@
 				7AD4C23929CACC2C00AFE5A4 /* libiconv.2.4.0.tbd in Frameworks */,
 				7AD4C23629CACC2C00AFE5A4 /* libresolv.tbd in Frameworks */,
 				7AD4C23729CACC2C00AFE5A4 /* libsqlite3.0.tbd in Frameworks */,
-				7AC611B729D19D8C00833933 /* IOSFramework.framework in Frameworks */,
+				7A7328F729D2F23200DBFC4F /* IOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +195,7 @@
 				7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
 				7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */,
 				7AC5E96329CD706A006FB4C0 /* libc++.tbd in Frameworks */,
+				7A7328F829D2F23200DBFC4F /* IOSFramework.framework in Frameworks */,
 				7A0930BE29D15A2B0091623E /* ReplayKit.framework in Frameworks */,
 				7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
 				7AC5E96229CD7063006FB4C0 /* VideoToolbox.framework in Frameworks */,
@@ -277,7 +279,7 @@
 				7A0930BC29D15A190091623E /* ReplayKit.framework */,
 				7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */,
 				7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */,
-				7AC611B629D19D8C00833933 /* IOSFramework.framework */,
+				7A7328F629D2F23200DBFC4F /* IOSFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -704,6 +706,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/QB_TA_iOS/IOSFramework/Third/TX",

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="375.5" y="40" width="145" height="32"/>
                                 <segments>
                                     <segment title="模拟测试"/>
-                                    <segment title="操作相应"/>
+                                    <segment title="操作响应"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="tintColor"/>
                             </segmentedControl>

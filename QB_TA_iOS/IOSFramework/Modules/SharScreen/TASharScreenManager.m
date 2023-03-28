@@ -31,13 +31,9 @@ shareInstance_implementation(TASharScreenManager);
 {
     self = [super init];
     if (self) {
-        self.isFirstStartLocalAudio = YES;
-        self.shareScreenStatus = ScreenStop;
-        self.trtcCloud.delegate = self;
     }
     return self;
 }
-
 
 # pragma mark - 房间-场景
 - (void)dealloc
@@ -49,7 +45,7 @@ shareInstance_implementation(TASharScreenManager);
 {
     [self exitRoom];
     kWeakSelf(self);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakself enterRoom:roomId];
     });
 }
@@ -65,6 +61,10 @@ shareInstance_implementation(TASharScreenManager);
 }
 
 - (void)enterRoom:(UInt32)roomId {
+    self.isFirstStartLocalAudio = YES;
+    self.shareScreenStatus = ScreenStop;
+    self.trtcCloud.delegate = self;
+
     self.roomId = roomId;
     NSString *userId = [TADataCenter shareInstance].userInfo.pkid;
     

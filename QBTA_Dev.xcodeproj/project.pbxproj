@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A0930BD29D15A190091623E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
 		7A0930BE29D15A2B0091623E /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
 		7A1FD38129BB2622006C352F /* XxxxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FD38029BB2622006C352F /* XxxxView.m */; };
 		7A3CACF3298A2E1600DD1998 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CACF2298A2E1600DD1998 /* AppDelegate.m */; };
@@ -27,12 +26,13 @@
 		7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23029CACC2C00AFE5A4 /* Accelerate.framework */; };
 		7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
 		7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
+		7AC611B729D19D8C00833933 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC611B629D19D8C00833933 /* IOSFramework.framework */; };
+		7AC611B829D19DDB00833933 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0930BC29D15A190091623E /* ReplayKit.framework */; };
 		7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */; };
 		7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; };
 		7AD4C21A29CAC83600AFE5A4 /* TXFFmpeg.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AD4C21B29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; };
 		7AD4C21C29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7AD4C21E29CACB7A00AFE5A4 /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */; };
 		7AD4C23529CACC2C00AFE5A4 /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23429CACC2C00AFE5A4 /* libbz2.1.0.tbd */; };
 		7AD4C23629CACC2C00AFE5A4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C22B29CACC2C00AFE5A4 /* libresolv.tbd */; };
 		7AD4C23729CACC2C00AFE5A4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD4C23329CACC2C00AFE5A4 /* libsqlite3.0.tbd */; };
@@ -124,11 +124,11 @@
 		7AC5E95729CD6FB8006FB4C0 /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
 		7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleHandler.m; sourceTree = "<group>"; };
 		7AC5E95A29CD6FB8006FB4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AC611B629D19D8C00833933 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
 		7ACB5A9C29964FE80005E0D5 /* QB_TA_iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QB_TA_iOS.xcodeproj; path = QB_TA_iOS/QB_TA_iOS.xcodeproj; sourceTree = "<group>"; };
 		7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = QB_TA_iOS/IOSFramework/Third/TX/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		7AD4C21729CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_TRTC.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_TRTC.framework; sourceTree = "<group>"; };
-		7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
 		7AD4C21F29CACC2C00AFE5A4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7AD4C22029CACC2C00AFE5A4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		7AD4C22129CACC2C00AFE5A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,7 +158,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A0930BD29D15A190091623E /* ReplayKit.framework in Frameworks */,
 				7AD4C23B29CACC5400AFE5A4 /* Photos.framework in Frameworks */,
 				7AD4C23C29CACC5400AFE5A4 /* Metal.framework in Frameworks */,
 				7AD4C23D29CACC5400AFE5A4 /* CoreServices.framework in Frameworks */,
@@ -170,6 +169,7 @@
 				7AD4C24529CACC5400AFE5A4 /* CoreMedia.framework in Frameworks */,
 				7AD4C24629CACC5400AFE5A4 /* MetalKit.framework in Frameworks */,
 				7AD4C24729CACC5400AFE5A4 /* Accelerate.framework in Frameworks */,
+				7AC611B829D19DDB00833933 /* ReplayKit.framework in Frameworks */,
 				7AD4C24829CACC5400AFE5A4 /* AVFoundation.framework in Frameworks */,
 				7AD4C24929CACC5400AFE5A4 /* CoreTelephony.framework in Frameworks */,
 				7AD4C24A29CACC5400AFE5A4 /* SystemConfiguration.framework in Frameworks */,
@@ -182,7 +182,7 @@
 				7AD4C23929CACC2C00AFE5A4 /* libiconv.2.4.0.tbd in Frameworks */,
 				7AD4C23629CACC2C00AFE5A4 /* libresolv.tbd in Frameworks */,
 				7AD4C23729CACC2C00AFE5A4 /* libsqlite3.0.tbd in Frameworks */,
-				7AD4C21E29CACB7A00AFE5A4 /* IOSFramework.framework in Frameworks */,
+				7AC611B729D19D8C00833933 /* IOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +277,7 @@
 				7A0930BC29D15A190091623E /* ReplayKit.framework */,
 				7AD4C1ED29CAC7B500AFE5A4 /* TXFFmpeg.xcframework */,
 				7AD4C1EC29CAC7B500AFE5A4 /* TXSoundTouch.xcframework */,
-				7AD4C21D29CACB7A00AFE5A4 /* IOSFramework.framework */,
+				7AC611B629D19D8C00833933 /* IOSFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -626,7 +626,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
@@ -656,7 +656,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingMetaverse;
 				PRODUCT_NAME = "清元宇宙";
-				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseDev;
+				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseAdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

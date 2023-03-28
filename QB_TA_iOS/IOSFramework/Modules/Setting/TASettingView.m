@@ -220,7 +220,7 @@
     if(!_bgImageView){
         _bgImageView = [UIImageView new];
         _bgImageView.userInteractionEnabled = YES;
-        _bgImageView.image = kBundleImage(@"setting_bg", @"Setting");
+        _bgImageView.image = kBundleImage(@"frame_view_bg", @"Commom");
         _bgImageView.layer.cornerRadius = kRelative(35);
         _bgImageView.layer.masksToBounds = YES;
         [_bgImageView setContentMode:UIViewContentModeScaleToFill];

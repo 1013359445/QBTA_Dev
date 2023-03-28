@@ -534,6 +534,8 @@
 		7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */; };
 		7AC611AE29D18FB600833933 /* TAMapListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC611AC29D18FB600833933 /* TAMapListView.h */; };
 		7AC611AF29D18FB600833933 /* TAMapListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC611AD29D18FB600833933 /* TAMapListView.m */; };
+		7AC611B329D1933E00833933 /* TAFileListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC611B129D1933E00833933 /* TAFileListView.h */; };
+		7AC611B429D1933E00833933 /* TAFileListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC611B229D1933E00833933 /* TAFileListView.m */; };
 		7AC8D5FD29875A07001E9F12 /* IOSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D5FC29875A07001E9F12 /* IOSFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8D60129875A23001E9F12 /* CommInterface.m */; };
 		7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC8D60229875A23001E9F12 /* CommInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1103,6 +1105,8 @@
 		7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TABroadcastExtensionLauncher.m; sourceTree = "<group>"; };
 		7AC611AC29D18FB600833933 /* TAMapListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMapListView.h; sourceTree = "<group>"; };
 		7AC611AD29D18FB600833933 /* TAMapListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMapListView.m; sourceTree = "<group>"; };
+		7AC611B129D1933E00833933 /* TAFileListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFileListView.h; sourceTree = "<group>"; };
+		7AC611B229D1933E00833933 /* TAFileListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAFileListView.m; sourceTree = "<group>"; };
 		7AC8D5FA29875A07001E9F12 /* IOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC8D5FC29875A07001E9F12 /* IOSFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSFramework.h; sourceTree = "<group>"; };
 		7AC8D60129875A23001E9F12 /* CommInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommInterface.m; sourceTree = "<group>"; };
@@ -2195,6 +2199,8 @@
 		7A8594A529ACB5FF00D6B51A /* FileList */ = {
 			isa = PBXGroup;
 			children = (
+				7AC611B129D1933E00833933 /* TAFileListView.h */,
+				7AC611B229D1933E00833933 /* TAFileListView.m */,
 			);
 			path = FileList;
 			sourceTree = "<group>";
@@ -2634,6 +2640,7 @@
 				7A3CAE6E298A462A00DD1998 /* IQKeyboardManagerConstantsInternal.h in Headers */,
 				7A3CB187298A565900DD1998 /* UIView+JKBlockGesture.h in Headers */,
 				7A8594B429ADA9C700D6B51A /* TALoginView.h in Headers */,
+				7AC611B329D1933E00833933 /* TAFileListView.h in Headers */,
 				7A3CB03B298A47AB00DD1998 /* ViewController+MASAdditions.h in Headers */,
 				7A3CAF42298A46EE00DD1998 /* SDAnimatedImageRep.h in Headers */,
 				7A3CB1C9298A565900DD1998 /* UIImageView+JKFaceAwareFill.h in Headers */,
@@ -2743,6 +2750,7 @@
 				7A3CB13A298A565900DD1998 /* UIImage+JKRemoteSize.m in Sources */,
 				7A3CAF88298A46EF00DD1998 /* SDImageCache.m in Sources */,
 				7A3CB1BD298A565900DD1998 /* UIBezierPath+JKSVGString.m in Sources */,
+				7AC611B429D1933E00833933 /* TAFileListView.m in Sources */,
 				7A3CAE13298A444800DD1998 /* Reachability.m in Sources */,
 				7A3CB003298A46EF00DD1998 /* SDFileAttributeHelper.m in Sources */,
 				7A3CB03C298A47AB00DD1998 /* MASViewConstraint.m in Sources */,

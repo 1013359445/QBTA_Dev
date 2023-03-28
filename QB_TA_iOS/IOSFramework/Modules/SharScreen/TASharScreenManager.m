@@ -17,6 +17,8 @@
 @property (weak, nonatomic) UIView *remoteView;
 //分享屏幕用户的id
 @property (copy, nonatomic) NSString *remoteUserId;
+@property (assign, nonatomic) int roomId;
+@property (nonatomic, assign) BOOL isFirstStartLocalAudio;
 
 @end
 
@@ -29,6 +31,7 @@ shareInstance_implementation(TASharScreenManager);
 {
     self = [super init];
     if (self) {
+        self.isFirstStartLocalAudio = YES;
         self.shareScreenStatus = ScreenStop;
         self.trtcCloud.delegate = self;
     }
@@ -62,6 +65,7 @@ shareInstance_implementation(TASharScreenManager);
 }
 
 - (void)enterRoom:(UInt32)roomId {
+    self.roomId = roomId;
     NSString *userId = [TADataCenter shareInstance].userInfo.pkid;
     
     TRTCParams *params = [[TRTCParams alloc] init];
@@ -100,6 +104,11 @@ shareInstance_implementation(TASharScreenManager);
         [TAToast showTextDialog:kWindow msg:@"请稍等~当前对话人数过多"];
         return;
     }
+    if (self.isFirstStartLocalAudio) {
+        // 开启麦克风采集
+        [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
+        self.isFirstStartLocalAudio = NO;
+    }
     [self.trtcCloud muteLocalAudio:NO];//开始本地音频采集
     self.isStartLocalAudio = YES;
 }
@@ -115,6 +124,12 @@ shareInstance_implementation(TASharScreenManager);
 - (void)startSharScreen
 {
     if (_shareScreenStatus == ScreenStop) {
+        if (self.isFirstStartLocalAudio) {
+            // 开启并暂停麦克风采集
+            [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
+            [self.trtcCloud muteLocalAudio:YES];
+            self.isFirstStartLocalAudio = NO;
+        }
         [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
         [TABroadcastExtensionLauncher launch];
     }
@@ -201,13 +216,9 @@ shareInstance_implementation(TASharScreenManager);
 // Listen to the onEnterRoom event of the SDK and learn whether the room is successfully entered
 - (void)onEnterRoom:(NSInteger)result {
     if (result > 0) {
-        [TAToast showTextDialog:kWindow msg:@"Enter room succeed!"];
-        // 开启麦克风采集
-        [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
-        [self.trtcCloud muteLocalAudio:YES];
-        
+        [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"成功加入房间:%d",self.roomId]];
     } else {
-        [TAToast showTextDialog:kWindow msg:@"Enter room failed!"];
+        [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"%d 进房失败!",self.roomId]];
     }
 }
 

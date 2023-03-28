@@ -13,6 +13,7 @@
 #import "TAPersonalView.h"
 #import "TAChatView.h"
 #import "TASharScreenManager.h"
+#import "TAMapListView.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -123,6 +124,11 @@
 {
     //测试代码
     [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送-官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，您可在此空间举行。文字过长滚动显示"];
+    
+    TACmdModel *cmd = [TACmdModel new];
+    cmd.cmd = [TAMapListView cmd];
+    cmd.animated = YES;
+    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }
 
 - (void)chatBtnClick

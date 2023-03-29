@@ -30,12 +30,13 @@
 {
 }
 
-- (void)willMoveToSuperview:(nullable UIView *)newSuperview
+- (instancetype)init
 {
-    [super willMoveToSuperview:newSuperview];
-    if (newSuperview) {
+    self = [super init];
+    if (self) {
         [self loadSubViews];
     }
+    return self;
 }
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated

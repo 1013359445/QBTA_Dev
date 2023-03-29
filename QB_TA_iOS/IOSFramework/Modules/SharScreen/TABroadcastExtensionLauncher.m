@@ -53,7 +53,6 @@ API_AVAILABLE(ios(12.0))
             NSDictionary* extension = [bundle.infoDictionary objectForKey:@"NSExtension"];
             if (extension == nil) { continue; }
             NSString* identifier = [extension objectForKey:@"NSExtensionPointIdentifier"];
-//            if ([identifier isEqualToString:@"com.gsdata.qingMetaverse.QBTA-Ext"]) {
             if ([identifier isEqualToString:@"com.apple.broadcast-services-upload"]) {
                 picker.preferredExtension = bundle.bundleIdentifier;
                 break;

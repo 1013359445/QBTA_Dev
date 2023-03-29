@@ -87,17 +87,12 @@
     }
 }
 
+//点击聊天背景
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == _inputTextField) {
-        [self.inputTextField becomeFirstResponder];
-    }
     if (hitView == _bgView) {
-        if ([self.inputTextField isFirstResponder]) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.inputTextField resignFirstResponder];
-            });
-
+        if ([_inputTextField isFirstResponder]) {
+            [self.inputTextField resignFirstResponder];
         }else{
             [self hideViewAnimated:YES];
         }
@@ -367,14 +362,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
 {
     if (!_inputTextField){
         _inputTextField = [UITextField new];
-        _inputTextField.textColor = kTAColor.c_32;
         _inputTextField.delegate = self;
-        _inputTextField.font = [UIFont systemFontOfSize:12];
-        _inputTextField.placeholder = @"说点啥~";
         _inputTextField.returnKeyType = UIReturnKeySend;
-        _inputTextField.delegate = self;
-        _inputTextField.userInteractionEnabled = YES;
-        _inputTextField.enabled = YES;
+        _inputTextField.placeholder = @"说点啥~";
+        _inputTextField.textColor = kTAColor.c_32;
+        _inputTextField.font = [UIFont systemFontOfSize:12];
     }
     return _inputTextField;
 }

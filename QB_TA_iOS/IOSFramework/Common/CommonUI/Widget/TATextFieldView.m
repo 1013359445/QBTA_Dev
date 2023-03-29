@@ -72,14 +72,6 @@
     _editIcon.hidden = !userInteractionEnabled;
 }
 
-- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == _textField) {
-        [_textField becomeFirstResponder];
-    }
-    return hitView;
-}
-
 - (void)setText:(NSString *)text
 {
     _text = text;

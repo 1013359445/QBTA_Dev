@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setTitle:(NSString *)title ContentText:(NSString *)content;
 - (void)setAttributedContent:(NSAttributedString *)attributedString;
+- (void)setAttributedContentWithHTML:(NSString *)name;
 
 @end
 

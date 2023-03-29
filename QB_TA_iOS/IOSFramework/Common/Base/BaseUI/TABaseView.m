@@ -66,7 +66,7 @@
 
     kWeakSelf(self);
     _inAnimateds = YES;
-    [UIView animateWithDuration:0.2 //动画时间
+    [UIView animateWithDuration:0.25 //动画时间
                           delay:0 //开始延迟时间
                         options:UIViewAnimationOptionCurveEaseInOut //弹入弹出
                      animations:^{
@@ -93,7 +93,7 @@
     }
     kWeakSelf(self);
     _inAnimateds = YES;
-    [UIView animateWithDuration:0.2 //动画时间
+    [UIView animateWithDuration:0.25 //动画时间
                           delay:0 //开始延迟时间
                         options:UIViewAnimationOptionCurveEaseInOut //弹入弹出
                      animations:^{

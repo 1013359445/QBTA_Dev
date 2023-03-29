@@ -8,11 +8,12 @@
 #import "TABaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol TASettingAboutViewDelegate <NSObject>
+- (void)settingAboutViewDidClickUserAgreement:(NSString *)scheme;
+@end
 
 @interface TASettingAboutView : TABaseView
-
-@property (nonatomic, copy)NSString *title;
-@property (nonatomic, retain)UITextView *textView;
+@property (nonatomic, weak)id<TASettingAboutViewDelegate> delegate;
 
 @end
 

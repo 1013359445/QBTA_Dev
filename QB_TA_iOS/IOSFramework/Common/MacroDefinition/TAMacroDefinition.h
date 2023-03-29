@@ -61,31 +61,8 @@
 
 #define kWindow [UIApplication sharedApplication].keyWindow
 
-//#define kBackView         for (UIView *item in kWindow.subviews) { \
-//if(item.tag == 10000) \
-//{ \
-//[item removeFromSuperview]; \
-//UIView * aView = [[UIView alloc] init]; \
-//aView.frame = [UIScreen mainScreen].bounds; \
-//aView.tag = 10000; \
-//aView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3]; \
-//[kWindow addSubview:aView]; \
-//} \
-//}
-
 #define kShowHUD [MBProgressHUD showHUDAddedTo:kWindow animated:YES]
 #define kShowHUDAndActivity kShowHUD;kShowNetworkActivityIndicator;
-
-//#define kRemoveBackView         for (UIView *item in kWindow.subviews) { \
-//if(item.tag == 10000) \
-//{ \
-//[UIView animateWithDuration:0.2 animations:^{ \
-//item.alpha = 0.0; \
-//} completion:^(BOOL finished) { \
-//[item removeFromSuperview]; \
-//}]; \
-//} \
-//}
 
 #define kHiddenHUD [MBProgressHUD hideHUDForView:kWindow animated:YES]
 #define kHiddenHUDAndAvtivity kHiddenHUD;kHideNetworkActivityIndicator;

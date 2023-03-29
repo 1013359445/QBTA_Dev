@@ -166,7 +166,7 @@
         return;
     }
     self.bgView.alpha = 0;
-    [UIView animateWithDuration:0.4 //动画时间
+    [UIView animateWithDuration:0.25 //动画时间
                           delay:0 //开始延迟时间
                         options:UIViewAnimationOptionCurveEaseInOut //淡入淡出
                      animations:^{
@@ -191,7 +191,7 @@
     }
     kWeakSelf(self);
     self.bgView.alpha = 0;
-    [UIView animateWithDuration:0.4 //动画时间
+    [UIView animateWithDuration:0.25 //动画时间
                           delay:0 //开始延迟时间
                         options:UIViewAnimationOptionCurveEaseInOut //淡入淡出
                      animations:^{
@@ -243,7 +243,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
         animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
     }
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(kRelative(-30) - animatedDistance);
         }];
@@ -257,7 +257,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
     CGRect viewFrame = self.frame;
     viewFrame.origin.y += animatedDistance;
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(kRelative(-30));
         }];

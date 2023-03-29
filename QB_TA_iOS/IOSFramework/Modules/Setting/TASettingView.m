@@ -12,7 +12,7 @@
 #import "TASettingVoiceView.h"
 #import "TAUserAgreementView.h"
 
-@interface TASettingView ()
+@interface TASettingView () <TAUserAgreementViewDelegate, TASettingAboutViewDelegate>
 @property (nonatomic, retain)TAUserAgreementView *userAgreementView;
 
 @property (nonatomic, retain)UIImageView    *bgImageView;
@@ -45,11 +45,21 @@
     self.userInteractionEnabled = YES;
     [self showEffectView:YES];
     
+    [self addSubview:self.userAgreementView];
+    [self.userAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo([TAUserAgreementView viewSize].width);
+        make.height.mas_equalTo([TAUserAgreementView viewSize].height);
+        make.centerY.mas_equalTo(0).offset(SCREEN_HEIGHT);
+        make.centerX.mas_equalTo(0);
+    }];
+
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
+        make.width.mas_equalTo([TASettingView viewSize].width);
+        make.height.mas_equalTo([TASettingView viewSize].height);
+        make.centerY.mas_equalTo(0);
+        make.centerX.mas_equalTo(0);
     }];
-    
 
     [self.bgImageView addSubview:self.leftView];
     [self.leftView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,7 +142,7 @@
 -(void)showContentWithSelectedIndex:(NSInteger)index
 {
     [self endEditing:YES];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         for (UIButton *btn in self.leftItemsArray) {
             [btn setSelected:NO];
         }
@@ -159,7 +169,6 @@
     }
 }
 
-
 -(void)closeBtnClick
 {
     [self hideViewAnimated:YES];
@@ -171,22 +180,56 @@
     [self showContentWithSelectedIndex:index];
 }
 
+#pragma mark - TAUserAgreementViewDelegate
+- (void)userAgreementViewDidClickCloseBtn
+{
+    kWeakSelf(self);
+    [UIView animateWithDuration:0.25 animations:^{
+        [weakself.bgImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+        }];
+        [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0).offset(SCREEN_HEIGHT);
+        }];
+        [weakself layoutIfNeeded];
+        [weakself layoutSubviews];
+    }];
+}
+
+#pragma mark - TASettingAboutViewDelegate
+- (void)settingAboutViewDidClickUserAgreement:(NSString *)scheme
+{
+    [self.userAgreementView setAttributedContentWithHTML:scheme];
+
+    kWeakSelf(self);
+    [UIView animateWithDuration:0.25 animations:^{
+        [weakself.bgImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0).offset(-SCREEN_HEIGHT);
+        }];
+        [weakself.userAgreementView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+        }];
+        [weakself layoutIfNeeded];
+        [weakself layoutSubviews];
+    }];
+}
+
 #pragma mark - lazy load
+-(TAUserAgreementView*)userAgreementView{
+    if (!_userAgreementView){
+        _userAgreementView = [TAUserAgreementView new];
+        _userAgreementView.delegate = self;
+        _userAgreementView.hiddenBottom = YES;
+    }
+    return _userAgreementView;
+}
+
 -(TASettingAboutView     *)aboutView
 {
-    if (!_aboutView)
-    {
+    if (!_aboutView){
         _aboutView = [TASettingAboutView new];
+        _aboutView.delegate = self;
         _aboutView.tag = 102;
-        _aboutView.title = @"关于我们";
-        NSData *data = [NSBundle ta_fileWithBundle:@"yszc.html"];
-        NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSMutableAttributedString *attributeString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
-        @{
-            NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)
-        }documentAttributes:nil error:nil];
-        _aboutView.textView.attributedText = attributeString;
     }
     return _aboutView;
 }

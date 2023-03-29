@@ -242,7 +242,7 @@
     }
     
 
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.2f animations:^{
         weakself.passwordInputVIew.alpha = 0.5;
 
         [weakself.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -253,7 +253,7 @@
         [weakself.frameImageView layoutSubviews];
     } completion:^(BOOL finished) {
         if (finished) {
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:0.2f animations:^{
                 weakself.passwordInputVIew.alpha = 1;
 
                 [weakself.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -265,7 +265,7 @@
         }
     }];
 
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         change();
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
@@ -300,7 +300,7 @@
         return;
     }
     
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.2f animations:^{
         weakself.codeInputVIew.alpha = 0.5;
         [weakself.codeInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo([TALoginView viewSize].width*2);
@@ -309,7 +309,7 @@
         [weakself.frameImageView layoutSubviews];
     } completion:^(BOOL finished) {
         if (finished) {
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:0.2f animations:^{
                 weakself.codeInputVIew.alpha = 1;
 
                 [weakself.passwordInputVIew mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -321,7 +321,7 @@
         }
     }];
         
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         change();
         [weakself.tabView layoutIfNeeded];
         [weakself.tabView layoutSubviews];
@@ -676,7 +676,7 @@
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.agreementText.text attributes:attributes];
     
-    [attributedString addAttribute:NSLinkAttributeName value:@"fwxy://" range:NSMakeRange(strA.length,strB.length)];
+    [attributedString addAttribute:NSLinkAttributeName value:@"yhxy://" range:NSMakeRange(strA.length,strB.length)];
     [attributedString addAttribute:NSLinkAttributeName value:@"yszc://" range:NSMakeRange(strA.length+strB.length+strC.length,strD.length)];
     
     [attributedString addAttribute:NSForegroundColorAttributeName value:gray range:NSMakeRange(0,info_str.length)];

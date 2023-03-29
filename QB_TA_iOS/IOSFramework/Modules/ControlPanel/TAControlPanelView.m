@@ -163,7 +163,7 @@
         alpha = 1;
     }
     
-    [UIView animateWithDuration:.2 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.putAwayBtn.transform = CGAffineTransformMakeRotation(rotation);
         self.topMenuView.alpha = alpha;
         self.rightMenuView.alpha = alpha;

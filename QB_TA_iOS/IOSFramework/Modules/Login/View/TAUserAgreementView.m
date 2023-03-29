@@ -29,8 +29,6 @@
 
 - (void)loadSubViews
 {
-    self.hiddenBottom = NO;
-    
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(0);
@@ -64,7 +62,11 @@
         make.top.mas_equalTo(self.textView.contentSize.height);
         make.left.mas_equalTo(0);
         make.width.mas_equalTo([TAUserAgreementView viewSize].width-kRelative(80));
-        make.height.mas_equalTo(kRelative(100));
+        if (_hiddenBottom){
+            make.height.mas_equalTo(0);
+        }else{
+            make.height.mas_equalTo(kRelative(100));
+        }
     }];
 
     [self.bottomView addSubview:self.cancelBtn];
@@ -116,10 +118,22 @@
 {
     [self.textView jk_scrollToTopAnimated:NO];;
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(kRelative(24));
+        make.top.mas_equalTo(kRelative(40));
     }];
     self.textView.attributedText = attributedString;
     [self updateBottomViewConstraints];
+}
+
+- (void)setAttributedContentWithHTML:(NSString *)scheme
+{
+    NSData *data = [NSBundle ta_fileWithBundle:[NSString stringWithFormat:@"%@.html",scheme]];
+    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSMutableAttributedString *attributeString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
+    @{
+        NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
+        NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)
+    }documentAttributes:nil error:nil];
+    [self setAttributedContent:attributeString];
 }
 
 - (void)updateBottomViewConstraints
@@ -213,6 +227,7 @@
 {
     if (!_bottomView) {
         _bottomView = [[UIView alloc] init];
+        _bottomView.clipsToBounds = YES;
     }
     return _bottomView;
 }

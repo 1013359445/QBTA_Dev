@@ -72,7 +72,7 @@
 - (void)userAgreementViewDidClickCloseBtn
 {
     kWeakSelf(self);
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         [weakself.loginView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0);
         }];
@@ -92,17 +92,10 @@
 #pragma mark - TALoginViewDelegate
 - (void)loginViewDidClickUserAgreement:(NSString *)scheme
 {
-    NSData *data = [NSBundle ta_fileWithBundle:[NSString stringWithFormat:@"%@.html",scheme]];
-    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSMutableAttributedString *attributeString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
-    @{
-        NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-        NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)
-    }documentAttributes:nil error:nil];
-    [self.userAgreementView setAttributedContent:attributeString];
+    [self.userAgreementView setAttributedContentWithHTML:scheme];
 
     kWeakSelf(self);
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         [weakself.loginView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(0).offset(-SCREEN_HEIGHT);
         }];

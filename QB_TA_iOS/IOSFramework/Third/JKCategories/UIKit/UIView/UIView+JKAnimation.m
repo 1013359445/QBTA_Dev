@@ -65,7 +65,7 @@ float jk_radiansForDegrees(int degrees) {
     }
     
     // Do the animation
-    [UIView animateWithDuration:0.3 
+    [UIView animateWithDuration:0.3
                           delay:0.0 
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{

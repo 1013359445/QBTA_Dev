@@ -7,7 +7,7 @@
 
 @implementation NSBundle (TAImage)
 
-+ (UIImage *)mj_ImageWithName:(NSString *)imageName folder:(NSString *)folder
++ (UIImage *)ta_ImageWithName:(NSString *)imageName folder:(NSString *)folder
 {
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
     if (!bundlePath) {
@@ -19,6 +19,19 @@
     
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     return image;
+}
+
++ (NSData *)ta_fileWithBundle:(NSString *)fileName
+{
+    if (!fileName) fileName = @"";
+
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
+    if (!bundlePath) {
+        bundlePath = [[NSBundle mainBundle] pathForResource:@"TABundle" ofType:@"bundle"];
+    }
+    NSString *filePath = [bundlePath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",fileName]];
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    return fileData;
 }
 
 @end

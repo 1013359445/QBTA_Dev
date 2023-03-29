@@ -676,8 +676,8 @@
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.agreementText.text attributes:attributes];
     
-    [attributedString addAttribute:NSLinkAttributeName value:@"yonghuxieyi://" range:NSMakeRange(strA.length,strB.length)];
-    [attributedString addAttribute:NSLinkAttributeName value:@"yinsizhengce://" range:NSMakeRange(strA.length+strB.length+strC.length,strD.length)];
+    [attributedString addAttribute:NSLinkAttributeName value:@"fwxy://" range:NSMakeRange(strA.length,strB.length)];
+    [attributedString addAttribute:NSLinkAttributeName value:@"yszc://" range:NSMakeRange(strA.length+strB.length+strC.length,strD.length)];
     
     [attributedString addAttribute:NSForegroundColorAttributeName value:gray range:NSMakeRange(0,info_str.length)];
     

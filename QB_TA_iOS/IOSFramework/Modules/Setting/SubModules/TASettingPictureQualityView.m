@@ -1,14 +1,14 @@
 //
-//  TASettingLightView.m
+//  TASettingPictureQualityView.m
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/3/9.
 //
 
-#import "TASettingLightView.h"
+#import "TASettingPictureQualityView.h"
 #import "TASegmentedControl.h"
 
-@interface TASettingLightView ()
+@interface TASettingPictureQualityView ()
 @property (nonatomic, retain)UILabel    *effectTitle;
 @property (nonatomic, retain)UIButton   *effect_1;
 @property (nonatomic, retain)UIButton   *effect_2;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation TASettingLightView
+@implementation TASettingPictureQualityView
 
 + (CGSize)viewSize
 {

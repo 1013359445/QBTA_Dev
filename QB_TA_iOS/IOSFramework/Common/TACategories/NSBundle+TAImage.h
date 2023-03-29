@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSBundle (TAImage)
-+ (UIImage *)mj_ImageWithName:(NSString *)imageName folder:(NSString *)folder;
++ (UIImage *)ta_ImageWithName:(NSString *)imageName folder:(NSString *)folder;
++ (NSData *)ta_fileWithBundle:(NSString *)fileName;
 @end
 
 NS_ASSUME_NONNULL_END

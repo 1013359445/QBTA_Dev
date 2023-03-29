@@ -9,7 +9,6 @@
 
 @interface TASettingAboutView ()
 @property (nonatomic, retain)UILabel *titleLabel;
-@property (nonatomic, retain)UITextView *textView;
 @end
 
 @implementation TASettingAboutView
@@ -40,12 +39,6 @@
 {
     _title = title;
     self.titleLabel.text = title;
-}
-
-- (void)setContent:(NSString *)content
-{
-    _content = content;
-    self.textView.text = content;
 }
 
 - (UITextView *)textView

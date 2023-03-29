@@ -7,9 +7,6 @@
 
 #import "TAUserAgreementView.h"
 
-NSString * const UserAgreementString = @"用户协议：\n到家了甲方i啊金额临汾IE登记理发手机打给哦in飞机卡拉季阿卡到哪国际卡垃圾发古拉克发几个四大金刚开了房间卡古拉； 1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。";
-NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。\n\n1。。。冻干粉金佛IG久啊发i加更；啊咖啡馆打客服金卡价；发is接待；放假四大金刚i及哦合计溶剂热i哦换季很尬办法金卡赌官方解决而韩国i和很尬hiu额和隔热管";
-
 @interface TAUserAgreementView () <UITextViewDelegate>
 
 @property (nonatomic, retain)UIImageView    *bgImageView;
@@ -32,6 +29,8 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
 
 - (void)loadSubViews
 {
+    self.hiddenBottom = NO;
+    
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(0);
@@ -42,12 +41,6 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
         make.centerX.mas_equalTo(0);
         make.height.mas_equalTo(kRelative(60));
         make.top.mas_equalTo(kRelative(24));
-    }];
-    [self.bgImageView addSubview:self.closeBtn];
-    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(self.titleLabel);
-        make.width.height.mas_equalTo(kRelative(66));
-        make.right.mas_equalTo(kRelative(-12));
     }];
     
     [self.bgImageView addSubview:self.textView];
@@ -88,25 +81,52 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
         make.right.mas_equalTo(-kRelative(20));
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setTitle:@"《用户协议》及《隐私政策》" ContentText:[NSString stringWithFormat:@"%@\n\n\n%@", UserAgreementString, PrivacyPolicyString]];
-    });
+    [self.bgImageView addSubview:self.closeBtn];
+    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(self.titleLabel);
+        make.width.height.mas_equalTo(kRelative(66));
+        make.right.mas_equalTo(kRelative(-12));
+    }];
+}
+
+- (void)setHiddeBottom:(BOOL)hiddenBottom
+{
+    _hiddenBottom = hiddenBottom;
+    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+        if (hiddenBottom){
+            make.height.mas_equalTo(0);
+        }else{
+            make.height.mas_equalTo(kRelative(100));
+        }
+    }];
 }
 
 - (void)setTitle:(NSString *)title ContentText:(NSString *)content
 {
+    [self.textView jk_scrollToTopAnimated:NO];;
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kRelative(100));
+    }];
     self.titleLabel.text = title;
     self.textView.text = content;
     [self updateBottomViewConstraints];
 }
 
-- (void)setAttributedContent:(NSAttributedString *)attributedString{
+- (void)setAttributedContent:(NSAttributedString *)attributedString
+{
+    [self.textView jk_scrollToTopAnimated:NO];;
+    [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(kRelative(24));
+    }];
     self.textView.attributedText = attributedString;
     [self updateBottomViewConstraints];
 }
 
 - (void)updateBottomViewConstraints
 {
+    if (_hiddenBottom) {
+        return;
+    }
     [self.textView layoutSubviews];
     CGSize textViewContentSize = self.textView.contentSize;
     [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -201,7 +221,7 @@ NSString * const PrivacyPolicyString = @"隐私政策：\n1。。。\n\n1。。�
     if (!_cancelBtn){
         _cancelBtn = [UIButton new];
         [_cancelBtn jk_setBackgroundColor:kTAColor.c_F0 forState:UIControlStateNormal];
-        [_cancelBtn setTitle:@"不继续" forState:UIControlStateNormal];
+        [_cancelBtn setTitle:@"返 回" forState:UIControlStateNormal];
         [_cancelBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
         [_cancelBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
         _cancelBtn.layer.cornerRadius = kRelative(35);

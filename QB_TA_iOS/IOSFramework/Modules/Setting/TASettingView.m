@@ -8,20 +8,22 @@
 #import "TASettingView.h"
 #import "TASettingBasicsView.h"
 #import "TASettingAboutView.h"
-#import "TASettingLightView.h"
+#import "TASettingPictureQualityView.h"
 #import "TASettingVoiceView.h"
+#import "TAUserAgreementView.h"
 
 @interface TASettingView ()
+@property (nonatomic, retain)TAUserAgreementView *userAgreementView;
 
 @property (nonatomic, retain)UIImageView    *bgImageView;
+@property (nonatomic, retain)UIView         *leftView;
 @property (nonatomic, retain)UIButton       *closeBtn;
 @property (nonatomic, retain)UIImageView    *selectBGView;
 @property (nonatomic, retain)NSMutableArray *leftItemsArray;
 
 @property (nonatomic, retain)TASettingBasicsView    *basicsView;
-@property (nonatomic, retain)TASettingAboutView   *privacyView;
 @property (nonatomic, retain)TASettingAboutView     *aboutView;
-@property (nonatomic, retain)TASettingLightView     *lightView;
+//@property (nonatomic, retain)TASettingPictureQualityView *pictureQuality;
 @property (nonatomic, retain)TASettingVoiceView     *voicView;
 
 @end
@@ -48,7 +50,14 @@
         make.edges.mas_equalTo(0);
     }];
     
-    [self.bgImageView addSubview:self.selectBGView];
+
+    [self.bgImageView addSubview:self.leftView];
+    [self.leftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(kRelative(0));
+        make.width.mas_equalTo(kRelative(280));
+    }];
+    [self.leftView addSubview:self.selectBGView];
     [self.selectBGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kRelative(56));
         make.left.mas_equalTo(kRelative(23));
@@ -56,14 +65,14 @@
         make.height.mas_equalTo(kRelative(88));
     }];
 
-    NSArray *items = @[@"时空场景",@"声音",@"场景控制",@"关于我们",@"隐私条款"];
+    NSArray *items = @[@"时空场景",@"声音",@"关于我们"];
     for (NSString *text in items) {
         NSInteger index = [items indexOfObject:text];
         UIView *blockView = [[UIView alloc] init];
         blockView.layer.borderWidth = kRelative(2);
         blockView.layer.borderColor = kTAColor.c_49.CGColor;
         blockView.transform = CGAffineTransformMakeRotation(M_PI_4);
-        [self.bgImageView insertSubview:blockView belowSubview:self.selectBGView];
+        [self.leftView insertSubview:blockView belowSubview:self.selectBGView];
         [blockView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kRelative(94) + kRelative(index * 90));
             make.left.mas_equalTo(kRelative(59));
@@ -73,7 +82,7 @@
         [btn setTitle:text forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         btn.titleLabel.textAlignment = NSTextAlignmentLeft;
-        [self.bgImageView insertSubview:btn aboveSubview:self.selectBGView];
+        [self.leftView insertSubview:btn aboveSubview:self.selectBGView];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(blockView.mas_centerY);
             make.width.mas_equalTo(kRelative(208));
@@ -90,32 +99,27 @@
         [self.leftItemsArray addObject:btn];
     }
     
-    [self addSubview:self.basicsView];
+    [self.bgImageView addSubview:self.basicsView];
     [self.basicsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
         make.width.mas_equalTo([TASettingBasicsView viewSize].width);
         make.height.mas_equalTo([TASettingBasicsView viewSize].height);
     }];
-    
-    [self addSubview:self.privacyView];
-    [self.privacyView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.width.height.mas_equalTo(self.basicsView);
-    }];
-    [self addSubview:self.aboutView];
-    [self.aboutView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.width.height.mas_equalTo(self.basicsView);
-    }];
-    [self addSubview:self.lightView];
-    [self.lightView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.top.width.height.mas_equalTo(self.basicsView);
-    }];
-    [self addSubview:self.voicView];
+    [self.bgImageView addSubview:self.voicView];
     [self.voicView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.top.width.height.mas_equalTo(self.basicsView);
     }];
-    
-    [self addSubview:self.closeBtn];
+    //    [self.bgImageView addSubview:self.pictureQuality];
+    //    [self.pictureQuality mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.right.top.width.height.mas_equalTo(self.basicsView);
+    //    }];
+    [self.bgImageView addSubview:self.aboutView];
+    [self.aboutView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.width.height.mas_equalTo(self.basicsView);
+    }];
+
+    [self.bgImageView addSubview:self.closeBtn];
     [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kRelative(12));
         make.right.mas_equalTo(kRelative(-12));
@@ -138,17 +142,19 @@
         [self.selectBGView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(kRelative(56) + kRelative(index * 90));
         }];
-        [self.bgImageView layoutIfNeeded];
-        [self.bgImageView layoutSubviews];
+        [self.leftView layoutIfNeeded];
+        [self.leftView layoutSubviews];
     }];
     
     //右侧内容变化
-    for (int tag = 100; tag < 105; tag++) {
+    for (int tag = 100; tag < 103; tag++) {
         UIView *view = [self viewWithTag:tag];
-        if (tag - 100 == index) {
-            view.hidden = NO;
-        }else{
-            view.hidden = YES;
+        if (view){
+            if (tag - 100 == index) {
+                view.hidden = NO;
+            }else{
+                view.hidden = YES;
+            }
         }
     }
 }
@@ -166,45 +172,33 @@
 }
 
 #pragma mark - lazy load
--(TASettingBasicsView *)basicsView
-{
-    if(!_basicsView){
-        _basicsView = [TASettingBasicsView new];
-        _basicsView.tag = 100;
-    }
-    return _basicsView;
-}
--(TASettingAboutView   *)privacyView
-{
-    if (!_privacyView)
-    {
-        _privacyView = [TASettingAboutView new];
-        _privacyView.tag = 104;
-        _privacyView.title = @"隐私政策";
-        _privacyView.content = @"隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。隐私政策。。。。。。。。。。。。。。。。。。。。。。。。。。。。。";
-    }
-    return _privacyView;
-}
 -(TASettingAboutView     *)aboutView
 {
     if (!_aboutView)
     {
         _aboutView = [TASettingAboutView new];
-        _aboutView.tag = 103;
+        _aboutView.tag = 102;
         _aboutView.title = @"关于我们";
-        _aboutView.content = @"关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。关于我们。。。。。。。。。。。。。。。。。。。。。。。。。。。。。";
+        NSData *data = [NSBundle ta_fileWithBundle:@"yszc.html"];
+        NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSMutableAttributedString *attributeString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
+        @{
+            NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)
+        }documentAttributes:nil error:nil];
+        _aboutView.textView.attributedText = attributeString;
     }
     return _aboutView;
 }
--(TASettingLightView     *)lightView
-{
-    if (!_lightView)
-    {
-        _lightView = [TASettingLightView new];
-        _lightView.tag = 102;
-    }
-    return _lightView;
-}
+//-(TASettingPictureQualityView *)pictureQuality
+//{
+//    if (!_pictureQuality)
+//    {
+//        _pictureQuality = [TASettingPictureQualityView new];
+//        _pictureQuality.tag = 102;
+//    }
+//    return _pictureQuality;
+//}
 -(TASettingVoiceView     *)voicView
 {
     if (!_voicView)
@@ -213,6 +207,15 @@
         _voicView.tag = 101;
     }
     return _voicView;
+}
+
+-(TASettingBasicsView *)basicsView
+{
+    if(!_basicsView){
+        _basicsView = [TASettingBasicsView new];
+        _basicsView.tag = 100;
+    }
+    return _basicsView;
 }
 
 -(UIImageView *)bgImageView
@@ -249,74 +252,14 @@
     return _selectBGView;
 }
 
+-(UIView *)leftView
+{
+    if (!_leftView)
+    {
+        _leftView = [UIView new];
+        _leftView.userInteractionEnabled = YES;
+    }
+    return _leftView;
+}
+
 @end
-
-
-
-//@interface TASettingView ()
-//
-//@property (nonatomic, retain)UIImageView    *bgImageView;
-//@property (nonatomic, retain)UIButton       *closeBtn;
-//
-//@end
-//
-//@implementation TASettingView
-//
-//+ (NSString *)cmd{
-//    return @"setting";
-//}
-//
-//+ (CGSize)viewSize
-//{
-//    return CGSizeMake(kRelative(1100), kRelative(570));
-//}
-//
-//- (void)loadSubViews
-//{
-//    self.userInteractionEnabled = YES;
-//    [self showEffectView:YES];
-//
-//    [self addSubview:self.bgImageView];
-//    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(0);
-//    }];
-//
-//    [self addSubview:self.closeBtn];
-//    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(kRelative(12));
-//        make.right.mas_equalTo(kRelative(-12));
-//        make.width.height.mas_equalTo(kRelative(66));
-//    }];
-//
-//}
-//
-//-(void)closeBtnClick
-//{
-//    [self hideViewAnimated:YES];
-//}
-//
-//#pragma mark - lazy load
-//-(UIImageView*)bgImageView
-//{
-//    if(!_bgImageView){
-//        _bgImageView = [UIImageView new];
-//        _bgImageView.userInteractionEnabled = YES;
-//        _bgImageView.image = kBundleImage(@"personal_bg", @"Personal");
-//        _bgImageView.layer.cornerRadius = kRelative(35);
-//        _bgImageView.layer.masksToBounds = YES;
-//        [_bgImageView setContentMode:UIViewContentModeScaleAspectFill];
-//    }
-//    return _bgImageView;
-//}
-//
-//-(UIButton       *)closeBtn
-//{
-//    if (!_closeBtn)
-//    {
-//        _closeBtn = [UIButton new];
-//        [_closeBtn setImage:kBundleImage(@"commom_close_btn", @"Commom") forState:UIControlStateNormal];
-//        [_closeBtn addTarget:self action:@selector(closeBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _closeBtn;
-//}
-//@end

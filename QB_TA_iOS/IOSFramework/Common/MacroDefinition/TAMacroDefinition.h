@@ -12,7 +12,7 @@
 #define kTAColor [TACommonColor shareInstance]
 
 //获取图片资源
-#define kBundleImage(imgName,folderName) [NSBundle mj_ImageWithName:imgName folder:folderName]
+#define kBundleImage(imgName,folderName) [NSBundle ta_ImageWithName:imgName folder:folderName]
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
 

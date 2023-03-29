@@ -19,7 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TAUserAgreementView : TABaseView
 @property (nonatomic, weak)id<TAUserAgreementViewDelegate> delegate;
+@property (nonatomic, assign)BOOL hiddenBottom;
 
+- (void)setTitle:(NSString *)title ContentText:(NSString *)content;
+- (void)setAttributedContent:(NSAttributedString *)attributedString;
 
 @end
 

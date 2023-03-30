@@ -129,9 +129,6 @@
 //切换场景
 - (void)changeSpaceBtnClick
 {
-    //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送-官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，您可在此空间举行。文字过长滚动显示"];
-    
     TACmdModel *cmd = [TACmdModel new];
     cmd.cmd = [TARoomListView cmd];
     cmd.animated = YES;
@@ -140,8 +137,6 @@
 
 - (void)chatBtnClick
 {
-    //测试代码
-    [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送：欢迎来到无尽之塔Amazing space无限拓展户外空间"];
     TACmdModel *cmd = [TACmdModel new];
     cmd.cmd = [TAChatView cmd];
     cmd.animated = YES;

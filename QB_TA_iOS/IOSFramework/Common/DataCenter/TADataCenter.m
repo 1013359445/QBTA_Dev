@@ -6,7 +6,6 @@
 //
 
 #import "TADataCenter.h"
-#import "TAAnnouncementView.h"
 
 @interface TADataCenter ()
 

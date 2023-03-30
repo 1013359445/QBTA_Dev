@@ -65,7 +65,6 @@ shareInstance_implementation(TAAnnouncementView);
         [self showText];
     }
 }
-//#import "UILabel+JKSuggestSize.h"
 
 - (void)showText
 {
@@ -75,7 +74,7 @@ shareInstance_implementation(TAAnnouncementView);
     }
     
     _isInAction = YES;
-    _bgImageView.alpha = 0.5;
+    _bgImageView.alpha = 0.8;
     NSString *text = [_contentQueue firstObject];
     
     KJMarqueeLabel *contentLabel = [[KJMarqueeLabel alloc] initWithFrame:CGRectMake(kRelative(20), kRelative(20), kRelative(760), kRelative(40))];

@@ -39,11 +39,19 @@
     return CGSizeMake(kRelative(1100), kRelative(570));
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.showEffectView = YES;
+    }
+    return self;
+}
+
 - (void)loadSubViews
 {
     self.leftItemsArray = [NSMutableArray array];
     self.userInteractionEnabled = YES;
-    [self showEffectView:YES];
     
     [self addSubview:self.userAgreementView];
     [self.userAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {

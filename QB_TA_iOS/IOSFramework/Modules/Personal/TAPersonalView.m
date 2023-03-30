@@ -39,13 +39,21 @@
     return CGSizeMake(kRelative(1100), kRelative(570));
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.showEffectView = YES;
+    }
+    return self;
+}
+
 - (void)loadSubViews
 {
     self.characterData = @"123";//获取角色信息
 
     self.userInteractionEnabled = YES;
     self.isShowInfo = YES;
-    [self showEffectView:YES];
 
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -1,17 +1,17 @@
 //
-//  TASharScreenManager.m
+//  TARoomManager.m
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/3/23.
 //
 
-#import "TASharScreenManager.h"
+#import "TARoomManager.h"
 
 #import "GenerateTestUserSig.h"
 #import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 #import "TABroadcastExtensionLauncher.h"
 
-@interface TASharScreenManager ()<TRTCCloudDelegate>
+@interface TARoomManager ()<TRTCCloudDelegate>
 @property (strong, nonatomic) TRTCCloud *trtcCloud;
 @property (strong, nonatomic) TRTCVideoEncParam *encParams;
 @property (weak, nonatomic) UIView *remoteView;
@@ -24,8 +24,8 @@
 
 #define APPGROUP @"group.com.gsdata.qingReplay"
 
-@implementation TASharScreenManager
-shareInstance_implementation(TASharScreenManager);
+@implementation TARoomManager
+shareInstance_implementation(TARoomManager);
 
 - (instancetype)init
 {
@@ -45,7 +45,7 @@ shareInstance_implementation(TASharScreenManager);
 {
     [self exitRoom];
     kWeakSelf(self);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakself enterRoom:roomId];
     });
 }
@@ -61,12 +61,13 @@ shareInstance_implementation(TASharScreenManager);
 }
 
 - (void)enterRoom:(UInt32)roomId {
+    kShowHUDAndActivity;
     self.isFirstStartLocalAudio = YES;
     self.shareScreenStatus = ScreenStop;
     self.trtcCloud.delegate = self;
 
     self.roomId = roomId;
-    NSString *userId = [TADataCenter shareInstance].userInfo.pkid;
+    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
     
     TRTCParams *params = [[TRTCParams alloc] init];
     params.sdkAppId = SDKAppID;
@@ -220,6 +221,7 @@ shareInstance_implementation(TASharScreenManager);
     } else {
         [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"%d 进房失败!",self.roomId]];
     }
+    kHiddenHUDAndAvtivity;
 }
 
 // 感知远端用户音频状态的变化，并更新开启了麦克风的用户列表(mMicrophoneUserList)

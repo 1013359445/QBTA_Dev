@@ -6,7 +6,7 @@
 //
 
 #import "TARightMenuView.h"
-#import "TASharScreenManager.h"
+#import "TARoomManager.h"
 #import "TADisplayScreen.h"
 
 int const IconID_Hi             = 1001;//hi
@@ -86,9 +86,9 @@ int const IconID_Confetti       = 1006;//喝彩
 {
     UIButton *btn = [self viewWithTag:IconID_Large_Screen];
 
-    if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
+    if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
         [btn setEnabled:NO];
-    }else if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStop) {
+    }else if ([TARoomManager shareInstance].shareScreenStatus == ScreenStop) {
         [btn setEnabled:YES];
     }else{
         [btn setEnabled:YES];

@@ -6,7 +6,7 @@
 //
 
 #import "TADisplayScreen.h"
-#import "TASharScreenManager.h"
+#import "TARoomManager.h"
 
 @interface TADisplayScreen ()
 
@@ -27,12 +27,20 @@
     return CGSizeMake(SCREEN_HEIGHT * (16.0/9.0), SCREEN_HEIGHT);
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.showEffectView = YES;
+    }
+    return self;
+}
+
 - (void)loadSubViews
 {
     self.layer.cornerRadius = kRelative(35);
     self.layer.masksToBounds = YES;
     self.userInteractionEnabled = YES;
-    [self showEffectView:YES];
 
     UIImageView *bgImageView = [UIImageView new];
     bgImageView.image = kBundleImage(@"display_screen", @"Other");
@@ -54,7 +62,7 @@
         make.width.height.mas_equalTo(kRelative(66));
     }];
     
-    [[TASharScreenManager shareInstance] seeUserVideoWithRemoteView:self.remoteView];
+    [[TARoomManager shareInstance] seeUserVideoWithRemoteView:self.remoteView];
 }
 
 -(void)closeBtnClick

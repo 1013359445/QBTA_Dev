@@ -1,5 +1,5 @@
 //
-//  TASharScreenManager.h
+//  TARoomManager.h
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/3/23.
@@ -16,8 +16,8 @@ typedef NS_ENUM(NSInteger, ScreenStatus) {
     ScreenWait,//别人在分享
 };
 
-@interface TASharScreenManager : NSObject
-shareInstance_interface(TASharScreenManager);
+@interface TARoomManager : NSObject
+shareInstance_interface(TARoomManager);
 
 // 场景
 - (void)enterRoom:(UInt32)roomId;

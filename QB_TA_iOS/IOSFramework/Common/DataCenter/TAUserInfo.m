@@ -14,10 +14,11 @@
 {
     [super assignDefaultValue];
     
-    self.nickname = @"张三";
+    NSArray *name =  @[@"杜子藤",@"沈京兵",@"庞光大",@"杜琦燕",@"焦厚根",@"曾桃燕",@"史珍香",@"胡丽晶",@"熊初墨",@"项洁雯",@"陶仁燕",@"梅良鑫",@"尤勇驰",@"范闲",@"范建"];
+    self.nickname = name[random() % 14];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
-    self.pkid = [NSString stringWithFormat:@"%d",arc4random() % (999999 - 100000 + 1) + 100000];
+    self.roomId = 100001;
 }
 
 @end

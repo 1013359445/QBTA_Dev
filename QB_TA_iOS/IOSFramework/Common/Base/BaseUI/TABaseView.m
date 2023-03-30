@@ -45,7 +45,7 @@
         return;
     }else {
         [superView addSubview:self.effectView];
-        self.effectView.hidden = YES;
+        self.effectView.hidden = !_showEffectView;
 
         [superView addSubview:self];
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,9 +123,12 @@
     return _effectView;
 }
 
-- (void)showEffectView:(BOOL)show
+- (void)setShowEffectView:(BOOL)showEffectView
 {
-    self.effectView.hidden = !show;
+    _showEffectView = showEffectView;
+    if (self.effectView){
+        self.effectView.hidden = !showEffectView;
+    }
 }
 
 @end

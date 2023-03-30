@@ -27,8 +27,8 @@
 
 - (void)loadSubViews
 {
-    _selectIndex = 0;//从数据中获取
-    self.male = YES;//从数据中获取
+    _selectIndex = 0;//选中id，从数据中获取
+    self.male = YES;//性别，假数据，应该从数据中获取
     
     [self addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -138,9 +138,9 @@
         // 设置属性
         // 给定Item的大小（单元格）
         myFlowLayout.itemSize = CGSizeMake(kRelative(80), kRelative(80));
-        // 每两个Item的最小间隙（垂直滚动）
+        // 每两个Item的最小间隙（垂直）
         myFlowLayout.minimumInteritemSpacing = kRelative(50);
-        // 每两个Item的最小间隙（水平滚动方向）
+        // 每两个Item的最小间隙（水平）
         myFlowLayout.minimumLineSpacing = kRelative(50);
         // 设置滚动方向(Vertical垂直方向，horizontal水平方向)
         myFlowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;

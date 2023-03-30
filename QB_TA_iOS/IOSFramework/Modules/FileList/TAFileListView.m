@@ -23,12 +23,20 @@
     return CGSizeMake(kRelative(1100), kRelative(570));
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.showEffectView = YES;
+    }
+    return self;
+}
+
 - (void)loadSubViews
 {
     self.layer.cornerRadius = kRelative(35);
     self.layer.masksToBounds = YES;
     self.userInteractionEnabled = YES;
-    [self showEffectView:YES];
 
     [self addSubview:self.bgView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {

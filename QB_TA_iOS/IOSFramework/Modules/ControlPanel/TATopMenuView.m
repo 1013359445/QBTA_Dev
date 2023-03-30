@@ -7,7 +7,7 @@
 
 #import "TATopMenuView.h"
 #import "TASettingView.h"
-#import "TASharScreenManager.h"
+#import "TARoomManager.h"
 
 int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
@@ -121,10 +121,10 @@ int const IconID_Share_Screen   = 1006;
                 case AVAuthorizationStatusAuthorized:{
                     //玩家已授权
                     [sender setSelected:!sender.isSelected];
-                    if ([TASharScreenManager shareInstance].isStartLocalAudio) {
-                        [[TASharScreenManager shareInstance] stopLocalAudio];
+                    if ([TARoomManager shareInstance].isStartLocalAudio) {
+                        [[TARoomManager shareInstance] stopLocalAudio];
                     }else{
-                        [[TASharScreenManager shareInstance] startLocalAudio];
+                        [[TARoomManager shareInstance] startLocalAudio];
                     }
                 }
                     break;
@@ -135,10 +135,10 @@ int const IconID_Share_Screen   = 1006;
             break;
         case IconID_Share_Screen:
         {
-            if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
-                [[TASharScreenManager shareInstance] stopSharScreen];
+            if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
+                [[TARoomManager shareInstance] stopSharScreen];
             }else{
-                [[TASharScreenManager shareInstance] startSharScreen];
+                [[TARoomManager shareInstance] startSharScreen];
             }
         }
             break;
@@ -151,9 +151,9 @@ int const IconID_Share_Screen   = 1006;
 {
     UIButton *btn = [self.frameImageView viewWithTag:IconID_Share_Screen];
 
-    if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStart) {
+    if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
         [btn setEnabled:NO];
-    }else if ([TASharScreenManager shareInstance].shareScreenStatus == ScreenStop) {
+    }else if ([TARoomManager shareInstance].shareScreenStatus == ScreenStop) {
         [btn setEnabled:YES];
     }else{
         [btn setEnabled:NO];

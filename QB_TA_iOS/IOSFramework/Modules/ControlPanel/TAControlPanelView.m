@@ -12,8 +12,8 @@
 #import "TAMiniMapView.h"
 #import "TAPersonalView.h"
 #import "TAChatView.h"
-#import "TASharScreenManager.h"
-#import "TAMapListView.h"
+#import "TARoomManager.h"
+#import "TARoomListView.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -37,14 +37,21 @@
     return @"controlPanel";
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //加入默认房间
+        [TARoomManager shareInstance];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[TARoomManager shareInstance] enterRoom:[TADataCenter shareInstance].userInfo.roomId];
+        });
+    }
+    return self;
+}
+
 - (void)loadSubViews
 {
-    //加入默认房间
-    [TASharScreenManager shareInstance];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TASharScreenManager shareInstance] enterRoom:332244];
-    });
-    
     self.userInteractionEnabled = YES;
     self.isPutAway = NO;
     
@@ -126,7 +133,7 @@
     [[TAAnnouncementView shareInstance] addContent:@"模拟公告发送-官方公告：欢迎来到无尽之塔Amazing space无限拓展户外空间，您可在此空间举行。文字过长滚动显示"];
     
     TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = [TAMapListView cmd];
+    cmd.cmd = [TARoomListView cmd];
     cmd.animated = YES;
     [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
 }

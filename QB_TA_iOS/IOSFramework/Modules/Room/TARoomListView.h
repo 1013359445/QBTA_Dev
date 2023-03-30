@@ -1,5 +1,5 @@
 //
-//  TAMapListView.h
+//  TARoomListView.h
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/3/27.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TAMapListView : TABaseView
+@interface TARoomListView : TABaseView
 
 @end
 

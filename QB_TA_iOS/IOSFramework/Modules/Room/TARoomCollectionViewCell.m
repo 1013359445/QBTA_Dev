@@ -66,7 +66,7 @@
 
     NSNumber *rId = [data objectForKey:@"roomId"];
     if (rId.intValue == [TADataCenter shareInstance].userInfo.roomId) {
-        _imageView.layer.borderWidth = kRelative(2);
+        _imageView.layer.borderWidth = kRelative(4);
     }else{
         _imageView.layer.borderWidth = 0;
     }
@@ -123,7 +123,7 @@
         _imageView.layer.cornerRadius = kRelative(15);
         _imageView.layer.masksToBounds = YES;
         _imageView.layer.borderColor = [UIColor colorWithWhite:0 alpha:0.4].CGColor;
-        _imageView.layer.borderWidth = kRelative(2);
+        _imageView.layer.borderWidth = kRelative(4);
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;

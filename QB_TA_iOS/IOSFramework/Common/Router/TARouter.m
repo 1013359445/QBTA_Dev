@@ -20,6 +20,7 @@
 #import "TAChatView.h"
 #import "TADisplayScreen.h"
 #import "TARoomListView.h"
+#import "TAFileListView.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -41,6 +42,7 @@ shareInstance_implementation(TARouter)
     [TARouter saveViewIDWithClass:[TAChatView class]];
     [TARouter saveViewIDWithClass:[TADisplayScreen class]];
     [TARouter saveViewIDWithClass:[TARoomListView class]];
+    [TARouter saveViewIDWithClass:[TAFileListView class]];
 
     //新增页面在此处添加代码
     //[TARouter saveViewIDWithClass:[xxxxx class]];

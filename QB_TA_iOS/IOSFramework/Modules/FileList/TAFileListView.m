@@ -22,12 +22,11 @@
 @implementation TAFileListView
 
 + (NSString *)cmd{
-    return @"mapList";
+    return @"fileList";
 }
 
 + (CGSize)viewSize
 {
-//    return CGSizeMake(kRelative(1100), kRelative(570));
     return CGSizeMake(kRelative(1256), kRelative(600));
 }
 
@@ -175,7 +174,7 @@
 {
     if (!_uploadFileBtn){
         _uploadFileBtn = [UIButton new];
-        _uploadFileBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        _uploadFileBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         _uploadFileBtn.layer.cornerRadius = kRelative(25);
         _uploadFileBtn.layer.masksToBounds = YES;
         [_uploadFileBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

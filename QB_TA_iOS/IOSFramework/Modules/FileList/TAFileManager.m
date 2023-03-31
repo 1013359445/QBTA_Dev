@@ -20,6 +20,7 @@ shareInstance_implementation(TAFileManager)
     if (self) {
         self.downloadingFileList = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
+        [self fileList];
     }
     return self;
 }
@@ -29,7 +30,7 @@ shareInstance_implementation(TAFileManager)
     if (!_fileList){
         _fileList = [NSMutableArray array];
         for (int i = 0; i < 11; i++) {
-            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"fileId":@(i),@"fileName":@"文件100",@"progress":@(i*10),@"size":@(100)}];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"fileId":@(i+100),@"fileName":[NSString stringWithFormat:@"文件%d",i+1],@"progress":@(i*10),@"size":@(100),@"downloading":@(0)}];
             [_fileList addObject:dic];
         }
     }
@@ -39,33 +40,53 @@ shareInstance_implementation(TAFileManager)
 - (void)downloadWithFileId:(int)fileId
 {
     for (NSMutableDictionary *dic in self.fileList) {
+        NSInteger index = [self.fileList indexOfObject:dic];
         NSNumber *m_id = [dic objectForKey:@"fileId"];
         if (m_id.intValue == fileId){
-            if ([self.downloadingFileList indexOfObject:dic] >= 0) {
+            if ([self.downloadingFileList indexOfObject:dic] != NSNotFound) {
                 return;
             }
             NSNumber *progress = [dic objectForKey:@"progress"];
             NSNumber *size =  [dic objectForKey:@"size"];
-            if (progress < size){
-                [self.downloadingFileList addObject:dic];
-                if (self.isDownloading == NO){
-                    [self download];
-                }
+            if (progress.intValue < size.intValue){
+                [dic setObject:@(1) forKey:@"downloading"];
+                [self.fileList replaceObjectAtIndex:index withObject:dic];
+                break;
             }
         }
+    }
+    
+    
+    if (self.isDownloading == NO){
+        [self download];
     }
 }
 
 - (void)download{
     self.isDownloading = YES;
     
-    for (NSMutableDictionary *dic in self.downloadingFileList) {
-        NSNumber *progress = [dic objectForKey:@"progress"];
-        progress = @(progress.intValue + 10);
-        NSNumber *size =  [dic objectForKey:@"size"];
-        if (progress >= size){
-            [self.downloadingFileList removeObject:dic];
+    for (NSMutableDictionary *dic in self.fileList) {
+        if ([[dic objectForKey:@"downloading"] intValue] == 1)
+        {
+            if ([self.downloadingFileList indexOfObject:dic] == NSNotFound) {
+                [self.downloadingFileList addObject:dic];
+            }
         }
+    }
+    
+    NSMutableDictionary *dic = self.downloadingFileList[0];
+    NSInteger index = [self.downloadingFileList indexOfObject:dic];
+    NSNumber *progress = [dic objectForKey:@"progress"];
+    progress = @(progress.intValue + 10);
+    [dic setObject:progress forKey:@"progress"];
+    [self.downloadingFileList replaceObjectAtIndex:0 withObject:dic];
+    NSNumber *size =  [dic objectForKey:@"size"];
+    if (progress.intValue >= size.intValue){
+
+        NSInteger findex = [self.fileList indexOfObject:dic];
+        [dic setObject:@(0) forKey:@"downloading"];
+        [self.fileList replaceObjectAtIndex:findex withObject:dic];
+        [self.downloadingFileList removeObject:dic];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:TAFileManagerDownloadingNotification object:nil userInfo:nil];
 

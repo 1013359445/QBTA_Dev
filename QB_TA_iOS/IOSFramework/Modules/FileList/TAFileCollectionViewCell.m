@@ -11,14 +11,13 @@
 #import "TACommonColor.h"
 #import "UIImageView+WebCache.h"
 #import "TAFileManager.h"
-#import "TADownloadProgressView.h"
 
 @interface TAFileCollectionViewCell()
 @property (nonatomic, retain)UIImageView    *imageView;
 @property (nonatomic, retain)UILabel        *fileNameLabel;
 @property (nonatomic, retain)UIButton       *donwloadBtn;
 //@property (nonatomic, retain)UIButton       *shareScreenBtn;
-@property (nonatomic, retain)TADownloadProgressView *progressView;
+@property (nonatomic, retain)UILabel        *progressLabel;
 
 @end
 
@@ -46,14 +45,21 @@
     [self addSubview:self.fileNameLabel];
     [self.fileNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(kRelative(30));
+        make.height.mas_equalTo(kRelative(42));
         make.right.mas_equalTo(kRelative(-70));
     }];
     
     [self addSubview:self.donwloadBtn];
     [self.donwloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(kRelative(30));
+        make.width.mas_equalTo(kRelative(72));
+        make.height.mas_equalTo(kRelative(42));
+    }];
+    
+    
+    [self.imageView addSubview:self.progressLabel];
+    [self.progressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
     }];
 }
 
@@ -61,31 +67,51 @@
 {
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
-
-    [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"placeholder", @"Commom")];
     
     NSString *fName = [data objectForKey:@"fileName"];
     self.fileNameLabel.text = fName;
     
     NSNumber *progress = [data objectForKey:@"progress"];
     NSNumber *size =  [data objectForKey:@"size"];
+    
+    [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"placeholder", @"Commom")];
 
-    if ([[TAFileManager shareInstance].downloadingFileList indexOfObject:data] >= 0)
+    if ([[TAFileManager shareInstance].downloadingFileList containsObject:data])
     {
         self.donwloadBtn.hidden = YES;
-        self.progressView.hidden = NO;
-        
-        [self.progressView setProgress:progress size:size];
+        self.progressLabel.hidden = NO;
+        if ([[TAFileManager shareInstance].downloadingFileList indexOfObject:data] == 0){
+            self.progressLabel.text = [NSString stringWithFormat:@"加载中...%dM/%dM",progress.intValue,size.intValue];
+        }else{
+            self.progressLabel.text = @"等待...";
+        }
     }else{
         self.donwloadBtn.hidden = NO;
-        self.progressView.hidden = YES;
+        self.progressLabel.hidden = YES;
 
-        if (progress < size){
+        if (progress.intValue < size.intValue){
             self.donwloadBtn.enabled = YES;
         }else{
+            [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"room_placeholder", @"Commom")];
             self.donwloadBtn.enabled = NO;
         }
     }
+}
+
+- (void)donwloadBtnClick
+{
+}
+
+-(UILabel *)progressLabel
+{
+    if (!_progressLabel) {
+        _progressLabel = [[UILabel alloc] init];
+        _progressLabel.textColor = [UIColor whiteColor];
+        _progressLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+        _progressLabel.font = [UIFont systemFontOfSize:10];
+        _progressLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _progressLabel;
 }
 
 -(UILabel *)fileNameLabel
@@ -131,4 +157,5 @@
     }
     return _imageView;
 }
+
 @end

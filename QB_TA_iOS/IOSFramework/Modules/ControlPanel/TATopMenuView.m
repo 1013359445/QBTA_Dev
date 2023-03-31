@@ -8,6 +8,7 @@
 #import "TATopMenuView.h"
 #import "TASettingView.h"
 #import "TARoomManager.h"
+#import "TAFileListView.h"
 
 int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
@@ -94,7 +95,10 @@ int const IconID_Share_Screen   = 1006;
             break;
         case IconID_File:
         {
-            
+            TACmdModel *cmd = [TACmdModel new];
+            cmd.cmd = [TAFileListView cmd];
+            cmd.animated = YES;
+            [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
         }
             break;
         case IconID_Member:

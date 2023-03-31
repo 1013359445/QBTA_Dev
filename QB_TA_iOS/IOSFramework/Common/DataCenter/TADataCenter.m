@@ -66,7 +66,7 @@ shareInstance_implementation(TADataCenter);
 - (void)removePeopleWhoSpeak:(NSString *)name
 {
     NSInteger index = [self.peopleWhoSpeakArray indexOfObject:name];
-    if (index >= 0 && index < self.peopleWhoSpeakArray.count) {
+    if (index != NSNotFound && index < self.peopleWhoSpeakArray.count) {
         [self.peopleWhoSpeakArray removeObjectAtIndex:index];
     }
 }

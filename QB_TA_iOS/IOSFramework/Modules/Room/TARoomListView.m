@@ -112,7 +112,7 @@
     //提示”退出当前场景并加入其他活动场景？“
     NSArray *allData = [self dataWithType:0];
     NSInteger randomIndex = random() % allData.count;
-    NSDictionary *randomItem = self.data[randomIndex];
+    NSDictionary *randomItem = allData[randomIndex];
     int roomId = [[randomItem objectForKey:@"roomId"] intValue];
     if ([TADataCenter shareInstance].userInfo.roomId == roomId){
         if (allData.count > 1){

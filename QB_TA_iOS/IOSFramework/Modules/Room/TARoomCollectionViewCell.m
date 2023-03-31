@@ -72,7 +72,7 @@
     }
     self.roomId.text = rId.stringValue;
 
-    [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"placeholder", @"Commom")];
+    [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"room_placeholder", @"Commom")];
     
     NSString *rName = [data objectForKey:@"roomName"];
     self.roomName.text = rName;

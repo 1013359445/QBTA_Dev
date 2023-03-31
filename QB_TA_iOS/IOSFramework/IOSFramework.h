@@ -24,7 +24,8 @@ static NSNotificationName const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
 static NSNotificationName const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
 static NSNotificationName const DefaultsKeyPassword = @"DefaultsKeyPassword";
 static NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
-static NSNotificationName const IOSFrameworkScreenStatusChangeNotification = @"ScreenStatusChange";
+static NSNotificationName const IOSFrameworkShareScreenStatusChangeNotification = @"ShareScreenStatusChange";
+static NSNotificationName const IOSFrameworkLocalAudioStatusChangeNotification = @"LocalAudioStatusChange";
 
 /*
                          iOS & UE 通信协议

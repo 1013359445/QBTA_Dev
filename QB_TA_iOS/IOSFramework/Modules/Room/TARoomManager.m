@@ -31,6 +31,7 @@ shareInstance_implementation(TARoomManager);
 {
     self = [super init];
     if (self) {
+        self.trtcCloud.delegate = self;
     }
     return self;
 }
@@ -52,19 +53,24 @@ shareInstance_implementation(TARoomManager);
 
 - (void)exitRoom
 {
+    [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
     [self.trtcCloud stopLocalAudio];
+    [self stopShareScreen];
+    
     [self.trtcCloud exitRoom];
     [self.anchorIdSet removeAllObjects];
     [self.userList removeAllObjects];
+    
+    
+    self.shareScreenStatus = ScreenStop;
     self.isStartLocalAudio = NO;
-    [TRTCCloud destroySharedIntance];
 }
 
 - (void)enterRoom:(UInt32)roomId {
     kShowHUDAndActivity;
     self.isFirstStartLocalAudio = YES;
     self.shareScreenStatus = ScreenStop;
-    self.trtcCloud.delegate = self;
+    self.isStartLocalAudio = NO;
 
     self.roomId = roomId;
     NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
@@ -74,7 +80,6 @@ shareInstance_implementation(TARoomManager);
     params.roomId = roomId;
     params.userId = userId;
     params.userSig = [GenerateTestUserSig genTestUserSig:userId];
-    self.isStartLocalAudio = NO;
     self.encParams.videoResolution = TRTCVideoResolution_1280_720;
     self.encParams.videoBitrate = 550;
     self.encParams.videoFps = 10;
@@ -122,7 +127,7 @@ shareInstance_implementation(TARoomManager);
 
 # pragma mark - 共享屏幕
 // 开始屏幕分享
-- (void)startSharScreen
+- (void)startShareScreen
 {
     if (_shareScreenStatus == ScreenStop) {
         if (self.isFirstStartLocalAudio) {
@@ -137,7 +142,7 @@ shareInstance_implementation(TARoomManager);
 }
 
 // 停止屏幕分享
-- (void)stopSharScreen
+- (void)stopShareScreen
 {
     if (_shareScreenStatus == ScreenStart) {
         [self.trtcCloud stopScreenCapture];
@@ -171,8 +176,21 @@ shareInstance_implementation(TARoomManager);
 #pragma mark - setter
 - (void)setShareScreenStatus:(ScreenStatus)shareScreenStatus
 {
+    if (_shareScreenStatus == shareScreenStatus){
+        return;
+    }
     _shareScreenStatus = shareScreenStatus;
-    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkScreenStatusChangeNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkShareScreenStatusChangeNotification object:nil userInfo:nil];
+}
+
+- (void)setIsStartLocalAudio:(BOOL)isStartLocalAudio
+{
+    if (_isStartLocalAudio == isStartLocalAudio)
+    {
+        return;
+    }
+    _isStartLocalAudio = isStartLocalAudio;
+    [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkLocalAudioStatusChangeNotification object:nil userInfo:nil];
 }
 
 #pragma mark - TRTCCloudDelegate
@@ -249,7 +267,19 @@ shareInstance_implementation(TARoomManager);
     NSInteger index = [self.anchorIdSet indexOfObject:userId];
     if (index != NSNotFound) { return; }
     [self.userList removeObject:userId];
+    [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
 }
+
+- (void)onExitRoom:(NSInteger)reason
+{
+    if (reason == 1){
+        [TAToast showTextDialog:kWindow msg:@"您已被管理员踢出房间"];
+    }else if (reason == 2){
+        [TAToast showTextDialog:kWindow msg:@"房间已解散"];
+    }
+}
+
+
 
 // 如果切换角色失败，onSwitchRole 回调的错误码便不是 0
 // If switching operation failed, the error code of the 'onSwitchRole' is not zero

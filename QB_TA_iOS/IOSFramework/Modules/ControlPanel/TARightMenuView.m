@@ -32,7 +32,7 @@ int const IconID_Confetti       = 1006;//喝彩
 
 - (void)loadSubViews
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onShareScreenStatusChange) name:IOSFrameworkShareScreenStatusChangeNotification object:nil];
     
     [self setUserInteractionEnabled:YES];
     self.clipsToBounds = YES;
@@ -82,7 +82,7 @@ int const IconID_Confetti       = 1006;//喝彩
     }
 }
 
-- (void)onScreenStatusChange
+- (void)onShareScreenStatusChange
 {
     UIButton *btn = [self viewWithTag:IconID_Large_Screen];
 

@@ -33,7 +33,8 @@ int const IconID_Share_Screen   = 1006;
 
 - (void)loadSubViews
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenStatusChange) name:IOSFrameworkScreenStatusChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onShareScreenStatusChange) name:IOSFrameworkShareScreenStatusChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLocalAudioStatusChange) name:IOSFrameworkLocalAudioStatusChangeNotification object:nil];
 
     [self setUserInteractionEnabled:YES];
     self.clipsToBounds = YES;
@@ -136,9 +137,9 @@ int const IconID_Share_Screen   = 1006;
         case IconID_Share_Screen:
         {
             if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
-                [[TARoomManager shareInstance] stopSharScreen];
+                [[TARoomManager shareInstance] stopShareScreen];
             }else{
-                [[TARoomManager shareInstance] startSharScreen];
+                [[TARoomManager shareInstance] startShareScreen];
             }
         }
             break;
@@ -147,16 +148,26 @@ int const IconID_Share_Screen   = 1006;
     }
 }
 
-- (void)onScreenStatusChange
+- (void)onShareScreenStatusChange
 {
     UIButton *btn = [self.frameImageView viewWithTag:IconID_Share_Screen];
 
     if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
-        [btn setEnabled:NO];
+        btn.selected = YES;
     }else if ([TARoomManager shareInstance].shareScreenStatus == ScreenStop) {
-        [btn setEnabled:YES];
+        btn.selected = NO;
     }else{
-        [btn setEnabled:NO];
+        btn.selected = YES;
+    }
+}
+
+- (void)onLocalAudioStatusChange
+{
+    UIButton *btn = [self.frameImageView viewWithTag:IconID_Mike];
+    if ([TARoomManager shareInstance].isStartLocalAudio == YES) {
+        btn.selected = YES;
+    }else{
+        btn.selected = NO;
     }
 }
 
@@ -269,6 +280,7 @@ int const IconID_Share_Screen   = 1006;
             @"icon_name":@"share_screen",
             @"icon_id":@(IconID_Share_Screen),
             @"normal":@"tmenu_shar_b",
+            @"selected":@"tmenu_shar_g",
             @"highlight":@"tmenu_shar_g",
             @"disable":@"tmenu_shar_g",
             @"visible":@"1",

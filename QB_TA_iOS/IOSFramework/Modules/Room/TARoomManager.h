@@ -33,8 +33,8 @@ shareInstance_interface(TARoomManager);
 
 // 分享屏幕
 @property (assign, nonatomic) ScreenStatus shareScreenStatus;//分享屏幕状态、开始分享、停止分享、别人在分享
-- (void)startSharScreen;
-- (void)stopSharScreen;
+- (void)startShareScreen;
+- (void)stopShareScreen;
 
 // 大屏观看
 - (void)seeUserVideoWithRemoteView:(UIView *)remoteView;

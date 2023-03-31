@@ -515,6 +515,10 @@
 		7A73290029D52BC600DBFC4F /* TARoomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7328FE29D52BC600DBFC4F /* TARoomCollectionViewCell.m */; };
 		7A73290429D571AB00DBFC4F /* TARoomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A73290229D571AA00DBFC4F /* TARoomManager.m */; };
 		7A73290529D571AB00DBFC4F /* TARoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A73290329D571AA00DBFC4F /* TARoomManager.h */; };
+		7A73290D29D58D6800DBFC4F /* TAFileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A73290B29D58D6800DBFC4F /* TAFileCollectionViewCell.m */; };
+		7A73290E29D58D6800DBFC4F /* TAFileCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A73290C29D58D6800DBFC4F /* TAFileCollectionViewCell.h */; };
+		7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A73290F29D58DE300DBFC4F /* TAFileManager.h */; };
+		7A73291229D58DE300DBFC4F /* TAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A73291029D58DE300DBFC4F /* TAFileManager.m */; };
 		7A85949729ACB43300D6B51A /* TATopMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A85949529ACB43300D6B51A /* TATopMenuView.h */; };
 		7A85949829ACB43300D6B51A /* TATopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85949629ACB43300D6B51A /* TATopMenuView.m */; };
 		7A85949B29ACB44400D6B51A /* TARightMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A85949929ACB44400D6B51A /* TARightMenuView.h */; };
@@ -1088,6 +1092,10 @@
 		7A7328FE29D52BC600DBFC4F /* TARoomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TARoomCollectionViewCell.m; sourceTree = "<group>"; };
 		7A73290229D571AA00DBFC4F /* TARoomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TARoomManager.m; sourceTree = "<group>"; };
 		7A73290329D571AA00DBFC4F /* TARoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TARoomManager.h; sourceTree = "<group>"; };
+		7A73290B29D58D6800DBFC4F /* TAFileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAFileCollectionViewCell.m; sourceTree = "<group>"; };
+		7A73290C29D58D6800DBFC4F /* TAFileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAFileCollectionViewCell.h; sourceTree = "<group>"; };
+		7A73290F29D58DE300DBFC4F /* TAFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFileManager.h; sourceTree = "<group>"; };
+		7A73291029D58DE300DBFC4F /* TAFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAFileManager.m; sourceTree = "<group>"; };
 		7A85949529ACB43300D6B51A /* TATopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TATopMenuView.h; sourceTree = "<group>"; };
 		7A85949629ACB43300D6B51A /* TATopMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TATopMenuView.m; sourceTree = "<group>"; };
 		7A85949929ACB44400D6B51A /* TARightMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARightMenuView.h; sourceTree = "<group>"; };
@@ -2217,6 +2225,10 @@
 			children = (
 				7AC611B129D1933E00833933 /* TAFileListView.h */,
 				7AC611B229D1933E00833933 /* TAFileListView.m */,
+				7A73290C29D58D6800DBFC4F /* TAFileCollectionViewCell.h */,
+				7A73290B29D58D6800DBFC4F /* TAFileCollectionViewCell.m */,
+				7A73290F29D58DE300DBFC4F /* TAFileManager.h */,
+				7A73291029D58DE300DBFC4F /* TAFileManager.m */,
 			);
 			path = FileList;
 			sourceTree = "<group>";
@@ -2442,6 +2454,7 @@
 				7A3CB1CC298A565900DD1998 /* UIImageView+JKBetterFace.h in Headers */,
 				7A8594BF29AE0A5200D6B51A /* TAControlPanelView.h in Headers */,
 				7A3CB18E298A565900DD1998 /* UIView+JKRecursion.h in Headers */,
+				7A73290E29D58D6800DBFC4F /* TAFileCollectionViewCell.h in Headers */,
 				7A1FD34229B5D156006C352F /* TAPersonalView.h in Headers */,
 				7A3CAF83298A46EF00DD1998 /* SDImageHEICCoder.h in Headers */,
 				7A3CAF4D298A46EE00DD1998 /* NSData+ImageContentType.h in Headers */,
@@ -2457,6 +2470,7 @@
 				7A3CAF9A298A46EF00DD1998 /* SDWebImageCacheSerializer.h in Headers */,
 				7A3CB1E4298A565900DD1998 /* UIControl+JKSound.h in Headers */,
 				7A3CAE6A298A462A00DD1998 /* IQBarButtonItem.h in Headers */,
+				7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */,
 				7A3CB168298A565900DD1998 /* UIResponder+JKFirstResponder.h in Headers */,
 				7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */,
 				7A3CB1EA298A565900DD1998 /* UIPopoverController+iPhone.h in Headers */,
@@ -3012,11 +3026,13 @@
 				7A3CAF43298A46EE00DD1998 /* NSImage+Compatibility.m in Sources */,
 				7A3CAF5C298A46EE00DD1998 /* SDAnimatedImageView.m in Sources */,
 				7A85949829ACB43300D6B51A /* TATopMenuView.m in Sources */,
+				7A73291229D58DE300DBFC4F /* TAFileManager.m in Sources */,
 				7A3CAF89298A46EF00DD1998 /* SDImageGIFCoder.m in Sources */,
 				7A3CB1F0298A565900DD1998 /* UITextField+JKHistory.m in Sources */,
 				7A3CB14F298A565900DD1998 /* UILabel+JKAutoSize.m in Sources */,
 				7A3CB1A4298A565900DD1998 /* UIFont+JKDynamicFontControl.m in Sources */,
 				7A3CB1BA298A565900DD1998 /* UIBezierPath+JKLength.m in Sources */,
+				7A73290D29D58D6800DBFC4F /* TAFileCollectionViewCell.m in Sources */,
 				7A3CAF6A298A46EE00DD1998 /* UIImage+GIF.m in Sources */,
 				7A3CB16A298A565900DD1998 /* UIButton+JKIndicator.m in Sources */,
 				7A3CAF92298A46EF00DD1998 /* SDImageTransformer.m in Sources */,

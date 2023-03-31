@@ -238,9 +238,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
         animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
     }
     
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:KEYBOARD_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(kRelative(-30) - animatedDistance);
+            make.bottom.mas_equalTo(kRelative(-30) - self->animatedDistance);
         }];
         [self layoutIfNeeded];
         [self layoutSubviews];
@@ -252,7 +252,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
     CGRect viewFrame = self.frame;
     viewFrame.origin.y += animatedDistance;
     
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:KEYBOARD_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(kRelative(-30));
         }];

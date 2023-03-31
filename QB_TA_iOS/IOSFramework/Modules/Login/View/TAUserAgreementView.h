@@ -11,8 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol TAUserAgreementViewDelegate <NSObject>
-
+@required
 - (void)userAgreementViewDidClickCloseBtn;
+@optional
 - (void)userAgreementViewDidClickOKBtn;
 
 @end

@@ -110,17 +110,23 @@
 {
     //快速加入活动房间
     //提示”退出当前场景并加入其他活动场景？“
-    NSDictionary *randomItem = self.data[random() % self.data.count];
-
-    
-    [self hideViewAnimated:YES];
+    NSArray *allData = [self dataWithType:0];
+    NSInteger randomIndex = random() % allData.count;
+    NSDictionary *randomItem = self.data[randomIndex];
+    int roomId = [[randomItem objectForKey:@"roomId"] intValue];
+    if ([TADataCenter shareInstance].userInfo.roomId == roomId){
+        if (allData.count > 1){
+            [self enterBtnClick];
+        }
+        return;
+    }
+    [self enterRomeWithRomeId:roomId];
 }
 
 -(void)closeBtnClick
 {
     [self hideViewAnimated:YES];
 }
-
 
 -(void)enterRomeWithRomeId:(int)roomId
 {
@@ -161,6 +167,11 @@
 
 - (NSArray *)data//假数据
 {
+    return [self dataWithType:self.type];
+}
+
+- (NSArray *)dataWithType:(int)type
+{
     NSArray *data_1 = @[@{@"roomId":@(100001),@"roomName":@"房间101"},
                         @{@"roomId":@(100002),@"roomName":@"房间102"},
                         @{@"roomId":@(100003),@"roomName":@"房间103"},
@@ -187,7 +198,7 @@
     [all addObjectsFromArray:data_3];
 
     NSArray *dataArray;
-    switch (self.type) {
+    switch (type) {
         case 1:
             {
                 dataArray = data_1;
@@ -271,6 +282,7 @@
         [_enterBtn setTitle:@"快速加入活动" forState:UIControlStateNormal];
         [_enterBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateNormal];
         [_enterBtn addTarget:self action:@selector(enterBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        _enterBtn.hidden = ([self dataWithType:0].count < 2);
     }
     return _enterBtn;
 }

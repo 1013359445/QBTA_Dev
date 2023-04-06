@@ -11,7 +11,7 @@
 #import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 #import "TABroadcastExtensionLauncher.h"
 
-@interface TARoomManager ()<TRTCCloudDelegate>
+@interface TARoomManager ()<TRTCCloudDelegate, TRTCVideoRenderDelegate>
 @property (strong, nonatomic) TRTCCloud *trtcCloud;
 @property (strong, nonatomic) TRTCVideoEncParam *encParams;
 @property (weak, nonatomic) UIView *remoteView;
@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *remoteUserId;
 @property (assign, nonatomic) int roomId;
 @property (nonatomic, assign) BOOL isFirstStartLocalAudio;
+@property (nonatomic, assign) BOOL isShareScreenHorizontal;
 
 @end
 
@@ -32,6 +33,7 @@ shareInstance_implementation(TARoomManager);
     self = [super init];
     if (self) {
         self.trtcCloud.delegate = self;
+        self.isShareScreenHorizontal = YES;
     }
     return self;
 }
@@ -174,6 +176,28 @@ shareInstance_implementation(TARoomManager);
     return _encParams;
 }
 #pragma mark - setter
+- (void)setIsShareScreenHorizontal:(BOOL)isShareScreenHorizontal
+{
+    _isShareScreenHorizontal = isShareScreenHorizontal;
+    if (isShareScreenHorizontal)
+    {
+        self.remoteView.transform = CGAffineTransformMakeRotation(0);
+
+    }else{
+        if (self.remoteView){
+            if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight) {
+                self.remoteView.transform = CGAffineTransformMakeRotation(M_PI_2);
+            }else if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft) {
+                self.remoteView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+            }else {
+               //当前竖屏
+            }
+
+        }
+    }
+    
+}
+
 - (void)setShareScreenStatus:(ScreenStatus)shareScreenStatus
 {
     if (_shareScreenStatus == shareScreenStatus){
@@ -197,6 +221,9 @@ shareInstance_implementation(TARoomManager);
 //开始分享自己的屏幕
 - (void)onScreenCaptureStarted {
     self.shareScreenStatus = ScreenStart;
+    [self.trtcCloud setLocalVideoRenderDelegate:self
+                                    pixelFormat:TRTCVideoPixelFormat_NV12
+                                     bufferType:TRTCVideoBufferType_PixelBuffer];
 }
 //结束分享自己的屏幕
 - (void)onScreenCaptureStoped:(int)reason {
@@ -210,6 +237,10 @@ shareInstance_implementation(TARoomManager);
 
 - (void)onUserSubStreamAvailable:(NSString *)userId available:(BOOL)available {
     if (available) {
+        [self.trtcCloud setRemoteVideoRenderDelegate:userId delegate:self
+                                         pixelFormat:TRTCVideoPixelFormat_NV12
+                                          bufferType:TRTCVideoBufferType_PixelBuffer];
+
         self.remoteUserId = userId;
         self.shareScreenStatus = ScreenWait;
         if (self.remoteView) {
@@ -219,7 +250,7 @@ shareInstance_implementation(TARoomManager);
             [self.trtcCloud startRemoteView:userId streamType:TRTCVideoStreamTypeSub view:self.remoteView];
             // 将远端用户 的主路画面设置为填充模式
             TRTCRenderParams *param = [[TRTCRenderParams alloc] init];
-            param.fillMode = TRTCVideoFillMode_Fit;
+            param.fillMode = TRTCVideoFillMode_Fit;//TRTCVideoFillMode_Fit;
             [self.trtcCloud setRemoteRenderParams:userId streamType:TRTCVideoStreamTypeSub params:param];
         }
     } else {
@@ -236,6 +267,9 @@ shareInstance_implementation(TARoomManager);
 - (void)onEnterRoom:(NSInteger)result {
     if (result > 0) {
         [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"成功加入房间:%d",self.roomId]];
+        NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
+        [self.trtcCloud setRemoteVideoRenderDelegate:userId delegate:self pixelFormat:TRTCVideoPixelFormat_NV12 bufferType:TRTCVideoBufferType_PixelBuffer];
+
     } else {
         [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"%d 进房失败!",self.roomId]];
     }
@@ -279,6 +313,37 @@ shareInstance_implementation(TARoomManager);
     }
 }
 
+//用户视频大小发生改变回调
+- (void)onUserVideoSizeChanged:(NSString *)userId streamType:(TRTCVideoStreamType)streamType newWidth:(int)newWidth newHeight:(int)newHeight
+{
+    self.isShareScreenHorizontal = (newWidth > newHeight);
+}
+
+- (void)onRenderVideoFrame:(TRTCVideoFrame *_Nonnull)frame
+                    userId:(NSString *__nullable)userId
+                streamType:(TRTCVideoStreamType)streamType
+{
+    //userId是nil时为本地画面，否则为远端画面
+    CFRetain(frame.pixelBuffer);
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+//        frame.pixelBuffer
+//        frame.textureId
+//        frame.data
+//        
+//        TestRenderVideoFrame *strongSelf = weakSelf;
+//        UIImageView* videoView = nil;
+//        if (userId) {
+//            videoView = [strongSelf.userVideoViews objectForKey:userId];
+//        }
+//        else {
+//            videoView = strongSelf.localVideoView;
+//        }
+//        videoView.image = [UIImage imageWithCIImage:[CIImage imageWithCVImageBuffer:frame.pixelBuffer]];
+//        videoView.contentMode = UIViewContentModeScaleAspectFit;
+        CFRelease(frame.pixelBuffer);
+    });
+}
 
 
 // 如果切换角色失败，onSwitchRole 回调的错误码便不是 0

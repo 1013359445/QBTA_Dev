@@ -19,5 +19,6 @@
 #import "TAToast.h"            //弹出提示
 #import "TACommonColor.h"      //通用颜色
 #import "TADataCenter.h"       //用户信息
+#import "UIButton+JKBlock.h"   //UIButton+Block
 
 #endif /* TAHeader_h */

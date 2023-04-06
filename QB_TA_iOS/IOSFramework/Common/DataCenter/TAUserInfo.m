@@ -14,11 +14,13 @@
 {
     [super assignDefaultValue];
     
-    NSArray *name =  @[@"杜子藤",@"沈京兵",@"庞光大",@"杜琦燕",@"焦厚根",@"曾桃燕",@"史珍香",@"胡丽晶",@"熊初墨",@"项洁雯",@"陶仁燕",@"梅良鑫",@"尤勇驰",@"范闲",@"范建"];
-    self.nickname = name[random() % 14];
+    NSString *iPhoneName = [UIDevice currentDevice].name;
+    NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+    CGFloat batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    self.nickname = [NSString stringWithFormat:@"%@%@%2.f",iPhoneName,systemVersion,batteryLevel];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
-    self.roomId = 100001;
+    self.roomId = 5981024;
 }
 
 @end

@@ -23,8 +23,8 @@
 
 + (CGSize)viewSize
 {
-    
-    return CGSizeMake(SCREEN_HEIGHT * (16.0/9.0), SCREEN_HEIGHT);
+    CGFloat height = SCREEN_HEIGHT - kRelative(50);
+    return CGSizeMake(height * (16.0/9.0), height);
 }
 
 - (instancetype)init
@@ -52,7 +52,8 @@
 
     [self addSubview:self.remoteView];
     [self.remoteView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
+        make.width.height.mas_equalTo([TADisplayScreen viewSize].width);
+        make.center.mas_equalTo(0);
     }];
         
     [self addSubview:self.closeBtn];

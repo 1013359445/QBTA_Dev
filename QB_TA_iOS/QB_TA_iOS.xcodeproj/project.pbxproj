@@ -499,6 +499,12 @@
 		7A452BD529C2EB9C00257826 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A452BD329C2EB9C00257826 /* NSString+Size.m */; };
 		7A4B34B029A89AB3009753FC /* TACommonColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4B34AE29A89AB3009753FC /* TACommonColor.h */; };
 		7A4B34B129A89AB3009753FC /* TACommonColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34AF29A89AB3009753FC /* TACommonColor.m */; };
+		7A4D3ED129DE676100CCE18E /* TAMemberView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3ECF29DE676100CCE18E /* TAMemberView.h */; };
+		7A4D3ED229DE676100CCE18E /* TAMemberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED029DE676100CCE18E /* TAMemberView.m */; };
+		7A4D3ED529DE69D200CCE18E /* TAAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3ED329DE69D200CCE18E /* TAAlert.h */; };
+		7A4D3ED629DE69D200CCE18E /* TAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED429DE69D200CCE18E /* TAAlert.m */; };
+		7A4D3ED929DE790E00CCE18E /* TAAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3ED729DE790E00CCE18E /* TAAlertViewController.h */; };
+		7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
 		7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */; };
@@ -1076,6 +1082,12 @@
 		7A452BD329C2EB9C00257826 /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		7A4B34AE29A89AB3009753FC /* TACommonColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACommonColor.h; sourceTree = "<group>"; };
 		7A4B34AF29A89AB3009753FC /* TACommonColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACommonColor.m; sourceTree = "<group>"; };
+		7A4D3ECF29DE676100CCE18E /* TAMemberView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMemberView.h; sourceTree = "<group>"; };
+		7A4D3ED029DE676100CCE18E /* TAMemberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMemberView.m; sourceTree = "<group>"; };
+		7A4D3ED329DE69D200CCE18E /* TAAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAlert.h; sourceTree = "<group>"; };
+		7A4D3ED429DE69D200CCE18E /* TAAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAlert.m; sourceTree = "<group>"; };
+		7A4D3ED729DE790E00CCE18E /* TAAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAlertViewController.h; sourceTree = "<group>"; };
+		7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAlertViewController.m; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
 		7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginInterface.m; sourceTree = "<group>"; };
 		7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserInfoDataModel.h; sourceTree = "<group>"; };
@@ -1240,16 +1252,8 @@
 				7AB3C5FC299B300B006F1E28 /* TACategories */,
 				7A3CAD23298A301F00DD1998 /* Router */,
 				7A3CAD22298A301300DD1998 /* CommonUI */,
-				7A3CAD21298A2FED00DD1998 /* Mediator */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		7A3CAD21298A2FED00DD1998 /* Mediator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mediator;
 			sourceTree = "<group>";
 		};
 		7A3CAD22298A301300DD1998 /* CommonUI */ = {
@@ -2215,7 +2219,8 @@
 		7A8594A429ACB5AB00D6B51A /* Member */ = {
 			isa = PBXGroup;
 			children = (
-				7A8594A929ACB7DB00D6B51A /* HandUp */,
+				7A4D3ECF29DE676100CCE18E /* TAMemberView.h */,
+				7A4D3ED029DE676100CCE18E /* TAMemberView.m */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -2261,15 +2266,12 @@
 		7A8594A829ACB74400D6B51A /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				7A4D3ED329DE69D200CCE18E /* TAAlert.h */,
+				7A4D3ED429DE69D200CCE18E /* TAAlert.m */,
+				7A4D3ED729DE790E00CCE18E /* TAAlertViewController.h */,
+				7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */,
 			);
 			path = Alert;
-			sourceTree = "<group>";
-		};
-		7A8594A929ACB7DB00D6B51A /* HandUp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HandUp;
 			sourceTree = "<group>";
 		};
 		7A8594AB29ACB89500D6B51A /* DisplayScreen */ = {
@@ -2465,6 +2467,7 @@
 				7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
 				7AD4C04229C41C6800AFE5A4 /* TAControlCenterPresenter.h in Headers */,
+				7A4D3ED929DE790E00CCE18E /* TAAlertViewController.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
 				7A3CAF9A298A46EF00DD1998 /* SDWebImageCacheSerializer.h in Headers */,
@@ -2529,6 +2532,7 @@
 				7A8594B929ADAA4300D6B51A /* TALoginPresenter.h in Headers */,
 				7A3CB149298A565900DD1998 /* UIImage+JKGIF.h in Headers */,
 				7A3CB1EE298A565900DD1998 /* UITextField+JKSelect.h in Headers */,
+				7A4D3ED529DE69D200CCE18E /* TAAlert.h in Headers */,
 				7A3CAF55298A46EE00DD1998 /* SDWebImageDownloaderOperation.h in Headers */,
 				7A6BF76F298BDC5C002EEDCA /* TABaseParmModel.h in Headers */,
 				7AD8A63129A37B5800257E1D /* TADataCenter.h in Headers */,
@@ -2632,6 +2636,7 @@
 				7A3CB162298A565900DD1998 /* UITableViewCell+JKNIB.h in Headers */,
 				7A3CAF96298A46EF00DD1998 /* SDWebImageOperation.h in Headers */,
 				7A3CB18D298A565900DD1998 /* UIView+JKFind.h in Headers */,
+				7A4D3ED129DE676100CCE18E /* TAMemberView.h in Headers */,
 				7A3CAF85298A46EF00DD1998 /* SDAnimatedImageView.h in Headers */,
 				7A3CAFAB298A46EF00DD1998 /* SDWebImageDownloaderResponseModifier.h in Headers */,
 				7A3CB02A298A47AB00DD1998 /* MASConstraintMaker.h in Headers */,
@@ -2888,6 +2893,7 @@
 				7A3CADEC298A426300DD1998 /* MJExtensionConst.m in Sources */,
 				7A3CAF72298A46EF00DD1998 /* SDImageAPNGCoder.m in Sources */,
 				7A3CAF45298A46EE00DD1998 /* SDAnimatedImageView+WebCache.m in Sources */,
+				7A4D3ED629DE69D200CCE18E /* TAAlert.m in Sources */,
 				7A3CB1E7298A565900DD1998 /* UIControl+JKActionBlocks.m in Sources */,
 				7A8594A029ACB49F00D6B51A /* TAChatView.m in Sources */,
 				7A3CAFA2298A46EF00DD1998 /* SDWebImageCacheKeyFilter.m in Sources */,
@@ -2897,6 +2903,7 @@
 				7A3CB1D7298A565900DD1998 /* UIViewController+JKBlockSegue.m in Sources */,
 				7A8594B029ADA7B600D6B51A /* TABasePresenter.m in Sources */,
 				7A3CB1F5298A565900DD1998 /* UITextField+JKBlocks.m in Sources */,
+				7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */,
 				7A3CAE68298A462A00DD1998 /* IQPreviousNextView.m in Sources */,
 				7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */,
 				7A1FD37E29B9C72B006C352F /* TATextFieldView.m in Sources */,
@@ -3015,6 +3022,7 @@
 				7A3CAF94298A46EF00DD1998 /* UIImageView+WebCache.m in Sources */,
 				7A3CAF54298A46EE00DD1998 /* SDImageIOAnimatedCoder.m in Sources */,
 				7AD8A62E29A3712400257E1D /* TABaseView.m in Sources */,
+				7A4D3ED229DE676100CCE18E /* TAMemberView.m in Sources */,
 				7A3CAF62298A46EE00DD1998 /* UIImage+Transform.m in Sources */,
 				7A3CB1CF298A565900DD1998 /* UIViewController+JKStoreKit.m in Sources */,
 				7A3CB1CA298A565900DD1998 /* UIImageView+JKAddition.m in Sources */,

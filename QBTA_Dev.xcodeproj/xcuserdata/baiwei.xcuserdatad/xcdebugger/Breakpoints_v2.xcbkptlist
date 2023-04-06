@@ -26,8 +26,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "-onRenderVideoFrame:userId:streamType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,8 +42,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-onUserVideoSizeChanged:streamType:newWidth:newHeight:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,8 +58,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-onScreenCaptureStarted"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,41 +74,9 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-onUserSubStreamAvailable:available:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "24C6654C-8E6D-470D-8630-AF3B64539239"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-setIsShareScreenHorizontal:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CCEFA942-73E7-4505-A6DF-D54BE2C49896"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-setIsShareScreenHorizontal:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

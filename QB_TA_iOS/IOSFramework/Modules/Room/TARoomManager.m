@@ -176,26 +176,22 @@ shareInstance_implementation(TARoomManager);
     return _encParams;
 }
 #pragma mark - setter
+//自动旋转屏幕
 - (void)setIsShareScreenHorizontal:(BOOL)isShareScreenHorizontal
 {
     _isShareScreenHorizontal = isShareScreenHorizontal;
     if (isShareScreenHorizontal)
     {
         self.remoteView.transform = CGAffineTransformMakeRotation(0);
-
     }else{
         if (self.remoteView){
             if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight) {
                 self.remoteView.transform = CGAffineTransformMakeRotation(M_PI_2);
             }else if ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft) {
                 self.remoteView.transform = CGAffineTransformMakeRotation(-M_PI_2);
-            }else {
-               //当前竖屏
             }
-
         }
     }
-    
 }
 
 - (void)setShareScreenStatus:(ScreenStatus)shareScreenStatus

@@ -33,8 +33,11 @@
 
 @implementation TAControlPanelView
 
-+ (NSString *)cmd{
-    return @"controlPanel";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"controlPanel";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 - (instancetype)init
@@ -120,27 +123,18 @@
 #pragma mark - action
 - (void)headClick
 {
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = [TAPersonalView cmd];
-    cmd.animated = YES;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+    [[TARouter shareInstance] autoTaskWithCmdModel:[TAPersonalView cmd] responseBlock:nil];
 }
 
 //切换场景
 - (void)changeSpaceBtnClick
 {
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = [TARoomListView cmd];
-    cmd.animated = YES;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+    [[TARouter shareInstance] autoTaskWithCmdModel:[TARoomListView cmd] responseBlock:nil];
 }
 
 - (void)chatBtnClick
 {
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = [TAChatView cmd];
-    cmd.animated = YES;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+    [[TARouter shareInstance] autoTaskWithCmdModel:[TAChatView cmd] responseBlock:nil];
 }
 
 //收起、展开

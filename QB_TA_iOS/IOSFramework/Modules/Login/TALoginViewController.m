@@ -24,8 +24,11 @@
 
 @implementation TALoginViewController
 
-+ (NSString *)cmd{
-    return @"login";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"login";
+    cmdModel.animated = NO;
+    return cmdModel;
 }
 
 - (void)viewDidLoad {

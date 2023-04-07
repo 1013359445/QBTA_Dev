@@ -70,10 +70,7 @@ int const IconID_Confetti       = 1006;//喝彩
         {}break;
         case IconID_Large_Screen://大屏
         {
-            TACmdModel *cmd = [TACmdModel new];
-            cmd.cmd = [TADisplayScreen cmd];
-            cmd.animated = YES;
-            [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+            [[TARouter shareInstance] autoTaskWithCmdModel:[TADisplayScreen cmd] responseBlock:nil];
         }break;
         case IconID_Confetti://喝彩
         {}break;

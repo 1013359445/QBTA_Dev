@@ -30,8 +30,11 @@
     return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
-+ (NSString *)cmd{
-    return @"chat";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"chat";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 - (void)loadSubViews

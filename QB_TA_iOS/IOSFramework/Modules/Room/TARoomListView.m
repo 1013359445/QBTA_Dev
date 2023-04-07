@@ -23,8 +23,11 @@
 
 @implementation TARoomListView
 
-+ (NSString *)cmd{
-    return @"mapList";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"mapList";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 + (CGSize)viewSize

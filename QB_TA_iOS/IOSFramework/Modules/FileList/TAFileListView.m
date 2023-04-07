@@ -21,8 +21,11 @@
 
 @implementation TAFileListView
 
-+ (NSString *)cmd{
-    return @"fileList";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"fileList";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 + (CGSize)viewSize

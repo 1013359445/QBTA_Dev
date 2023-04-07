@@ -30,8 +30,11 @@
 
 @implementation TAPersonalView
 
-+ (NSString *)cmd{
-    return @"personal";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"personal";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 + (CGSize)viewSize

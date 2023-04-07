@@ -30,8 +30,11 @@
 
 @implementation TASettingView
 
-+ (NSString *)cmd{
-    return @"setting";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"setting";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 + (CGSize)viewSize

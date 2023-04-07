@@ -128,7 +128,7 @@
 {
     NSData *data = [NSBundle ta_fileWithBundle:[NSString stringWithFormat:@"%@.html",scheme]];
     NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSMutableAttributedString *attributeString = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:
     @{
         NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
         NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)

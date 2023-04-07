@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)TaskFinishBlock taskFinishBlock;
 
-+ (NSString *)cmd;
++ (TACmdModel *)cmd;
 
 - (void)goBack;
 - (void)close;

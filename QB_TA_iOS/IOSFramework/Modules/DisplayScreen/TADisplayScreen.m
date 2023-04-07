@@ -17,8 +17,11 @@
 
 @implementation TADisplayScreen
 
-+ (NSString *)cmd{
-    return @"displayScreen";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"displayScreen";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 + (CGSize)viewSize

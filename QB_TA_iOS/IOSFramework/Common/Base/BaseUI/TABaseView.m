@@ -8,13 +8,12 @@
 #import "TABaseView.h"
 
 @interface TABaseView()
-@property (nonatomic, assign)BOOL inAnimateds;
 
 @end
 
 @implementation TABaseView
 
-+ (NSString *)cmd{return nil;}
++ (TACmdModel *)cmd{return nil;}
 
 + (CGSize)viewSize
 {
@@ -73,7 +72,7 @@
                      animations:^{
         weakself.transform = CGAffineTransformMakeScale(1,1);
         weakself.alpha = 1;
-        weakself.effectView.alpha = 0.9;
+        weakself.effectView.alpha = 0.8;
     } completion:^(BOOL finished) {
         if (finished)
         {
@@ -118,7 +117,7 @@
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         _effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
         _effectView.frame = CGRectMake(0,0, 2000, 2000);
-        _effectView.alpha = 0.66;
+        _effectView.alpha = 0.8;
     }
     return _effectView;
 }

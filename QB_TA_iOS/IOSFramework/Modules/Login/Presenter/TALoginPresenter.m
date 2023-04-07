@@ -10,6 +10,7 @@
 #import "TALoginInterface.h"
 #import "TACaptchaInterface.h"
 #import "TAUserInfoDataModel.h"
+#import "TACreatRoleViewController.h"
 
 @interface TALoginPresenter ()
 
@@ -81,10 +82,7 @@
 
 - (void)toCreatRoleView
 {
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = @"creatRole";
-    cmd.animated = YES;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+    [[TARouter shareInstance] autoTaskWithCmdModel:[TACreatRoleViewController cmd] responseBlock:nil];
 }
 
 - (NSString *)getDefaultAgreement

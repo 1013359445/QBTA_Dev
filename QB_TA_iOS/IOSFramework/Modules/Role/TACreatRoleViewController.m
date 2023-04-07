@@ -25,8 +25,11 @@
 
 @implementation TACreatRoleViewController
 
-+ (NSString *)cmd{
-    return @"creatRole";
++ (TACmdModel *)cmd{
+    TACmdModel *cmdModel = [TACmdModel new];
+    cmdModel.cmd = @"creatRole";
+    cmdModel.animated = YES;
+    return cmdModel;
 }
 
 - (void)viewDidLoad {

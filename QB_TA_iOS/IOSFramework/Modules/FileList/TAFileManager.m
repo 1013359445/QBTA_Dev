@@ -75,7 +75,6 @@ shareInstance_implementation(TAFileManager)
     }
     
     NSMutableDictionary *dic = self.downloadingFileList[0];
-    NSInteger index = [self.downloadingFileList indexOfObject:dic];
     NSNumber *progress = [dic objectForKey:@"progress"];
     progress = @(progress.intValue + 10);
     [dic setObject:progress forKey:@"progress"];

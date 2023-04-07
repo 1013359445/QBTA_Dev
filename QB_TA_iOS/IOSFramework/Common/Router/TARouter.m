@@ -21,6 +21,7 @@
 #import "TADisplayScreen.h"
 #import "TARoomListView.h"
 #import "TAFileListView.h"
+#import "TAMemberView.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -43,14 +44,16 @@ shareInstance_implementation(TARouter)
     [TARouter saveViewIDWithClass:[TADisplayScreen class]];
     [TARouter saveViewIDWithClass:[TARoomListView class]];
     [TARouter saveViewIDWithClass:[TAFileListView class]];
-
+    [TARouter saveViewIDWithClass:[TAMemberView class]];
+    
     //新增页面在此处添加代码
     //[TARouter saveViewIDWithClass:[xxxxx class]];
 }
 
 + (void)saveViewIDWithClass:(Class)class
 {
-    [[TARouter shareInstance].routerDic setObject:class forKey:[class cmd]];
+    TACmdModel *cmd = (TACmdModel *)[class cmd];
+    [[TARouter shareInstance].routerDic setObject:class forKey:cmd.cmd];
 }
 
 - (instancetype)init{
@@ -78,7 +81,6 @@ shareInstance_implementation(TARouter)
 {
     if ([class isSubclassOfClass:[TABaseView class]]) {
         TABaseView *view = [[class alloc] init];
-        view.cmdModel = cmdModel;
         view.taskFinishBlock = response;
         
         UIView *superView = [CommInterface shareInstance].iOSView;
@@ -93,7 +95,6 @@ shareInstance_implementation(TARouter)
         [view showView:superView animated:cmdModel.animated];
     }else if ([class isSubclassOfClass:[TABaseViewController class]]) {
         TABaseViewController *vc = [[class alloc] init];
-        vc.cmdModel = cmdModel;
         vc.taskFinishBlock = response;
 
         UIViewController *currentVC = [self getCurrentVC];

@@ -5,6 +5,7 @@
 //  Created by 白伟 on 2023/3/7.
 //
 
+#import "TALoginViewController.h"
 #import "TAPersonalPresenter.h"
 #import "TAHeader.h"
 
@@ -50,11 +51,8 @@
 {
     //。。。删除用户数据、通知UE登出
     [[TARouter shareInstance] close];
-    
-    TACmdModel *cmd = [TACmdModel new];
-    cmd.cmd = @"login";
-    cmd.animated = NO;
-    [[TARouter shareInstance] autoTaskWithCmdModel:cmd responseBlock:nil];
+
+    [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
 }
 
 @end

@@ -14,7 +14,7 @@
 
 @implementation TABaseViewController
 
-+ (NSString *)cmd{return nil;}
++ (TACmdModel *)cmd{return nil;}
 
 - (void)goBack
 {

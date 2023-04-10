@@ -39,8 +39,8 @@ typedef BOOL (^actionIndexBlock)(NSInteger index);
     self = [super init];
     if (self)
     {
-        [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+//        [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+//        [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     }
     return self;
 }
@@ -82,7 +82,7 @@ typedef BOOL (^actionIndexBlock)(NSInteger index);
     {
         UILabel *label = [[UILabel alloc] initWithFrame:frame];
         [label setBackgroundColor:[UIColor clearColor]];
-        [label setText:viewTitle?viewTitle:@"温馨提示"];
+        [label setText:viewTitle?viewTitle:@""];
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setFont:[UIFont boldSystemFontOfSize:19]];
         [label setTextColor:[UIColor darkTextColor]];
@@ -295,17 +295,22 @@ typedef BOOL (^actionIndexBlock)(NSInteger index);
     [self setActionBlock:block];
 }
  
- 
+- (void)showInCurrentVC
+{
+    [self showInViewController:[[TARouter shareInstance] getCurrentVC]];
+}
+
 - (void)showInViewController:(UIViewController *)pcontroller
 {
     UIViewController *rootController = pcontroller.tabBarController?pcontroller.tabBarController:pcontroller;
- 
-    [rootController presentViewController:self animated:YES completion:^
-    {
-//        self.view.backgroundColor = RGBA(0, 0, 0, 0.4);
-    }];
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
+    [rootController presentViewController:self animated:YES completion:nil];
+//    [rootController presentViewController:self animated:YES completion:^
+//    {
+////        self.view.backgroundColor = RGBA(0, 0, 0, 0.4);
+//    }];
 }
- 
+
 - (void)dismiss
 {
     [UIView animateWithDuration:0.25 animations:^{

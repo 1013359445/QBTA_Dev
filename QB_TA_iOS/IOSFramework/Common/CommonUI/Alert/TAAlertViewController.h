@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  
 //显示
+- (void)showInCurrentVC;
 - (void)showInViewController:(UIViewController *)pcontroller;
  
 //消失

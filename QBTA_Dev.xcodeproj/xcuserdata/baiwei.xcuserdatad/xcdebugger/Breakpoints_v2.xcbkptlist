@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             uuid = "A0E70F8B-B4F8-4927-A5EF-60E2C86210E4"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             breakpointStackSelectionBehavior = "1"
@@ -26,8 +26,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "-onRenderVideoFrame:userId:streamType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,8 +42,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "-onUserVideoSizeChanged:streamType:newWidth:newHeight:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,8 +58,8 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-onScreenCaptureStarted"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,9 +74,57 @@
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "-onUserSubStreamAvailable:available:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D863D3A3-1D32-4985-ADA3-7DCBEDB3530D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QB_TA_iOS/IOSFramework/Common/CommonUI/Alert/TAAlertViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "-showInViewController:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CC303AD-1484-4D4B-A8B7-035628E014B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QB_TA_iOS/IOSFramework/Common/CommonUI/Alert/TAAlertViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-showInViewController:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9DB0EAC5-9340-49E6-A94E-5C80C5408463"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QB_TA_iOS/IOSFramework/Common/CommonUI/Alert/TAAlertViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-showInCurrentVC"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

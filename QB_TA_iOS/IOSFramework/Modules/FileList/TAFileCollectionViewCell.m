@@ -49,22 +49,23 @@
         make.right.mas_equalTo(kRelative(-70));
     }];
     
-    [self addSubview:self.donwloadBtn];
-    [self.donwloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.mas_equalTo(0);
-        make.width.mas_equalTo(kRelative(72));
-        make.height.mas_equalTo(kRelative(42));
-    }];
-    
     
     [self.imageView addSubview:self.progressLabel];
     [self.progressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
+    
+    [self.contentView addSubview:self.donwloadBtn];
+    [self.donwloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(kRelative(72));
+        make.height.mas_equalTo(kRelative(42));
+    }];
 }
 
 - (void)setData:(NSDictionary *)data
 {
+    _data = data;
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = [UIColor clearColor];
     
@@ -86,20 +87,26 @@
             self.progressLabel.text = @"等待...";
         }
     }else{
-        self.donwloadBtn.hidden = NO;
         self.progressLabel.hidden = YES;
 
         if (progress.intValue < size.intValue){
-            self.donwloadBtn.enabled = YES;
+            self.donwloadBtn.hidden = NO;
         }else{
             [_imageView sd_setImageWithURL:nil placeholderImage:kBundleImage(@"room_placeholder", @"Commom")];
-            self.donwloadBtn.enabled = NO;
+            self.donwloadBtn.hidden = YES;
         }
     }
 }
 
 - (void)donwloadBtnClick
 {
+    if ([self.progressLabel.text isEqualToString:@"等待..."]){
+        return;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cellDidClickDownload:)]){
+        [self.delegate cellDidClickDownload:self.data];
+    }
 }
 
 -(UILabel *)progressLabel

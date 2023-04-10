@@ -9,7 +9,7 @@
 #import "TAFileManager.h"
 #import "TAFileCollectionViewCell.h"
 
-@interface TAFileListView () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TAFileListView () <UICollectionViewDataSource, UICollectionViewDelegate, TAFileCollectionViewCellProtocol>
 @property (nonatomic, retain)UIImageView *bgView;
 @property (nonatomic, retain)UIButton   *closeBtn;
 @property (nonatomic, retain)UICollectionView *collectionView;
@@ -97,12 +97,27 @@
     [self hideViewAnimated:YES];
 }
 
+- (void)cellDidClickDownload:(id)data{
+    NSNumber *fileId = [data objectForKey:@"fileId"];
+    [[TAFileManager shareInstance] downloadWithFileId:fileId.intValue];
+}
+
 // 点击Item
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *data = self.data[indexPath.row];
-    NSNumber *fileId = [data objectForKey:@"fileId"];
-    [[TAFileManager shareInstance] downloadWithFileId:fileId.intValue];
+    NSNumber *progress = [data objectForKey:@"progress"];
+    NSNumber *size =  [data objectForKey:@"size"];
+    if ([[TAFileManager shareInstance].downloadingFileList containsObject:data])
+    {
+        return;
+    }else{
+        if (progress.intValue < size.intValue){
+            return;
+        }
+    }
+    //查看文件
+    //。。。
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -115,6 +130,7 @@
     TAFileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TAFileCollectionViewCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor lightGrayColor];
     cell.data = self.data[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 

@@ -505,6 +505,8 @@
 		7A4D3ED629DE69D200CCE18E /* TAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED429DE69D200CCE18E /* TAAlert.m */; };
 		7A4D3ED929DE790E00CCE18E /* TAAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3ED729DE790E00CCE18E /* TAAlertViewController.h */; };
 		7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */; };
+		7A4D3EE029E0039800CCE18E /* TAMemberTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3EDE29E0039800CCE18E /* TAMemberTableViewCell.h */; };
+		7A4D3EE129E0039800CCE18E /* TAMemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
 		7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */; };
@@ -1088,6 +1090,8 @@
 		7A4D3ED429DE69D200CCE18E /* TAAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAlert.m; sourceTree = "<group>"; };
 		7A4D3ED729DE790E00CCE18E /* TAAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAAlertViewController.h; sourceTree = "<group>"; };
 		7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAAlertViewController.m; sourceTree = "<group>"; };
+		7A4D3EDE29E0039800CCE18E /* TAMemberTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMemberTableViewCell.h; sourceTree = "<group>"; };
+		7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMemberTableViewCell.m; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
 		7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginInterface.m; sourceTree = "<group>"; };
 		7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserInfoDataModel.h; sourceTree = "<group>"; };
@@ -2221,6 +2225,8 @@
 			children = (
 				7A4D3ECF29DE676100CCE18E /* TAMemberView.h */,
 				7A4D3ED029DE676100CCE18E /* TAMemberView.m */,
+				7A4D3EDE29E0039800CCE18E /* TAMemberTableViewCell.h */,
+				7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -2475,6 +2481,7 @@
 				7A3CAE6A298A462A00DD1998 /* IQBarButtonItem.h in Headers */,
 				7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */,
 				7A3CB168298A565900DD1998 /* UIResponder+JKFirstResponder.h in Headers */,
+				7A4D3EE029E0039800CCE18E /* TAMemberTableViewCell.h in Headers */,
 				7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */,
 				7A3CB1EA298A565900DD1998 /* UIPopoverController+iPhone.h in Headers */,
 				7A3CAF4F298A46EE00DD1998 /* SDImageTransformer.h in Headers */,
@@ -2863,6 +2870,7 @@
 				7A1FD36329B9A1C2006C352F /* TASettingPresenter.m in Sources */,
 				7A3CAF48298A46EE00DD1998 /* SDCallbackQueue.m in Sources */,
 				7A3CAF5B298A46EE00DD1998 /* SDAnimatedImage.m in Sources */,
+				7A4D3EE129E0039800CCE18E /* TAMemberTableViewCell.m in Sources */,
 				7A3CB1A7298A565900DD1998 /* UINavigationItem+JKLock.m in Sources */,
 				7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */,
 				7A3CAF4B298A46EE00DD1998 /* SDWebImageOperation.m in Sources */,

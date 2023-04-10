@@ -49,16 +49,6 @@
     [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"userList"];
 }
 
-- (BOOL)isAdmin
-{
-    return [TADataCenter shareInstance].userInfo.admin;
-}
-
-- (BOOL)isProhibition
-{
-    return [TARoomManager shareInstance].isProhibition;
-}
-
 - (instancetype)init
 {
     self = [super init];
@@ -138,30 +128,30 @@
     }];
 }
 
+# pragma mark - action
 - (void)leftBtnClick{
     if (self.isAdmin){
-        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+        BOOL isProhibition = [TARoomManager shareInstance].isProhibition;
+        NSString *msg = isProhibition ? @"所有成员以及新加入的成员可自由发言" : @"所有成员以及新加入的成员将被静音";
+        NSString *actionText = isProhibition ? @"解除全体静音" : @"全体静音";
+        [TAAlert alertWithTitle:@"" msg:msg actionText_1:@"取消" actionText_2:actionText action:^(NSInteger index) {
             if (index == 1)
             {
-                //。。。删除用户数据、通知UE登出
-                [[TARouter shareInstance] close];
-                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+                [TARoomManager shareInstance].isProhibition = !isProhibition;
             }
         }];
     }else{
-        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
-            if (index == 1)
-            {
-                //。。。删除用户数据、通知UE登出
-                [[TARouter shareInstance] close];
-                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
-            }
-        }];
+        if ([TARoomManager shareInstance].isStartLocalAudio) {
+            [[TARoomManager shareInstance] stopLocalAudio];
+        }else {
+            [[TARoomManager shareInstance] startLocalAudio];
+        }
     }
 }
 
-- (void)rightBtnClick{
-    
+- (void)rightBtnClick
+{
+    [TAToast showTextDialog:kWindow msg:@"敬请期待"];
 }
 
 - (void)cellDidClickKickOut:(id)data
@@ -183,12 +173,144 @@
             {
                 //。。。同步数据
                 [[TARoomManager shareInstance] kickOutUser:data];
-                [self.tableView reloadData];
             }
         }];
     }
 }
 
+# pragma mark - UITableView
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    static NSString *TAMemberTableViewCellIdIdentifier = @"TAMemberTableViewCellIdIdentifier";
+    TAMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TAMemberTableViewCellIdIdentifier];
+    if (cell == nil) {
+        cell = [[TAMemberTableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:TAMemberTableViewCellIdIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    NSString *name = [TARoomManager shareInstance].userList[indexPath.row];
+    cell.name = name;
+    cell.mikeEnable = [[TARoomManager shareInstance].microphoneUserList containsObject:name];
+    cell.delegate = self;
+
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger count = [TARoomManager shareInstance].userList.count;
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld人",count];
+    return count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kRelative(80);
+}
+
+# pragma mark - getter
+- (BOOL)isAdmin
+{
+    return [TADataCenter shareInstance].userInfo.admin;
+}
+
+- (BOOL)isProhibition
+{
+    return [TARoomManager shareInstance].isProhibition;
+}
+- (UIView     *)contentView
+{
+    if (!_contentView){
+        _contentView = [UIView new];
+        _contentView.backgroundColor = kTAColor.c_F0;
+        _contentView.userInteractionEnabled = YES;
+    }
+    return _contentView;
+}
+
+- (UILabel     *)titleLabel
+{
+    if (!_titleLabel){
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.text = @"参会人员";
+        _titleLabel.textColor = kTAColor.c_49;
+    }
+    return _titleLabel;
+}
+
+- (UILabel     *)numberLabel
+{
+    if (!_numberLabel){
+        _numberLabel = [UILabel new];
+        _numberLabel.font = [UIFont systemFontOfSize:8];
+        _numberLabel.textColor = kTAColor.c_49;
+    }
+    return _numberLabel;
+}
+
+- (UITableView *)tableView
+{
+    if (!_tableView){
+        _tableView = [UITableView new];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableView;
+}
+
+- (UIButton    *)leftBtn
+{
+    if (!_leftBtn){
+        _leftBtn = [UIButton new];
+        _leftBtn.layer.borderColor = kTAColor.c_49.CGColor;
+        _leftBtn.layer.borderWidth = 0.5;
+        _leftBtn.layer.cornerRadius = kRelative(30);
+        _leftBtn.layer.masksToBounds = YES;
+        _leftBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_leftBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
+        [_leftBtn jk_setBackgroundColor:kTAColor.c_F0 forState:UIControlStateNormal];
+        [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [_leftBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateSelected];
+        [_leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        if (self.isAdmin){
+            [_leftBtn setTitle:@"全体静音" forState:UIControlStateNormal];
+            [_leftBtn setTitle:@"解除全体静音" forState:UIControlStateSelected];
+        }else{
+            [_leftBtn setTitle:@"解除静音" forState:UIControlStateNormal];
+            [_leftBtn setTitle:@"静音" forState:UIControlStateSelected];
+        }
+        if (self.isAdmin) {
+            _leftBtn.selected = [TARoomManager shareInstance].isProhibition;
+        }else {
+            _leftBtn.selected = [TARoomManager shareInstance].isStartLocalAudio;
+        }
+    }
+    return _leftBtn;
+}
+
+- (UIButton    *)rightBtn
+{
+    if (!_rightBtn){
+        _rightBtn = [UIButton new];
+        _rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        _rightBtn.layer.borderColor = kTAColor.c_49.CGColor;
+        _rightBtn.layer.borderWidth = 0.5;
+        _rightBtn.layer.cornerRadius = kRelative(30);
+        _rightBtn.layer.masksToBounds = YES;
+        [_rightBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
+        [_rightBtn jk_setBackgroundColor:kTAColor.c_F0 forState:UIControlStateNormal];
+        [_rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [_rightBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateHighlighted];
+        [_rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_rightBtn setTitle:@"邀请" forState:UIControlStateNormal];
+    }
+    return _rightBtn;
+}
+
+# pragma mark - 显示与隐藏
 - (void)showView:(UIView *)superView animated:(BOOL)animated
 {
     if (self.superview) {
@@ -274,117 +396,6 @@
     if ([touches anyObject].view == self) {
         [self hideViewAnimated:YES];
     }
-}
-
-- (UIView     *)contentView
-{
-    if (!_contentView){
-        _contentView = [UIView new];
-        _contentView.backgroundColor = kTAColor.c_F0;
-        _contentView.userInteractionEnabled = YES;
-    }
-    return _contentView;
-}
-
-- (UILabel     *)titleLabel
-{
-    if (!_titleLabel){
-        _titleLabel = [UILabel new];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.text = @"参会人员";
-        _titleLabel.textColor = kTAColor.c_49;
-    }
-    return _titleLabel;
-}
-
-- (UILabel     *)numberLabel
-{
-    if (!_numberLabel){
-        _numberLabel = [UILabel new];
-        _numberLabel.font = [UIFont systemFontOfSize:8];
-        _numberLabel.textColor = kTAColor.c_49;
-    }
-    return _numberLabel;
-}
-
-- (UITableView *)tableView
-{
-    if (!_tableView){
-        _tableView = [UITableView new];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
-    return _tableView;
-}
-
-- (UIButton    *)leftBtn
-{
-    if (!_leftBtn){
-        _leftBtn = [UIButton new];
-        _leftBtn.backgroundColor = kTAColor.c_49;
-        _leftBtn.layer.cornerRadius = kRelative(30);
-        _leftBtn.layer.masksToBounds = YES;
-        _leftBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        if (self.isAdmin){
-            [_leftBtn setTitle:@"全体静音" forState:UIControlStateNormal];
-            [_leftBtn setTitle:@"解除全体静音" forState:UIControlStateSelected];
-        }else{
-            [_leftBtn setTitle:@"静音" forState:UIControlStateNormal];
-            [_leftBtn setTitle:@"解除静音" forState:UIControlStateSelected];
-        }
-        _leftBtn.selected = self.isProhibition;
-    }
-    return _leftBtn;
-}
-
-- (UIButton    *)rightBtn
-{
-    if (!_rightBtn){
-        _rightBtn = [UIButton new];
-        _rightBtn.backgroundColor = kTAColor.c_F0;
-        _rightBtn.layer.borderColor = kTAColor.c_49.CGColor;
-        _rightBtn.layer.borderWidth = 0.5;
-        _rightBtn.layer.cornerRadius = kRelative(30);
-        _rightBtn.layer.masksToBounds = YES;
-        _rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [_rightBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
-        [_rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [_rightBtn setTitle:@"邀请" forState:UIControlStateNormal];
-    }
-    return _rightBtn;
-}
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    static NSString *TAMemberTableViewCellIdIdentifier = @"TAMemberTableViewCellIdIdentifier";
-    TAMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             TAMemberTableViewCellIdIdentifier];
-    if (cell == nil) {
-        cell = [[TAMemberTableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:TAMemberTableViewCellIdIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    NSString *name = [TARoomManager shareInstance].userList[indexPath.row];
-    cell.name = name;
-    cell.mikeEnable = [[TARoomManager shareInstance].microphoneUserList containsObject:name];
-    cell.delegate = self;
-
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = [TARoomManager shareInstance].userList.count;
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld人",count];
-    return count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return kRelative(80);
 }
 
 @end

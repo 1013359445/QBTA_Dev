@@ -65,14 +65,14 @@ shareInstance_implementation(TARoomManager);
     
     
     self.shareScreenStatus = ScreenStop;
-    self.isStartLocalAudio = NO;
+    [self setValue:@(NO) forKey:@"isStartLocalAudio"];
 }
 
 - (void)enterRoom:(UInt32)roomId {
     kShowHUDAndActivity;
     self.isFirstStartLocalAudio = YES;
     self.shareScreenStatus = ScreenStop;
-    self.isStartLocalAudio = NO;
+    [self setValue:@(NO) forKey:@"isStartLocalAudio"];
 
     self.roomId = roomId;
     NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
@@ -111,8 +111,8 @@ shareInstance_implementation(TARoomManager);
 
 - (void)kickOutUser:(NSString *)userId
 {
-    [[TARoomManager shareInstance].userList removeObject:userId];
-    [[TARoomManager shareInstance].microphoneUserList removeObject:userId];
+    [[self mutableArrayValueForKey:@"userList"] removeObject:userId];
+    [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
 }
 
 # pragma mark - 语音
@@ -132,9 +132,9 @@ shareInstance_implementation(TARoomManager);
     NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
     NSInteger index = [self.microphoneUserList indexOfObject:userId];
     if (index != NSNotFound) { return; }
-    [self.microphoneUserList addObject:userId];
-    
-    self.isStartLocalAudio = YES;
+    [[self mutableArrayValueForKey:@"microphoneUserList"] addObject:userId];
+
+    [self setValue:@(YES) forKey:@"isStartLocalAudio"];
 }
 
 - (void)stopLocalAudio
@@ -144,9 +144,9 @@ shareInstance_implementation(TARoomManager);
     NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
     NSInteger index = [self.microphoneUserList indexOfObject:userId];
     if (index == NSNotFound) { return; }
-    [self.microphoneUserList removeObject:userId];
+    [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
     
-    self.isStartLocalAudio = NO;
+    [self setValue:@(NO) forKey:@"isStartLocalAudio"];
 }
 
 # pragma mark - 共享屏幕
@@ -198,6 +198,16 @@ shareInstance_implementation(TARoomManager);
     return _encParams;
 }
 #pragma mark - setter
+- (void)setIsProhibition:(BOOL)isProhibition
+{
+    if (_isProhibition == isProhibition){
+        return;
+    }
+    _isProhibition = isProhibition;
+    //通知服务端禁言状态
+    [self setValue:@(isProhibition) forKey:@"isProhibition"];
+}
+
 //自动旋转屏幕
 - (void)setIsShareScreenHorizontal:(BOOL)isShareScreenHorizontal
 {
@@ -299,10 +309,10 @@ shareInstance_implementation(TARoomManager);
     NSInteger index = [self.microphoneUserList indexOfObject:userId];
     if (available) {
         if (index != NSNotFound) { return; }
-        [self.microphoneUserList addObject:userId];
+        [[self mutableArrayValueForKey:@"microphoneUserList"] addObject:userId];
     } else {
         if (index == NSNotFound) { return; }
-        [self.microphoneUserList removeObject:userId];
+        [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
     }
 }
 
@@ -310,14 +320,14 @@ shareInstance_implementation(TARoomManager);
 - (void)onRemoteUserEnterRoom:(NSString *)userId{
     NSInteger index = [self.userList indexOfObject:userId];
     if (index != NSNotFound) { return; }
-    [self.userList addObject:userId];
+    [[self mutableArrayValueForKey:@"userList"] addObject:userId];
 }
 
 // 感知远端用户离开房间的通知，并更新远端用户列表
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
     NSInteger index = [self.userList indexOfObject:userId];
     if (index == NSNotFound) { return; }
-    [self.userList removeObject:userId];
+    [[self mutableArrayValueForKey:@"userList"] removeObject:userId];
     [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
 }
 

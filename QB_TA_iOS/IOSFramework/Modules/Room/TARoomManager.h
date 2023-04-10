@@ -19,15 +19,18 @@ typedef NS_ENUM(NSInteger, ScreenStatus) {
 @interface TARoomManager : NSObject
 shareInstance_interface(TARoomManager);
 
+@property (nonatomic, assign)BOOL   isProhibition;//禁言状态
+
 // 场景
 - (void)enterRoom:(UInt32)roomId;
 - (void)exitRoom;
 - (void)changeRomeWithRomeId:(UInt32)roomId;
 @property (strong, nonatomic) NSMutableOrderedSet *userList;//房间里的成员
+- (void)kickOutUser:(NSString *)userId;
 
 // 语音
 @property (nonatomic, assign) BOOL isStartLocalAudio;//自己的开麦状态
-@property (strong, nonatomic) NSMutableOrderedSet *anchorIdSet;//房间里正在发言的成员
+@property (strong, nonatomic) NSMutableOrderedSet *microphoneUserList;//房间里正在发言的成员
 - (void)startLocalAudio;
 - (void)stopLocalAudio;
 

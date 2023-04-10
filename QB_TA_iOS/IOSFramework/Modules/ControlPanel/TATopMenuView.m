@@ -254,7 +254,7 @@ int const IconID_Share_Screen   = 1006;
             @"normal":@"tmenu_setting_b",//常规
             @"highlight":@"tmenu_setting_g",//按下
             @"disable":@"tmenu_setting_g",//无效
-            @"visible":@"1",//权限-1：普通权限 0：管理员权限
+            @"visible":@"1",//是否显示
             @"isEnabled":@"1"//是否有效
         },
         @{

@@ -6,9 +6,12 @@
 //
 
 #import "TAMemberView.h"
-#import "TAAlertViewController.h"
+#import "TAMemberTableViewCell.h"
+#import "TARoomManager.h"
+#import "TALoginViewController.h"
+#import "TAAlert.h"
 
-@interface TAMemberView () <UITableViewDelegate, UITableViewDataSource>
+@interface TAMemberView () <UITableViewDelegate, UITableViewDataSource, TAMemberTableViewCellProtocol>
 @property (nonatomic, retain)UIView     *contentView;
 @property (nonatomic, retain)UILabel    *titleLabel;
 @property (nonatomic, retain)UILabel    *numberLabel;
@@ -16,6 +19,10 @@
 @property (nonatomic, retain)UIButton   *leftBtn;
 @property (nonatomic, retain)UIButton   *rightBtn;
 //@property (nonatomic, retain)UIView     *tableHeaderView;
+
+
+@property (nonatomic, assign)BOOL   isAdmin;
+@property (nonatomic, assign)BOOL   isProhibition;//禁言
 @end
 
 @implementation TAMemberView
@@ -32,22 +39,67 @@
     return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
+- (void)dealloc{
+    if (self.isAdmin){
+        [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isProhibition"];
+    }else{
+        [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
+    }
+    [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"microphoneUserList"];
+    [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"userList"];
+}
+
+- (BOOL)isAdmin
+{
+    return [TADataCenter shareInstance].userInfo.admin;
+}
+
+- (BOOL)isProhibition
+{
+    return [TARoomManager shareInstance].isProhibition;
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         self.showEffectView = YES;
+        
+        //注册监听
+        if (self.isAdmin){
+            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:@"isProhibition"];
+        }else{
+            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:@"isStartLocalAudio"];
+        }
+        [[TARoomManager shareInstance] addObserver:self forKeyPath:@"microphoneUserList" options:NSKeyValueObservingOptionNew context:@"microphoneUserList"];
+        [[TARoomManager shareInstance] addObserver:self forKeyPath:@"userList" options:NSKeyValueObservingOptionNew context:@"userList"];
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if ([@"isProhibition" isEqualToString:keyPath]) {
+        self.leftBtn.selected = [TARoomManager shareInstance].isProhibition;
+    }
+    if ([@"isStartLocalAudio" isEqualToString:keyPath]) {
+        self.leftBtn.selected = [TARoomManager shareInstance].isStartLocalAudio;
+    }
+    if ([@"microphoneUserList" isEqualToString:keyPath]) {
+        [self.tableView reloadData];
+    }
+    if ([@"userList" isEqualToString:keyPath]) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)loadSubViews
 {
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(kRelative(640));
+        make.width.mas_equalTo(kRelative(600));
         make.top.bottom.mas_equalTo(0);
-        make.right.mas_equalTo(kRelative(640));
+        make.right.mas_equalTo(kRelative(600));
     }];
     
     [self.contentView addSubview:self.titleLabel];
@@ -73,25 +125,68 @@
     
     [self.contentView addSubview:self.leftBtn];
     [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(kRelative(205));
+        make.width.mas_equalTo(kRelative(225));
         make.height.mas_equalTo(kRelative(60));
-        make.left.mas_equalTo(kRelative(30));
+        make.left.mas_equalTo(kRelative(60));
         make.bottom.mas_equalTo(kRelative(-30));
     }];
     
     [self.contentView addSubview:self.rightBtn];
     [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.bottom.mas_equalTo(_leftBtn);
-        make.right.mas_equalTo(kRelative(-30));
+        make.right.mas_equalTo(kRelative(-60));
     }];
+}
+
+- (void)leftBtnClick{
+    if (self.isAdmin){
+        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1)
+            {
+                //。。。删除用户数据、通知UE登出
+                [[TARouter shareInstance] close];
+                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+            }
+        }];
+    }else{
+        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1)
+            {
+                //。。。删除用户数据、通知UE登出
+                [[TARouter shareInstance] close];
+                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+            }
+        }];
+    }
+}
+
+- (void)rightBtnClick{
     
-//    UIAlertViewController *controller = [[UIAlertViewController alloc] init];
-//    [controller setTitle:@"温馨提示"];
-//    [controller setViewContent:@"alert的提示内容区域"];
-//    [controller alertActionBlock:^BOOL(NSInteger index) {
-//        return YES;
-//    }];
-//    [controller showInViewController:self];
+}
+
+- (void)cellDidClickKickOut:(id)data
+{
+    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
+
+    if ([data isEqualToString:userId]) {
+        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1)
+            {
+                //。。。删除用户数据、通知UE登出
+                [[TARouter shareInstance] close];
+                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+            }
+        }];
+    }else{
+        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确踢出成员%@吗？",data] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1)
+            {
+                //。。。同步数据
+                [[TARoomManager shareInstance] kickOutUser:data];
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated
@@ -159,7 +254,7 @@
                      animations:^{
         //从右侧滑出
         [weakself.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(kRelative(640));
+            make.right.mas_equalTo(kRelative(600));
         }];
         [weakself layoutIfNeeded];
         [weakself layoutSubviews];
@@ -174,17 +269,11 @@
     }];
 }
 
-- (void)leftBtnClick{
-    
-}
-
-- (void)rightBtnClick{
-    
-}
-
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self hideViewAnimated:YES];
+    if ([touches anyObject].view == self) {
+        [self hideViewAnimated:YES];
+    }
 }
 
 - (UIView     *)contentView
@@ -192,6 +281,7 @@
     if (!_contentView){
         _contentView = [UIView new];
         _contentView.backgroundColor = kTAColor.c_F0;
+        _contentView.userInteractionEnabled = YES;
     }
     return _contentView;
 }
@@ -224,6 +314,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -233,8 +324,19 @@
     if (!_leftBtn){
         _leftBtn = [UIButton new];
         _leftBtn.backgroundColor = kTAColor.c_49;
+        _leftBtn.layer.cornerRadius = kRelative(30);
+        _leftBtn.layer.masksToBounds = YES;
+        _leftBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        if (self.isAdmin){
+            [_leftBtn setTitle:@"全体静音" forState:UIControlStateNormal];
+            [_leftBtn setTitle:@"解除全体静音" forState:UIControlStateSelected];
+        }else{
+            [_leftBtn setTitle:@"静音" forState:UIControlStateNormal];
+            [_leftBtn setTitle:@"解除静音" forState:UIControlStateSelected];
+        }
+        _leftBtn.selected = self.isProhibition;
     }
     return _leftBtn;
 }
@@ -246,19 +348,43 @@
         _rightBtn.backgroundColor = kTAColor.c_F0;
         _rightBtn.layer.borderColor = kTAColor.c_49.CGColor;
         _rightBtn.layer.borderWidth = 0.5;
+        _rightBtn.layer.cornerRadius = kRelative(30);
+        _rightBtn.layer.masksToBounds = YES;
         _rightBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_rightBtn setTitleColor:kTAColor.c_49 forState:UIControlStateNormal];
         [_rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_rightBtn setTitle:@"邀请" forState:UIControlStateNormal];
     }
     return _rightBtn;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return nil;
+    static NSString *TAMemberTableViewCellIdIdentifier = @"TAMemberTableViewCellIdIdentifier";
+    TAMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TAMemberTableViewCellIdIdentifier];
+    if (cell == nil) {
+        cell = [[TAMemberTableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:TAMemberTableViewCellIdIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    NSString *name = [TARoomManager shareInstance].userList[indexPath.row];
+    cell.name = name;
+    cell.mikeEnable = [[TARoomManager shareInstance].microphoneUserList containsObject:name];
+    cell.delegate = self;
+
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    NSInteger count = [TARoomManager shareInstance].userList.count;
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld人",count];
+    return count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kRelative(80);
 }
 
 @end

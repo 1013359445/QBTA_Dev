@@ -60,7 +60,7 @@ shareInstance_implementation(TARoomManager);
     [self stopShareScreen];
     
     [self.trtcCloud exitRoom];
-    [self.anchorIdSet removeAllObjects];
+    [self.microphoneUserList removeAllObjects];
     [self.userList removeAllObjects];
     
     
@@ -92,23 +92,33 @@ shareInstance_implementation(TARoomManager);
     [self.trtcCloud enterRoom:params appScene:TRTCAppSceneVideoCall];
 }
 
-- (NSMutableOrderedSet *)anchorIdSet {
-    if (!_anchorIdSet) {
-        _anchorIdSet = [[NSMutableOrderedSet alloc] initWithCapacity:6];//6人以上同时说话过于混乱
+- (NSMutableOrderedSet *)microphoneUserList {
+    if (!_microphoneUserList) {
+        _microphoneUserList = [[NSMutableOrderedSet alloc] initWithCapacity:6];//6人以上同时说话过于混乱
     }
-    return _anchorIdSet;
+    return _microphoneUserList;
 }
 - (NSMutableOrderedSet *)userList {
     if (!_userList) {
         _userList = [[NSMutableOrderedSet alloc] initWithCapacity:299];
+        NSArray *names =  @[@"杜子藤",@"沈京兵",@"杜琦燕",@"焦厚根",@"史珍香",@"胡丽晶",@"梅良鑫",@"尤勇驰"];
+        NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
+        [_userList addObject:userId];
+        [_userList addObjectsFromArray:names];
     }
     return _userList;
+}
+
+- (void)kickOutUser:(NSString *)userId
+{
+    [[TARoomManager shareInstance].userList removeObject:userId];
+    [[TARoomManager shareInstance].microphoneUserList removeObject:userId];
 }
 
 # pragma mark - 语音
 - (void)startLocalAudio
 {
-    if (self.anchorIdSet.count >= 6) {
+    if (self.microphoneUserList.count >= 6) {
         [TAToast showTextDialog:kWindow msg:@"请稍等~当前对话人数过多"];
         return;
     }
@@ -118,12 +128,24 @@ shareInstance_implementation(TARoomManager);
         self.isFirstStartLocalAudio = NO;
     }
     [self.trtcCloud muteLocalAudio:NO];//开始本地音频采集
+    
+    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
+    NSInteger index = [self.microphoneUserList indexOfObject:userId];
+    if (index != NSNotFound) { return; }
+    [self.microphoneUserList addObject:userId];
+    
     self.isStartLocalAudio = YES;
 }
 
 - (void)stopLocalAudio
 {
     [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
+    
+    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
+    NSInteger index = [self.microphoneUserList indexOfObject:userId];
+    if (index == NSNotFound) { return; }
+    [self.microphoneUserList removeObject:userId];
+    
     self.isStartLocalAudio = NO;
 }
 
@@ -272,30 +294,29 @@ shareInstance_implementation(TARoomManager);
     kHiddenHUDAndAvtivity;
 }
 
-// 感知远端用户音频状态的变化，并更新开启了麦克风的用户列表(mMicrophoneUserList)
+// 感知远端用户音频状态的变化，并更新开启了麦克风的用户列表
 - (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available{
-    NSInteger index = [self.anchorIdSet indexOfObject:userId];
+    NSInteger index = [self.microphoneUserList indexOfObject:userId];
     if (available) {
         if (index != NSNotFound) { return; }
-        [self.anchorIdSet addObject:userId];
+        [self.microphoneUserList addObject:userId];
     } else {
-        if (index) {
-            [self.anchorIdSet removeObject:userId];
-        }
+        if (index == NSNotFound) { return; }
+        [self.microphoneUserList removeObject:userId];
     }
 }
 
-// 感知远端用户进入房间的通知，并更新远端用户列表(mUserList)
+// 感知远端用户进入房间的通知，并更新远端用户列表
 - (void)onRemoteUserEnterRoom:(NSString *)userId{
-    NSInteger index = [self.anchorIdSet indexOfObject:userId];
+    NSInteger index = [self.userList indexOfObject:userId];
     if (index != NSNotFound) { return; }
     [self.userList addObject:userId];
 }
 
-// 感知远端用户离开房间的通知，并更新远端用户列表(mUserList)
+// 感知远端用户离开房间的通知，并更新远端用户列表
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
-    NSInteger index = [self.anchorIdSet indexOfObject:userId];
-    if (index != NSNotFound) { return; }
+    NSInteger index = [self.userList indexOfObject:userId];
+    if (index == NSNotFound) { return; }
     [self.userList removeObject:userId];
     [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
 }

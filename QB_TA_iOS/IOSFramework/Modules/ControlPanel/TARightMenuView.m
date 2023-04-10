@@ -11,8 +11,8 @@
 
 int const IconID_Hi             = 1001;//hi
 int const IconID_Emoji          = 1002;//表情
-int const IconID_Wave           = 1003;//鼓掌
-int const IconID_Applause       = 1004;//挥手
+int const IconID_Wave           = 1003;//举手
+int const IconID_Applause       = 1004;//鼓掌
 int const IconID_Large_Screen   = 1005;//大屏
 int const IconID_Confetti       = 1006;//喝彩
 
@@ -64,9 +64,9 @@ int const IconID_Confetti       = 1006;//喝彩
         {}break;
         case IconID_Emoji://表情
         {}break;
-        case IconID_Wave://鼓掌
+        case IconID_Wave://举手
         {}break;
-        case IconID_Applause://挥手
+        case IconID_Applause://鼓掌
         {}break;
         case IconID_Large_Screen://大屏
         {
@@ -101,8 +101,8 @@ int const IconID_Confetti       = 1006;//喝彩
     //根据配置创建icon
     for (NSDictionary *btnConfig in config) {
 
-        BOOL authority = [[btnConfig objectForKey:@"authority"] boolValue];
-        if (!authority) {
+        BOOL visible = [[btnConfig objectForKey:@"visible"] boolValue];
+        if (!visible) {
             continue;
         }
 
@@ -141,7 +141,7 @@ int const IconID_Confetti       = 1006;//喝彩
             @"normal":@"rmenu_hi_b",//常规
             @"highlight":@"rmenu_hi_g",//按下
             @"disable":@"rmenu_hi_b",//无效
-            @"authority":@"1",//权限-1：普通权限 0：管理员权限
+            @"visible":@"1",//是否显示
             @"isEnabled":@"1"//是否有效
         },
         @{
@@ -150,16 +150,16 @@ int const IconID_Confetti       = 1006;//喝彩
             @"normal":@"rmenu_emoji_b",
             @"highlight":@"rmenu_emoji_g",
             @"disable":@"rmenu_emoji_g",
-            @"authority":@"1",
+            @"visible":@"0",
             @"isEnabled":@"1"
         },
         @{
-            @"icon_name":@"Wave",//挥手
+            @"icon_name":@"Wave",//举手
             @"icon_id":@(IconID_Wave),
             @"normal":@"rmenu_wave_b",
             @"highlight":@"rmenu_wave_g",
             @"disable":@"rmenu_wave_g",
-            @"authority":@"1",
+            @"visible":@"0",
             @"isEnabled":@"1"
         },
         @{
@@ -168,7 +168,7 @@ int const IconID_Confetti       = 1006;//喝彩
             @"normal":@"rmenu_applause_b",
             @"highlight":@"rmenu_applause_g",
             @"disable":@"rmenu_applause_g",
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
         @{
@@ -178,7 +178,7 @@ int const IconID_Confetti       = 1006;//喝彩
             @"selected":@"rmenu_large",
             @"highlight":@"",//不需要
             @"disable":@"",//不需要
-            @"authority":@"1",
+            @"visible":@"1",
             @"isEnabled":@"1"
         },
         @{
@@ -187,20 +187,17 @@ int const IconID_Confetti       = 1006;//喝彩
             @"normal":@"rmenu_confetti_b",
             @"highlight":@"rmenu_confetti_g",
             @"disable":@"rmenu_confetti_g",
-            @"authority":@"1",
+            @"visible":@"0",
             @"isEnabled":@"1"
         },
     ]];
     
-    //伪代码
-    if(@"如果不是管理员"){
-        for (int i = 0; i < config.count; i++) {
-            NSDictionary *btnConfig = config[i];
-            int authority = [[btnConfig objectForKey:@"authority"] intValue];
-            if (authority == 0) {
-                [config removeObject:btnConfig];
-                i--;
-            }
+    for (int i = 0; i < config.count; i++) {
+        NSDictionary *btnConfig = config[i];
+        int visible = [[btnConfig objectForKey:@"visible"] intValue];
+        if (visible == 0) {
+            [config removeObject:btnConfig];
+            i--;
         }
     }
     return config;

@@ -78,29 +78,30 @@
     }];
     
     [self chatPeopleWhoSpeakChange];
+    
+    [self.msgTableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([TADataCenter shareInstance].chatMessages.count > 5) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
+            [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
+    });
 }
 
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
-    if (newSuperview) {
-        [[IQKeyboardManager sharedManager] setEnable:NO];
-    }else{
-        [[IQKeyboardManager sharedManager] setEnable:YES];
-    }
 }
 
-//点击聊天背景
-- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == _bgView) {
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if ([touches anyObject].view == _bgView) {
         if ([_inputTextField isFirstResponder]) {
             [self.inputTextField resignFirstResponder];
         }else{
             [self hideViewAnimated:YES];
         }
     }
-    return hitView;
 }
 
 - (void)chatPeopleWhoSpeakChange
@@ -142,7 +143,6 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
         [weakself.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     });
-
 }
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated
@@ -210,18 +210,18 @@ static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
 static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
-static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     CGRect textFieldRect = [self convertRect:textField.bounds fromView:textField];
     CGRect viewRect = [self convertRect:self.bounds fromView:self];
-    
+
     CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
     CGFloat numerator = midline - viewRect.origin.y - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
     CGFloat denominator = (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION) * viewRect.size.height;
     CGFloat heightFraction = numerator / denominator;
-    
+
     if (heightFraction < 0.0)
     {
         heightFraction = 0.0;
@@ -230,7 +230,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
     {
         heightFraction = 1.0;
     }
-    
+
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
     {
@@ -240,10 +240,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
     {
         animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
     }
-    
+
     [UIView animateWithDuration:KEYBOARD_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(kRelative(-30) - self->animatedDistance);
+            make.bottom.mas_equalTo(-self->animatedDistance);
         }];
         [self layoutIfNeeded];
         [self layoutSubviews];
@@ -254,7 +254,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
 {
     CGRect viewFrame = self.frame;
     viewFrame.origin.y += animatedDistance;
-    
+
     [UIView animateWithDuration:KEYBOARD_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.inputView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(kRelative(-30));
@@ -345,6 +345,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
         _msgTableView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
         _msgTableView.layer.cornerRadius = kRelative(16);
         _msgTableView.layer.masksToBounds = YES;
+        _msgTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _msgTableView;
 }
@@ -388,13 +389,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 216;
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    static NSString *FirstLevelCell = @"TAChatViewCellId";
+    static NSString *TAChatViewCellIdIdentifier = @"TAChatViewCellIdIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             FirstLevelCell];
+                             TAChatViewCellIdIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier: FirstLevelCell];
+                reuseIdentifier: TAChatViewCellIdIdentifier];
         cell.backgroundColor = [UIColor clearColor];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

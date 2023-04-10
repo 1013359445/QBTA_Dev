@@ -21,6 +21,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
     self.roomId = 5981024;
+    self.admin = YES;
 }
 
 @end

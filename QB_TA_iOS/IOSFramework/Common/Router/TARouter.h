@@ -6,6 +6,7 @@
 //
 
 #import "TAMacroDefinition.h"
+#import <UIKit/UIKit.h>
 #import "TACmdModel.h"
 
 #import <Foundation/Foundation.h>
@@ -21,6 +22,7 @@ shareInstance_interface(TARouter)
 
 - (void)close;//关闭所有iOS视图
 
+- (UIViewController *)getCurrentVC;
 @end
 
 NS_ASSUME_NONNULL_END

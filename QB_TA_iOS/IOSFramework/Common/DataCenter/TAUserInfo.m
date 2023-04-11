@@ -20,7 +20,7 @@
     self.nickname = [NSString stringWithFormat:@"%@%@%2.f",iPhoneName,systemVersion,batteryLevel];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
-    self.roomId = 5981024;
+    self.roomId = 576901;
     self.admin = YES;
 }
 

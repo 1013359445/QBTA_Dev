@@ -588,8 +588,9 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.77;
+				CURRENT_PROJECT_VERSION = 4.79;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -613,9 +614,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingMetaverse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta;
 				PRODUCT_NAME = "清元宇宙";
 				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseDev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = qingmetaDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -629,8 +631,9 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.77;
+				CURRENT_PROJECT_VERSION = 4.79;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,9 +657,10 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingMetaverse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gsdata.qingmeta;
 				PRODUCT_NAME = "清元宇宙";
 				PROVISIONING_PROFILE_SPECIFIER = qingMetaverseAdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = qingmetaStore;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -667,9 +671,11 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TXReplayKit_Screen/TXReplayKit_Screen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4.77;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -686,9 +692,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingMetaverse.QBTA-Ext";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingmeta.QBTA-Ext";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = QBTAExtDev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = QBTAExtDev;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -703,6 +710,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4.77;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -720,9 +728,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingMetaverse.QBTA-Ext";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gsdata.qingmeta.QBTA-Ext";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = QBTAExtAdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = QBTAExtAppStore;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

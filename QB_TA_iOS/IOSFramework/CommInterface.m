@@ -62,8 +62,8 @@ static CommInterface *_instanceCommInterface;
  */
 + (void)sendMessagesToIOS:(id __nonnull)msg type:(int)type notification:(__nullable NSNotificationName)notification
 {
-    NSDictionary *userInfo = [msg mj_JSONObject];
-    [[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil userInfo:userInfo];
+    NSDictionary *info = [msg mj_JSONObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil userInfo:info];
 }
 
 @end

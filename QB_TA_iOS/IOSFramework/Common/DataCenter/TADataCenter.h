@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "TAMacroDefinition.h"
 #import "TAUserInfo.h"
+#import "TAMemberModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,15 +17,16 @@ static NSNotificationName ChatPeopleWhoSpeakChange = @"ChatPeopleWhoSpeakChange"
 @interface TADataCenter : NSObject
 shareInstance_interface(TADataCenter)
 
-@property (nonatomic, retain)TAUserInfo *userInfo;
+@property (nonatomic, nullable, retain)NSMutableArray* microphoneUserList;//正在使用麦克风的成员
 
-@property (nonatomic, copy)NSString *cookie;
-@property (nonatomic, copy)NSString *token;
+@property (nonatomic, nullable, retain)NSArray*     membersList;//房间的成员
+@property (nonatomic, assign)BOOL                   isProhibition;//禁言状态
+@property (nonatomic, nullable, retain)TAUserInfo*  userInfo;
+@property (nonatomic, nullable, copy)NSString*      cookie;
+@property (nonatomic, nullable, copy)NSString*      token;
 
 @property (nonatomic, retain)NSMutableArray *chatMessages;
-@property (nonatomic, retain)NSMutableArray *peopleWhoSpeakArray;
 - (void)addChatMessage:(NSString *)msg;
-- (void)addPeopleWhoSpeak:(NSString *)name;
 
 @end
 

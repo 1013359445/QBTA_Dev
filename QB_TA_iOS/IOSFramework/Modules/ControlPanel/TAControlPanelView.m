@@ -14,6 +14,7 @@
 #import "TAChatView.h"
 #import "TARoomManager.h"
 #import "TARoomListView.h"
+#import "TASocket.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -46,8 +47,9 @@
     if (self) {
         //加入默认房间
         [TARoomManager shareInstance];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[TARoomManager shareInstance] enterRoom:[TADataCenter shareInstance].userInfo.roomId];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[TARoomManager shareInstance] enterRoom:[TADataCenter shareInstance].userInfo.roomNum];
+            [[TASocket shareInstance] socketConnect];
         });
     }
     return self;

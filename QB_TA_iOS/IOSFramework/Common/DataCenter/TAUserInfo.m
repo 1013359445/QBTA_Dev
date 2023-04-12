@@ -10,18 +10,15 @@
 
 @implementation TAUserInfo
 
-- (void)assignDefaultValue
-{
-    [super assignDefaultValue];
-    
-    NSString *iPhoneName = [UIDevice currentDevice].name;
-    NSString *systemVersion = [UIDevice currentDevice].systemVersion;
-    CGFloat batteryLevel = [[UIDevice currentDevice] batteryLevel];
-    self.nickname = [NSString stringWithFormat:@"%@%@%2.f",iPhoneName,systemVersion,batteryLevel];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.phone = [defaults objectForKey:DefaultsKeyPhoneNumber];
-    self.roomId = 576901;
-    self.admin = YES;
+- (NSString *)nickname{
+    if (!_nickname || _nickname.length == 0)
+    {
+        NSString *iPhoneName = [UIDevice currentDevice].name;
+        NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+        CGFloat batteryLevel = [[UIDevice currentDevice] batteryLevel];
+        _nickname = [NSString stringWithFormat:@"%@%@%2.f",iPhoneName,systemVersion,batteryLevel];
+    }
+    return _nickname;
 }
 
 @end

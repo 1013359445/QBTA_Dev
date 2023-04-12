@@ -116,8 +116,8 @@
 - (void)creatRoleDataBack:(NSNotification*)notification
 {
     kHiddenHUDAndAvtivity;
-    NSDictionary *userInfo = notification.userInfo;
-    if ([userInfo objectForKey:@"roleData"]) {
+    NSDictionary *info = notification.userInfo;
+    if ([info objectForKey:@"roleData"]) {
         [[TARouter shareInstance] close];
     }else{
         [TAToast showTextDialog:kWindow msg:@"创建角色失败"];
@@ -218,6 +218,7 @@
 {
     if(!_nameTextField){
         _nameTextField = [UITextField new];
+        _nameTextField.text = @"测试";
         _nameTextField.delegate = self;
         _nameTextField.placeholder = @"请输入ta的名字";
         _nameTextField.returnKeyType = UIReturnKeyDone;

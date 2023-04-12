@@ -9,7 +9,7 @@
 
 #import "TALoginInterface.h"
 #import "TACaptchaInterface.h"
-#import "TAUserInfoDataModel.h"
+#import "TAUserInfo.h"
 #import "TACreatRoleViewController.h"
 
 @interface TALoginPresenter ()
@@ -25,7 +25,9 @@
 {
     kShowHUDAndActivity;
     kWeakSelf(self);
-    [[TALoginInterface shareInstance] requestWithParmModel:param dataModelClass:[TAUserInfoDataModel class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
+    [[TALoginInterface shareInstance] requestWithParmModel:param dataModelClass:[TAUserInfo class] succeededBlock:^(TABaseDataModel * _Nonnull dataModel, NSDictionary * _Nonnull response, NSString *jsonStr) {
+        
+        [TADataCenter shareInstance].userInfo = (TAUserInfo *)dataModel;
         
         [self setDefaultPhoneNumber:param.phone];
         if (param.loginMode.integerValue == 0) {
@@ -43,7 +45,6 @@
     } finishedBlock:^{
         kHiddenHUDAndAvtivity;
     }];
-    
 }
 
 - (void)getVCodeWithParam:(TACaptchaParmModel *)param
@@ -72,8 +73,8 @@
 - (void)getRoleDataBack:(NSNotification*)notification
 {
     kHiddenHUDAndAvtivity;
-    NSDictionary *userInfo = notification.userInfo;
-    if ([userInfo objectForKey:@"roleData"] == nil) {
+    NSDictionary *info = notification.userInfo;
+    if ([info objectForKey:@"roleData"] == nil) {
         [self toCreatRoleView];
     }else{
         [[TARouter shareInstance] close];
@@ -113,24 +114,28 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:value forKey:DefaultsKeyAgreement];
+    [defaults synchronize];
 }
 
 - (void)setDefaultPhoneNumber:(NSString *)value
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:value forKey:DefaultsKeyPhoneNumber];
+    [defaults synchronize];
 }
 
 - (void)setDefaultPassword:(NSString *)value
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:value forKey:DefaultsKeyPassword];
+    [defaults synchronize];
 }
 
 - (void)setDefaultLoginMode:(NSString *)value
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:value forKey:DefaultsKeyLoginMode];
+    [defaults synchronize];
 }
 
 

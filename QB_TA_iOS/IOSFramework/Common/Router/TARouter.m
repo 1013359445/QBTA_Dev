@@ -22,6 +22,8 @@
 #import "TARoomListView.h"
 #import "TAFileListView.h"
 #import "TAMemberView.h"
+#import "TARoomManager.h"
+#import "TASocket.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -152,5 +154,25 @@ shareInstance_implementation(TARouter)
         [v removeFromSuperview];
     }
 }
+
+- (void)logOut
+{
+    if ([TADataCenter shareInstance].userInfo == nil) {
+        return;
+    }
+    [self close];
+    [self autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+    
+    [TADataCenter shareInstance].membersList = nil;//房间的成员
+    [TADataCenter shareInstance].isProhibition = NO;//禁言状态
+    [TADataCenter shareInstance].userInfo = nil;
+    [TADataCenter shareInstance].cookie = nil;
+    [TADataCenter shareInstance].token = nil;
+    [TADataCenter shareInstance].microphoneUserList = nil;
+    
+    [[TARoomManager shareInstance] exitRoom];
+    [[TASocket shareInstance].socket close];
+}
+
 
 @end

@@ -65,7 +65,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
 
     NSNumber *rId = [data objectForKey:@"roomId"];
-    if (rId.intValue == [TADataCenter shareInstance].userInfo.roomId) {
+    if (rId.intValue == [TADataCenter shareInstance].userInfo.roomNum) {
         _imageView.layer.borderWidth = kRelative(4);
     }else{
         _imageView.layer.borderWidth = 0;

@@ -10,6 +10,8 @@
 #import "TARoomManager.h"
 #import "TALoginViewController.h"
 #import "TAAlert.h"
+#import "TAMemberModel.h"
+#import "TASocket.h"
 
 @interface TAMemberView () <UITableViewDelegate, UITableViewDataSource, TAMemberTableViewCellProtocol>
 @property (nonatomic, retain)UIView     *contentView;
@@ -19,10 +21,6 @@
 @property (nonatomic, retain)UIButton   *leftBtn;
 @property (nonatomic, retain)UIButton   *rightBtn;
 //@property (nonatomic, retain)UIView     *tableHeaderView;
-
-
-@property (nonatomic, assign)BOOL   isAdmin;
-@property (nonatomic, assign)BOOL   isProhibition;//禁言
 @end
 
 @implementation TAMemberView
@@ -41,12 +39,11 @@
 
 - (void)dealloc{
     if (self.isAdmin){
-        [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isProhibition"];
+        [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"isProhibition"];
     }else{
         [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
     }
-    [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"microphoneUserList"];
-    [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"userList"];
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
 }
 
 - (instancetype)init
@@ -54,15 +51,14 @@
     self = [super init];
     if (self) {
         self.showEffectView = YES;
-        
+
         //注册监听
         if (self.isAdmin){
-            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:@"isProhibition"];
+            [[TADataCenter shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:nil];
         }else{
-            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:@"isStartLocalAudio"];
+            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:nil];
         }
-        [[TARoomManager shareInstance] addObserver:self forKeyPath:@"microphoneUserList" options:NSKeyValueObservingOptionNew context:@"microphoneUserList"];
-        [[TARoomManager shareInstance] addObserver:self forKeyPath:@"userList" options:NSKeyValueObservingOptionNew context:@"userList"];
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -70,15 +66,12 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if ([@"isProhibition" isEqualToString:keyPath]) {
-        self.leftBtn.selected = [TARoomManager shareInstance].isProhibition;
+        self.leftBtn.selected = self.isProhibition;
     }
     if ([@"isStartLocalAudio" isEqualToString:keyPath]) {
-        self.leftBtn.selected = [TARoomManager shareInstance].isStartLocalAudio;
+        self.leftBtn.selected = self.isStartLocalAudio;
     }
-    if ([@"microphoneUserList" isEqualToString:keyPath]) {
-        [self.tableView reloadData];
-    }
-    if ([@"userList" isEqualToString:keyPath]) {
+    if ([@"membersList" isEqualToString:keyPath]) {
         [self.tableView reloadData];
     }
 }
@@ -131,13 +124,15 @@
 # pragma mark - action
 - (void)leftBtnClick{
     if (self.isAdmin){
-        BOOL isProhibition = [TARoomManager shareInstance].isProhibition;
-        NSString *msg = isProhibition ? @"所有成员以及新加入的成员可自由发言" : @"所有成员以及新加入的成员将被静音";
-        NSString *actionText = isProhibition ? @"解除全体静音" : @"全体静音";
+        NSString *msg = self.isProhibition ? @"所有成员以及新加入的成员可自由发言" : @"所有成员以及新加入的成员将被静音";
+        NSString *actionText = self.isProhibition ? @"解除全体静音" : @"全体静音";
         [TAAlert alertWithTitle:@"" msg:msg actionText_1:@"取消" actionText_2:actionText action:^(NSInteger index) {
             if (index == 1)
             {
-                [TARoomManager shareInstance].isProhibition = !isProhibition;
+                TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                parm.range = @"room";
+                parm.voice = self.isProhibition ? 1 : 0;
+                [[TASocket shareInstance] SendClientMembersVoice:parm];
             }
         }];
     }else{
@@ -154,25 +149,46 @@
     [TAToast showTextDialog:kWindow msg:@"敬请期待"];
 }
 
-- (void)cellDidClickKickOut:(id)data
+- (void)cellDidClickKickOut:(TAMemberModel *)data
 {
-    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
-
-    if ([data isEqualToString:userId]) {
-        [TAAlert alertWithTitle:@"" msg:@"您确定退出房间吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+    if (data.kick == 1){
+        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确踢出成员%@吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
             if (index == 1)
             {
-                //。。。删除用户数据、通知UE登出
-                [[TARouter shareInstance] close];
-                [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+                TAClientMembersKickParmModel *parm = [TAClientMembersKickParmModel new];
+                parm.kick = 1;
+                parm.phone = data.phone;
+                parm.range = @"room";
+                [[TASocket shareInstance] SendClientMembersKick:parm];
             }
         }];
     }else{
-        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确踢出成员%@吗？",data] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+        [TAToast showTextDialog:kWindow msg:@"主持人不可被踢出"];
+    }
+}
+
+- (void)cellDidClickMikeStatet:(TAMemberModel *)data{
+    NSString *nickname = [TADataCenter shareInstance].userInfo.nickname;
+    if ([data.nickname isEqualToString:nickname]) {
+        if ([TARoomManager shareInstance].isStartLocalAudio) {
+            [[TARoomManager shareInstance] stopLocalAudio];
+        }else {
+            [[TARoomManager shareInstance] startLocalAudio];
+        }
+    }else{
+        if (!self.isAdmin){
+            [TAToast showTextDialog:kWindow msg:@"您没有权限对TA禁言"];
+            return;
+        }
+        
+        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确定将%@禁言吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
             if (index == 1)
             {
-                //。。。同步数据
-                [[TARoomManager shareInstance] kickOutUser:data];
+                TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                parm.voice = 0;
+                parm.phone = data.phone;
+                parm.range = @"room";
+                [[TASocket shareInstance] SendClientMembersVoice:parm];
             }
         }];
     }
@@ -188,24 +204,22 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:TAMemberTableViewCellIdIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
     }
-    NSString *name = [TARoomManager shareInstance].userList[indexPath.row];
-    cell.name = name;
-    cell.mikeEnable = [[TARoomManager shareInstance].microphoneUserList containsObject:name];
-    cell.delegate = self;
-
+    TAMemberModel *data = [TADataCenter shareInstance].membersList[indexPath.row];
+    cell.data = data;
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = [TARoomManager shareInstance].userList.count;
+    NSInteger count = [TADataCenter shareInstance].membersList.count;
     self.numberLabel.text = [NSString stringWithFormat:@"%ld人",count];
     return count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return kRelative(80);
+    return kRelative(90);
 }
 
 # pragma mark - getter
@@ -213,10 +227,13 @@
 {
     return [TADataCenter shareInstance].userInfo.admin;
 }
-
+- (BOOL)isStartLocalAudio
+{
+    return [TARoomManager shareInstance].isStartLocalAudio;
+}
 - (BOOL)isProhibition
 {
-    return [TARoomManager shareInstance].isProhibition;
+    return [TADataCenter shareInstance].isProhibition;
 }
 - (UIView     *)contentView
 {
@@ -283,9 +300,9 @@
             [_leftBtn setTitle:@"静音" forState:UIControlStateSelected];
         }
         if (self.isAdmin) {
-            _leftBtn.selected = [TARoomManager shareInstance].isProhibition;
+            _leftBtn.selected = self.isProhibition;
         }else {
-            _leftBtn.selected = [TARoomManager shareInstance].isStartLocalAudio;
+            _leftBtn.selected = self.isStartLocalAudio;
         }
     }
     return _leftBtn;

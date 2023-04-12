@@ -39,8 +39,8 @@
 - (void)modifyRoleDataBack:(NSNotification*)notification
 {
     kHiddenHUDAndAvtivity;
-    NSDictionary *userInfo = notification.userInfo;
-    NSString *msg = [userInfo objectForKey:@"msg"];
+    NSDictionary *info = notification.userInfo;
+    NSString *msg = [info objectForKey:@"msg"];
     if (msg != nil) {
         [TAToast showTextDialog:kWindow msg:msg];
     }
@@ -49,10 +49,7 @@
 
 - (void)logOut
 {
-    //。。。删除用户数据、通知UE登出
-    [[TARouter shareInstance] close];
-
-    [[TARouter shareInstance] autoTaskWithCmdModel:[TALoginViewController cmd] responseBlock:nil];
+    [[TARouter shareInstance] logOut];
 }
 
 @end

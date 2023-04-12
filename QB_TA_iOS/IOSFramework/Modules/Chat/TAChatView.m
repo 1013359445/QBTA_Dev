@@ -29,6 +29,21 @@
 {
     return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
+- (void)dealloc{
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.showEffectView = YES;
+
+        //注册监听
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
 
 + (TACmdModel *)cmd{
     TACmdModel *cmdModel = [TACmdModel new];
@@ -108,17 +123,24 @@
 {
     UILabel *titleLabel = [self.msgHeaderView viewWithTag:999];
     
-    NSArray *array = [TADataCenter shareInstance].peopleWhoSpeakArray;
+    NSArray *array = [TADataCenter shareInstance].microphoneUserList;
+    
+    
     NSString *name = @"";
     if (array.count == 0) {
         self.msgTableView.tableHeaderView = nil;
         return;
     }else if (array.count == 1){
-        name = array[0];
+        TAMemberModel *model = array[0];
+        name = model.nickname;
     }else if (array.count == 2){
-        name = [NSString stringWithFormat:@"%@和%@",array[0],array[1]];
+        TAMemberModel *model_0 = array[0];
+        TAMemberModel *model_1 = array[1];
+        name = [NSString stringWithFormat:@"%@和%@",model_0.nickname,model_1.nickname];
     }else{
-        name = [NSString stringWithFormat:@"%@、%@等%ld名成员",array[0],array[1],array.count];
+        TAMemberModel *model_0 = array[0];
+        TAMemberModel *model_1 = array[1];
+        name = [NSString stringWithFormat:@"%@、%@等%ld名成员",model_0.nickname,model_1.nickname,array.count];
     }
     titleLabel.text = [NSString stringWithFormat:@"%@正在讲话",name];
     self.msgTableView.tableHeaderView = self.msgHeaderView;

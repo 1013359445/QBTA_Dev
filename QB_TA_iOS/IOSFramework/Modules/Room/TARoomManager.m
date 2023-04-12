@@ -10,6 +10,8 @@
 #import "GenerateTestUserSig.h"
 #import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 #import "TABroadcastExtensionLauncher.h"
+#import "TASocket.h"
+#import "TAAlert.h"
 
 @interface TARoomManager ()<TRTCCloudDelegate, TRTCVideoRenderDelegate>
 @property (strong, nonatomic) TRTCCloud *trtcCloud;
@@ -60,8 +62,6 @@ shareInstance_implementation(TARoomManager);
     [self stopShareScreen];
     
     [self.trtcCloud exitRoom];
-    [self.microphoneUserList removeAllObjects];
-    [self.userList removeAllObjects];
     
     
     self.shareScreenStatus = ScreenStop;
@@ -81,71 +81,40 @@ shareInstance_implementation(TARoomManager);
     params.sdkAppId = SDKAppID;
     params.roomId = roomId;
     params.userId = userId;
+    params.role = TRTCRoleAnchor;
     params.userSig = [GenerateTestUserSig genTestUserSig:userId];
+    
+    [self.trtcCloud enterRoom:params appScene:TRTCAppSceneVoiceChatRoom];
+    
     self.encParams.videoResolution = TRTCVideoResolution_1280_720;
     self.encParams.videoBitrate = 550;
     self.encParams.videoFps = 10;
     //等待分享屏幕
     [self.trtcCloud startScreenCaptureByReplaykit:TRTCVideoStreamTypeSub encParam:self.encParams appGroup:APPGROUP];
-    
-    ///TRTCAppSceneVideoCall视频通话场景，支持720P、1080P高清画质，单个房间最多支持300人同时在线，最高支持50人同时发言。
-    [self.trtcCloud enterRoom:params appScene:TRTCAppSceneVideoCall];
-}
-
-- (NSMutableOrderedSet *)microphoneUserList {
-    if (!_microphoneUserList) {
-        _microphoneUserList = [[NSMutableOrderedSet alloc] initWithCapacity:6];//6人以上同时说话过于混乱
-    }
-    return _microphoneUserList;
-}
-- (NSMutableOrderedSet *)userList {
-    if (!_userList) {
-        _userList = [[NSMutableOrderedSet alloc] initWithCapacity:299];
-        NSArray *names =  @[@"杜子藤",@"沈京兵",@"杜琦燕",@"焦厚根",@"史珍香",@"胡丽晶",@"梅良鑫",@"尤勇驰"];
-        NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
-        [_userList addObject:userId];
-        [_userList addObjectsFromArray:names];
-    }
-    return _userList;
-}
-
-- (void)kickOutUser:(NSString *)userId
-{
-    [[self mutableArrayValueForKey:@"userList"] removeObject:userId];
-    [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
 }
 
 # pragma mark - 语音
 - (void)startLocalAudio
 {
-    if (self.microphoneUserList.count >= 6) {
-        [TAToast showTextDialog:kWindow msg:@"请稍等~当前对话人数过多"];
+    if ([TADataCenter shareInstance].isProhibition){
+        [TAAlert alertWithTitle:@"" msg:@"您已被管理员静音，是否向管理员申请解除？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1)
+            {
+                TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                parm.voice = 2;
+                parm.range = @"admin";
+                NSString *phone = [TADataCenter shareInstance].userInfo.phone;
+                parm.phone = phone;
+                [[TASocket shareInstance] SendClientMembersVoice:parm];
+            }
+        }];
         return;
     }
-    if (self.isFirstStartLocalAudio) {
-        // 开启麦克风采集
-        [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
-        self.isFirstStartLocalAudio = NO;
-    }
-    [self.trtcCloud muteLocalAudio:NO];//开始本地音频采集
-    
-    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
-    NSInteger index = [self.microphoneUserList indexOfObject:userId];
-    if (index != NSNotFound) { return; }
-    [[self mutableArrayValueForKey:@"microphoneUserList"] addObject:userId];
-
     [self setValue:@(YES) forKey:@"isStartLocalAudio"];
 }
 
 - (void)stopLocalAudio
 {
-    [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
-    
-    NSString *userId = [TADataCenter shareInstance].userInfo.nickname;
-    NSInteger index = [self.microphoneUserList indexOfObject:userId];
-    if (index == NSNotFound) { return; }
-    [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
-    
     [self setValue:@(NO) forKey:@"isStartLocalAudio"];
 }
 
@@ -198,16 +167,6 @@ shareInstance_implementation(TARoomManager);
     return _encParams;
 }
 #pragma mark - setter
-- (void)setIsProhibition:(BOOL)isProhibition
-{
-    if (_isProhibition == isProhibition){
-        return;
-    }
-    _isProhibition = isProhibition;
-    //通知服务端禁言状态
-    [self setValue:@(isProhibition) forKey:@"isProhibition"];
-}
-
 //自动旋转屏幕
 - (void)setIsShareScreenHorizontal:(BOOL)isShareScreenHorizontal
 {
@@ -241,6 +200,31 @@ shareInstance_implementation(TARoomManager);
     {
         return;
     }
+    
+    if (isStartLocalAudio){
+        if (self.isFirstStartLocalAudio) {
+            // 开启麦克风采集
+            [self.trtcCloud startLocalAudio:TRTCAudioQualityDefault];
+            self.isFirstStartLocalAudio = NO;
+        }
+        [self.trtcCloud muteLocalAudio:NO];//开始本地音频采集
+
+        TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+        parm.voice = 2;
+        NSString *phone = [TADataCenter shareInstance].userInfo.phone;
+        parm.phone = phone;
+        parm.range = @"user";
+        [[TASocket shareInstance] SendClientMembersVoice:parm];
+    }else{
+        [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
+        TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+        parm.voice = 1;
+        NSString *phone = [TADataCenter shareInstance].userInfo.phone;
+        parm.phone = phone;
+        parm.range = @"user";
+        [[TASocket shareInstance] SendClientMembersVoice:parm];
+    }
+    
     _isStartLocalAudio = isStartLocalAudio;
     [[NSNotificationCenter defaultCenter] postNotificationName:IOSFrameworkLocalAudioStatusChangeNotification object:nil userInfo:nil];
 }
@@ -306,29 +290,15 @@ shareInstance_implementation(TARoomManager);
 
 // 感知远端用户音频状态的变化，并更新开启了麦克风的用户列表
 - (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available{
-    NSInteger index = [self.microphoneUserList indexOfObject:userId];
-    if (available) {
-        if (index != NSNotFound) { return; }
-        [[self mutableArrayValueForKey:@"microphoneUserList"] addObject:userId];
-    } else {
-        if (index == NSNotFound) { return; }
-        [[self mutableArrayValueForKey:@"microphoneUserList"] removeObject:userId];
-    }
 }
 
 // 感知远端用户进入房间的通知，并更新远端用户列表
 - (void)onRemoteUserEnterRoom:(NSString *)userId{
-    NSInteger index = [self.userList indexOfObject:userId];
-    if (index != NSNotFound) { return; }
-    [[self mutableArrayValueForKey:@"userList"] addObject:userId];
 }
 
 // 感知远端用户离开房间的通知，并更新远端用户列表
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
-    NSInteger index = [self.userList indexOfObject:userId];
-    if (index == NSNotFound) { return; }
-    [[self mutableArrayValueForKey:@"userList"] removeObject:userId];
-    [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
+//    [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
 }
 
 - (void)onExitRoom:(NSInteger)reason
@@ -338,6 +308,7 @@ shareInstance_implementation(TARoomManager);
     }else if (reason == 2){
         [TAToast showTextDialog:kWindow msg:@"房间已解散"];
     }
+    [[TARouter shareInstance] logOut];
 }
 
 //用户视频大小发生改变回调
@@ -352,7 +323,7 @@ shareInstance_implementation(TARoomManager);
 {
     //userId是nil时为本地画面，否则为远端画面
     CFRetain(frame.pixelBuffer);
-    __weak __typeof(self) weakSelf = self;
+//    __weak __typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
 //        frame.pixelBuffer
 //        frame.textureId

@@ -117,7 +117,7 @@
     NSInteger randomIndex = random() % allData.count;
     NSDictionary *randomItem = allData[randomIndex];
     int roomId = [[randomItem objectForKey:@"roomId"] intValue];
-    if ([TADataCenter shareInstance].userInfo.roomId == roomId){
+    if ([TADataCenter shareInstance].userInfo.roomNum == roomId){
         if (allData.count > 1){
             [self enterBtnClick];
         }
@@ -133,7 +133,7 @@
 
 -(void)enterRomeWithRomeId:(int)roomId
 {
-    [TADataCenter shareInstance].userInfo.roomId = roomId;
+    [TADataCenter shareInstance].userInfo.roomNum = roomId;
     [[TARoomManager shareInstance] changeRomeWithRomeId:roomId];
     
     [self.collectionView reloadData];
@@ -175,26 +175,26 @@
 
 - (NSArray *)dataWithType:(int)type
 {
-    NSArray *data_1 = @[@{@"roomId":@(576901),@"roomName":@"房间101"},
-                        @{@"roomId":@(576902),@"roomName":@"房间102"},
-                        @{@"roomId":@(576903),@"roomName":@"房间103"},
-                        @{@"roomId":@(576904),@"roomName":@"房间104"},
-                        @{@"roomId":@(576905),@"roomName":@"房间105"},
-                        @{@"roomId":@(576906),@"roomName":@"房间106"},
-                        @{@"roomId":@(576907),@"roomName":@"房间107"},
-                        @{@"roomId":@(576908),@"roomName":@"房间108"},
-                        @{@"roomId":@(576909),@"roomName":@"房间109"},
-                        @{@"roomId":@(576910),@"roomName":@"房间1010"}];
+    NSArray *data_1 = @[@{@"roomId":@(1),@"roomName":@"房间101"},
+                        @{@"roomId":@(2),@"roomName":@"房间102"},
+                        @{@"roomId":@(3),@"roomName":@"房间103"},
+                        @{@"roomId":@(4),@"roomName":@"房间104"},
+                        @{@"roomId":@(5),@"roomName":@"房间105"},
+                        @{@"roomId":@(6),@"roomName":@"房间106"},
+                        @{@"roomId":@(7),@"roomName":@"房间107"},
+                        @{@"roomId":@(8),@"roomName":@"房间108"},
+                        @{@"roomId":@(9),@"roomName":@"房间109"},
+                        @{@"roomId":@(10),@"roomName":@"房间1010"}];
 
-    NSArray *data_2 = @[@{@"roomId":@(676901),@"roomName":@"房间201"},
-                        @{@"roomId":@(676902),@"roomName":@"房间202"},
-                        @{@"roomId":@(676903),@"roomName":@"房间203"},
-                        @{@"roomId":@(676904),@"roomName":@"房间204"},
-                        @{@"roomId":@(676905),@"roomName":@"房间205"},
-                        @{@"roomId":@(676906),@"roomName":@"房间206"}];
+    NSArray *data_2 = @[@{@"roomId":@(11),@"roomName":@"房间201"},
+                        @{@"roomId":@(12),@"roomName":@"房间202"},
+                        @{@"roomId":@(13),@"roomName":@"房间203"},
+                        @{@"roomId":@(14),@"roomName":@"房间204"},
+                        @{@"roomId":@(15),@"roomName":@"房间205"},
+                        @{@"roomId":@(16),@"roomName":@"房间206"}];
     
-    NSArray *data_3 = @[@{@"roomId":@(776901),@"roomName":@"房间301"},
-                        @{@"roomId":@(776902),@"roomName":@"房间302"}];
+    NSArray *data_3 = @[@{@"roomId":@(17),@"roomName":@"房间301"},
+                        @{@"roomId":@(18),@"roomName":@"房间302"}];
 
     NSMutableArray *all = [NSMutableArray arrayWithArray:data_1];
     [all addObjectsFromArray:data_2];

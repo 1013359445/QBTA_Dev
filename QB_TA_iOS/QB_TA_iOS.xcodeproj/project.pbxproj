@@ -509,8 +509,6 @@
 		7A4D3EE129E0039800CCE18E /* TAMemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
-		7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */; };
-		7A6BF760298BCAD4002EEDCA /* TAUserInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75E298BCAD4002EEDCA /* TAUserInfoDataModel.m */; };
 		7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF761298BCAF2002EEDCA /* TALoginParmModel.h */; };
 		7A6BF764298BCAF2002EEDCA /* TALoginParmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF762298BCAF2002EEDCA /* TALoginParmModel.m */; };
 		7A6BF767298BCB22002EEDCA /* TABaseInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF765298BCB22002EEDCA /* TABaseInterface.h */; };
@@ -572,6 +570,13 @@
 		7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63929A4B1F100257E1D /* TACmdModel.m */; };
 		7AD8A64E29A4D05D00257E1D /* TACreatRoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */; };
 		7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */; };
+		7AF5056129E4F8820010A480 /* SIOSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5055E29E4F8820010A480 /* SIOSocket.h */; };
+		7AF5056229E4F8820010A480 /* socket.io.js.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5055F29E4F8820010A480 /* socket.io.js.h */; };
+		7AF5056329E4F8820010A480 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056029E4F8820010A480 /* SIOSocket.m */; };
+		7AF5056629E4F9240010A480 /* TASocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5056429E4F9240010A480 /* TASocket.h */; };
+		7AF5056729E4F9240010A480 /* TASocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056529E4F9240010A480 /* TASocket.m */; };
+		7AF5056B29E5064F0010A480 /* TAMemberModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5056929E5064F0010A480 /* TAMemberModel.h */; };
+		7AF5056C29E5064F0010A480 /* TAMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056A29E5064F0010A480 /* TAMemberModel.m */; };
 		7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D086299BA47600D85074 /* TACaptchaInterface.h */; };
 		7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D087299BA47600D85074 /* TACaptchaInterface.m */; };
 		7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */; };
@@ -1094,8 +1099,6 @@
 		7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMemberTableViewCell.m; sourceTree = "<group>"; };
 		7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginInterface.h; sourceTree = "<group>"; };
 		7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginInterface.m; sourceTree = "<group>"; };
-		7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAUserInfoDataModel.h; sourceTree = "<group>"; };
-		7A6BF75E298BCAD4002EEDCA /* TAUserInfoDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAUserInfoDataModel.m; sourceTree = "<group>"; };
 		7A6BF761298BCAF2002EEDCA /* TALoginParmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TALoginParmModel.h; sourceTree = "<group>"; };
 		7A6BF762298BCAF2002EEDCA /* TALoginParmModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TALoginParmModel.m; sourceTree = "<group>"; };
 		7A6BF765298BCB22002EEDCA /* TABaseInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TABaseInterface.h; sourceTree = "<group>"; };
@@ -1158,6 +1161,13 @@
 		7AD8A63929A4B1F100257E1D /* TACmdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACmdModel.m; sourceTree = "<group>"; };
 		7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACreatRoleViewController.h; sourceTree = "<group>"; };
 		7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACreatRoleViewController.m; sourceTree = "<group>"; };
+		7AF5055E29E4F8820010A480 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
+		7AF5055F29E4F8820010A480 /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
+		7AF5056029E4F8820010A480 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
+		7AF5056429E4F9240010A480 /* TASocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASocket.h; sourceTree = "<group>"; };
+		7AF5056529E4F9240010A480 /* TASocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASocket.m; sourceTree = "<group>"; };
+		7AF5056929E5064F0010A480 /* TAMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMemberModel.h; sourceTree = "<group>"; };
+		7AF5056A29E5064F0010A480 /* TAMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMemberModel.m; sourceTree = "<group>"; };
 		7AF8D086299BA47600D85074 /* TACaptchaInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaInterface.h; sourceTree = "<group>"; };
 		7AF8D087299BA47600D85074 /* TACaptchaInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACaptchaInterface.m; sourceTree = "<group>"; };
 		7AF8D08A299BA4C900D85074 /* TACaptchaParmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaParmModel.h; sourceTree = "<group>"; };
@@ -1315,6 +1325,7 @@
 		7A3CAD28298A3F3B00DD1998 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7AF5055D29E4F8820010A480 /* SIOSocket */,
 				7AD4C04529C42F6900AFE5A4 /* TX */,
 				7A1FD38329BB37C4006C352F /* KJMarqueeLabel */,
 				7A3CB043298A565900DD1998 /* JKCategories */,
@@ -2107,22 +2118,12 @@
 			isa = PBXGroup;
 			children = (
 				7A3CB204298BAF4200DD1998 /* ParmModel */,
-				7A3CB203298BAF3800DD1998 /* DataModel */,
 				7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */,
 				7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */,
 				7AF8D086299BA47600D85074 /* TACaptchaInterface.h */,
 				7AF8D087299BA47600D85074 /* TACaptchaInterface.m */,
 			);
 			path = Interface;
-			sourceTree = "<group>";
-		};
-		7A3CB203298BAF3800DD1998 /* DataModel */ = {
-			isa = PBXGroup;
-			children = (
-				7A6BF75D298BCAD4002EEDCA /* TAUserInfoDataModel.h */,
-				7A6BF75E298BCAD4002EEDCA /* TAUserInfoDataModel.m */,
-			);
-			path = DataModel;
 			sourceTree = "<group>";
 		};
 		7A3CB204298BAF4200DD1998 /* ParmModel */ = {
@@ -2227,6 +2228,7 @@
 				7A4D3ED029DE676100CCE18E /* TAMemberView.m */,
 				7A4D3EDE29E0039800CCE18E /* TAMemberTableViewCell.h */,
 				7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */,
+				7AF5056829E506220010A480 /* Model */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -2399,6 +2401,8 @@
 			children = (
 				7AD8A62F29A37B5800257E1D /* TADataCenter.h */,
 				7AD8A63029A37B5800257E1D /* TADataCenter.m */,
+				7AF5056429E4F9240010A480 /* TASocket.h */,
+				7AF5056529E4F9240010A480 /* TASocket.m */,
 				7AD8A63329A37B7C00257E1D /* TAUserInfo.h */,
 				7AD8A63429A37B7C00257E1D /* TAUserInfo.m */,
 			);
@@ -2425,6 +2429,25 @@
 			path = Role;
 			sourceTree = "<group>";
 		};
+		7AF5055D29E4F8820010A480 /* SIOSocket */ = {
+			isa = PBXGroup;
+			children = (
+				7AF5055E29E4F8820010A480 /* SIOSocket.h */,
+				7AF5056029E4F8820010A480 /* SIOSocket.m */,
+				7AF5055F29E4F8820010A480 /* socket.io.js.h */,
+			);
+			path = SIOSocket;
+			sourceTree = "<group>";
+		};
+		7AF5056829E506220010A480 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AF5056929E5064F0010A480 /* TAMemberModel.h */,
+				7AF5056A29E5064F0010A480 /* TAMemberModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2435,6 +2458,7 @@
 				7A3CAFFF298A46EF00DD1998 /* SDImageIOAnimatedCoderInternal.h in Headers */,
 				7A3CB1E1298A565900DD1998 /* UISearchBar+JKBlocks.h in Headers */,
 				7A3CB17F298A565900DD1998 /* UIColor+JKModify.h in Headers */,
+				7AF5056B29E5064F0010A480 /* TAMemberModel.h in Headers */,
 				7AD8A62A29A3685700257E1D /* TAHeader.h in Headers */,
 				7A3CAFAC298A46EF00DD1998 /* SDImageAPNGCoder.h in Headers */,
 				7A3CB1DE298A565900DD1998 /* UINavigationController+JKKeyboardFix.h in Headers */,
@@ -2492,6 +2516,7 @@
 				7A3CB1AF298A565900DD1998 /* UITextView+JKPlaceHolder.h in Headers */,
 				7A3CB1B3298A565900DD1998 /* UIBarButtonItem+JKAction.h in Headers */,
 				7A7328FF29D52BC600DBFC4F /* TARoomCollectionViewCell.h in Headers */,
+				7AF5056229E4F8820010A480 /* socket.io.js.h in Headers */,
 				7A3CAE17298A444800DD1998 /* ASINetworkQueue.h in Headers */,
 				7A3CB18F298A565900DD1998 /* UIView+JKCustomBorder.h in Headers */,
 				7A3CB161298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.h in Headers */,
@@ -2560,7 +2585,6 @@
 				7A8594B129ADA7B600D6B51A /* TABasePresenter.h in Headers */,
 				7A3CB1CE298A565900DD1998 /* UINavigationBar+JKAwesome.h in Headers */,
 				7A3CAE59298A462900DD1998 /* IQNSArray+Sort.h in Headers */,
-				7A6BF75F298BCAD4002EEDCA /* TAUserInfoDataModel.h in Headers */,
 				7A3CB1AE298A565900DD1998 /* UITextView+JKSelect.h in Headers */,
 				7A1FD35829B82E9F006C352F /* TAPersonalCharacterCell.h in Headers */,
 				7A3CAF4C298A46EE00DD1998 /* UIImageView+WebCache.h in Headers */,
@@ -2581,6 +2605,7 @@
 				7A3CAF44298A46EE00DD1998 /* SDDiskCache.h in Headers */,
 				7A3CB16F298A565900DD1998 /* UIButton+JKTouchAreaInsets.h in Headers */,
 				7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */,
+				7AF5056129E4F8820010A480 /* SIOSocket.h in Headers */,
 				7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */,
 				7A3CAF65298A46EE00DD1998 /* SDImageCacheDefine.h in Headers */,
 				7A3CAF77298A46EF00DD1998 /* SDWebImageOptionsProcessor.h in Headers */,
@@ -2714,6 +2739,7 @@
 				7A3CAFAD298A46EF00DD1998 /* SDWebImageError.h in Headers */,
 				7A3CB150298A565900DD1998 /* UILabel+JKSuggestSize.h in Headers */,
 				7A3CB130298A565900DD1998 /* UIImage+JKRoundedCorner.h in Headers */,
+				7AF5056629E4F9240010A480 /* TASocket.h in Headers */,
 				7A3CB1A3298A565900DD1998 /* UIFont+JKTTF.h in Headers */,
 				7A3CB191298A565900DD1998 /* UIView+JKDraggable.h in Headers */,
 				7A3CADF4298A426300DD1998 /* NSObject+MJCoding.h in Headers */,
@@ -2854,6 +2880,7 @@
 				7A3CB13B298A565900DD1998 /* UIImage+JKMerge.m in Sources */,
 				7A3CB1B0298A565900DD1998 /* UITextView+JKInputLimit.m in Sources */,
 				7A3CAE61298A462900DD1998 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				7AF5056C29E5064F0010A480 /* TAMemberModel.m in Sources */,
 				7A3CB1DB298A565900DD1998 /* UINavigationController+JKKeyboardFix.m in Sources */,
 				7A3CB133298A565900DD1998 /* UIImage+JKResize.m in Sources */,
 				7A3CB1AA298A565900DD1998 /* UITextView+JKPinchZoom.m in Sources */,
@@ -2911,6 +2938,7 @@
 				7A3CB1D7298A565900DD1998 /* UIViewController+JKBlockSegue.m in Sources */,
 				7A8594B029ADA7B600D6B51A /* TABasePresenter.m in Sources */,
 				7A3CB1F5298A565900DD1998 /* UITextField+JKBlocks.m in Sources */,
+				7AF5056329E4F8820010A480 /* SIOSocket.m in Sources */,
 				7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */,
 				7A3CAE68298A462A00DD1998 /* IQPreviousNextView.m in Sources */,
 				7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */,
@@ -2954,7 +2982,6 @@
 				7A3CAF66298A46EE00DD1998 /* SDImageLoader.m in Sources */,
 				7A3CB14C298A565900DD1998 /* UILabel+JKSuggestSize.m in Sources */,
 				7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */,
-				7A6BF760298BCAD4002EEDCA /* TAUserInfoDataModel.m in Sources */,
 				7A3CADF0298A426300DD1998 /* NSString+MJExtension.m in Sources */,
 				7A3CB169298A565900DD1998 /* UIButton+JKSubmitting.m in Sources */,
 				7A3CB138298A565900DD1998 /* UIImage+JKFXImage.m in Sources */,
@@ -2970,6 +2997,7 @@
 				7A3CADEA298A426300DD1998 /* NSObject+MJCoding.m in Sources */,
 				7A3CB17B298A565900DD1998 /* UIColor+JKModify.m in Sources */,
 				7A1FD33F29B5CB4E006C352F /* TABigMapView.m in Sources */,
+				7AF5056729E4F9240010A480 /* TASocket.m in Sources */,
 				7A3CAE5C298A462900DD1998 /* IQUIViewController+Additions.m in Sources */,
 				7A3CB16E298A565900DD1998 /* UIButton+JKMiddleAligning.m in Sources */,
 				7A3CAF5D298A46EE00DD1998 /* UIImage+ForceDecode.m in Sources */,

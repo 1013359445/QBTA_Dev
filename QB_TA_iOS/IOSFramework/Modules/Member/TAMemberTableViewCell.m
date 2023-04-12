@@ -13,6 +13,7 @@
 
 @interface TAMemberTableViewCell()
 @property (nonatomic, retain)UIImageView    *headImage;
+@property (nonatomic, retain)UILabel        *nameHead;
 @property (nonatomic, retain)UILabel        *nameLabel;
 @property (nonatomic, retain)UIButton       *mikeState;
 @property (nonatomic, retain)UIButton       *kickOut;
@@ -39,15 +40,21 @@
     
     [self addSubview:self.headImage];
     [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(kRelative(50));
+        make.width.height.mas_equalTo(kRelative(60));
         make.left.mas_equalTo(kRelative(30));
         make.centerY.mas_equalTo(0);
+    }];
+    
+    [self.headImage addSubview:self.nameHead];
+    [self.nameHead mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kRelative(54));
+        make.center.mas_equalTo(0);
     }];
     
     [self addSubview:self.nameLabel];
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
-        make.left.mas_equalTo(kRelative(90));
+        make.left.mas_equalTo(kRelative(100));
     }];
     
     [self addSubview:self.mikeState];
@@ -62,32 +69,46 @@
         make.centerY.mas_equalTo(0);
         make.right.mas_equalTo(kRelative(-80));
     }];
+}
+
+- (void)setData:(TAMemberModel *)data
+{
+    _data = data;
+
+    NSString *nickname = [TADataCenter shareInstance].userInfo.nickname;
+    if (_isAdmin){
+        self.kickOut.hidden = [data.nickname isEqualToString:nickname];
+    }else{
+        self.kickOut.hidden = YES;
+    }
     
-}
+    self.nameLabel.text = data.nickname;
+    
+    self.nameHead.text = data.roleName;
 
-- (void)setMikeEnable:(BOOL)mikeEnable
-{
-    _mikeEnable = mikeEnable;
-    _mikeState.selected = mikeEnable;
-}
-
-- (void)setName:(NSString *)name
-{
-    _name = name;
-    self.nameLabel.text = name;
+    self.mikeState.selected = (data.voice == 2);
+    
+//    [self.headImage sd_setImageWithURL:[NSURL URLWithString:data.headUrl]];
 }
 
 - (void)kickOutBtnClick
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(cellDidClickKickOut:)]){
-        [self.delegate cellDidClickKickOut:self.nameLabel.text];
+        [self.delegate cellDidClickKickOut:_data];
+    }
+}
+
+- (void)mikeStatetBtnClick
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cellDidClickMikeStatet:)]){
+        [self.delegate cellDidClickMikeStatet:_data];
     }
 }
 
 - (UIImageView    *)headImage{
     if (!_headImage){
         _headImage = [UIImageView new];
-        _headImage.backgroundColor = [UIColor grayColor];
+        _headImage.backgroundColor = [UIColor whiteColor];
         _headImage.layer.cornerRadius = kRelative(25);
         _headImage.layer.masksToBounds = YES;
     }
@@ -102,13 +123,25 @@
     }
     return _nameLabel;
 }
+- (UILabel        *)nameHead{
+    if (!_nameHead){
+        _nameHead = [UILabel new];
+        _nameHead.adjustsFontSizeToFitWidth = YES;
+        _nameHead.minimumScaleFactor = 0.2;
+        _nameHead.numberOfLines = 1;
+        _nameHead.textAlignment = NSTextAlignmentCenter;
+        _nameHead.textColor = [UIColor blackColor];
+    }
+    return _nameHead;
+}
 
 - (UIButton       *)mikeState{
     if (!_mikeState){
         _mikeState = [UIButton new];
         [_mikeState setImage:kBundleImage(@"tmenu_mike_disable_b", @"ControlPanel") forState:UIControlStateNormal];
         [_mikeState setImage:kBundleImage(@"tmenu_mike_enable_b", @"ControlPanel") forState:UIControlStateSelected];
-        _mikeState.userInteractionEnabled = NO;
+        [_mikeState addTarget:self action:@selector(mikeStatetBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//        _mikeState.userInteractionEnabled = _isAdmin;
     }
     return _mikeState;
 }

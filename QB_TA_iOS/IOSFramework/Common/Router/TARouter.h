@@ -23,6 +23,9 @@ shareInstance_interface(TARouter)
 - (void)close;//关闭所有iOS视图
 
 - (UIViewController *)getCurrentVC;
+
+- (void)logOut;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -588,7 +588,7 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.81;
+				CURRENT_PROJECT_VERSION = 4.85;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -600,6 +600,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "清元宇宙";
 				INFOPLIST_KEY_NSCameraUsageDescription = "需要访问您的相机权限，开启后录制才会有画面";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要访问您的麦克风权限，开启后才能使用语音功能";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -631,7 +632,7 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.81;
+				CURRENT_PROJECT_VERSION = 4.85;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -643,6 +644,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../QB_TA_iOS/IOSFramework\"";
 				INFOPLIST_FILE = QBTA_Dev/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "清元宇宙";
 				INFOPLIST_KEY_NSCameraUsageDescription = "需要访问您的相机权限，开启后录制才会有画面";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要访问您的麦克风权限，开启后才能使用语音功能";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -673,7 +675,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.77;
+				CURRENT_PROJECT_VERSION = 4.85;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -708,7 +710,7 @@
 				CODE_SIGN_ENTITLEMENTS = TXReplayKit_Screen/TXReplayKit_Screen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.77;
+				CURRENT_PROJECT_VERSION = 4.85;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;

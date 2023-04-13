@@ -43,6 +43,10 @@
 shareInstance_implementation(TASocket);
 
 - (void)socketConnect {
+    if (self.socket){
+        [self.socket close];
+        self.socket = nil;
+    }
     TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
     NSString *host = [NSString stringWithFormat:
                       @"http://39.100.153.162:10246?uid=%ld&room_num=%d&phone=%@&nick_name=%@"
@@ -89,8 +93,8 @@ shareInstance_implementation(TASocket);
                     case 103:
                     case 106:
                     {
-                        [[TARoomManager shareInstance] stopLocalAudio];
                         [[TADataCenter shareInstance] setValue:@(YES) forKey:@"isProhibition"];
+                        [[TARoomManager shareInstance] stopLocalAudio];
                     }
                         break;
                     case 102:
@@ -101,8 +105,8 @@ shareInstance_implementation(TASocket);
                         break;
                     case 105:
                     {
-                        [[TARoomManager shareInstance] startLocalAudio];
                         [[TADataCenter shareInstance] setValue:@(NO) forKey:@"isProhibition"];
+                        [[TARoomManager shareInstance] startLocalAudio];
                     }
                         break;
 
@@ -126,9 +130,8 @@ shareInstance_implementation(TASocket);
         [socket on: @"SendClientMembersVoiceApplyfor" callback: ^(SIOParameterArray *args) {
             NSDictionary *data = [args firstObject];
             if ([data isKindOfClass: [NSDictionary class]]){
-                NSDictionary *dic = data[@"data"];
                 NSString *userName = @"";
-                NSString *userPhone = dic[@"phone"];
+                NSString *userPhone = data[@"data"];
                 for (TAMemberModel *member in [TADataCenter shareInstance].membersList) {
                     if ([member.phone isEqualToString:userPhone]){
                         userName = member.nickname;
@@ -155,8 +158,6 @@ shareInstance_implementation(TASocket);
         [socket on: @"SendClientMembersKickMsg" callback: ^(SIOParameterArray *args) {
             NSDictionary *data = [args firstObject];
             if ([data isKindOfClass: [NSDictionary class]]){
-                NSString *msg = data[@"msg"];
-                [TAToast showTextDialog:kWindow msg:msg];
 
                 NSDictionary *dic = data[@"data"];
                 TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
@@ -165,6 +166,10 @@ shareInstance_implementation(TASocket);
                 if ([userPhone isEqualToString:userInfo.phone]){
                     [[TARouter shareInstance] logOut];
                 }
+                NSString *msg = data[@"msg"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [TAToast showTextDialog:kWindow msg:msg];
+                });
             }
         }];
     }];

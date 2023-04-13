@@ -86,7 +86,19 @@
     
     self.nameHead.text = data.roleName;
 
-    self.mikeState.selected = (data.voice == 2);
+    if (_isAdmin){
+        if (data.voice == 0){
+            self.mikeState.selected = NO;
+            [_mikeState setImage:kBundleImage(@"tmenu_mike_forbidden", @"ControlPanel") forState:UIControlStateNormal];
+        }else if (data.voice == 1){
+            self.mikeState.selected = NO;
+            [_mikeState setImage:kBundleImage(@"tmenu_mike_disable_b", @"ControlPanel") forState:UIControlStateNormal];
+        }else if (data.voice == 2){
+            self.mikeState.selected = YES;
+        }
+    }else{
+        self.mikeState.selected = (data.voice == 2);
+    }
     
 //    [self.headImage sd_setImageWithURL:[NSURL URLWithString:data.headUrl]];
 }

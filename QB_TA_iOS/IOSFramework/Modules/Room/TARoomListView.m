@@ -7,14 +7,17 @@
 
 #import "TARoomListView.h"
 #import "TARoomManager.h"
+#import "TAAlert.h"
 #import "TARoomCollectionViewCell.h"
+
+NSString * const QuickEntryBtnFirstClick = @"DefaultsKeyQuickEntryBtnFirstClick";
 
 @interface TARoomListView () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, retain)UIImageView *bgView;
 @property (nonatomic, retain)UIButton   *closeBtn;
 @property (nonatomic, retain)UICollectionView *collectionView;
 
-@property (nonatomic, retain)UIButton   *enterBtn;
+@property (nonatomic, retain)UIButton   *quickEntryBtn;
 @property (nonatomic, retain)UIButton   *typeBtn;
 @property (nonatomic, retain)UIView     *typeView;
 @property (nonatomic, assign)int        type;
@@ -70,8 +73,8 @@
         make.left.right.bottom.mas_equalTo(0);
     }];
     
-    [self addSubview:self.enterBtn];
-    [self.enterBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self addSubview:self.quickEntryBtn];
+    [self.quickEntryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kRelative(30));
         make.right.mas_equalTo(kRelative(-88));
         make.width.mas_equalTo(kRelative(178));
@@ -80,7 +83,7 @@
     
     [self addSubview:self.typeBtn];
     [self.typeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(_enterBtn.mas_centerY);
+        make.centerY.mas_equalTo(_quickEntryBtn.mas_centerY);
         make.left.mas_equalTo(kRelative(30));
         make.width.mas_equalTo(kRelative(244));
     }];
@@ -109,21 +112,38 @@
     [self.collectionView reloadData];
 }
 
--(void)enterBtnClick
+-(void)quickEntryBtnClick
 {
     //快速加入活动房间
-    //提示”退出当前场景并加入其他活动场景？“
-    NSArray *allData = [self dataWithType:0];
-    NSInteger randomIndex = random() % allData.count;
-    NSDictionary *randomItem = allData[randomIndex];
-    int roomId = [[randomItem objectForKey:@"roomId"] intValue];
-    if ([TADataCenter shareInstance].userInfo.roomNum == roomId){
-        if (allData.count > 1){
-            [self enterBtnClick];
+    void (^quickEntry)(void)  = ^{
+        NSArray *allData = [self dataWithType:0];
+        NSInteger randomIndex = random() % allData.count;
+        NSDictionary *randomItem = allData[randomIndex];
+        int roomId = [[randomItem objectForKey:@"roomId"] intValue];
+        if ([TADataCenter shareInstance].userInfo.roomNum == roomId){
+            if (allData.count > 1){
+                [self quickEntryBtnClick];
+            }
+            return;
         }
-        return;
+        [self enterRomeWithRomeId:roomId];
+    };
+    
+    //首次提醒
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isQuickEntryBtnFirstClick = [[defaults objectForKey:QuickEntryBtnFirstClick] boolValue];
+    if (!isQuickEntryBtnFirstClick){
+        [defaults setBool:YES forKey:QuickEntryBtnFirstClick];
+        [defaults synchronize];
+        
+        [TAAlert alertWithTitle:@"温馨提示" msg:@"您确定退出当前场景并快速加入其他活动场景吗？(此提示仅此一次)" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+            if (index == 1) {
+                quickEntry();
+            }
+        }];
+    }else{
+        quickEntry();
     }
-    [self enterRomeWithRomeId:roomId];
 }
 
 -(void)closeBtnClick
@@ -274,20 +294,20 @@
     }
     return _closeBtn;
 }
-- (UIButton   *)enterBtn
+- (UIButton   *)quickEntryBtn
 {
-    if (!_enterBtn){
-        _enterBtn = [UIButton new];
-        _enterBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        _enterBtn.layer.cornerRadius = kRelative(27);
-        _enterBtn.layer.masksToBounds = YES;
-        [_enterBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_enterBtn setTitle:@"快速加入活动" forState:UIControlStateNormal];
-        [_enterBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateNormal];
-        [_enterBtn addTarget:self action:@selector(enterBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        _enterBtn.hidden = ([self dataWithType:0].count < 2);
+    if (!_quickEntryBtn){
+        _quickEntryBtn = [UIButton new];
+        _quickEntryBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        _quickEntryBtn.layer.cornerRadius = kRelative(27);
+        _quickEntryBtn.layer.masksToBounds = YES;
+        [_quickEntryBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_quickEntryBtn setTitle:@"快速加入活动" forState:UIControlStateNormal];
+        [_quickEntryBtn jk_setBackgroundColor:kTAColor.c_49 forState:UIControlStateNormal];
+        [_quickEntryBtn addTarget:self action:@selector(quickEntryBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        _quickEntryBtn.hidden = ([self dataWithType:0].count < 2);
     }
-    return _enterBtn;
+    return _quickEntryBtn;
 }
 
 - (UIButton   *)typeBtn

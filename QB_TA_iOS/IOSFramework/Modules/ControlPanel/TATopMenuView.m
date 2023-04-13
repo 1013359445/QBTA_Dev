@@ -120,7 +120,6 @@ int const IconID_Share_Screen   = 1006;
                 }   break;
                 case AVAuthorizationStatusAuthorized:{
                     //玩家已授权
-                    [sender setSelected:!sender.isSelected];
                     if ([TARoomManager shareInstance].isStartLocalAudio) {
                         [[TARoomManager shareInstance] stopLocalAudio];
                     }else{

@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TASocket : NSObject
 shareInstance_interface(TASocket)
-@property (nonatomic, retain)SIOSocket *socket;
+@property (nonatomic, retain, nullable)SIOSocket *socket;
 
 - (void)socketConnect;
 

@@ -59,6 +59,11 @@
             [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:nil];
         }
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
+        
+        //获取成员列表
+        TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+        parm.range = @"room";
+        [[TASocket shareInstance] SendClientMembers:parm];
     }
     return self;
 }
@@ -152,7 +157,7 @@
 - (void)cellDidClickKickOut:(TAMemberModel *)data
 {
     if (data.kick == 1){
-        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确踢出成员%@吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+        [TAAlert alertWithTitle:@"移出活动" msg:[NSString stringWithFormat:@"确定将%@移出活动吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
             if (index == 1)
             {
                 TAClientMembersKickParmModel *parm = [TAClientMembersKickParmModel new];
@@ -163,34 +168,50 @@
             }
         }];
     }else{
-        [TAToast showTextDialog:kWindow msg:@"主持人不可被踢出"];
+        [TAToast showTextDialog:kWindow msg:@"主持人无法被移出"];
     }
 }
 
 - (void)cellDidClickMikeStatet:(TAMemberModel *)data{
     NSString *nickname = [TADataCenter shareInstance].userInfo.nickname;
     if ([data.nickname isEqualToString:nickname]) {
+        //自己开闭麦
         if ([TARoomManager shareInstance].isStartLocalAudio) {
             [[TARoomManager shareInstance] stopLocalAudio];
         }else {
             [[TARoomManager shareInstance] startLocalAudio];
         }
     }else{
-        if (!self.isAdmin){
-            [TAToast showTextDialog:kWindow msg:@"您没有权限对TA禁言"];
+        //控制别人开闭麦
+        if (!self.isAdmin || data.isAdmin){
+            [TAToast showTextDialog:kWindow msg:@"您没有权限对TA静音"];
             return;
         }
-        
-        [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确定将%@禁言吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
-            if (index == 1)
-            {
-                TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
-                parm.voice = 0;
-                parm.phone = data.phone;
-                parm.range = @"room";
-                [[TASocket shareInstance] SendClientMembersVoice:parm];
-            }
-        }];
+        if (data.voice == 0){
+//            [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"成员%@已被静音",data.nickname]];
+//            return;
+            [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确定将%@解除静音吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+                if (index == 1)
+                {
+                    TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                    parm.voice = 1;
+                    parm.phone = data.phone;
+                    parm.range = @"room";
+                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                }
+            }];
+        }else{
+            [TAAlert alertWithTitle:@"" msg:[NSString stringWithFormat:@"确定将%@静音吗？",data.nickname] actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+                if (index == 1)
+                {
+                    TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                    parm.voice = 0;
+                    parm.phone = data.phone;
+                    parm.range = @"room";
+                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                }
+            }];
+        }
     }
 }
 

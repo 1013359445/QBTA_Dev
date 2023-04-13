@@ -8,5 +8,8 @@
 #import "TAMemberModel.h"
 
 @implementation TAMemberModel
-
+- (BOOL)isAdmin
+{
+    return [_roleName isEqualToString:@"主持人"];
+}
 @end

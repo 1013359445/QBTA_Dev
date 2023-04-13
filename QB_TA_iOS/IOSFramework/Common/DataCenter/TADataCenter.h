@@ -20,7 +20,7 @@ shareInstance_interface(TADataCenter)
 @property (nonatomic, nullable, retain)NSMutableArray* microphoneUserList;//正在使用麦克风的成员
 
 @property (nonatomic, nullable, retain)NSArray*     membersList;//房间的成员
-@property (nonatomic, assign)BOOL                   isProhibition;//禁言状态
+@property (nonatomic, assign)BOOL                   isProhibition;//禁言状态、管理员不受限制
 @property (nonatomic, nullable, retain)TAUserInfo*  userInfo;
 @property (nonatomic, nullable, copy)NSString*      cookie;
 @property (nonatomic, nullable, copy)NSString*      token;

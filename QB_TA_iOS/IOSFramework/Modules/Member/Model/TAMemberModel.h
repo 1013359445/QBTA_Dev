@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)int voice;//登录时间
 
 @property (nonatomic, copy)NSString *headUrl;//头像
-
+@property (nonatomic, assign)BOOL isAdmin;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -69,6 +69,8 @@ shareInstance_implementation(TARoomManager);
 }
 
 - (void)enterRoom:(UInt32)roomId {
+    [[TASocket shareInstance] socketConnect];
+
     kShowHUDAndActivity;
     self.isFirstStartLocalAudio = YES;
     self.shareScreenStatus = ScreenStop;
@@ -96,19 +98,22 @@ shareInstance_implementation(TARoomManager);
 # pragma mark - 语音
 - (void)startLocalAudio
 {
-    if ([TADataCenter shareInstance].isProhibition){
-        [TAAlert alertWithTitle:@"" msg:@"您已被管理员静音，是否向管理员申请解除？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
-            if (index == 1)
-            {
-                TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
-                parm.voice = 2;
-                parm.range = @"admin";
-                NSString *phone = [TADataCenter shareInstance].userInfo.phone;
-                parm.phone = phone;
-                [[TASocket shareInstance] SendClientMembersVoice:parm];
-            }
-        }];
-        return;
+    if (![TADataCenter shareInstance].userInfo.admin)
+    {
+        if ([TADataCenter shareInstance].isProhibition){
+            [TAAlert alertWithTitle:@"" msg:@"您已被管理员静音，是否向管理员申请解除？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+                if (index == 1)
+                {
+                    TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
+                    parm.voice = 2;
+                    parm.range = @"admin";
+                    NSString *phone = [TADataCenter shareInstance].userInfo.phone;
+                    parm.phone = phone;
+                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                }
+            }];
+            return;
+        }
     }
     [self setValue:@(YES) forKey:@"isStartLocalAudio"];
 }
@@ -294,22 +299,28 @@ shareInstance_implementation(TARoomManager);
 
 // 感知远端用户进入房间的通知，并更新远端用户列表
 - (void)onRemoteUserEnterRoom:(NSString *)userId{
+    //获取成员列表
+    TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+    parm.range = @"room";
+    [[TASocket shareInstance] SendClientMembers:parm];
 }
 
 // 感知远端用户离开房间的通知，并更新远端用户列表
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
-//    [TAToast showTextDialog:kWindow msg:[NSString stringWithFormat:@"用户%@离开房间",userId]];
+    //获取成员列表
+    TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+    parm.range = @"room";
+    [[TASocket shareInstance] SendClientMembers:parm];
 }
 
-- (void)onExitRoom:(NSInteger)reason
-{
-    if (reason == 1){
-        [TAToast showTextDialog:kWindow msg:@"您已被管理员踢出房间"];
-    }else if (reason == 2){
-        [TAToast showTextDialog:kWindow msg:@"房间已解散"];
-    }
-    [[TARouter shareInstance] logOut];
-}
+//- (void)onExitRoom:(NSInteger)reason
+//{
+//    if (reason == 1){
+//        [TAToast showTextDialog:kWindow msg:@"您已被管理员踢出房间"];
+//    }else if (reason == 2){
+//        [TAToast showTextDialog:kWindow msg:@"房间已解散"];
+//    }
+//}
 
 //用户视频大小发生改变回调
 - (void)onUserVideoSizeChanged:(NSString *)userId streamType:(TRTCVideoStreamType)streamType newWidth:(int)newWidth newHeight:(int)newHeight

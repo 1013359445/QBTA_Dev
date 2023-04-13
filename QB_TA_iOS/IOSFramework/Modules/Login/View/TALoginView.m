@@ -236,6 +236,7 @@
     _isPasswordMode = NO;
     kWeakSelf(self);
 
+    //代码块
     void (^change)(void)  = ^{
         [weakself.codeTab setSelected:YES];
         [weakself.codeTab.titleLabel setFont:[UIFont systemFontOfSize:14]];

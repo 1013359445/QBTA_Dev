@@ -39,11 +39,16 @@ shareInstance_implementation(TADataCenter);
             [self.microphoneUserList addObject:model];
         }
         
+        //从成员列表找到自己，根据roleName是不是“主持人”，给userInfo.admin赋值
         if ([model.nickname isEqualToString:self.userInfo.nickname]){
-            if ([model.roleName isEqualToString:@"主持人"]){
+            if (model.isAdmin){
                 self.userInfo.admin = YES;
             }else{
                 self.userInfo.admin = NO;
+            }
+            
+            if (model.voice == 0){
+                [[TADataCenter shareInstance] setValue:@(YES) forKey:@"isProhibition"];
             }
         }
     }

@@ -19,15 +19,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D8ED97D-226C-4C91-B541-C50D37203569"
+            uuid = "67B1395C-8B78-47F0-A2A5-12381F40A200"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QB_TA_iOS/IOSFramework/Modules/Room/TARoomListView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-enterBtnClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -35,31 +35,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "013AF82B-2230-46AD-B309-5A0D9BFDFFEA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Modules/Login/Presenter/TALoginPresenter.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-getDefaultPassword"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EAD844C8-7DD9-4DF9-93CB-DC97F43C3639"
+            uuid = "A7E49AD2-4D1D-4920-84F4-B2109A8DC40B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QB_TA_iOS/IOSFramework/Common/DataCenter/TASocket.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-socketConnect"
             landmarkType = "7">
          </BreakpointContent>
@@ -67,32 +51,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AE5FE26B-CD2C-4D34-B777-1BAAA9495186"
+            uuid = "3E072C61-63A0-43F8-BAB1-F5258F328DCB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Common/DataCenter/TASocket.m"
+            filePath = "QB_TA_iOS/IOSFramework/Modules/Member/TAMemberView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-socketConnect"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F3F3BF62-6BFA-42DC-930B-84DAAAA521F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Common/DataCenter/TASocket.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-socketConnect"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-leftBtnClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

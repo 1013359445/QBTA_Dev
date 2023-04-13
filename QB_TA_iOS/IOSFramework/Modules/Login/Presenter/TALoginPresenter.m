@@ -12,6 +12,11 @@
 #import "TAUserInfo.h"
 #import "TACreatRoleViewController.h"
 
+NSString * const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
+NSString * const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
+NSString * const DefaultsKeyPassword = @"DefaultsKeyPassword";
+NSString * const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
+
 @interface TALoginPresenter ()
 
 @end

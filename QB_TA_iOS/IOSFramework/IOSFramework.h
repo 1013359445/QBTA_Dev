@@ -19,11 +19,6 @@ FOUNDATION_EXPORT const unsigned char IOSFrameworkVersionString[];
 static NSNotificationName const IOSFrameworkWaitingRoleDataNotification = @"getRoleData";
 static NSNotificationName const IOSFrameworkCreatRoleRoleNotification = @"creatRoleData";
 static NSNotificationName const IOSFrameworkModifyRoleDataNotification = @"modifyRoleData";
-
-static NSNotificationName const DefaultsKeyAgreement = @"DefaultsKeyAgreement";
-static NSNotificationName const DefaultsKeyPhoneNumber = @"DefaultsKeyPhoneNumber";
-static NSNotificationName const DefaultsKeyPassword = @"DefaultsKeyPassword";
-static NSNotificationName const DefaultsKeyLoginMode = @"DefaultsKeyLoginMode";
 static NSNotificationName const IOSFrameworkShareScreenStatusChangeNotification = @"ShareScreenStatusChange";
 static NSNotificationName const IOSFrameworkLocalAudioStatusChangeNotification = @"LocalAudioStatusChange";
 

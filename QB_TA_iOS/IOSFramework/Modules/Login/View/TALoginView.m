@@ -48,7 +48,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
 - (void)loadSubViews
 {
     [self addSubview:self.frameImageView];
@@ -167,7 +166,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.phoneNumTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.codeTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self.passwordTextField];
+}
+
+- (void)updateSubViews{
+    BOOL isAgreeStr = @([self.presenter getDefaultAgreement].integerValue).boolValue;
+    [_agreeBtn setSelected:isAgreeStr];
     
+    NSString *defaultPassword = [self.presenter getDefaultPassword];
+    if (defaultPassword) {
+        _passwordTextField.text = defaultPassword;
+    }
+    
+    NSString *defaultPhoneNumber = [self.presenter getDefaultPhoneNumber];
+    if (defaultPhoneNumber) {
+        _phoneNumTextField.text = defaultPhoneNumber;
+    }
     
     NSString *defaultLoginMode = [self.presenter getDefaultLoginMode];
     if (!defaultLoginMode ) {
@@ -525,10 +538,6 @@
         _phoneNumTextField.font = [UIFont systemFontOfSize:12];
 
         _phoneNumTextField.jk_maxLength = 11;
-        NSString *defaultPhoneNumber = [self.presenter getDefaultPhoneNumber];
-        if (defaultPhoneNumber) {
-            _phoneNumTextField.text = defaultPhoneNumber;
-        }
     }
     return _phoneNumTextField;
 }
@@ -554,11 +563,6 @@
         _passwordTextField.returnKeyType = UIReturnKeyDone;
         _passwordTextField.textColor = kTAColor.c_49;
         _passwordTextField.font = [UIFont systemFontOfSize:12];
-
-        NSString *defaultPassword = [self.presenter getDefaultPassword];
-        if (defaultPassword) {
-            _passwordTextField.text = defaultPassword;
-        }
     }
     return _passwordTextField;
 }
@@ -640,9 +644,6 @@
         [_agreeBtn setImage:kBundleImage(@"login_agree_n", @"Login") forState:UIControlStateNormal];
         [_agreeBtn setImage:kBundleImage(@"login_agree_s", @"Login") forState:UIControlStateSelected];
         [_agreeBtn addTarget:self action:@selector(agreeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
-        BOOL isAgreeStr = @([self.presenter getDefaultAgreement].integerValue).boolValue;
-        [_agreeBtn setSelected:isAgreeStr];
     }
     return _agreeBtn;
 }

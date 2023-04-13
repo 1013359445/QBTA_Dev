@@ -28,6 +28,9 @@
 - (void)loadSubViews
 {
 }
+- (void)updateSubViews
+{
+}
 
 - (instancetype)init
 {
@@ -36,6 +39,14 @@
         [self loadSubViews];
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(nullable UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
+        [self updateSubViews];
+    }
 }
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated

@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGSize)viewSize;
 
 - (void)loadSubViews;
+- (void)updateSubViews;
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated;
 - (void)hideViewAnimated:(BOOL)animated;

@@ -19,6 +19,10 @@
 		7A4B34A929A887C1009753FC /* UECommInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B34A729A887C1009753FC /* UECommInterface.cpp */; };
 		7A7328F729D2F23200DBFC4F /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7328F629D2F23200DBFC4F /* IOSFramework.framework */; };
 		7A7328F829D2F23200DBFC4F /* IOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7328F629D2F23200DBFC4F /* IOSFramework.framework */; };
+		7ABEB90D29E9199E007556CF /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABEB90C29E9199E007556CF /* libicucore.tbd */; };
+		7ABEB90F29E919B0007556CF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABEB90E29E919B0007556CF /* CFNetwork.framework */; };
+		7ABEB91129E919B9007556CF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABEB91029E919B8007556CF /* Security.framework */; };
+		7ABEB91329E919DC007556CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABEB91229E919DC007556CF /* Foundation.framework */; };
 		7AC5E95929CD6FB8006FB4C0 /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E95829CD6FB8006FB4C0 /* SampleHandler.m */; };
 		7AC5E95D29CD6FB9006FB4C0 /* TXReplayKit_Screen.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */; };
@@ -120,6 +124,10 @@
 		7A4B34A729A887C1009753FC /* UECommInterface.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = UECommInterface.cpp; sourceTree = "<group>"; };
 		7A4B34A829A887C1009753FC /* UECommInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UECommInterface.h; sourceTree = "<group>"; };
 		7A7328F629D2F23200DBFC4F /* IOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/QBTA_Dev-hjkdpgldqoyymgdzgngxbsusxrvn/Build/Products/Release-iphoneos/IOSFramework.framework"; sourceTree = "<group>"; };
+		7ABEB90C29E9199E007556CF /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		7ABEB90E29E919B0007556CF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7ABEB91029E919B8007556CF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7ABEB91229E919DC007556CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TXLiteAVSDK_ReplayKitExt.framework; path = QB_TA_iOS/IOSFramework/Third/TX/TXLiteAVSDK_ReplayKitExt.framework; sourceTree = "<group>"; };
 		7AC5E93629CD5303006FB4C0 /* QBTA_Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QBTA_Dev.entitlements; sourceTree = "<group>"; };
 		7AC5E95429CD6FB8006FB4C0 /* TXReplayKit_Screen.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TXReplayKit_Screen.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +167,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD4C24A29CACC5400AFE5A4 /* SystemConfiguration.framework in Frameworks */,
+				7ABEB91329E919DC007556CF /* Foundation.framework in Frameworks */,
+				7ABEB91129E919B9007556CF /* Security.framework in Frameworks */,
+				7ABEB90F29E919B0007556CF /* CFNetwork.framework in Frameworks */,
+				7ABEB90D29E9199E007556CF /* libicucore.tbd in Frameworks */,
 				7AD4C23B29CACC5400AFE5A4 /* Photos.framework in Frameworks */,
 				7AD4C23C29CACC5400AFE5A4 /* Metal.framework in Frameworks */,
 				7AD4C23D29CACC5400AFE5A4 /* CoreServices.framework in Frameworks */,
@@ -173,7 +186,6 @@
 				7AC611B829D19DDB00833933 /* ReplayKit.framework in Frameworks */,
 				7AD4C24829CACC5400AFE5A4 /* AVFoundation.framework in Frameworks */,
 				7AD4C24929CACC5400AFE5A4 /* CoreTelephony.framework in Frameworks */,
-				7AD4C24A29CACC5400AFE5A4 /* SystemConfiguration.framework in Frameworks */,
 				7AD4C21929CAC83600AFE5A4 /* TXFFmpeg.xcframework in Frameworks */,
 				7AD4C21B29CAC83800AFE5A4 /* TXSoundTouch.xcframework in Frameworks */,
 				7AD4C21829CAC82B00AFE5A4 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
@@ -253,6 +265,10 @@
 		7A3CAD12298A2E7200DD1998 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7ABEB91229E919DC007556CF /* Foundation.framework */,
+				7ABEB91029E919B8007556CF /* Security.framework */,
+				7ABEB90E29E919B0007556CF /* CFNetwork.framework */,
+				7ABEB90C29E9199E007556CF /* libicucore.tbd */,
 				7AD4C22329CACC2C00AFE5A4 /* VideoToolbox.framework */,
 				7AC5E8F329CC45F1006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework */,
 				7AD4C22C29CACC2C00AFE5A4 /* libiconv.2.4.0.tbd */,
@@ -588,7 +604,7 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.85;
+				CURRENT_PROJECT_VERSION = 4.87;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -632,7 +648,7 @@
 				CODE_SIGN_ENTITLEMENTS = QBTA_Dev/QBTA_Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.85;
+				CURRENT_PROJECT_VERSION = 4.87;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -675,7 +691,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.85;
+				CURRENT_PROJECT_VERSION = 4.87;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;
@@ -710,7 +726,7 @@
 				CODE_SIGN_ENTITLEMENTS = TXReplayKit_Screen/TXReplayKit_Screen.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.85;
+				CURRENT_PROJECT_VERSION = 4.87;
 				DEVELOPMENT_TEAM = 89A8Q6ZH7H;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 89A8Q6ZH7H;
 				ENABLE_BITCODE = NO;

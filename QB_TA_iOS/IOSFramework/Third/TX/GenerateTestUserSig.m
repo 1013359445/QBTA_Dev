@@ -28,16 +28,13 @@
     for (NSString *key in keyOrder) {
         [stringToSign appendFormat:@"%@:%@\n", key, obj[key]];
     }
-    NSLog(@"%@", stringToSign);
     //NSString *sig = [self sigString:stringToSign];
     NSString *sig = [self hmac:stringToSign];
 
     obj[@"TLS.sig"] = sig;
-    NSLog(@"sig: %@", sig);
     NSError *error = nil;
     NSData *jsonToZipData = [NSJSONSerialization dataWithJSONObject:obj options:0 error:&error];
     if (error) {
-        NSLog(@"[Error] json serialization failed: %@", error);
         return @"";
     }
 
@@ -48,7 +45,6 @@
     uLongf destLen = upperBound;
     int ret = compress2(dest, &destLen, (const Bytef*)zipsrc, srcLen, Z_BEST_SPEED);
     if (ret != Z_OK) {
-        NSLog(@"[Error] Compress Error %d, upper bound: %lu", ret, upperBound);
         free(dest);
         return @"";
     }

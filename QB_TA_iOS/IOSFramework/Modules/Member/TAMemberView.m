@@ -11,7 +11,7 @@
 #import "TALoginViewController.h"
 #import "TAAlert.h"
 #import "TAMemberModel.h"
-#import "TASocket.h"
+#import "TASocketManager.h"
 
 @interface TAMemberView () <UITableViewDelegate, UITableViewDataSource, TAMemberTableViewCellProtocol>
 @property (nonatomic, retain)UIView     *contentView;
@@ -63,7 +63,7 @@
         //获取成员列表
         TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
         parm.range = @"room";
-        [[TASocket shareInstance] SendClientMembers:parm];
+        [[TASocketManager shareInstance] SendClientMembers:parm];
     }
     return self;
 }
@@ -137,7 +137,7 @@
                 TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
                 parm.range = @"room";
                 parm.voice = self.isProhibition ? 1 : 0;
-                [[TASocket shareInstance] SendClientMembersVoice:parm];
+                [[TASocketManager shareInstance] SendClientMembersVoice:parm];
             }
         }];
     }else{
@@ -164,7 +164,7 @@
                 parm.kick = 1;
                 parm.phone = data.phone;
                 parm.range = @"room";
-                [[TASocket shareInstance] SendClientMembersKick:parm];
+                [[TASocketManager shareInstance] SendClientMembersKick:parm];
             }
         }];
     }else{
@@ -197,7 +197,7 @@
                     parm.voice = 1;
                     parm.phone = data.phone;
                     parm.range = @"room";
-                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                    [[TASocketManager shareInstance] SendClientMembersVoice:parm];
                 }
             }];
         }else{
@@ -208,7 +208,7 @@
                     parm.voice = 0;
                     parm.phone = data.phone;
                     parm.range = @"room";
-                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                    [[TASocketManager shareInstance] SendClientMembersVoice:parm];
                 }
             }];
         }

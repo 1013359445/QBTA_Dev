@@ -542,6 +542,52 @@
 		7A8594C029AE0A5200D6B51A /* TAControlPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */; };
 		7A8594C729B1F7DD00D6B51A /* TAToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A8594C529B1F7DD00D6B51A /* TAToast.h */; };
 		7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594C629B1F7DD00D6B51A /* TAToast.m */; };
+		7ABEB8E329E9191D007556CF /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B129E9191D007556CF /* SRWebSocket.m */; };
+		7ABEB8E429E9191D007556CF /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */; };
+		7ABEB8E529E9191D007556CF /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */; };
+		7ABEB8E629E9191D007556CF /* SocketRocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8B629E9191D007556CF /* SocketRocket.h */; };
+		7ABEB8E729E9191D007556CF /* SRConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8B829E9191D007556CF /* SRConstants.h */; };
+		7ABEB8E829E9191D007556CF /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */; };
+		7ABEB8E929E9191D007556CF /* SRProxyConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */; };
+		7ABEB8EA29E9191D007556CF /* SRRunLoopThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */; };
+		7ABEB8EB29E9191D007556CF /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */; };
+		7ABEB8EC29E9191D007556CF /* SRPinningSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */; };
+		7ABEB8ED29E9191D007556CF /* SRPinningSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */; };
+		7ABEB8EE29E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */; };
+		7ABEB8EF29E9191D007556CF /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8C429E9191D007556CF /* SRDelegateController.m */; };
+		7ABEB8F029E9191D007556CF /* SRDelegateController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C529E9191D007556CF /* SRDelegateController.h */; };
+		7ABEB8F129E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */; };
+		7ABEB8F229E9191D007556CF /* SRHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C829E9191D007556CF /* SRHash.h */; };
+		7ABEB8F329E9191D007556CF /* SRLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C929E9191D007556CF /* SRLog.h */; };
+		7ABEB8F429E9191D007556CF /* SRMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CA29E9191D007556CF /* SRMutex.m */; };
+		7ABEB8F529E9191D007556CF /* SRHTTPConnectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */; };
+		7ABEB8F629E9191D007556CF /* SRSIMDHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */; };
+		7ABEB8F729E9191D007556CF /* SRRandom.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CD29E9191D007556CF /* SRRandom.h */; };
+		7ABEB8F829E9191D007556CF /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */; };
+		7ABEB8F929E9191D007556CF /* SRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CF29E9191D007556CF /* SRError.h */; };
+		7ABEB8FA29E9191D007556CF /* SRLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D029E9191D007556CF /* SRLog.m */; };
+		7ABEB8FB29E9191D007556CF /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D129E9191D007556CF /* SRHash.m */; };
+		7ABEB8FC29E9191D007556CF /* SRMutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D229E9191D007556CF /* SRMutex.h */; };
+		7ABEB8FD29E9191D007556CF /* SRHTTPConnectMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */; };
+		7ABEB8FE29E9191D007556CF /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D429E9191D007556CF /* SRError.m */; };
+		7ABEB8FF29E9191D007556CF /* SRRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D529E9191D007556CF /* SRRandom.m */; };
+		7ABEB90029E9191D007556CF /* SRURLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D629E9191D007556CF /* SRURLUtilities.h */; };
+		7ABEB90129E9191D007556CF /* SRSIMDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */; };
+		7ABEB90229E9191D007556CF /* SRIOConsumerPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */; };
+		7ABEB90329E9191D007556CF /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */; };
+		7ABEB90429E9191D007556CF /* SRIOConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */; };
+		7ABEB90529E9191D007556CF /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */; };
+		7ABEB90629E9191D007556CF /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DD29E9191D007556CF /* SRConstants.m */; };
+		7ABEB90729E9191D007556CF /* NSURLRequest+SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */; };
+		7ABEB90829E9191D007556CF /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DF29E9191D007556CF /* SRWebSocket.h */; };
+		7ABEB90929E9191D007556CF /* NSRunLoop+SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */; };
+		7ABEB90A29E9191D007556CF /* SRSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */; };
+		7ABEB90B29E9191D007556CF /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */; };
+		7ABEB91629E91A1E007556CF /* TAWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91429E91A1E007556CF /* TAWebSocket.h */; };
+		7ABEB91729E91A1E007556CF /* TAWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB91529E91A1E007556CF /* TAWebSocket.m */; };
+		7ABEB91C29E9276A007556CF /* SIOSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91929E9276A007556CF /* SIOSocket.h */; };
+		7ABEB91D29E9276A007556CF /* socket.io.js.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91A29E9276A007556CF /* socket.io.js.h */; };
+		7ABEB91E29E9276A007556CF /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB91B29E9276A007556CF /* SIOSocket.m */; };
 		7AC5E8F929CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */; };
 		7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */; };
 		7AC611AE29D18FB600833933 /* TARoomListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC611AC29D18FB600833933 /* TARoomListView.h */; };
@@ -570,11 +616,8 @@
 		7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A63929A4B1F100257E1D /* TACmdModel.m */; };
 		7AD8A64E29A4D05D00257E1D /* TACreatRoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */; };
 		7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */; };
-		7AF5056129E4F8820010A480 /* SIOSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5055E29E4F8820010A480 /* SIOSocket.h */; };
-		7AF5056229E4F8820010A480 /* socket.io.js.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5055F29E4F8820010A480 /* socket.io.js.h */; };
-		7AF5056329E4F8820010A480 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056029E4F8820010A480 /* SIOSocket.m */; };
-		7AF5056629E4F9240010A480 /* TASocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5056429E4F9240010A480 /* TASocket.h */; };
-		7AF5056729E4F9240010A480 /* TASocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056529E4F9240010A480 /* TASocket.m */; };
+		7AF5056629E4F9240010A480 /* TASocketManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5056429E4F9240010A480 /* TASocketManager.h */; };
+		7AF5056729E4F9240010A480 /* TASocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056529E4F9240010A480 /* TASocketManager.m */; };
 		7AF5056B29E5064F0010A480 /* TAMemberModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF5056929E5064F0010A480 /* TAMemberModel.h */; };
 		7AF5056C29E5064F0010A480 /* TAMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5056A29E5064F0010A480 /* TAMemberModel.m */; };
 		7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF8D086299BA47600D85074 /* TACaptchaInterface.h */; };
@@ -1132,6 +1175,53 @@
 		7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAControlPanelView.m; sourceTree = "<group>"; };
 		7A8594C529B1F7DD00D6B51A /* TAToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAToast.h; sourceTree = "<group>"; };
 		7A8594C629B1F7DD00D6B51A /* TAToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAToast.m; sourceTree = "<group>"; };
+		7ABEB8B129E9191D007556CF /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
+		7ABEB8B429E9191D007556CF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
+		7ABEB8B629E9191D007556CF /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		7ABEB8B829E9191D007556CF /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
+		7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
+		7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
+		7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
+		7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
+		7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPinningSecurityPolicy.h; sourceTree = "<group>"; };
+		7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPinningSecurityPolicy.m; sourceTree = "<group>"; };
+		7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		7ABEB8C429E9191D007556CF /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
+		7ABEB8C529E9191D007556CF /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
+		7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
+		7ABEB8C829E9191D007556CF /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
+		7ABEB8C929E9191D007556CF /* SRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLog.h; sourceTree = "<group>"; };
+		7ABEB8CA29E9191D007556CF /* SRMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMutex.m; sourceTree = "<group>"; };
+		7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHTTPConnectMessage.m; sourceTree = "<group>"; };
+		7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSIMDHelpers.h; sourceTree = "<group>"; };
+		7ABEB8CD29E9191D007556CF /* SRRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRandom.h; sourceTree = "<group>"; };
+		7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
+		7ABEB8CF29E9191D007556CF /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
+		7ABEB8D029E9191D007556CF /* SRLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLog.m; sourceTree = "<group>"; };
+		7ABEB8D129E9191D007556CF /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
+		7ABEB8D229E9191D007556CF /* SRMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMutex.h; sourceTree = "<group>"; };
+		7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHTTPConnectMessage.h; sourceTree = "<group>"; };
+		7ABEB8D429E9191D007556CF /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
+		7ABEB8D529E9191D007556CF /* SRRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRandom.m; sourceTree = "<group>"; };
+		7ABEB8D629E9191D007556CF /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
+		7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSIMDHelpers.m; sourceTree = "<group>"; };
+		7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
+		7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
+		7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
+		7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
+		7ABEB8DD29E9191D007556CF /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
+		7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
+		7ABEB8DF29E9191D007556CF /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
+		7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
+		7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
+		7ABEB91429E91A1E007556CF /* TAWebSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAWebSocket.h; sourceTree = "<group>"; };
+		7ABEB91529E91A1E007556CF /* TAWebSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAWebSocket.m; sourceTree = "<group>"; };
+		7ABEB91929E9276A007556CF /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
+		7ABEB91A29E9276A007556CF /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
+		7ABEB91B29E9276A007556CF /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
 		7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TABroadcastExtensionLauncher.h; sourceTree = "<group>"; };
 		7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TABroadcastExtensionLauncher.m; sourceTree = "<group>"; };
 		7AC611AC29D18FB600833933 /* TARoomListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARoomListView.h; sourceTree = "<group>"; };
@@ -1161,11 +1251,8 @@
 		7AD8A63929A4B1F100257E1D /* TACmdModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACmdModel.m; sourceTree = "<group>"; };
 		7AD8A64C29A4D05D00257E1D /* TACreatRoleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACreatRoleViewController.h; sourceTree = "<group>"; };
 		7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACreatRoleViewController.m; sourceTree = "<group>"; };
-		7AF5055E29E4F8820010A480 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
-		7AF5055F29E4F8820010A480 /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
-		7AF5056029E4F8820010A480 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
-		7AF5056429E4F9240010A480 /* TASocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASocket.h; sourceTree = "<group>"; };
-		7AF5056529E4F9240010A480 /* TASocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASocket.m; sourceTree = "<group>"; };
+		7AF5056429E4F9240010A480 /* TASocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TASocketManager.h; sourceTree = "<group>"; };
+		7AF5056529E4F9240010A480 /* TASocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TASocketManager.m; sourceTree = "<group>"; };
 		7AF5056929E5064F0010A480 /* TAMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAMemberModel.h; sourceTree = "<group>"; };
 		7AF5056A29E5064F0010A480 /* TAMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAMemberModel.m; sourceTree = "<group>"; };
 		7AF8D086299BA47600D85074 /* TACaptchaInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TACaptchaInterface.h; sourceTree = "<group>"; };
@@ -1260,6 +1347,7 @@
 		7A3CAD20298A2FA800DD1998 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7ABEB8A129E8E916007556CF /* TASocket */,
 				7A3CB1FF298B638300DD1998 /* MacroDefinition */,
 				7AD8A61F29A3422A00257E1D /* DataCenter */,
 				7A3CAD1E298A2F0A00DD1998 /* Base */,
@@ -1325,7 +1413,8 @@
 		7A3CAD28298A3F3B00DD1998 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				7AF5055D29E4F8820010A480 /* SIOSocket */,
+				7ABEB91829E9276A007556CF /* SIOSocket */,
+				7ABEB8B029E9191D007556CF /* SocketRocket */,
 				7AD4C04529C42F6900AFE5A4 /* TX */,
 				7A1FD38329BB37C4006C352F /* KJMarqueeLabel */,
 				7A3CB043298A565900DD1998 /* JKCategories */,
@@ -2340,6 +2429,140 @@
 			path = TACategories;
 			sourceTree = "<group>";
 		};
+		7ABEB8A129E8E916007556CF /* TASocket */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB91429E91A1E007556CF /* TAWebSocket.h */,
+				7ABEB91529E91A1E007556CF /* TAWebSocket.m */,
+				7AF5056429E4F9240010A480 /* TASocketManager.h */,
+				7AF5056529E4F9240010A480 /* TASocketManager.m */,
+			);
+			path = TASocket;
+			sourceTree = "<group>";
+		};
+		7ABEB8B029E9191D007556CF /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8B329E9191D007556CF /* Resources */,
+				7ABEB8B729E9191D007556CF /* Internal */,
+				7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */,
+				7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */,
+				7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */,
+				7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */,
+				7ABEB8B629E9191D007556CF /* SocketRocket.h */,
+				7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */,
+				7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */,
+				7ABEB8DF29E9191D007556CF /* SRWebSocket.h */,
+				7ABEB8B129E9191D007556CF /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		7ABEB8B329E9191D007556CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8B429E9191D007556CF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7ABEB8B729E9191D007556CF /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8B929E9191D007556CF /* Proxy */,
+				7ABEB8BC29E9191D007556CF /* RunLoop */,
+				7ABEB8BF29E9191D007556CF /* Security */,
+				7ABEB8C729E9191D007556CF /* Utilities */,
+				7ABEB8C329E9191D007556CF /* Delegate */,
+				7ABEB8D829E9191D007556CF /* IOConsumer */,
+				7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */,
+				7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */,
+				7ABEB8B829E9191D007556CF /* SRConstants.h */,
+				7ABEB8DD29E9191D007556CF /* SRConstants.m */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		7ABEB8B929E9191D007556CF /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */,
+				7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		7ABEB8BC29E9191D007556CF /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */,
+				7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */,
+			);
+			path = RunLoop;
+			sourceTree = "<group>";
+		};
+		7ABEB8BF29E9191D007556CF /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */,
+				7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		7ABEB8C329E9191D007556CF /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8C429E9191D007556CF /* SRDelegateController.m */,
+				7ABEB8C529E9191D007556CF /* SRDelegateController.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		7ABEB8C729E9191D007556CF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8CF29E9191D007556CF /* SRError.h */,
+				7ABEB8D429E9191D007556CF /* SRError.m */,
+				7ABEB8C829E9191D007556CF /* SRHash.h */,
+				7ABEB8D129E9191D007556CF /* SRHash.m */,
+				7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */,
+				7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */,
+				7ABEB8C929E9191D007556CF /* SRLog.h */,
+				7ABEB8D029E9191D007556CF /* SRLog.m */,
+				7ABEB8D229E9191D007556CF /* SRMutex.h */,
+				7ABEB8CA29E9191D007556CF /* SRMutex.m */,
+				7ABEB8CD29E9191D007556CF /* SRRandom.h */,
+				7ABEB8D529E9191D007556CF /* SRRandom.m */,
+				7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */,
+				7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */,
+				7ABEB8D629E9191D007556CF /* SRURLUtilities.h */,
+				7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7ABEB8D829E9191D007556CF /* IOConsumer */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */,
+				7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */,
+				7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */,
+				7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */,
+			);
+			path = IOConsumer;
+			sourceTree = "<group>";
+		};
+		7ABEB91829E9276A007556CF /* SIOSocket */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB91929E9276A007556CF /* SIOSocket.h */,
+				7ABEB91B29E9276A007556CF /* SIOSocket.m */,
+				7ABEB91A29E9276A007556CF /* socket.io.js.h */,
+			);
+			path = SIOSocket;
+			sourceTree = "<group>";
+		};
 		7AC8D5FB29875A07001E9F12 /* IOSFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -2401,8 +2624,6 @@
 			children = (
 				7AD8A62F29A37B5800257E1D /* TADataCenter.h */,
 				7AD8A63029A37B5800257E1D /* TADataCenter.m */,
-				7AF5056429E4F9240010A480 /* TASocket.h */,
-				7AF5056529E4F9240010A480 /* TASocket.m */,
 				7AD8A63329A37B7C00257E1D /* TAUserInfo.h */,
 				7AD8A63429A37B7C00257E1D /* TAUserInfo.m */,
 			);
@@ -2427,16 +2648,6 @@
 				7AD8A64D29A4D05D00257E1D /* TACreatRoleViewController.m */,
 			);
 			path = Role;
-			sourceTree = "<group>";
-		};
-		7AF5055D29E4F8820010A480 /* SIOSocket */ = {
-			isa = PBXGroup;
-			children = (
-				7AF5055E29E4F8820010A480 /* SIOSocket.h */,
-				7AF5056029E4F8820010A480 /* SIOSocket.m */,
-				7AF5055F29E4F8820010A480 /* socket.io.js.h */,
-			);
-			path = SIOSocket;
 			sourceTree = "<group>";
 		};
 		7AF5056829E506220010A480 /* Model */ = {
@@ -2491,12 +2702,15 @@
 				7A3CAF83298A46EF00DD1998 /* SDImageHEICCoder.h in Headers */,
 				7A3CAF4D298A46EE00DD1998 /* NSData+ImageContentType.h in Headers */,
 				7A3CB201298B639700DD1998 /* TAMacroDefinition.h in Headers */,
+				7ABEB90229E9191D007556CF /* SRIOConsumerPool.h in Headers */,
+				7ABEB90429E9191D007556CF /* SRIOConsumer.h in Headers */,
 				7A1FD36729B9A6E2006C352F /* TASettingBasicsView.h in Headers */,
 				7A3CB1F2298A565900DD1998 /* UITextField+JKShake.h in Headers */,
 				7A3CB004298A46EF00DD1998 /* SDImageCachesManagerOperation.h in Headers */,
 				7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
 				7AD4C04229C41C6800AFE5A4 /* TAControlCenterPresenter.h in Headers */,
+				7ABEB8EC29E9191D007556CF /* SRPinningSecurityPolicy.h in Headers */,
 				7A4D3ED929DE790E00CCE18E /* TAAlertViewController.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
@@ -2505,18 +2719,20 @@
 				7A3CAE6A298A462A00DD1998 /* IQBarButtonItem.h in Headers */,
 				7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */,
 				7A3CB168298A565900DD1998 /* UIResponder+JKFirstResponder.h in Headers */,
+				7ABEB91C29E9276A007556CF /* SIOSocket.h in Headers */,
 				7A4D3EE029E0039800CCE18E /* TAMemberTableViewCell.h in Headers */,
 				7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */,
 				7A3CB1EA298A565900DD1998 /* UIPopoverController+iPhone.h in Headers */,
+				7ABEB8E629E9191D007556CF /* SocketRocket.h in Headers */,
 				7A3CAF4F298A46EE00DD1998 /* SDImageTransformer.h in Headers */,
 				7A3CB1C1298A565900DD1998 /* UIImageView+JKLetters.h in Headers */,
 				7A3CAF53298A46EE00DD1998 /* SDImageLoadersManager.h in Headers */,
 				7A3CB032298A47AB00DD1998 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				7A3CB194298A565900DD1998 /* UIView+JKNib.h in Headers */,
+				7ABEB8F929E9191D007556CF /* SRError.h in Headers */,
 				7A3CB1AF298A565900DD1998 /* UITextView+JKPlaceHolder.h in Headers */,
 				7A3CB1B3298A565900DD1998 /* UIBarButtonItem+JKAction.h in Headers */,
 				7A7328FF29D52BC600DBFC4F /* TARoomCollectionViewCell.h in Headers */,
-				7AF5056229E4F8820010A480 /* socket.io.js.h in Headers */,
 				7A3CAE17298A444800DD1998 /* ASINetworkQueue.h in Headers */,
 				7A3CB18F298A565900DD1998 /* UIView+JKCustomBorder.h in Headers */,
 				7A3CB161298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.h in Headers */,
@@ -2536,11 +2752,14 @@
 				7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */,
 				7A3CB142298A565900DD1998 /* UIImage+JKBlur.h in Headers */,
 				7A1FD33E29B5CB4E006C352F /* TABigMapView.h in Headers */,
+				7ABEB91629E91A1E007556CF /* TAWebSocket.h in Headers */,
 				7A3CAF99298A46EF00DD1998 /* SDWebImageIndicator.h in Headers */,
 				7A1FD36F29B9A6FA006C352F /* TASettingPictureQualityView.h in Headers */,
+				7ABEB8FC29E9191D007556CF /* SRMutex.h in Headers */,
 				7A3CB189298A565900DD1998 /* UIView+JKShake.h in Headers */,
 				7A3CAF9D298A46EF00DD1998 /* SDWebImageDownloader.h in Headers */,
 				7A3CAFFB298A46EF00DD1998 /* SDAsyncBlockOperation.h in Headers */,
+				7ABEB90829E9191D007556CF /* SRWebSocket.h in Headers */,
 				7A3CAE19298A444800DD1998 /* ASIHTTPRequestConfig.h in Headers */,
 				7A3CB19A298A565900DD1998 /* UIView+JKFrame.h in Headers */,
 				7A3CADE5298A426300DD1998 /* NSObject+MJProperty.h in Headers */,
@@ -2552,6 +2771,7 @@
 				7A3CAF95298A46EF00DD1998 /* SDWebImageDownloaderDecryptor.h in Headers */,
 				7A3CAE23298A444800DD1998 /* ASIProgressDelegate.h in Headers */,
 				7A3CAE5B298A462900DD1998 /* IQUITextFieldView+Additions.h in Headers */,
+				7ABEB8F129E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h in Headers */,
 				7A3CB1C6298A565900DD1998 /* UIImageView+JKGeometryConversion.h in Headers */,
 				7A3CADE2298A426300DD1998 /* NSObject+MJClass.h in Headers */,
 				7A3CB15B298A565900DD1998 /* UIApplication+JKKeyboardFrame.h in Headers */,
@@ -2564,6 +2784,7 @@
 				7A8594B929ADAA4300D6B51A /* TALoginPresenter.h in Headers */,
 				7A3CB149298A565900DD1998 /* UIImage+JKGIF.h in Headers */,
 				7A3CB1EE298A565900DD1998 /* UITextField+JKSelect.h in Headers */,
+				7ABEB8E929E9191D007556CF /* SRProxyConnect.h in Headers */,
 				7A4D3ED529DE69D200CCE18E /* TAAlert.h in Headers */,
 				7A3CAF55298A46EE00DD1998 /* SDWebImageDownloaderOperation.h in Headers */,
 				7A6BF76F298BDC5C002EEDCA /* TABaseParmModel.h in Headers */,
@@ -2579,6 +2800,7 @@
 				7A3CB1D3298A565900DD1998 /* UIViewController+JKBlockSegue.h in Headers */,
 				7A3CB17C298A565900DD1998 /* UIColor+JKGradient.h in Headers */,
 				7A3CB15F298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.h in Headers */,
+				7ABEB8EE29E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h in Headers */,
 				7A3CADF3298A426300DD1998 /* NSObject+MJKeyValue.h in Headers */,
 				7A3CB175298A565900DD1998 /* UIButton+JKMiddleAligning.h in Headers */,
 				7A3CB1DD298A565900DD1998 /* UINavigationController+JKStackManager.h in Headers */,
@@ -2594,18 +2816,20 @@
 				7A3CAE1F298A444800DD1998 /* ASIHTTPRequest.h in Headers */,
 				7A8594BC29ADB9D900D6B51A /* TALoginViewProtocol.h in Headers */,
 				7A3CB1E0298A565900DD1998 /* UITableView+JKiOS7Style.h in Headers */,
+				7ABEB8F229E9191D007556CF /* SRHash.h in Headers */,
 				7A3CB1D2298A565900DD1998 /* UIViewController+JKVisible.h in Headers */,
 				7A3CB029298A47AB00DD1998 /* NSArray+MASShorthandAdditions.h in Headers */,
 				7A85949729ACB43300D6B51A /* TATopMenuView.h in Headers */,
 				7A3CAF5E298A46EE00DD1998 /* SDImageCacheConfig.h in Headers */,
 				7A6BF76B298BDC47002EEDCA /* TABaseDataModel.h in Headers */,
 				7A3CAE24298A444800DD1998 /* ASIFormDataRequest.h in Headers */,
+				7ABEB8E729E9191D007556CF /* SRConstants.h in Headers */,
 				7A3CB12E298A565900DD1998 /* UIImage+JKMerge.h in Headers */,
 				7A3CAF6D298A46EE00DD1998 /* SDWebImageDownloaderRequestModifier.h in Headers */,
 				7A3CAF44298A46EE00DD1998 /* SDDiskCache.h in Headers */,
 				7A3CB16F298A565900DD1998 /* UIButton+JKTouchAreaInsets.h in Headers */,
 				7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */,
-				7AF5056129E4F8820010A480 /* SIOSocket.h in Headers */,
+				7ABEB90A29E9191D007556CF /* SRSecurityPolicy.h in Headers */,
 				7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */,
 				7A3CAF65298A46EE00DD1998 /* SDImageCacheDefine.h in Headers */,
 				7A3CAF77298A46EF00DD1998 /* SDWebImageOptionsProcessor.h in Headers */,
@@ -2633,6 +2857,7 @@
 				7A3CB027298A47AB00DD1998 /* MASConstraint+Private.h in Headers */,
 				7A3CAFF4298A46EF00DD1998 /* SDWebImageTransitionInternal.h in Headers */,
 				7A3CB1BB298A565900DD1998 /* UIBezierPath+JKSymbol.h in Headers */,
+				7ABEB8F029E9191D007556CF /* SRDelegateController.h in Headers */,
 				7A3CB151298A565900DD1998 /* UILabel+JKAutomaticWriting.h in Headers */,
 				7A1FD37329B9A706006C352F /* TASettingAboutView.h in Headers */,
 				7A3CAE29298A444800DD1998 /* ASIInputStream.h in Headers */,
@@ -2652,11 +2877,13 @@
 				7A3CB183298A565900DD1998 /* UISplitViewController+JKQuickAccess.h in Headers */,
 				7A3CAF5A298A46EE00DD1998 /* SDWebImageDownloaderConfig.h in Headers */,
 				7A3CB1EF298A565900DD1998 /* UITextField+JKBlocks.h in Headers */,
+				7ABEB8FD29E9191D007556CF /* SRHTTPConnectMessage.h in Headers */,
 				7A3CAFB5298A46EF00DD1998 /* UIImage+GIF.h in Headers */,
 				7A3CB1E3298A565900DD1998 /* UIControl+JKActionBlocks.h in Headers */,
 				7A3CB1A6298A565900DD1998 /* UINavigationItem+JKLoading.h in Headers */,
 				7A3CAF70298A46EF00DD1998 /* UIImage+Metadata.h in Headers */,
 				7A3CB171298A565900DD1998 /* UIButton+JKBadge.h in Headers */,
+				7ABEB8EA29E9191D007556CF /* SRRunLoopThread.h in Headers */,
 				7A3CB1EB298A565900DD1998 /* JKUIKit.h in Headers */,
 				7A3CAFF3298A46EF00DD1998 /* SDWeakProxy.h in Headers */,
 				7A3CB182298A565900DD1998 /* UIColor+JKHEX.h in Headers */,
@@ -2681,6 +2908,7 @@
 				7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */,
 				7A3CAFFD298A46EF00DD1998 /* SDAssociatedObject.h in Headers */,
 				7A3CB1DC298A565900DD1998 /* UINavigationController+JKTransitions.h in Headers */,
+				7ABEB8F629E9191D007556CF /* SRSIMDHelpers.h in Headers */,
 				7A3CAFFE298A46EF00DD1998 /* SDmetamacros.h in Headers */,
 				7A3CADE9298A426300DD1998 /* MJFoundation.h in Headers */,
 				7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */,
@@ -2696,12 +2924,14 @@
 				7A3CAF60298A46EE00DD1998 /* SDWebImageCacheKeyFilter.h in Headers */,
 				7A3CAF46298A46EE00DD1998 /* SDImageIOCoder.h in Headers */,
 				7AD8A62729A362DF00257E1D /* TAUserAgreementView.h in Headers */,
+				7ABEB91D29E9276A007556CF /* socket.io.js.h in Headers */,
 				7A3CB12C298A565900DD1998 /* UIImage+JKColor.h in Headers */,
 				7AD4C07529C463BF00AFE5A4 /* GenerateTestUserSig.h in Headers */,
 				7A3CAF7F298A46EF00DD1998 /* SDAnimatedImageView+WebCache.h in Headers */,
 				7AD8A62D29A3712400257E1D /* TABaseView.h in Headers */,
 				7A3CB135298A565900DD1998 /* UIImage+JKSuperCompress.h in Headers */,
 				7A3CAE64298A462A00DD1998 /* IQPreviousNextView.h in Headers */,
+				7ABEB90029E9191D007556CF /* SRURLUtilities.h in Headers */,
 				7A3CAE6E298A462A00DD1998 /* IQKeyboardManagerConstantsInternal.h in Headers */,
 				7A3CB187298A565900DD1998 /* UIView+JKBlockGesture.h in Headers */,
 				7A8594B429ADA9C700D6B51A /* TALoginView.h in Headers */,
@@ -2715,8 +2945,10 @@
 				7A3CB16C298A565900DD1998 /* UIButton+JKImagePosition.h in Headers */,
 				7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */,
 				7A73290529D571AB00DBFC4F /* TARoomManager.h in Headers */,
+				7ABEB90729E9191D007556CF /* NSURLRequest+SRWebSocket.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
 				7A1FD36B29B9A6F0006C352F /* TASettingVoiceView.h in Headers */,
+				7ABEB90929E9191D007556CF /* NSRunLoop+SRWebSocket.h in Headers */,
 				7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */,
 				7A3CB14A298A565900DD1998 /* UIImage+JKVector.h in Headers */,
 				7A1FD37D29B9C72B006C352F /* TATextFieldView.h in Headers */,
@@ -2733,13 +2965,14 @@
 				7A3CAFA0298A46EF00DD1998 /* SDAnimatedImagePlayer.h in Headers */,
 				7A3CB1B4298A565900DD1998 /* UIBarButtonItem+JKBadge.h in Headers */,
 				7A3CAE5D298A462900DD1998 /* IQUIView+Hierarchy.h in Headers */,
+				7ABEB8F729E9191D007556CF /* SRRandom.h in Headers */,
 				7A3CAE5A298A462900DD1998 /* IQUIScrollView+Additions.h in Headers */,
 				7A3CB19F298A565900DD1998 /* UIFont+JKCustomLoader.h in Headers */,
 				7A3CB1ED298A565900DD1998 /* UITextField+JKInputLimit.h in Headers */,
 				7A3CAFAD298A46EF00DD1998 /* SDWebImageError.h in Headers */,
 				7A3CB150298A565900DD1998 /* UILabel+JKSuggestSize.h in Headers */,
 				7A3CB130298A565900DD1998 /* UIImage+JKRoundedCorner.h in Headers */,
-				7AF5056629E4F9240010A480 /* TASocket.h in Headers */,
+				7AF5056629E4F9240010A480 /* TASocketManager.h in Headers */,
 				7A3CB1A3298A565900DD1998 /* UIFont+JKTTF.h in Headers */,
 				7A3CB191298A565900DD1998 /* UIView+JKDraggable.h in Headers */,
 				7A3CADF4298A426300DD1998 /* NSObject+MJCoding.h in Headers */,
@@ -2748,6 +2981,7 @@
 				7A3CB140298A565900DD1998 /* UIImage+JKResize.h in Headers */,
 				7A3CB176298A565900DD1998 /* UIButton+JKBackgroundColor.h in Headers */,
 				7A3CB1B2298A565900DD1998 /* UIDevice+JKHardware.h in Headers */,
+				7ABEB8F329E9191D007556CF /* SRLog.h in Headers */,
 				7A3CAF79298A46EF00DD1998 /* UIView+WebCacheOperation.h in Headers */,
 				7A3CAE26298A444800DD1998 /* ASIDataDecompressor.h in Headers */,
 				7A3CAFF9298A46EF00DD1998 /* SDInternalMacros.h in Headers */,
@@ -2822,10 +3056,14 @@
 				7A3CB003298A46EF00DD1998 /* SDFileAttributeHelper.m in Sources */,
 				7A3CB03C298A47AB00DD1998 /* MASViewConstraint.m in Sources */,
 				7A3CB137298A565900DD1998 /* UIImage+JKGIF.m in Sources */,
+				7ABEB8EB29E9191D007556CF /* SRRunLoopThread.m in Sources */,
 				7A3CB159298A565900DD1998 /* UIWindow+JKHierarchy.m in Sources */,
 				7A3CB178298A565900DD1998 /* UIButton+JKTouchAreaInsets.m in Sources */,
 				7A3CB199298A565900DD1998 /* UIView+JKDraggable.m in Sources */,
 				7A3CB1A2298A565900DD1998 /* UIFont+JKCustomLoader.m in Sources */,
+				7ABEB8F829E9191D007556CF /* SRURLUtilities.m in Sources */,
+				7ABEB8F529E9191D007556CF /* SRHTTPConnectMessage.m in Sources */,
+				7ABEB91729E91A1E007556CF /* TAWebSocket.m in Sources */,
 				7A3CB000298A46EF00DD1998 /* SDDeviceHelper.m in Sources */,
 				7A3CB03D298A47AB00DD1998 /* MASViewAttribute.m in Sources */,
 				7A3CAE15298A444800DD1998 /* ASIHTTPRequest.m in Sources */,
@@ -2844,6 +3082,7 @@
 				7A3CAF41298A46EE00DD1998 /* SDImageHEICCoder.m in Sources */,
 				7A3CB190298A565900DD1998 /* UIView+JKFrame.m in Sources */,
 				7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */,
+				7ABEB91E29E9276A007556CF /* SIOSocket.m in Sources */,
 				7A3CAFA5298A46EF00DD1998 /* SDWebImageDefine.m in Sources */,
 				7A3CB164298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.m in Sources */,
 				7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */,
@@ -2862,6 +3101,7 @@
 				7A3CB165298A565900DD1998 /* UIResponder+JKFirstResponder.m in Sources */,
 				7A3CB037298A47AB00DD1998 /* View+MASAdditions.m in Sources */,
 				7A3CB1F3298A565900DD1998 /* UITextField+JKSelect.m in Sources */,
+				7ABEB8FE29E9191D007556CF /* SRError.m in Sources */,
 				7A73290029D52BC600DBFC4F /* TARoomCollectionViewCell.m in Sources */,
 				7A3CB144298A565900DD1998 /* UIImage+JKRoundedCorner.m in Sources */,
 				7A3CAFA9298A46EF00DD1998 /* UIView+WebCache.m in Sources */,
@@ -2876,6 +3116,7 @@
 				7AD4C04329C41C6800AFE5A4 /* TAControlCenterPresenter.m in Sources */,
 				7A3CAF74298A46EF00DD1998 /* SDWebImageError.m in Sources */,
 				7A3CB1C7298A565900DD1998 /* UIImageView+JKLetters.m in Sources */,
+				7ABEB8E429E9191D007556CF /* NSRunLoop+SRWebSocket.m in Sources */,
 				7A3CAF84298A46EF00DD1998 /* UIImage+ExtendedCacheData.m in Sources */,
 				7A3CB13B298A565900DD1998 /* UIImage+JKMerge.m in Sources */,
 				7A3CB1B0298A565900DD1998 /* UITextView+JKInputLimit.m in Sources */,
@@ -2889,6 +3130,7 @@
 				7A3CAF75298A46EF00DD1998 /* SDWebImagePrefetcher.m in Sources */,
 				7A3CAE56298A462900DD1998 /* IQUITextFieldView+Additions.m in Sources */,
 				7A3CAF8C298A46EF00DD1998 /* SDWebImageDownloaderOperation.m in Sources */,
+				7ABEB8EF29E9191D007556CF /* SRDelegateController.m in Sources */,
 				7A3CB1F1298A565900DD1998 /* UITextField+JKInputLimit.m in Sources */,
 				7A3CAF86298A46EF00DD1998 /* SDWebImageDownloaderConfig.m in Sources */,
 				7A3CAFFA298A46EF00DD1998 /* SDImageAssetManager.m in Sources */,
@@ -2938,7 +3180,6 @@
 				7A3CB1D7298A565900DD1998 /* UIViewController+JKBlockSegue.m in Sources */,
 				7A8594B029ADA7B600D6B51A /* TABasePresenter.m in Sources */,
 				7A3CB1F5298A565900DD1998 /* UITextField+JKBlocks.m in Sources */,
-				7AF5056329E4F8820010A480 /* SIOSocket.m in Sources */,
 				7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */,
 				7A3CAE68298A462A00DD1998 /* IQPreviousNextView.m in Sources */,
 				7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */,
@@ -2951,6 +3192,7 @@
 				7A3CB13D298A565900DD1998 /* UIImage+JKAnimatedGIF.m in Sources */,
 				7A1FD37429B9A706006C352F /* TASettingAboutView.m in Sources */,
 				7A3CB197298A565900DD1998 /* UIView+JKToast.m in Sources */,
+				7ABEB90629E9191D007556CF /* SRConstants.m in Sources */,
 				7A3CB1D9298A565900DD1998 /* UINavigationController+JKStackManager.m in Sources */,
 				7A3CB193298A565900DD1998 /* UIView+JKScreenshot.m in Sources */,
 				7A3CB1B1298A565900DD1998 /* UIDevice+JKHardware.m in Sources */,
@@ -2959,6 +3201,7 @@
 				7A3CB14E298A565900DD1998 /* UILabel+JKAutomaticWriting.m in Sources */,
 				7A3CAF4E298A46EE00DD1998 /* SDWebImageDownloaderDecryptor.m in Sources */,
 				7A1FD36C29B9A6F0006C352F /* TASettingVoiceView.m in Sources */,
+				7ABEB8ED29E9191D007556CF /* SRPinningSecurityPolicy.m in Sources */,
 				7A3CAF9E298A46EF00DD1998 /* UIImage+MemoryCacheCost.m in Sources */,
 				7A3CB035298A47AB00DD1998 /* MASLayoutConstraint.m in Sources */,
 				7A3CB16B298A565900DD1998 /* UIButton+JKBadge.m in Sources */,
@@ -2966,6 +3209,7 @@
 				7A3CB185298A565900DD1998 /* UIView+JKNib.m in Sources */,
 				7A6BF770298BDC5C002EEDCA /* TABaseParmModel.m in Sources */,
 				7A3CB1E5298A565900DD1998 /* UIControl+JKBlock.m in Sources */,
+				7ABEB8FA29E9191D007556CF /* SRLog.m in Sources */,
 				7A3CAFA8298A46EF00DD1998 /* UIView+WebCacheOperation.m in Sources */,
 				7A3CB1E9298A565900DD1998 /* UIPopoverController+iPhone.m in Sources */,
 				7A452BD529C2EB9C00257826 /* NSString+Size.m in Sources */,
@@ -2979,6 +3223,7 @@
 				7A3CAF76298A46EF00DD1998 /* SDImageCoderHelper.m in Sources */,
 				7A3CAFA7298A46EF00DD1998 /* SDWebImageOptionsProcessor.m in Sources */,
 				7A3CB1B8298A565900DD1998 /* UIBezierPath+JKBasicShapes.m in Sources */,
+				7ABEB90B29E9191D007556CF /* NSURLRequest+SRWebSocket.m in Sources */,
 				7A3CAF66298A46EE00DD1998 /* SDImageLoader.m in Sources */,
 				7A3CB14C298A565900DD1998 /* UILabel+JKSuggestSize.m in Sources */,
 				7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */,
@@ -2987,6 +3232,7 @@
 				7A3CB138298A565900DD1998 /* UIImage+JKFXImage.m in Sources */,
 				7A8594B529ADA9C700D6B51A /* TALoginView.m in Sources */,
 				7A3CB005298A46EF00DD1998 /* NSBezierPath+SDRoundedCorners.m in Sources */,
+				7ABEB90529E9191D007556CF /* SRIOConsumerPool.m in Sources */,
 				7A3CB1C5298A565900DD1998 /* UIImageView+JKBetterFace.m in Sources */,
 				7A3CADED298A426300DD1998 /* NSObject+MJProperty.m in Sources */,
 				7A3CB1D6298A565900DD1998 /* UIViewController+JKRecursiveDescription.m in Sources */,
@@ -2997,7 +3243,7 @@
 				7A3CADEA298A426300DD1998 /* NSObject+MJCoding.m in Sources */,
 				7A3CB17B298A565900DD1998 /* UIColor+JKModify.m in Sources */,
 				7A1FD33F29B5CB4E006C352F /* TABigMapView.m in Sources */,
-				7AF5056729E4F9240010A480 /* TASocket.m in Sources */,
+				7AF5056729E4F9240010A480 /* TASocketManager.m in Sources */,
 				7A3CAE5C298A462900DD1998 /* IQUIViewController+Additions.m in Sources */,
 				7A3CB16E298A565900DD1998 /* UIButton+JKMiddleAligning.m in Sources */,
 				7A3CAF5D298A46EE00DD1998 /* UIImage+ForceDecode.m in Sources */,
@@ -3019,10 +3265,13 @@
 				7A3CB1A8298A565900DD1998 /* UINavigationItem+JKLoading.m in Sources */,
 				7A3CAF8E298A46EF00DD1998 /* SDImageLoadersManager.m in Sources */,
 				7A85949C29ACB44400D6B51A /* TARightMenuView.m in Sources */,
+				7ABEB8E329E9191D007556CF /* SRWebSocket.m in Sources */,
 				7A73290429D571AB00DBFC4F /* TARoomManager.m in Sources */,
 				7A3CB15E298A565900DD1998 /* UIApplication+JKKeyboardFrame.m in Sources */,
 				7A3CADE8298A426300DD1998 /* MJProperty.m in Sources */,
 				7A3CB12B298A565900DD1998 /* UIImage+JKOrientation.m in Sources */,
+				7ABEB8FB29E9191D007556CF /* SRHash.m in Sources */,
+				7ABEB8E529E9191D007556CF /* SRSecurityPolicy.m in Sources */,
 				7AF8D08D299BA4C900D85074 /* TACaptchaParmModel.m in Sources */,
 				7A3CB18C298A565900DD1998 /* UIView+JKConstraints.m in Sources */,
 				7A3CAFB0298A46EF00DD1998 /* UIImage+Metadata.m in Sources */,
@@ -3030,6 +3279,7 @@
 				7A3CADF6298A426300DD1998 /* MJFoundation.m in Sources */,
 				7A3CB002298A46EF00DD1998 /* SDInternalMacros.m in Sources */,
 				7A3CB007298A46EF00DD1998 /* SDDisplayLink.m in Sources */,
+				7ABEB8F429E9191D007556CF /* SRMutex.m in Sources */,
 				7A3CB034298A47AB00DD1998 /* MASConstraintMaker.m in Sources */,
 				7A3CADF1298A426300DD1998 /* MJPropertyKey.m in Sources */,
 				7A3CB041298A484100DD1998 /* MBProgressHUD.m in Sources */,
@@ -3039,15 +3289,18 @@
 				7A3CB1C8298A565900DD1998 /* UIImageView+JKReflect.m in Sources */,
 				7A3CAFB3298A46EF00DD1998 /* SDWebImageDownloaderRequestModifier.m in Sources */,
 				7A3CAF47298A46EE00DD1998 /* SDImageCoder.m in Sources */,
+				7ABEB8E829E9191D007556CF /* SRProxyConnect.m in Sources */,
 				7A3CB174298A565900DD1998 /* UIButton+JKImagePosition.m in Sources */,
 				7A3CB1BF298A565900DD1998 /* UIBezierPath+JKSymbol.m in Sources */,
 				7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */,
 				7A3CB136298A565900DD1998 /* UIImage+JKVector.m in Sources */,
 				7A0D28712995F2FB004BCDC6 /* NSBundle+TAImage.m in Sources */,
 				7A3CB1CD298A565900DD1998 /* UINavigationBar+JKAwesome.m in Sources */,
+				7ABEB8FF29E9191D007556CF /* SRRandom.m in Sources */,
 				7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */,
 				7A3CADE7298A426300DD1998 /* NSObject+MJKeyValue.m in Sources */,
 				7A8594C029AE0A5200D6B51A /* TAControlPanelView.m in Sources */,
+				7ABEB90329E9191D007556CF /* SRIOConsumer.m in Sources */,
 				7A3CB19C298A565900DD1998 /* UIView+JKRecursion.m in Sources */,
 				7A3CB17D298A565900DD1998 /* UIColor+JKHEX.m in Sources */,
 				7A3CAF90298A46EF00DD1998 /* SDWebImageTransition.m in Sources */,
@@ -3088,6 +3341,7 @@
 				7A3CAF68298A46EE00DD1998 /* SDWebImageIndicator.m in Sources */,
 				7A3CB1A0298A565900DD1998 /* UIFont+JKTTF.m in Sources */,
 				7A3CB1D8298A565900DD1998 /* UIViewController+JKVisible.m in Sources */,
+				7ABEB90129E9191D007556CF /* SRSIMDHelpers.m in Sources */,
 				7A3CB13C298A565900DD1998 /* UIImage+JKColor.m in Sources */,
 				7AD8A62829A362DF00257E1D /* TAUserAgreementView.m in Sources */,
 			);

@@ -10,7 +10,7 @@
 #import "GenerateTestUserSig.h"
 #import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 #import "TABroadcastExtensionLauncher.h"
-#import "TASocket.h"
+#import "TASocketManager.h"
 #import "TAAlert.h"
 
 @interface TARoomManager ()<TRTCCloudDelegate, TRTCVideoRenderDelegate>
@@ -69,7 +69,7 @@ shareInstance_implementation(TARoomManager);
 }
 
 - (void)enterRoom:(UInt32)roomId {
-    [[TASocket shareInstance] socketConnect];
+    [[TASocketManager shareInstance] socketConnect];
 
     kShowHUDAndActivity;
     self.isFirstStartLocalAudio = YES;
@@ -109,7 +109,7 @@ shareInstance_implementation(TARoomManager);
                     parm.range = @"admin";
                     NSString *phone = [TADataCenter shareInstance].userInfo.phone;
                     parm.phone = phone;
-                    [[TASocket shareInstance] SendClientMembersVoice:parm];
+                    [[TASocketManager shareInstance] SendClientMembersVoice:parm];
                 }
             }];
             return;
@@ -219,7 +219,7 @@ shareInstance_implementation(TARoomManager);
         NSString *phone = [TADataCenter shareInstance].userInfo.phone;
         parm.phone = phone;
         parm.range = @"user";
-        [[TASocket shareInstance] SendClientMembersVoice:parm];
+        [[TASocketManager shareInstance] SendClientMembersVoice:parm];
     }else{
         [self.trtcCloud muteLocalAudio:YES];//暂停本地音频采集
         TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
@@ -227,7 +227,7 @@ shareInstance_implementation(TARoomManager);
         NSString *phone = [TADataCenter shareInstance].userInfo.phone;
         parm.phone = phone;
         parm.range = @"user";
-        [[TASocket shareInstance] SendClientMembersVoice:parm];
+        [[TASocketManager shareInstance] SendClientMembersVoice:parm];
     }
     
     _isStartLocalAudio = isStartLocalAudio;
@@ -302,7 +302,7 @@ shareInstance_implementation(TARoomManager);
     //获取成员列表
     TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
     parm.range = @"room";
-    [[TASocket shareInstance] SendClientMembers:parm];
+    [[TASocketManager shareInstance] SendClientMembers:parm];
 }
 
 // 感知远端用户离开房间的通知，并更新远端用户列表
@@ -310,7 +310,7 @@ shareInstance_implementation(TARoomManager);
     //获取成员列表
     TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
     parm.range = @"room";
-    [[TASocket shareInstance] SendClientMembers:parm];
+    [[TASocketManager shareInstance] SendClientMembers:parm];
 }
 
 //- (void)onExitRoom:(NSInteger)reason

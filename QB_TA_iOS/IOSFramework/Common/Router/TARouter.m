@@ -23,7 +23,7 @@
 #import "TAFileListView.h"
 #import "TAMemberView.h"
 #import "TARoomManager.h"
-#import "TASocket.h"
+#import "TASocketManager.h"
 
 @interface TARouter ()
 @property (nonatomic, retain)NSMutableDictionary    *routerDic;
@@ -171,7 +171,7 @@ shareInstance_implementation(TARouter)
     [TADataCenter shareInstance].microphoneUserList = nil;
     
     [[TARoomManager shareInstance] exitRoom];
-    [[TASocket shareInstance].socket close];
+    [[TASocketManager shareInstance].webSocket closeWebSocket];
 }
 
 

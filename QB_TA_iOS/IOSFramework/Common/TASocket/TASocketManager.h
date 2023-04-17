@@ -1,14 +1,14 @@
 //
-//  TASocket.h
+//  TASocketManager.h
 //  IOSFramework
 //
 //  Created by 白伟 on 2023/4/11.
 //
 
 #import <Foundation/Foundation.h>
-#import "SIOSocket.h"
 #import "TADataCenter.h"
 #import "TABaseParmModel.h"
+#import "TAWebSocket.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,9 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface TASocket : NSObject
-shareInstance_interface(TASocket)
-@property (nonatomic, retain, nullable)SIOSocket *socket;
+@interface TASocketManager : NSObject
+shareInstance_interface(TASocketManager)
+@property (nonatomic, retain, nullable)TAWebSocket *webSocket;
 
 - (void)socketConnect;
 

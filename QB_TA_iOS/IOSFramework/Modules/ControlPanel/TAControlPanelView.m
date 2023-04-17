@@ -14,7 +14,6 @@
 #import "TAChatView.h"
 #import "TARoomManager.h"
 #import "TARoomListView.h"
-#import "TASocket.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;

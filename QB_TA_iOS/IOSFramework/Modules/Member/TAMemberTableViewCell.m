@@ -153,7 +153,6 @@
         [_mikeState setImage:kBundleImage(@"tmenu_mike_disable_b", @"ControlPanel") forState:UIControlStateNormal];
         [_mikeState setImage:kBundleImage(@"tmenu_mike_enable_b", @"ControlPanel") forState:UIControlStateSelected];
         [_mikeState addTarget:self action:@selector(mikeStatetBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//        _mikeState.userInteractionEnabled = _isAdmin;
     }
     return _mikeState;
 }

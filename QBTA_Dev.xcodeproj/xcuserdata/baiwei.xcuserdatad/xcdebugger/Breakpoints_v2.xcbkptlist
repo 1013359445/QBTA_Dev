@@ -19,16 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2322459B-D12F-4B19-80D7-6124D2185BE9"
+            uuid = "4A5CF7DA-3A01-4C73-8924-365C9CA4AED7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Common/TASocket/TASocketManager.m"
+            filePath = "QB_TA_iOS/IOSFramework/Modules/DisplayScreen/TADisplayScreen.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-socketConnect"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-mikeStatetBtnClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

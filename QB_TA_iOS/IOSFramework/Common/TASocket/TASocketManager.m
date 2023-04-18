@@ -90,13 +90,21 @@ shareInstance_implementation(TASocketManager);
         TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
         parm.range = @"room";
         [weakself SendClientMembers:parm];
+        
+        //取消上一个定时发送
+        [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
+        //发送心跳-自动重复
+        [weakself HeartbeatSendServer];
     }];
     [socket on:kSocketEventError callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
         [weakself.socket reconnect];//错误重连
     }];
     [socket on:kSocketEventStatusChange callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
-        if (weakself.socket.status == VPSocketIOClientStatusNotConnected){
-            [weakself.socket reconnect];//无连接重连
+        if (weakself.socket.status == VPSocketIOClientStatusDisconnected){
+            //取消心跳包发送
+            [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
+            //重连
+            [weakself.socket reconnect];
         }
     }];
     
@@ -218,6 +226,17 @@ shareInstance_implementation(TASocketManager);
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
     [self.socket emit:@"SendClientMembersKick" items:@[[parm mj_JSONString]]];
+}
+
+//心跳
+- (void)HeartbeatSendServer
+{
+    NSDictionary *dic = @{@"type":@"Heart",@"data":@{@"range":@"my",@"ActionName":@"Heart"}};
+    [self.socket emit:@"SendServer" items:@[[dic mj_JSONString]]];
+    
+    if (self.socket.status == VPSocketIOClientStatusConnected){
+        [self performSelector:@selector(HeartbeatSendServer) withObject:nil afterDelay:18];
+    }
 }
 
 @end

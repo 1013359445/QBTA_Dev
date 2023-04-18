@@ -11,7 +11,7 @@
 #import "TAAlert.h"
 #import "TARoomManager.h"
 #import "TAMemberModel.h"
-#import "SIOSocket.h"
+#import "VPSocketLogger.h"
 
 @implementation TAClientMembersDataParmModel
 - (void)assignDefaultValue
@@ -40,23 +40,73 @@
 }
 @end
 
-@interface TASocketManager () <TAWebSocketDelegate>
+@interface TASocketManager ()
 
 @end
 @implementation TASocketManager
 shareInstance_implementation(TASocketManager);
 
-//收到消息
-- (void)TAWebSocketDidReceiveMessage:(NSString *)message
-{
-    if (@"用户参数正确   连接成功"){
-        //获取成员列表
+- (void)socketConnect {
+    if (self.socket){
+        [self.socket disconnect];
+        [self.socket removeAllHandlers];
+        self.socket = nil;
+    }
+    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
+
+    NSString *url = @"http://39.100.153.162:10246";
+//    url = [NSString stringWithFormat:
+//                      @"http://39.100.153.162:10246?uid=%ld&room_num=%d&phone=%@&nick_name=%@"
+//                      ,userInfo.pkid,userInfo.roomNum,userInfo.phone,@"zzz"];
+//    url = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)(url), (CFStringRef)@"%", NULL, kCFStringEncodingUTF8));
+
+    VPSocketLogger *logger = [VPSocketLogger new];
+    NSDictionary *connectParams = @{@"uid":@(userInfo.pkid).stringValue,
+                                    @"room_num":@(userInfo.roomNum).stringValue,
+                                    @"phone":userInfo.phone,
+                                    @"nick_name":userInfo.nickname};
+    
+    VPSocketIOClient *socket = [[VPSocketIOClient alloc] init:[NSURL URLWithString:url] //withConfig:connectParams];
+                                                   withConfig:@{
+                                                                //@"log": @YES,
+                                                                //@"forcePolling": @NO,
+                                                                //@"secure": @YES,
+                                                                //@"forceNew":@YES,
+                                                                //@"forceWebsockets":@YES,
+                                                                //@"selfSigned":@YES,
+                                                                //@"reconnectWait":@5,
+                                                                //@"nsp":@"/rooms",
+                                                                @"connectParams":connectParams,
+                                                                @"logger":logger
+                                                                }];
+    [socket connect];
+    self.socket = socket;
+
+    kWeakSelf(self);
+    //-----------------------------------监听--------------------------------
+    //监听-服务器连接事件
+    [socket on:kSocketEventConnect callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        //连接成功-获取成员列表
         TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
         parm.range = @"room";
-        [self SendClientMembers:parm];
-    }else if (@"SendClientMembersList"){
-        //监听-成员列表
-        NSDictionary *data = @{};
+        [weakself SendClientMembers:parm];
+    }];
+    [socket on:kSocketEventError callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        [weakself.socket reconnect];//错误重连
+    }];
+    [socket on:kSocketEventStatusChange callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        if (weakself.socket.status == VPSocketIOClientStatusNotConnected){
+            [weakself.socket reconnect];//无连接重连
+        }
+    }];
+    
+//    //监听广播
+//    [socket on: @"Broadcast" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+//    }];
+    
+    //监听-成员列表
+    [socket on: @"SendClientMembersList" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        NSDictionary *data = [array firstObject];;
         if ([data isKindOfClass: [NSDictionary class]]){
             NSString *msg = data[@"msg"];
             int code = [data[@"code"] intValue];
@@ -81,7 +131,7 @@ shareInstance_implementation(TASocketManager);
                     [[TARoomManager shareInstance] startLocalAudio];
                 }
                     break;
-
+                    
                 default:
                     break;
             }
@@ -96,9 +146,11 @@ shareInstance_implementation(TASocketManager);
             }
             [[TADataCenter shareInstance] setValue:members forKey:@"membersList"];
         }
-    }else if (@"SendClientMembersVoiceApplyfor"){
-        //监听-接收解禁申请
-        NSDictionary *data = @{};
+    }];
+    
+    //监听-接收解禁申请
+    [socket on: @"SendClientMembersVoiceApplyfor" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        NSDictionary *data = [array firstObject];;
         if ([data isKindOfClass: [NSDictionary class]]){
             NSString *userName = @"";
             NSString *userPhone = data[@"data"];
@@ -108,7 +160,7 @@ shareInstance_implementation(TASocketManager);
                     break;
                 }
             }
-
+            
             NSString *msg = data[@"msg"];
             [TAAlert alertWithTitle:msg msg:[NSString stringWithFormat:@"%@正在%@",userName,msg] actionText_1:@"忽略" actionText_2:@"同意" action:^(NSInteger index) {
                 TAClientMembersVocieParmModel *parm = [TAClientMembersVocieParmModel new];
@@ -122,15 +174,17 @@ shareInstance_implementation(TASocketManager);
                 [[TASocketManager shareInstance] SendClientMembersVoice:parm];
             }];
         }
-    }else if (@"SendClientMembersKickMsg"){
-        //监听-被踢出了
-        NSDictionary *data = @{};
+    }];
+    
+    //监听-被踢出了
+    [socket on: @"SendClientMembersKickMsg" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        NSDictionary *data = [array firstObject];;
         if ([data isKindOfClass: [NSDictionary class]]){
-
+            
             NSDictionary *dic = data[@"data"];
             TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
             NSString *userPhone = dic[@"phone"];
-
+            
             if ([userPhone isEqualToString:userInfo.phone]){
                 [[TARouter shareInstance] logOut];
             }
@@ -139,34 +193,7 @@ shareInstance_implementation(TASocketManager);
                 [TAToast showTextDialog:kWindow msg:msg];
             });
         }
-    }
-}
-
-//首次连接成功，没有验证用户身份
-- (void)TAWebSocketDidOpen
-{
-    //验证身份
-    [self VerifyUserIdentity];
-}
-
-- (void)socketConnect {
-    NSString *url = @"http://39.100.153.162:10246";
-    self.webSocket = [[TAWebSocket alloc] initWithServerIp:url];
-    _webSocket.delegate = self;
-    [_webSocket connectWebSocket];
-}
-
-//验证身份
-- (void)VerifyUserIdentity
-{
-    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
-    NSDictionary *parmDic = @{@"data":@{@"uid":@(userInfo.pkid),
-                                        @"room_num":@(userInfo.roomNum),
-                                        @"phone":userInfo.phone,
-                                        @"nick_name":userInfo.nickname},
-                              @"type":@"room"
-    };
-    [self.webSocket sendMsg:[parmDic mj_JSONString]];
+    }];
 }
 
 //获取成员列表
@@ -174,7 +201,7 @@ shareInstance_implementation(TASocketManager);
 {
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
-    [self.webSocket sendMsg:[parm mj_JSONString]];
+    [self.socket emit:@"SendClientMembers" items:@[[parm mj_JSONString]]];
 }
 
 //全体禁⻨\解除禁⻨\禁⻨某⼈\解禁某⼈\申请解禁\同意解禁\否定解禁\⾃⼰禁麦\⾃⼰开⻨
@@ -182,7 +209,7 @@ shareInstance_implementation(TASocketManager);
 {
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
-    [self.webSocket sendMsg:[parm mj_JSONString]];
+    [self.socket emit:@"SendClientMembersVoice" items:@[[parm mj_JSONString]]];
 }
 
 //移除某⼈
@@ -190,7 +217,7 @@ shareInstance_implementation(TASocketManager);
 {
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
-    [self.webSocket sendMsg:[parm mj_JSONString]];
+    [self.socket emit:@"SendClientMembersKick" items:@[[parm mj_JSONString]]];
 }
 
 @end

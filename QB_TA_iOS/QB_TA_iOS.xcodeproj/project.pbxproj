@@ -542,52 +542,42 @@
 		7A8594C029AE0A5200D6B51A /* TAControlPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */; };
 		7A8594C729B1F7DD00D6B51A /* TAToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A8594C529B1F7DD00D6B51A /* TAToast.h */; };
 		7A8594C829B1F7DD00D6B51A /* TAToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8594C629B1F7DD00D6B51A /* TAToast.m */; };
-		7ABEB8E329E9191D007556CF /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B129E9191D007556CF /* SRWebSocket.m */; };
-		7ABEB8E429E9191D007556CF /* NSRunLoop+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */; };
-		7ABEB8E529E9191D007556CF /* SRSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */; };
-		7ABEB8E629E9191D007556CF /* SocketRocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8B629E9191D007556CF /* SocketRocket.h */; };
-		7ABEB8E729E9191D007556CF /* SRConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8B829E9191D007556CF /* SRConstants.h */; };
-		7ABEB8E829E9191D007556CF /* SRProxyConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */; };
-		7ABEB8E929E9191D007556CF /* SRProxyConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */; };
-		7ABEB8EA29E9191D007556CF /* SRRunLoopThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */; };
-		7ABEB8EB29E9191D007556CF /* SRRunLoopThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */; };
-		7ABEB8EC29E9191D007556CF /* SRPinningSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */; };
-		7ABEB8ED29E9191D007556CF /* SRPinningSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */; };
-		7ABEB8EE29E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */; };
-		7ABEB8EF29E9191D007556CF /* SRDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8C429E9191D007556CF /* SRDelegateController.m */; };
-		7ABEB8F029E9191D007556CF /* SRDelegateController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C529E9191D007556CF /* SRDelegateController.h */; };
-		7ABEB8F129E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */; };
-		7ABEB8F229E9191D007556CF /* SRHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C829E9191D007556CF /* SRHash.h */; };
-		7ABEB8F329E9191D007556CF /* SRLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8C929E9191D007556CF /* SRLog.h */; };
-		7ABEB8F429E9191D007556CF /* SRMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CA29E9191D007556CF /* SRMutex.m */; };
-		7ABEB8F529E9191D007556CF /* SRHTTPConnectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */; };
-		7ABEB8F629E9191D007556CF /* SRSIMDHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */; };
-		7ABEB8F729E9191D007556CF /* SRRandom.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CD29E9191D007556CF /* SRRandom.h */; };
-		7ABEB8F829E9191D007556CF /* SRURLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */; };
-		7ABEB8F929E9191D007556CF /* SRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8CF29E9191D007556CF /* SRError.h */; };
-		7ABEB8FA29E9191D007556CF /* SRLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D029E9191D007556CF /* SRLog.m */; };
-		7ABEB8FB29E9191D007556CF /* SRHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D129E9191D007556CF /* SRHash.m */; };
-		7ABEB8FC29E9191D007556CF /* SRMutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D229E9191D007556CF /* SRMutex.h */; };
-		7ABEB8FD29E9191D007556CF /* SRHTTPConnectMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */; };
-		7ABEB8FE29E9191D007556CF /* SRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D429E9191D007556CF /* SRError.m */; };
-		7ABEB8FF29E9191D007556CF /* SRRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D529E9191D007556CF /* SRRandom.m */; };
-		7ABEB90029E9191D007556CF /* SRURLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D629E9191D007556CF /* SRURLUtilities.h */; };
-		7ABEB90129E9191D007556CF /* SRSIMDHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */; };
-		7ABEB90229E9191D007556CF /* SRIOConsumerPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */; };
-		7ABEB90329E9191D007556CF /* SRIOConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */; };
-		7ABEB90429E9191D007556CF /* SRIOConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */; };
-		7ABEB90529E9191D007556CF /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */; };
-		7ABEB90629E9191D007556CF /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8DD29E9191D007556CF /* SRConstants.m */; };
-		7ABEB90729E9191D007556CF /* NSURLRequest+SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */; };
-		7ABEB90829E9191D007556CF /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8DF29E9191D007556CF /* SRWebSocket.h */; };
-		7ABEB90929E9191D007556CF /* NSRunLoop+SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */; };
-		7ABEB90A29E9191D007556CF /* SRSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */; };
-		7ABEB90B29E9191D007556CF /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */; };
-		7ABEB91629E91A1E007556CF /* TAWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91429E91A1E007556CF /* TAWebSocket.h */; };
-		7ABEB91729E91A1E007556CF /* TAWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB91529E91A1E007556CF /* TAWebSocket.m */; };
-		7ABEB91C29E9276A007556CF /* SIOSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91929E9276A007556CF /* SIOSocket.h */; };
-		7ABEB91D29E9276A007556CF /* socket.io.js.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB91A29E9276A007556CF /* socket.io.js.h */; };
-		7ABEB91E29E9276A007556CF /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB91B29E9276A007556CF /* SIOSocket.m */; };
+		7ABEB94A29ED47AF007556CF /* VPSocketOnAckCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92529ED47AF007556CF /* VPSocketOnAckCallback.h */; };
+		7ABEB94B29ED47AF007556CF /* VPSocketEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB92629ED47AF007556CF /* VPSocketEngine.m */; };
+		7ABEB94C29ED47AF007556CF /* VPSocketEngineProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92729ED47AF007556CF /* VPSocketEngineProtocol.h */; };
+		7ABEB94D29ED47AF007556CF /* VPSocketAck.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92829ED47AF007556CF /* VPSocketAck.h */; };
+		7ABEB94E29ED47AF007556CF /* VPSocketIOClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92929ED47AF007556CF /* VPSocketIOClientProtocol.h */; };
+		7ABEB94F29ED47AF007556CF /* VPSocketPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92A29ED47AF007556CF /* VPSocketPacket.h */; };
+		7ABEB95029ED47AF007556CF /* VPSocketIOClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92B29ED47AF007556CF /* VPSocketIOClient.h */; };
+		7ABEB95129ED47AF007556CF /* VPSocketAckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB92C29ED47AF007556CF /* VPSocketAckManager.m */; };
+		7ABEB95229ED47AF007556CF /* NSString+VPSocketIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92D29ED47AF007556CF /* NSString+VPSocketIO.h */; };
+		7ABEB95329ED47AF007556CF /* VPSocketAnyEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92E29ED47AF007556CF /* VPSocketAnyEvent.h */; };
+		7ABEB95429ED47AF007556CF /* VPSocketEngine+EnginePollable.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB92F29ED47AF007556CF /* VPSocketEngine+EnginePollable.h */; };
+		7ABEB95529ED47AF007556CF /* VPSocketLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93029ED47AF007556CF /* VPSocketLogger.h */; };
+		7ABEB95629ED47AF007556CF /* VPSocketAckEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93129ED47AF007556CF /* VPSocketAckEmitter.m */; };
+		7ABEB95729ED47AF007556CF /* DefaultSocketLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93229ED47AF007556CF /* DefaultSocketLogger.m */; };
+		7ABEB95829ED47AF007556CF /* VPStringReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93329ED47AF007556CF /* VPStringReader.h */; };
+		7ABEB95929ED47AF007556CF /* VPSocketEngine+EngineWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93429ED47AF007556CF /* VPSocketEngine+EngineWebsocket.m */; };
+		7ABEB95A29ED47AF007556CF /* VPSocketAck.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93529ED47AF007556CF /* VPSocketAck.m */; };
+		7ABEB95B29ED47AF007556CF /* VPSocketEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93629ED47AF007556CF /* VPSocketEngine.h */; };
+		7ABEB95C29ED47AF007556CF /* VPSocketOnAckCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93729ED47AF007556CF /* VPSocketOnAckCallback.m */; };
+		7ABEB95D29ED47AF007556CF /* VPSocketAckManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93829ED47AF007556CF /* VPSocketAckManager.h */; };
+		7ABEB95E29ED47AF007556CF /* VPSocketIOClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93929ED47AF007556CF /* VPSocketIOClient.m */; };
+		7ABEB95F29ED47AF007556CF /* VPSocketPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93A29ED47AF007556CF /* VPSocketPacket.m */; };
+		7ABEB96029ED47AF007556CF /* VPSocketEngine+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93B29ED47AF007556CF /* VPSocketEngine+Private.h */; };
+		7ABEB96129ED47AF007556CF /* VPSocketAckEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB93C29ED47AF007556CF /* VPSocketAckEmitter.h */; };
+		7ABEB96229ED47AF007556CF /* VPSocketLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93D29ED47AF007556CF /* VPSocketLogger.m */; };
+		7ABEB96329ED47AF007556CF /* VPSocketEngine+EnginePollable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93E29ED47AF007556CF /* VPSocketEngine+EnginePollable.m */; };
+		7ABEB96429ED47AF007556CF /* VPSocketAnyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB93F29ED47AF007556CF /* VPSocketAnyEvent.m */; };
+		7ABEB96529ED47AF007556CF /* NSString+VPSocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94029ED47AF007556CF /* NSString+VPSocketIO.m */; };
+		7ABEB96629ED47AF007556CF /* VPSocketIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94129ED47AF007556CF /* VPSocketIO.h */; };
+		7ABEB96729ED47AF007556CF /* VPStringReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94229ED47AF007556CF /* VPStringReader.m */; };
+		7ABEB96829ED47AF007556CF /* VPSocketEngine+EngineWebsocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94329ED47AF007556CF /* VPSocketEngine+EngineWebsocket.h */; };
+		7ABEB96929ED47AF007556CF /* DefaultSocketLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94429ED47AF007556CF /* DefaultSocketLogger.h */; };
+		7ABEB96A29ED47AF007556CF /* JFRSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94629ED47AF007556CF /* JFRSecurity.h */; };
+		7ABEB96B29ED47AF007556CF /* JFRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94729ED47AF007556CF /* JFRWebSocket.h */; };
+		7ABEB96C29ED47AF007556CF /* JFRSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94829ED47AF007556CF /* JFRSecurity.m */; };
+		7ABEB96D29ED47AF007556CF /* JFRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94929ED47AF007556CF /* JFRWebSocket.m */; };
 		7AC5E8F929CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */; };
 		7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */; };
 		7AC611AE29D18FB600833933 /* TARoomListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC611AC29D18FB600833933 /* TARoomListView.h */; };
@@ -1175,53 +1165,42 @@
 		7A8594BE29AE0A5200D6B51A /* TAControlPanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAControlPanelView.m; sourceTree = "<group>"; };
 		7A8594C529B1F7DD00D6B51A /* TAToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAToast.h; sourceTree = "<group>"; };
 		7A8594C629B1F7DD00D6B51A /* TAToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAToast.m; sourceTree = "<group>"; };
-		7ABEB8B129E9191D007556CF /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
-		7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
-		7ABEB8B429E9191D007556CF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSecurityPolicy.m; sourceTree = "<group>"; };
-		7ABEB8B629E9191D007556CF /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
-		7ABEB8B829E9191D007556CF /* SRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRConstants.h; sourceTree = "<group>"; };
-		7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProxyConnect.m; sourceTree = "<group>"; };
-		7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProxyConnect.h; sourceTree = "<group>"; };
-		7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRunLoopThread.h; sourceTree = "<group>"; };
-		7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRunLoopThread.m; sourceTree = "<group>"; };
-		7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPinningSecurityPolicy.h; sourceTree = "<group>"; };
-		7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPinningSecurityPolicy.m; sourceTree = "<group>"; };
-		7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
-		7ABEB8C429E9191D007556CF /* SRDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDelegateController.m; sourceTree = "<group>"; };
-		7ABEB8C529E9191D007556CF /* SRDelegateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDelegateController.h; sourceTree = "<group>"; };
-		7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocketPrivate.h"; sourceTree = "<group>"; };
-		7ABEB8C829E9191D007556CF /* SRHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHash.h; sourceTree = "<group>"; };
-		7ABEB8C929E9191D007556CF /* SRLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRLog.h; sourceTree = "<group>"; };
-		7ABEB8CA29E9191D007556CF /* SRMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRMutex.m; sourceTree = "<group>"; };
-		7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHTTPConnectMessage.m; sourceTree = "<group>"; };
-		7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSIMDHelpers.h; sourceTree = "<group>"; };
-		7ABEB8CD29E9191D007556CF /* SRRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRandom.h; sourceTree = "<group>"; };
-		7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRURLUtilities.m; sourceTree = "<group>"; };
-		7ABEB8CF29E9191D007556CF /* SRError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRError.h; sourceTree = "<group>"; };
-		7ABEB8D029E9191D007556CF /* SRLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRLog.m; sourceTree = "<group>"; };
-		7ABEB8D129E9191D007556CF /* SRHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHash.m; sourceTree = "<group>"; };
-		7ABEB8D229E9191D007556CF /* SRMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRMutex.h; sourceTree = "<group>"; };
-		7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHTTPConnectMessage.h; sourceTree = "<group>"; };
-		7ABEB8D429E9191D007556CF /* SRError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRError.m; sourceTree = "<group>"; };
-		7ABEB8D529E9191D007556CF /* SRRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRandom.m; sourceTree = "<group>"; };
-		7ABEB8D629E9191D007556CF /* SRURLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRURLUtilities.h; sourceTree = "<group>"; };
-		7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSIMDHelpers.m; sourceTree = "<group>"; };
-		7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumerPool.h; sourceTree = "<group>"; };
-		7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumer.m; sourceTree = "<group>"; };
-		7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRIOConsumer.h; sourceTree = "<group>"; };
-		7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRIOConsumerPool.m; sourceTree = "<group>"; };
-		7ABEB8DD29E9191D007556CF /* SRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRConstants.m; sourceTree = "<group>"; };
-		7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+SRWebSocket.h"; sourceTree = "<group>"; };
-		7ABEB8DF29E9191D007556CF /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+SRWebSocket.h"; sourceTree = "<group>"; };
-		7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSecurityPolicy.h; sourceTree = "<group>"; };
-		7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+SRWebSocket.m"; sourceTree = "<group>"; };
-		7ABEB91429E91A1E007556CF /* TAWebSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAWebSocket.h; sourceTree = "<group>"; };
-		7ABEB91529E91A1E007556CF /* TAWebSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAWebSocket.m; sourceTree = "<group>"; };
-		7ABEB91929E9276A007556CF /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
-		7ABEB91A29E9276A007556CF /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
-		7ABEB91B29E9276A007556CF /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
+		7ABEB92529ED47AF007556CF /* VPSocketOnAckCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketOnAckCallback.h; sourceTree = "<group>"; };
+		7ABEB92629ED47AF007556CF /* VPSocketEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketEngine.m; sourceTree = "<group>"; };
+		7ABEB92729ED47AF007556CF /* VPSocketEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketEngineProtocol.h; sourceTree = "<group>"; };
+		7ABEB92829ED47AF007556CF /* VPSocketAck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketAck.h; sourceTree = "<group>"; };
+		7ABEB92929ED47AF007556CF /* VPSocketIOClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketIOClientProtocol.h; sourceTree = "<group>"; };
+		7ABEB92A29ED47AF007556CF /* VPSocketPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketPacket.h; sourceTree = "<group>"; };
+		7ABEB92B29ED47AF007556CF /* VPSocketIOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketIOClient.h; sourceTree = "<group>"; };
+		7ABEB92C29ED47AF007556CF /* VPSocketAckManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketAckManager.m; sourceTree = "<group>"; };
+		7ABEB92D29ED47AF007556CF /* NSString+VPSocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+VPSocketIO.h"; sourceTree = "<group>"; };
+		7ABEB92E29ED47AF007556CF /* VPSocketAnyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketAnyEvent.h; sourceTree = "<group>"; };
+		7ABEB92F29ED47AF007556CF /* VPSocketEngine+EnginePollable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPSocketEngine+EnginePollable.h"; sourceTree = "<group>"; };
+		7ABEB93029ED47AF007556CF /* VPSocketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketLogger.h; sourceTree = "<group>"; };
+		7ABEB93129ED47AF007556CF /* VPSocketAckEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketAckEmitter.m; sourceTree = "<group>"; };
+		7ABEB93229ED47AF007556CF /* DefaultSocketLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultSocketLogger.m; sourceTree = "<group>"; };
+		7ABEB93329ED47AF007556CF /* VPStringReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPStringReader.h; sourceTree = "<group>"; };
+		7ABEB93429ED47AF007556CF /* VPSocketEngine+EngineWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VPSocketEngine+EngineWebsocket.m"; sourceTree = "<group>"; };
+		7ABEB93529ED47AF007556CF /* VPSocketAck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketAck.m; sourceTree = "<group>"; };
+		7ABEB93629ED47AF007556CF /* VPSocketEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketEngine.h; sourceTree = "<group>"; };
+		7ABEB93729ED47AF007556CF /* VPSocketOnAckCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketOnAckCallback.m; sourceTree = "<group>"; };
+		7ABEB93829ED47AF007556CF /* VPSocketAckManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketAckManager.h; sourceTree = "<group>"; };
+		7ABEB93929ED47AF007556CF /* VPSocketIOClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketIOClient.m; sourceTree = "<group>"; };
+		7ABEB93A29ED47AF007556CF /* VPSocketPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketPacket.m; sourceTree = "<group>"; };
+		7ABEB93B29ED47AF007556CF /* VPSocketEngine+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPSocketEngine+Private.h"; sourceTree = "<group>"; };
+		7ABEB93C29ED47AF007556CF /* VPSocketAckEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketAckEmitter.h; sourceTree = "<group>"; };
+		7ABEB93D29ED47AF007556CF /* VPSocketLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketLogger.m; sourceTree = "<group>"; };
+		7ABEB93E29ED47AF007556CF /* VPSocketEngine+EnginePollable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VPSocketEngine+EnginePollable.m"; sourceTree = "<group>"; };
+		7ABEB93F29ED47AF007556CF /* VPSocketAnyEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSocketAnyEvent.m; sourceTree = "<group>"; };
+		7ABEB94029ED47AF007556CF /* NSString+VPSocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+VPSocketIO.m"; sourceTree = "<group>"; };
+		7ABEB94129ED47AF007556CF /* VPSocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSocketIO.h; sourceTree = "<group>"; };
+		7ABEB94229ED47AF007556CF /* VPStringReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPStringReader.m; sourceTree = "<group>"; };
+		7ABEB94329ED47AF007556CF /* VPSocketEngine+EngineWebsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPSocketEngine+EngineWebsocket.h"; sourceTree = "<group>"; };
+		7ABEB94429ED47AF007556CF /* DefaultSocketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultSocketLogger.h; sourceTree = "<group>"; };
+		7ABEB94629ED47AF007556CF /* JFRSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRSecurity.h; sourceTree = "<group>"; };
+		7ABEB94729ED47AF007556CF /* JFRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRWebSocket.h; sourceTree = "<group>"; };
+		7ABEB94829ED47AF007556CF /* JFRSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRSecurity.m; sourceTree = "<group>"; };
+		7ABEB94929ED47AF007556CF /* JFRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRWebSocket.m; sourceTree = "<group>"; };
 		7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TABroadcastExtensionLauncher.h; sourceTree = "<group>"; };
 		7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TABroadcastExtensionLauncher.m; sourceTree = "<group>"; };
 		7AC611AC29D18FB600833933 /* TARoomListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARoomListView.h; sourceTree = "<group>"; };
@@ -1413,8 +1392,7 @@
 		7A3CAD28298A3F3B00DD1998 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				7ABEB91829E9276A007556CF /* SIOSocket */,
-				7ABEB8B029E9191D007556CF /* SocketRocket */,
+				7ABEB92329ED47AF007556CF /* VPSocket */,
 				7AD4C04529C42F6900AFE5A4 /* TX */,
 				7A1FD38329BB37C4006C352F /* KJMarqueeLabel */,
 				7A3CB043298A565900DD1998 /* JKCategories */,
@@ -2432,135 +2410,69 @@
 		7ABEB8A129E8E916007556CF /* TASocket */ = {
 			isa = PBXGroup;
 			children = (
-				7ABEB91429E91A1E007556CF /* TAWebSocket.h */,
-				7ABEB91529E91A1E007556CF /* TAWebSocket.m */,
 				7AF5056429E4F9240010A480 /* TASocketManager.h */,
 				7AF5056529E4F9240010A480 /* TASocketManager.m */,
 			);
 			path = TASocket;
 			sourceTree = "<group>";
 		};
-		7ABEB8B029E9191D007556CF /* SocketRocket */ = {
+		7ABEB92329ED47AF007556CF /* VPSocket */ = {
 			isa = PBXGroup;
 			children = (
-				7ABEB8B329E9191D007556CF /* Resources */,
-				7ABEB8B729E9191D007556CF /* Internal */,
-				7ABEB8E029E9191D007556CF /* NSRunLoop+SRWebSocket.h */,
-				7ABEB8B229E9191D007556CF /* NSRunLoop+SRWebSocket.m */,
-				7ABEB8DE29E9191D007556CF /* NSURLRequest+SRWebSocket.h */,
-				7ABEB8E229E9191D007556CF /* NSURLRequest+SRWebSocket.m */,
-				7ABEB8B629E9191D007556CF /* SocketRocket.h */,
-				7ABEB8E129E9191D007556CF /* SRSecurityPolicy.h */,
-				7ABEB8B529E9191D007556CF /* SRSecurityPolicy.m */,
-				7ABEB8DF29E9191D007556CF /* SRWebSocket.h */,
-				7ABEB8B129E9191D007556CF /* SRWebSocket.m */,
+				7ABEB92429ED47AF007556CF /* Source */,
+				7ABEB94529ED47AF007556CF /* Jetfire */,
 			);
-			path = SocketRocket;
+			path = VPSocket;
 			sourceTree = "<group>";
 		};
-		7ABEB8B329E9191D007556CF /* Resources */ = {
+		7ABEB92429ED47AF007556CF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7ABEB8B429E9191D007556CF /* Info.plist */,
+				7ABEB92529ED47AF007556CF /* VPSocketOnAckCallback.h */,
+				7ABEB92629ED47AF007556CF /* VPSocketEngine.m */,
+				7ABEB92729ED47AF007556CF /* VPSocketEngineProtocol.h */,
+				7ABEB92829ED47AF007556CF /* VPSocketAck.h */,
+				7ABEB92929ED47AF007556CF /* VPSocketIOClientProtocol.h */,
+				7ABEB92A29ED47AF007556CF /* VPSocketPacket.h */,
+				7ABEB92B29ED47AF007556CF /* VPSocketIOClient.h */,
+				7ABEB92C29ED47AF007556CF /* VPSocketAckManager.m */,
+				7ABEB92D29ED47AF007556CF /* NSString+VPSocketIO.h */,
+				7ABEB92E29ED47AF007556CF /* VPSocketAnyEvent.h */,
+				7ABEB92F29ED47AF007556CF /* VPSocketEngine+EnginePollable.h */,
+				7ABEB93029ED47AF007556CF /* VPSocketLogger.h */,
+				7ABEB93129ED47AF007556CF /* VPSocketAckEmitter.m */,
+				7ABEB93229ED47AF007556CF /* DefaultSocketLogger.m */,
+				7ABEB93329ED47AF007556CF /* VPStringReader.h */,
+				7ABEB93429ED47AF007556CF /* VPSocketEngine+EngineWebsocket.m */,
+				7ABEB93529ED47AF007556CF /* VPSocketAck.m */,
+				7ABEB93629ED47AF007556CF /* VPSocketEngine.h */,
+				7ABEB93729ED47AF007556CF /* VPSocketOnAckCallback.m */,
+				7ABEB93829ED47AF007556CF /* VPSocketAckManager.h */,
+				7ABEB93929ED47AF007556CF /* VPSocketIOClient.m */,
+				7ABEB93A29ED47AF007556CF /* VPSocketPacket.m */,
+				7ABEB93B29ED47AF007556CF /* VPSocketEngine+Private.h */,
+				7ABEB93C29ED47AF007556CF /* VPSocketAckEmitter.h */,
+				7ABEB93D29ED47AF007556CF /* VPSocketLogger.m */,
+				7ABEB93E29ED47AF007556CF /* VPSocketEngine+EnginePollable.m */,
+				7ABEB93F29ED47AF007556CF /* VPSocketAnyEvent.m */,
+				7ABEB94029ED47AF007556CF /* NSString+VPSocketIO.m */,
+				7ABEB94129ED47AF007556CF /* VPSocketIO.h */,
+				7ABEB94229ED47AF007556CF /* VPStringReader.m */,
+				7ABEB94329ED47AF007556CF /* VPSocketEngine+EngineWebsocket.h */,
+				7ABEB94429ED47AF007556CF /* DefaultSocketLogger.h */,
 			);
-			path = Resources;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		7ABEB8B729E9191D007556CF /* Internal */ = {
+		7ABEB94529ED47AF007556CF /* Jetfire */ = {
 			isa = PBXGroup;
 			children = (
-				7ABEB8B929E9191D007556CF /* Proxy */,
-				7ABEB8BC29E9191D007556CF /* RunLoop */,
-				7ABEB8BF29E9191D007556CF /* Security */,
-				7ABEB8C729E9191D007556CF /* Utilities */,
-				7ABEB8C329E9191D007556CF /* Delegate */,
-				7ABEB8D829E9191D007556CF /* IOConsumer */,
-				7ABEB8C229E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h */,
-				7ABEB8C629E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h */,
-				7ABEB8B829E9191D007556CF /* SRConstants.h */,
-				7ABEB8DD29E9191D007556CF /* SRConstants.m */,
+				7ABEB94629ED47AF007556CF /* JFRSecurity.h */,
+				7ABEB94729ED47AF007556CF /* JFRWebSocket.h */,
+				7ABEB94829ED47AF007556CF /* JFRSecurity.m */,
+				7ABEB94929ED47AF007556CF /* JFRWebSocket.m */,
 			);
-			path = Internal;
-			sourceTree = "<group>";
-		};
-		7ABEB8B929E9191D007556CF /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8BA29E9191D007556CF /* SRProxyConnect.m */,
-				7ABEB8BB29E9191D007556CF /* SRProxyConnect.h */,
-			);
-			path = Proxy;
-			sourceTree = "<group>";
-		};
-		7ABEB8BC29E9191D007556CF /* RunLoop */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8BD29E9191D007556CF /* SRRunLoopThread.h */,
-				7ABEB8BE29E9191D007556CF /* SRRunLoopThread.m */,
-			);
-			path = RunLoop;
-			sourceTree = "<group>";
-		};
-		7ABEB8BF29E9191D007556CF /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8C029E9191D007556CF /* SRPinningSecurityPolicy.h */,
-				7ABEB8C129E9191D007556CF /* SRPinningSecurityPolicy.m */,
-			);
-			path = Security;
-			sourceTree = "<group>";
-		};
-		7ABEB8C329E9191D007556CF /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8C429E9191D007556CF /* SRDelegateController.m */,
-				7ABEB8C529E9191D007556CF /* SRDelegateController.h */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		7ABEB8C729E9191D007556CF /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8CF29E9191D007556CF /* SRError.h */,
-				7ABEB8D429E9191D007556CF /* SRError.m */,
-				7ABEB8C829E9191D007556CF /* SRHash.h */,
-				7ABEB8D129E9191D007556CF /* SRHash.m */,
-				7ABEB8D329E9191D007556CF /* SRHTTPConnectMessage.h */,
-				7ABEB8CB29E9191D007556CF /* SRHTTPConnectMessage.m */,
-				7ABEB8C929E9191D007556CF /* SRLog.h */,
-				7ABEB8D029E9191D007556CF /* SRLog.m */,
-				7ABEB8D229E9191D007556CF /* SRMutex.h */,
-				7ABEB8CA29E9191D007556CF /* SRMutex.m */,
-				7ABEB8CD29E9191D007556CF /* SRRandom.h */,
-				7ABEB8D529E9191D007556CF /* SRRandom.m */,
-				7ABEB8CC29E9191D007556CF /* SRSIMDHelpers.h */,
-				7ABEB8D729E9191D007556CF /* SRSIMDHelpers.m */,
-				7ABEB8D629E9191D007556CF /* SRURLUtilities.h */,
-				7ABEB8CE29E9191D007556CF /* SRURLUtilities.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		7ABEB8D829E9191D007556CF /* IOConsumer */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB8DB29E9191D007556CF /* SRIOConsumer.h */,
-				7ABEB8DA29E9191D007556CF /* SRIOConsumer.m */,
-				7ABEB8D929E9191D007556CF /* SRIOConsumerPool.h */,
-				7ABEB8DC29E9191D007556CF /* SRIOConsumerPool.m */,
-			);
-			path = IOConsumer;
-			sourceTree = "<group>";
-		};
-		7ABEB91829E9276A007556CF /* SIOSocket */ = {
-			isa = PBXGroup;
-			children = (
-				7ABEB91929E9276A007556CF /* SIOSocket.h */,
-				7ABEB91B29E9276A007556CF /* SIOSocket.m */,
-				7ABEB91A29E9276A007556CF /* socket.io.js.h */,
-			);
-			path = SIOSocket;
+			path = Jetfire;
 			sourceTree = "<group>";
 		};
 		7AC8D5FB29875A07001E9F12 /* IOSFramework */ = {
@@ -2668,6 +2580,7 @@
 			files = (
 				7A3CAFFF298A46EF00DD1998 /* SDImageIOAnimatedCoderInternal.h in Headers */,
 				7A3CB1E1298A565900DD1998 /* UISearchBar+JKBlocks.h in Headers */,
+				7ABEB95829ED47AF007556CF /* VPStringReader.h in Headers */,
 				7A3CB17F298A565900DD1998 /* UIColor+JKModify.h in Headers */,
 				7AF5056B29E5064F0010A480 /* TAMemberModel.h in Headers */,
 				7AD8A62A29A3685700257E1D /* TAHeader.h in Headers */,
@@ -2689,6 +2602,7 @@
 				7A3CB1BE298A565900DD1998 /* UIBezierPath+JKThroughPointsBezier.h in Headers */,
 				7A3CAFFC298A46EF00DD1998 /* SDDisplayLink.h in Headers */,
 				7A3CAF8A298A46EF00DD1998 /* UIImageView+HighlightedWebCache.h in Headers */,
+				7ABEB96029ED47AF007556CF /* VPSocketEngine+Private.h in Headers */,
 				7A3CB028298A47AB00DD1998 /* MASLayoutConstraint.h in Headers */,
 				7A3CAFAF298A46EF00DD1998 /* SDMemoryCache.h in Headers */,
 				7A3CAF57298A46EE00DD1998 /* SDImageFrame.h in Headers */,
@@ -2698,38 +2612,36 @@
 				7A8594BF29AE0A5200D6B51A /* TAControlPanelView.h in Headers */,
 				7A3CB18E298A565900DD1998 /* UIView+JKRecursion.h in Headers */,
 				7A73290E29D58D6800DBFC4F /* TAFileCollectionViewCell.h in Headers */,
+				7ABEB96129ED47AF007556CF /* VPSocketAckEmitter.h in Headers */,
 				7A1FD34229B5D156006C352F /* TAPersonalView.h in Headers */,
 				7A3CAF83298A46EF00DD1998 /* SDImageHEICCoder.h in Headers */,
 				7A3CAF4D298A46EE00DD1998 /* NSData+ImageContentType.h in Headers */,
 				7A3CB201298B639700DD1998 /* TAMacroDefinition.h in Headers */,
-				7ABEB90229E9191D007556CF /* SRIOConsumerPool.h in Headers */,
-				7ABEB90429E9191D007556CF /* SRIOConsumer.h in Headers */,
 				7A1FD36729B9A6E2006C352F /* TASettingBasicsView.h in Headers */,
 				7A3CB1F2298A565900DD1998 /* UITextField+JKShake.h in Headers */,
 				7A3CB004298A46EF00DD1998 /* SDImageCachesManagerOperation.h in Headers */,
 				7A0D28722995F2FB004BCDC6 /* NSBundle+TAImage.h in Headers */,
 				7A3CB025298A47AB00DD1998 /* MASCompositeConstraint.h in Headers */,
 				7AD4C04229C41C6800AFE5A4 /* TAControlCenterPresenter.h in Headers */,
-				7ABEB8EC29E9191D007556CF /* SRPinningSecurityPolicy.h in Headers */,
 				7A4D3ED929DE790E00CCE18E /* TAAlertViewController.h in Headers */,
+				7ABEB95329ED47AF007556CF /* VPSocketAnyEvent.h in Headers */,
 				7A3CB12F298A565900DD1998 /* UIImage+JKCapture.h in Headers */,
 				7A3CB1C0298A565900DD1998 /* UIBezierPath+JKLength.h in Headers */,
 				7A3CAF9A298A46EF00DD1998 /* SDWebImageCacheSerializer.h in Headers */,
 				7A3CB1E4298A565900DD1998 /* UIControl+JKSound.h in Headers */,
 				7A3CAE6A298A462A00DD1998 /* IQBarButtonItem.h in Headers */,
+				7ABEB94F29ED47AF007556CF /* VPSocketPacket.h in Headers */,
 				7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */,
 				7A3CB168298A565900DD1998 /* UIResponder+JKFirstResponder.h in Headers */,
-				7ABEB91C29E9276A007556CF /* SIOSocket.h in Headers */,
 				7A4D3EE029E0039800CCE18E /* TAMemberTableViewCell.h in Headers */,
 				7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */,
 				7A3CB1EA298A565900DD1998 /* UIPopoverController+iPhone.h in Headers */,
-				7ABEB8E629E9191D007556CF /* SocketRocket.h in Headers */,
 				7A3CAF4F298A46EE00DD1998 /* SDImageTransformer.h in Headers */,
 				7A3CB1C1298A565900DD1998 /* UIImageView+JKLetters.h in Headers */,
 				7A3CAF53298A46EE00DD1998 /* SDImageLoadersManager.h in Headers */,
 				7A3CB032298A47AB00DD1998 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				7A3CB194298A565900DD1998 /* UIView+JKNib.h in Headers */,
-				7ABEB8F929E9191D007556CF /* SRError.h in Headers */,
+				7ABEB96B29ED47AF007556CF /* JFRWebSocket.h in Headers */,
 				7A3CB1AF298A565900DD1998 /* UITextView+JKPlaceHolder.h in Headers */,
 				7A3CB1B3298A565900DD1998 /* UIBarButtonItem+JKAction.h in Headers */,
 				7A7328FF29D52BC600DBFC4F /* TARoomCollectionViewCell.h in Headers */,
@@ -2737,6 +2649,7 @@
 				7A3CB18F298A565900DD1998 /* UIView+JKCustomBorder.h in Headers */,
 				7A3CB161298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.h in Headers */,
 				7A3CB158298A565900DD1998 /* UIScreen+JKFrame.h in Headers */,
+				7ABEB94E29ED47AF007556CF /* VPSocketIOClientProtocol.h in Headers */,
 				7A1FD35D29B98EDD006C352F /* TASegmentedControl.h in Headers */,
 				7A1FD34A29B5D426006C352F /* TAPersonalCharacterView.h in Headers */,
 				7A3CB1E8298A565900DD1998 /* UIControl+JKBlock.h in Headers */,
@@ -2752,17 +2665,15 @@
 				7AC8D60429875A23001E9F12 /* CommInterface.h in Headers */,
 				7A3CB142298A565900DD1998 /* UIImage+JKBlur.h in Headers */,
 				7A1FD33E29B5CB4E006C352F /* TABigMapView.h in Headers */,
-				7ABEB91629E91A1E007556CF /* TAWebSocket.h in Headers */,
 				7A3CAF99298A46EF00DD1998 /* SDWebImageIndicator.h in Headers */,
 				7A1FD36F29B9A6FA006C352F /* TASettingPictureQualityView.h in Headers */,
-				7ABEB8FC29E9191D007556CF /* SRMutex.h in Headers */,
 				7A3CB189298A565900DD1998 /* UIView+JKShake.h in Headers */,
 				7A3CAF9D298A46EF00DD1998 /* SDWebImageDownloader.h in Headers */,
 				7A3CAFFB298A46EF00DD1998 /* SDAsyncBlockOperation.h in Headers */,
-				7ABEB90829E9191D007556CF /* SRWebSocket.h in Headers */,
 				7A3CAE19298A444800DD1998 /* ASIHTTPRequestConfig.h in Headers */,
 				7A3CB19A298A565900DD1998 /* UIView+JKFrame.h in Headers */,
 				7A3CADE5298A426300DD1998 /* NSObject+MJProperty.h in Headers */,
+				7ABEB94D29ED47AF007556CF /* VPSocketAck.h in Headers */,
 				7A3CAE69298A462A00DD1998 /* IQToolbar.h in Headers */,
 				7A3CAF49298A46EE00DD1998 /* NSButton+WebCache.h in Headers */,
 				7A3CADE3298A426300DD1998 /* NSString+MJExtension.h in Headers */,
@@ -2771,7 +2682,6 @@
 				7A3CAF95298A46EF00DD1998 /* SDWebImageDownloaderDecryptor.h in Headers */,
 				7A3CAE23298A444800DD1998 /* ASIProgressDelegate.h in Headers */,
 				7A3CAE5B298A462900DD1998 /* IQUITextFieldView+Additions.h in Headers */,
-				7ABEB8F129E9191D007556CF /* NSURLRequest+SRWebSocketPrivate.h in Headers */,
 				7A3CB1C6298A565900DD1998 /* UIImageView+JKGeometryConversion.h in Headers */,
 				7A3CADE2298A426300DD1998 /* NSObject+MJClass.h in Headers */,
 				7A3CB15B298A565900DD1998 /* UIApplication+JKKeyboardFrame.h in Headers */,
@@ -2784,7 +2694,6 @@
 				7A8594B929ADAA4300D6B51A /* TALoginPresenter.h in Headers */,
 				7A3CB149298A565900DD1998 /* UIImage+JKGIF.h in Headers */,
 				7A3CB1EE298A565900DD1998 /* UITextField+JKSelect.h in Headers */,
-				7ABEB8E929E9191D007556CF /* SRProxyConnect.h in Headers */,
 				7A4D3ED529DE69D200CCE18E /* TAAlert.h in Headers */,
 				7A3CAF55298A46EE00DD1998 /* SDWebImageDownloaderOperation.h in Headers */,
 				7A6BF76F298BDC5C002EEDCA /* TABaseParmModel.h in Headers */,
@@ -2800,7 +2709,7 @@
 				7A3CB1D3298A565900DD1998 /* UIViewController+JKBlockSegue.h in Headers */,
 				7A3CB17C298A565900DD1998 /* UIColor+JKGradient.h in Headers */,
 				7A3CB15F298A565900DD1998 /* UIApplication+JKNetworkActivityIndicator.h in Headers */,
-				7ABEB8EE29E9191D007556CF /* NSRunLoop+SRWebSocketPrivate.h in Headers */,
+				7ABEB95D29ED47AF007556CF /* VPSocketAckManager.h in Headers */,
 				7A3CADF3298A426300DD1998 /* NSObject+MJKeyValue.h in Headers */,
 				7A3CB175298A565900DD1998 /* UIButton+JKMiddleAligning.h in Headers */,
 				7A3CB1DD298A565900DD1998 /* UINavigationController+JKStackManager.h in Headers */,
@@ -2816,20 +2725,17 @@
 				7A3CAE1F298A444800DD1998 /* ASIHTTPRequest.h in Headers */,
 				7A8594BC29ADB9D900D6B51A /* TALoginViewProtocol.h in Headers */,
 				7A3CB1E0298A565900DD1998 /* UITableView+JKiOS7Style.h in Headers */,
-				7ABEB8F229E9191D007556CF /* SRHash.h in Headers */,
 				7A3CB1D2298A565900DD1998 /* UIViewController+JKVisible.h in Headers */,
 				7A3CB029298A47AB00DD1998 /* NSArray+MASShorthandAdditions.h in Headers */,
 				7A85949729ACB43300D6B51A /* TATopMenuView.h in Headers */,
 				7A3CAF5E298A46EE00DD1998 /* SDImageCacheConfig.h in Headers */,
 				7A6BF76B298BDC47002EEDCA /* TABaseDataModel.h in Headers */,
 				7A3CAE24298A444800DD1998 /* ASIFormDataRequest.h in Headers */,
-				7ABEB8E729E9191D007556CF /* SRConstants.h in Headers */,
 				7A3CB12E298A565900DD1998 /* UIImage+JKMerge.h in Headers */,
 				7A3CAF6D298A46EE00DD1998 /* SDWebImageDownloaderRequestModifier.h in Headers */,
 				7A3CAF44298A46EE00DD1998 /* SDDiskCache.h in Headers */,
 				7A3CB16F298A565900DD1998 /* UIButton+JKTouchAreaInsets.h in Headers */,
 				7AF8D088299BA47600D85074 /* TACaptchaInterface.h in Headers */,
-				7ABEB90A29E9191D007556CF /* SRSecurityPolicy.h in Headers */,
 				7A3CB1F8298A703500DD1998 /* TARouter.h in Headers */,
 				7A3CAF65298A46EE00DD1998 /* SDImageCacheDefine.h in Headers */,
 				7A3CAF77298A46EF00DD1998 /* SDWebImageOptionsProcessor.h in Headers */,
@@ -2839,6 +2745,7 @@
 				7A3CB1F4298A565900DD1998 /* UITextField+JKHistory.h in Headers */,
 				7A3CB039298A47AB00DD1998 /* Masonry.h in Headers */,
 				7A3CB156298A565900DD1998 /* UIScrollView+JKPages.h in Headers */,
+				7ABEB96A29ED47AF007556CF /* JFRSecurity.h in Headers */,
 				7A3CAF9F298A46EF00DD1998 /* UIImage+Transform.h in Headers */,
 				7A3CAF6C298A46EE00DD1998 /* UIButton+WebCache.h in Headers */,
 				7A3CB1C3298A565900DD1998 /* UIImageView+JKAddition.h in Headers */,
@@ -2857,13 +2764,15 @@
 				7A3CB027298A47AB00DD1998 /* MASConstraint+Private.h in Headers */,
 				7A3CAFF4298A46EF00DD1998 /* SDWebImageTransitionInternal.h in Headers */,
 				7A3CB1BB298A565900DD1998 /* UIBezierPath+JKSymbol.h in Headers */,
-				7ABEB8F029E9191D007556CF /* SRDelegateController.h in Headers */,
+				7ABEB94A29ED47AF007556CF /* VPSocketOnAckCallback.h in Headers */,
+				7ABEB95429ED47AF007556CF /* VPSocketEngine+EnginePollable.h in Headers */,
 				7A3CB151298A565900DD1998 /* UILabel+JKAutomaticWriting.h in Headers */,
 				7A1FD37329B9A706006C352F /* TASettingAboutView.h in Headers */,
 				7A3CAE29298A444800DD1998 /* ASIInputStream.h in Headers */,
 				7A3CAE21298A444800DD1998 /* Reachability.h in Headers */,
 				7A3CB008298A46EF00DD1998 /* SDImageAssetManager.h in Headers */,
 				7A3CAFF2298A46EF00DD1998 /* SDDeviceHelper.h in Headers */,
+				7ABEB96829ED47AF007556CF /* VPSocketEngine+EngineWebsocket.h in Headers */,
 				7AD8A64E29A4D05D00257E1D /* TACreatRoleViewController.h in Headers */,
 				7A3CB030298A47AB00DD1998 /* MASViewConstraint.h in Headers */,
 				7A3CAFAE298A46EF00DD1998 /* SDWebImageCompat.h in Headers */,
@@ -2877,13 +2786,11 @@
 				7A3CB183298A565900DD1998 /* UISplitViewController+JKQuickAccess.h in Headers */,
 				7A3CAF5A298A46EE00DD1998 /* SDWebImageDownloaderConfig.h in Headers */,
 				7A3CB1EF298A565900DD1998 /* UITextField+JKBlocks.h in Headers */,
-				7ABEB8FD29E9191D007556CF /* SRHTTPConnectMessage.h in Headers */,
 				7A3CAFB5298A46EF00DD1998 /* UIImage+GIF.h in Headers */,
 				7A3CB1E3298A565900DD1998 /* UIControl+JKActionBlocks.h in Headers */,
 				7A3CB1A6298A565900DD1998 /* UINavigationItem+JKLoading.h in Headers */,
 				7A3CAF70298A46EF00DD1998 /* UIImage+Metadata.h in Headers */,
 				7A3CB171298A565900DD1998 /* UIButton+JKBadge.h in Headers */,
-				7ABEB8EA29E9191D007556CF /* SRRunLoopThread.h in Headers */,
 				7A3CB1EB298A565900DD1998 /* JKUIKit.h in Headers */,
 				7A3CAFF3298A46EF00DD1998 /* SDWeakProxy.h in Headers */,
 				7A3CB182298A565900DD1998 /* UIColor+JKHEX.h in Headers */,
@@ -2897,6 +2804,7 @@
 				7A3CB18D298A565900DD1998 /* UIView+JKFind.h in Headers */,
 				7A4D3ED129DE676100CCE18E /* TAMemberView.h in Headers */,
 				7A3CAF85298A46EF00DD1998 /* SDAnimatedImageView.h in Headers */,
+				7ABEB96629ED47AF007556CF /* VPSocketIO.h in Headers */,
 				7A3CAFAB298A46EF00DD1998 /* SDWebImageDownloaderResponseModifier.h in Headers */,
 				7A3CB02A298A47AB00DD1998 /* MASConstraintMaker.h in Headers */,
 				7A3CAE27298A444800DD1998 /* ASIHTTPRequest-Prefix.pch in Headers */,
@@ -2908,7 +2816,6 @@
 				7AF8D08C299BA4C900D85074 /* TACaptchaParmModel.h in Headers */,
 				7A3CAFFD298A46EF00DD1998 /* SDAssociatedObject.h in Headers */,
 				7A3CB1DC298A565900DD1998 /* UINavigationController+JKTransitions.h in Headers */,
-				7ABEB8F629E9191D007556CF /* SRSIMDHelpers.h in Headers */,
 				7A3CAFFE298A46EF00DD1998 /* SDmetamacros.h in Headers */,
 				7A3CADE9298A426300DD1998 /* MJFoundation.h in Headers */,
 				7A3CAD1C298A2EFC00DD1998 /* TABaseViewController.h in Headers */,
@@ -2922,16 +2829,16 @@
 				7A3CB02B298A47AB00DD1998 /* View+MASAdditions.h in Headers */,
 				7A3CAF50298A46EE00DD1998 /* SDImageCachesManager.h in Headers */,
 				7A3CAF60298A46EE00DD1998 /* SDWebImageCacheKeyFilter.h in Headers */,
+				7ABEB95B29ED47AF007556CF /* VPSocketEngine.h in Headers */,
 				7A3CAF46298A46EE00DD1998 /* SDImageIOCoder.h in Headers */,
 				7AD8A62729A362DF00257E1D /* TAUserAgreementView.h in Headers */,
-				7ABEB91D29E9276A007556CF /* socket.io.js.h in Headers */,
 				7A3CB12C298A565900DD1998 /* UIImage+JKColor.h in Headers */,
 				7AD4C07529C463BF00AFE5A4 /* GenerateTestUserSig.h in Headers */,
+				7ABEB95029ED47AF007556CF /* VPSocketIOClient.h in Headers */,
 				7A3CAF7F298A46EF00DD1998 /* SDAnimatedImageView+WebCache.h in Headers */,
 				7AD8A62D29A3712400257E1D /* TABaseView.h in Headers */,
 				7A3CB135298A565900DD1998 /* UIImage+JKSuperCompress.h in Headers */,
 				7A3CAE64298A462A00DD1998 /* IQPreviousNextView.h in Headers */,
-				7ABEB90029E9191D007556CF /* SRURLUtilities.h in Headers */,
 				7A3CAE6E298A462A00DD1998 /* IQKeyboardManagerConstantsInternal.h in Headers */,
 				7A3CB187298A565900DD1998 /* UIView+JKBlockGesture.h in Headers */,
 				7A8594B429ADA9C700D6B51A /* TALoginView.h in Headers */,
@@ -2945,13 +2852,13 @@
 				7A3CB16C298A565900DD1998 /* UIButton+JKImagePosition.h in Headers */,
 				7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */,
 				7A73290529D571AB00DBFC4F /* TARoomManager.h in Headers */,
-				7ABEB90729E9191D007556CF /* NSURLRequest+SRWebSocket.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
+				7ABEB96929ED47AF007556CF /* DefaultSocketLogger.h in Headers */,
 				7A1FD36B29B9A6F0006C352F /* TASettingVoiceView.h in Headers */,
-				7ABEB90929E9191D007556CF /* NSRunLoop+SRWebSocket.h in Headers */,
 				7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */,
 				7A3CB14A298A565900DD1998 /* UIImage+JKVector.h in Headers */,
 				7A1FD37D29B9C72B006C352F /* TATextFieldView.h in Headers */,
+				7ABEB94C29ED47AF007556CF /* VPSocketEngineProtocol.h in Headers */,
 				7A3CB14D298A565900DD1998 /* UILabel+JKAdjustableLabel.h in Headers */,
 				7A3CB1B7298A565900DD1998 /* UIBezierPath+JKSVGString.h in Headers */,
 				7AC611AE29D18FB600833933 /* TARoomListView.h in Headers */,
@@ -2961,11 +2868,12 @@
 				7A3CAE6F298A462A00DD1998 /* IQKeyboardManagerConstants.h in Headers */,
 				7A3CAE62298A462900DD1998 /* IQUIView+IQKeyboardToolbar.h in Headers */,
 				7A3CAF59298A46EE00DD1998 /* SDImageCache.h in Headers */,
+				7ABEB95529ED47AF007556CF /* VPSocketLogger.h in Headers */,
+				7ABEB95229ED47AF007556CF /* NSString+VPSocketIO.h in Headers */,
 				7A3CB186298A565900DD1998 /* UIView+JKScreenshot.h in Headers */,
 				7A3CAFA0298A46EF00DD1998 /* SDAnimatedImagePlayer.h in Headers */,
 				7A3CB1B4298A565900DD1998 /* UIBarButtonItem+JKBadge.h in Headers */,
 				7A3CAE5D298A462900DD1998 /* IQUIView+Hierarchy.h in Headers */,
-				7ABEB8F729E9191D007556CF /* SRRandom.h in Headers */,
 				7A3CAE5A298A462900DD1998 /* IQUIScrollView+Additions.h in Headers */,
 				7A3CB19F298A565900DD1998 /* UIFont+JKCustomLoader.h in Headers */,
 				7A3CB1ED298A565900DD1998 /* UITextField+JKInputLimit.h in Headers */,
@@ -2981,7 +2889,6 @@
 				7A3CB140298A565900DD1998 /* UIImage+JKResize.h in Headers */,
 				7A3CB176298A565900DD1998 /* UIButton+JKBackgroundColor.h in Headers */,
 				7A3CB1B2298A565900DD1998 /* UIDevice+JKHardware.h in Headers */,
-				7ABEB8F329E9191D007556CF /* SRLog.h in Headers */,
 				7A3CAF79298A46EF00DD1998 /* UIView+WebCacheOperation.h in Headers */,
 				7A3CAE26298A444800DD1998 /* ASIDataDecompressor.h in Headers */,
 				7A3CAFF9298A46EF00DD1998 /* SDInternalMacros.h in Headers */,
@@ -3056,14 +2963,10 @@
 				7A3CB003298A46EF00DD1998 /* SDFileAttributeHelper.m in Sources */,
 				7A3CB03C298A47AB00DD1998 /* MASViewConstraint.m in Sources */,
 				7A3CB137298A565900DD1998 /* UIImage+JKGIF.m in Sources */,
-				7ABEB8EB29E9191D007556CF /* SRRunLoopThread.m in Sources */,
 				7A3CB159298A565900DD1998 /* UIWindow+JKHierarchy.m in Sources */,
 				7A3CB178298A565900DD1998 /* UIButton+JKTouchAreaInsets.m in Sources */,
 				7A3CB199298A565900DD1998 /* UIView+JKDraggable.m in Sources */,
 				7A3CB1A2298A565900DD1998 /* UIFont+JKCustomLoader.m in Sources */,
-				7ABEB8F829E9191D007556CF /* SRURLUtilities.m in Sources */,
-				7ABEB8F529E9191D007556CF /* SRHTTPConnectMessage.m in Sources */,
-				7ABEB91729E91A1E007556CF /* TAWebSocket.m in Sources */,
 				7A3CB000298A46EF00DD1998 /* SDDeviceHelper.m in Sources */,
 				7A3CB03D298A47AB00DD1998 /* MASViewAttribute.m in Sources */,
 				7A3CAE15298A444800DD1998 /* ASIHTTPRequest.m in Sources */,
@@ -3082,7 +2985,6 @@
 				7A3CAF41298A46EE00DD1998 /* SDImageHEICCoder.m in Sources */,
 				7A3CB190298A565900DD1998 /* UIView+JKFrame.m in Sources */,
 				7AF8D089299BA47600D85074 /* TACaptchaInterface.m in Sources */,
-				7ABEB91E29E9276A007556CF /* SIOSocket.m in Sources */,
 				7A3CAFA5298A46EF00DD1998 /* SDWebImageDefine.m in Sources */,
 				7A3CB164298A565900DD1998 /* UITableViewCell+JKDelaysContentTouches.m in Sources */,
 				7AD8A64F29A4D05D00257E1D /* TACreatRoleViewController.m in Sources */,
@@ -3101,7 +3003,6 @@
 				7A3CB165298A565900DD1998 /* UIResponder+JKFirstResponder.m in Sources */,
 				7A3CB037298A47AB00DD1998 /* View+MASAdditions.m in Sources */,
 				7A3CB1F3298A565900DD1998 /* UITextField+JKSelect.m in Sources */,
-				7ABEB8FE29E9191D007556CF /* SRError.m in Sources */,
 				7A73290029D52BC600DBFC4F /* TARoomCollectionViewCell.m in Sources */,
 				7A3CB144298A565900DD1998 /* UIImage+JKRoundedCorner.m in Sources */,
 				7A3CAFA9298A46EF00DD1998 /* UIView+WebCache.m in Sources */,
@@ -3114,9 +3015,9 @@
 				7A1FD35429B72D02006C352F /* TAPersonalPresenter.m in Sources */,
 				7A3CAE1C298A444800DD1998 /* ASIAuthenticationDialog.m in Sources */,
 				7AD4C04329C41C6800AFE5A4 /* TAControlCenterPresenter.m in Sources */,
+				7ABEB95129ED47AF007556CF /* VPSocketAckManager.m in Sources */,
 				7A3CAF74298A46EF00DD1998 /* SDWebImageError.m in Sources */,
 				7A3CB1C7298A565900DD1998 /* UIImageView+JKLetters.m in Sources */,
-				7ABEB8E429E9191D007556CF /* NSRunLoop+SRWebSocket.m in Sources */,
 				7A3CAF84298A46EF00DD1998 /* UIImage+ExtendedCacheData.m in Sources */,
 				7A3CB13B298A565900DD1998 /* UIImage+JKMerge.m in Sources */,
 				7A3CB1B0298A565900DD1998 /* UITextView+JKInputLimit.m in Sources */,
@@ -3130,7 +3031,6 @@
 				7A3CAF75298A46EF00DD1998 /* SDWebImagePrefetcher.m in Sources */,
 				7A3CAE56298A462900DD1998 /* IQUITextFieldView+Additions.m in Sources */,
 				7A3CAF8C298A46EF00DD1998 /* SDWebImageDownloaderOperation.m in Sources */,
-				7ABEB8EF29E9191D007556CF /* SRDelegateController.m in Sources */,
 				7A3CB1F1298A565900DD1998 /* UITextField+JKInputLimit.m in Sources */,
 				7A3CAF86298A46EF00DD1998 /* SDWebImageDownloaderConfig.m in Sources */,
 				7A3CAFFA298A46EF00DD1998 /* SDImageAssetManager.m in Sources */,
@@ -3166,6 +3066,7 @@
 				7A3CAFB2298A46EF00DD1998 /* UIButton+WebCache.m in Sources */,
 				7A6BF768298BCB22002EEDCA /* TABaseInterface.m in Sources */,
 				7A3CB181298A565900DD1998 /* UIColor+JKRandom.m in Sources */,
+				7ABEB95C29ED47AF007556CF /* VPSocketOnAckCallback.m in Sources */,
 				7A3CAE6D298A462A00DD1998 /* IQKeyboardManager.m in Sources */,
 				7A3CADEC298A426300DD1998 /* MJExtensionConst.m in Sources */,
 				7A3CAF72298A46EF00DD1998 /* SDImageAPNGCoder.m in Sources */,
@@ -3173,6 +3074,7 @@
 				7A4D3ED629DE69D200CCE18E /* TAAlert.m in Sources */,
 				7A3CB1E7298A565900DD1998 /* UIControl+JKActionBlocks.m in Sources */,
 				7A8594A029ACB49F00D6B51A /* TAChatView.m in Sources */,
+				7ABEB95629ED47AF007556CF /* VPSocketAckEmitter.m in Sources */,
 				7A3CAFA2298A46EF00DD1998 /* SDWebImageCacheKeyFilter.m in Sources */,
 				7A3CB19B298A565900DD1998 /* UIView+JKCustomBorder.m in Sources */,
 				7A3CB152298A565900DD1998 /* UILabel+JKAdjustableLabel.m in Sources */,
@@ -3192,16 +3094,15 @@
 				7A3CB13D298A565900DD1998 /* UIImage+JKAnimatedGIF.m in Sources */,
 				7A1FD37429B9A706006C352F /* TASettingAboutView.m in Sources */,
 				7A3CB197298A565900DD1998 /* UIView+JKToast.m in Sources */,
-				7ABEB90629E9191D007556CF /* SRConstants.m in Sources */,
 				7A3CB1D9298A565900DD1998 /* UINavigationController+JKStackManager.m in Sources */,
 				7A3CB193298A565900DD1998 /* UIView+JKScreenshot.m in Sources */,
 				7A3CB1B1298A565900DD1998 /* UIDevice+JKHardware.m in Sources */,
 				7A1FD34329B5D156006C352F /* TAPersonalView.m in Sources */,
 				7A3CB1DF298A565900DD1998 /* UITableView+JKiOS7Style.m in Sources */,
 				7A3CB14E298A565900DD1998 /* UILabel+JKAutomaticWriting.m in Sources */,
+				7ABEB96429ED47AF007556CF /* VPSocketAnyEvent.m in Sources */,
 				7A3CAF4E298A46EE00DD1998 /* SDWebImageDownloaderDecryptor.m in Sources */,
 				7A1FD36C29B9A6F0006C352F /* TASettingVoiceView.m in Sources */,
-				7ABEB8ED29E9191D007556CF /* SRPinningSecurityPolicy.m in Sources */,
 				7A3CAF9E298A46EF00DD1998 /* UIImage+MemoryCacheCost.m in Sources */,
 				7A3CB035298A47AB00DD1998 /* MASLayoutConstraint.m in Sources */,
 				7A3CB16B298A565900DD1998 /* UIButton+JKBadge.m in Sources */,
@@ -3209,7 +3110,6 @@
 				7A3CB185298A565900DD1998 /* UIView+JKNib.m in Sources */,
 				7A6BF770298BDC5C002EEDCA /* TABaseParmModel.m in Sources */,
 				7A3CB1E5298A565900DD1998 /* UIControl+JKBlock.m in Sources */,
-				7ABEB8FA29E9191D007556CF /* SRLog.m in Sources */,
 				7A3CAFA8298A46EF00DD1998 /* UIView+WebCacheOperation.m in Sources */,
 				7A3CB1E9298A565900DD1998 /* UIPopoverController+iPhone.m in Sources */,
 				7A452BD529C2EB9C00257826 /* NSString+Size.m in Sources */,
@@ -3222,8 +3122,8 @@
 				7A1FD34729B5D20C006C352F /* TASettingView.m in Sources */,
 				7A3CAF76298A46EF00DD1998 /* SDImageCoderHelper.m in Sources */,
 				7A3CAFA7298A46EF00DD1998 /* SDWebImageOptionsProcessor.m in Sources */,
+				7ABEB96D29ED47AF007556CF /* JFRWebSocket.m in Sources */,
 				7A3CB1B8298A565900DD1998 /* UIBezierPath+JKBasicShapes.m in Sources */,
-				7ABEB90B29E9191D007556CF /* NSURLRequest+SRWebSocket.m in Sources */,
 				7A3CAF66298A46EE00DD1998 /* SDImageLoader.m in Sources */,
 				7A3CB14C298A565900DD1998 /* UILabel+JKSuggestSize.m in Sources */,
 				7AD8A63B29A4B1F100257E1D /* TACmdModel.m in Sources */,
@@ -3232,7 +3132,6 @@
 				7A3CB138298A565900DD1998 /* UIImage+JKFXImage.m in Sources */,
 				7A8594B529ADA9C700D6B51A /* TALoginView.m in Sources */,
 				7A3CB005298A46EF00DD1998 /* NSBezierPath+SDRoundedCorners.m in Sources */,
-				7ABEB90529E9191D007556CF /* SRIOConsumerPool.m in Sources */,
 				7A3CB1C5298A565900DD1998 /* UIImageView+JKBetterFace.m in Sources */,
 				7A3CADED298A426300DD1998 /* NSObject+MJProperty.m in Sources */,
 				7A3CB1D6298A565900DD1998 /* UIViewController+JKRecursiveDescription.m in Sources */,
@@ -3265,13 +3164,13 @@
 				7A3CB1A8298A565900DD1998 /* UINavigationItem+JKLoading.m in Sources */,
 				7A3CAF8E298A46EF00DD1998 /* SDImageLoadersManager.m in Sources */,
 				7A85949C29ACB44400D6B51A /* TARightMenuView.m in Sources */,
-				7ABEB8E329E9191D007556CF /* SRWebSocket.m in Sources */,
+				7ABEB96729ED47AF007556CF /* VPStringReader.m in Sources */,
 				7A73290429D571AB00DBFC4F /* TARoomManager.m in Sources */,
+				7ABEB96C29ED47AF007556CF /* JFRSecurity.m in Sources */,
 				7A3CB15E298A565900DD1998 /* UIApplication+JKKeyboardFrame.m in Sources */,
 				7A3CADE8298A426300DD1998 /* MJProperty.m in Sources */,
 				7A3CB12B298A565900DD1998 /* UIImage+JKOrientation.m in Sources */,
-				7ABEB8FB29E9191D007556CF /* SRHash.m in Sources */,
-				7ABEB8E529E9191D007556CF /* SRSecurityPolicy.m in Sources */,
+				7ABEB95929ED47AF007556CF /* VPSocketEngine+EngineWebsocket.m in Sources */,
 				7AF8D08D299BA4C900D85074 /* TACaptchaParmModel.m in Sources */,
 				7A3CB18C298A565900DD1998 /* UIView+JKConstraints.m in Sources */,
 				7A3CAFB0298A46EF00DD1998 /* UIImage+Metadata.m in Sources */,
@@ -3279,28 +3178,28 @@
 				7A3CADF6298A426300DD1998 /* MJFoundation.m in Sources */,
 				7A3CB002298A46EF00DD1998 /* SDInternalMacros.m in Sources */,
 				7A3CB007298A46EF00DD1998 /* SDDisplayLink.m in Sources */,
-				7ABEB8F429E9191D007556CF /* SRMutex.m in Sources */,
 				7A3CB034298A47AB00DD1998 /* MASConstraintMaker.m in Sources */,
 				7A3CADF1298A426300DD1998 /* MJPropertyKey.m in Sources */,
 				7A3CB041298A484100DD1998 /* MBProgressHUD.m in Sources */,
 				7A3CADE4298A426300DD1998 /* MJPropertyType.m in Sources */,
 				7A3CAF73298A46EF00DD1998 /* SDWebImageDownloaderResponseModifier.m in Sources */,
 				7A3CAF6E298A46EE00DD1998 /* UIImage+MultiFormat.m in Sources */,
+				7ABEB95F29ED47AF007556CF /* VPSocketPacket.m in Sources */,
 				7A3CB1C8298A565900DD1998 /* UIImageView+JKReflect.m in Sources */,
+				7ABEB95E29ED47AF007556CF /* VPSocketIOClient.m in Sources */,
 				7A3CAFB3298A46EF00DD1998 /* SDWebImageDownloaderRequestModifier.m in Sources */,
 				7A3CAF47298A46EE00DD1998 /* SDImageCoder.m in Sources */,
-				7ABEB8E829E9191D007556CF /* SRProxyConnect.m in Sources */,
 				7A3CB174298A565900DD1998 /* UIButton+JKImagePosition.m in Sources */,
 				7A3CB1BF298A565900DD1998 /* UIBezierPath+JKSymbol.m in Sources */,
 				7AC8D60329875A23001E9F12 /* CommInterface.m in Sources */,
 				7A3CB136298A565900DD1998 /* UIImage+JKVector.m in Sources */,
 				7A0D28712995F2FB004BCDC6 /* NSBundle+TAImage.m in Sources */,
+				7ABEB96529ED47AF007556CF /* NSString+VPSocketIO.m in Sources */,
 				7A3CB1CD298A565900DD1998 /* UINavigationBar+JKAwesome.m in Sources */,
-				7ABEB8FF29E9191D007556CF /* SRRandom.m in Sources */,
+				7ABEB95729ED47AF007556CF /* DefaultSocketLogger.m in Sources */,
 				7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */,
 				7A3CADE7298A426300DD1998 /* NSObject+MJKeyValue.m in Sources */,
 				7A8594C029AE0A5200D6B51A /* TAControlPanelView.m in Sources */,
-				7ABEB90329E9191D007556CF /* SRIOConsumer.m in Sources */,
 				7A3CB19C298A565900DD1998 /* UIView+JKRecursion.m in Sources */,
 				7A3CB17D298A565900DD1998 /* UIColor+JKHEX.m in Sources */,
 				7A3CAF90298A46EF00DD1998 /* SDWebImageTransition.m in Sources */,
@@ -3329,10 +3228,13 @@
 				7A3CB14F298A565900DD1998 /* UILabel+JKAutoSize.m in Sources */,
 				7A3CB1A4298A565900DD1998 /* UIFont+JKDynamicFontControl.m in Sources */,
 				7A3CB1BA298A565900DD1998 /* UIBezierPath+JKLength.m in Sources */,
+				7ABEB96229ED47AF007556CF /* VPSocketLogger.m in Sources */,
 				7A73290D29D58D6800DBFC4F /* TAFileCollectionViewCell.m in Sources */,
 				7A3CAF6A298A46EE00DD1998 /* UIImage+GIF.m in Sources */,
 				7A3CB16A298A565900DD1998 /* UIButton+JKIndicator.m in Sources */,
 				7A3CAF92298A46EF00DD1998 /* SDImageTransformer.m in Sources */,
+				7ABEB94B29ED47AF007556CF /* VPSocketEngine.m in Sources */,
+				7ABEB95A29ED47AF007556CF /* VPSocketAck.m in Sources */,
 				7AD4C07629C463BF00AFE5A4 /* GenerateTestUserSig.m in Sources */,
 				7A3CB192298A565900DD1998 /* UIView+JKBlockGesture.m in Sources */,
 				7A3CB1C4298A565900DD1998 /* UIImageView+JKFaceAwareFill.m in Sources */,
@@ -3341,8 +3243,8 @@
 				7A3CAF68298A46EE00DD1998 /* SDWebImageIndicator.m in Sources */,
 				7A3CB1A0298A565900DD1998 /* UIFont+JKTTF.m in Sources */,
 				7A3CB1D8298A565900DD1998 /* UIViewController+JKVisible.m in Sources */,
-				7ABEB90129E9191D007556CF /* SRSIMDHelpers.m in Sources */,
 				7A3CB13C298A565900DD1998 /* UIImage+JKColor.m in Sources */,
+				7ABEB96329ED47AF007556CF /* VPSocketEngine+EnginePollable.m in Sources */,
 				7AD8A62829A362DF00257E1D /* TAUserAgreementView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

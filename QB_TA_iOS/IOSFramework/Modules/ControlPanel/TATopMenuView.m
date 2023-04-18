@@ -10,6 +10,7 @@
 #import "TARoomManager.h"
 #import "TAFileListView.h"
 #import "TAMemberView.h"
+#import "TAAlert.h"
 
 int const IconID_Setting        = 1001;
 int const IconID_File           = 1002;
@@ -135,7 +136,11 @@ int const IconID_Share_Screen   = 1006;
         case IconID_Share_Screen:
         {
             if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
-                [[TARoomManager shareInstance] stopShareScreen];
+                [TAAlert alertWithTitle:@"温馨提示" msg:@"确定结束分享屏幕吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+                    if (index == 1){
+                        [[TARoomManager shareInstance] stopShareScreen];
+                    }
+                }];
             }else{
                 [[TARoomManager shareInstance] startShareScreen];
             }

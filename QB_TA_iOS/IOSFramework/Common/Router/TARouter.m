@@ -171,7 +171,7 @@ shareInstance_implementation(TARouter)
     [TADataCenter shareInstance].microphoneUserList = nil;
     
     [[TARoomManager shareInstance] exitRoom];
-    [[TASocketManager shareInstance].webSocket closeWebSocket];
+    [[TASocketManager shareInstance].socket disconnect];
 }
 
 

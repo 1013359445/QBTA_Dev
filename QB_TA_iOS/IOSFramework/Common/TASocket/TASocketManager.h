@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "TADataCenter.h"
 #import "TABaseParmModel.h"
-#import "TAWebSocket.h"
+#import "VPSocketIOClient.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TASocketManager : NSObject
 shareInstance_interface(TASocketManager)
-@property (nonatomic, retain, nullable)TAWebSocket *webSocket;
+@property (nonatomic, retain, nullable)VPSocketIOClient *socket;
 
 - (void)socketConnect;
 

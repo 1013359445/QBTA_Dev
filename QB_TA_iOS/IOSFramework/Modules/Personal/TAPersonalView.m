@@ -89,7 +89,7 @@
         make.top.bottom.right.mas_equalTo(0);
     }];
     
-    [self.personalInfoView addSubview:self.closeBtn];
+    [self.bgImageView addSubview:self.closeBtn];
     [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(kRelative(12));
         make.right.mas_equalTo(kRelative(-12));

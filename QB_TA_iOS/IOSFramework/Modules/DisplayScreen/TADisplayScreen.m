@@ -46,6 +46,7 @@
     [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
 }
 
+//KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     self.mikeState.selected = [TARoomManager shareInstance].isStartLocalAudio;

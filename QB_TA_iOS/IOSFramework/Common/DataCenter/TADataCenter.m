@@ -34,6 +34,8 @@ shareInstance_implementation(TADataCenter);
 - (void)setMembersList:(NSArray *)membersList
 {
     _membersList = membersList;
+    [self.microphoneUserList removeAllObjects];
+    
     for (TAMemberModel *model in membersList) {
         if (model.voice == 2){
             [self.microphoneUserList addObject:model];

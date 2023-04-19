@@ -45,6 +45,12 @@
     return self;
 }
 
+//KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    [self chatPeopleWhoSpeakChange];
+}
+
 + (TACmdModel *)cmd{
     TACmdModel *cmdModel = [TACmdModel new];
     cmdModel.cmd = @"chat";
@@ -54,8 +60,6 @@
 
 - (void)loadSubViews
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatPeopleWhoSpeakChange) name:ChatPeopleWhoSpeakChange object:nil];
-    
     [self addSubview:self.bgView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);

@@ -12,8 +12,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSNotificationName ChatPeopleWhoSpeakChange = @"ChatPeopleWhoSpeakChange";
-
 @interface TADataCenter : NSObject
 shareInstance_interface(TADataCenter)
 

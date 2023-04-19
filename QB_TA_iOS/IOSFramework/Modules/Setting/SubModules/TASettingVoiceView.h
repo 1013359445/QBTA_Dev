@@ -14,12 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-
+@ class TAVoiceView;
 @protocol TAVoiceViewProtocol <NSObject>
-- (void)sliderValueChange:(NSString *)value;
+- (void)voiceSliderView:(TAVoiceView *)view didiValueChange:(NSString *)value;
 @end
 
 @interface TAVoiceView : UIView
+@property (nonatomic, retain)UISlider       *slider;
 - (instancetype)initWithDelegate:(id)delegate title:(NSString *)title;
 @end
 NS_ASSUME_NONNULL_END

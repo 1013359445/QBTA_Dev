@@ -8,7 +8,6 @@
 #import "TARoomManager.h"
 
 #import "GenerateTestUserSig.h"
-#import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 #import "TABroadcastExtensionLauncher.h"
 #import "TASocketManager.h"
 #import "TAAlert.h"
@@ -36,6 +35,23 @@ shareInstance_implementation(TARoomManager);
     if (self) {
         self.trtcCloud.delegate = self;
         self.isShareScreenHorizontal = YES;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *volume = [defaults objectForKey:DefaultsKeyAudioCaptureVolume];
+        if (!volume) {
+            volume = @"100";
+            [defaults setObject:volume forKey:DefaultsKeyAudioCaptureVolume];
+            [defaults synchronize];
+        }
+        [self.trtcCloud setAudioCaptureVolume:volume.intValue];
+        
+        volume = [defaults objectForKey:DefaultsKeyAudioPlayoutVolume];
+        if (!volume) {
+            volume = @"100";
+            [defaults setObject:volume forKey:DefaultsKeyAudioPlayoutVolume];
+            [defaults synchronize];
+        }
+        [self.trtcCloud setAudioPlayoutVolume:volume.intValue];
     }
     return self;
 }

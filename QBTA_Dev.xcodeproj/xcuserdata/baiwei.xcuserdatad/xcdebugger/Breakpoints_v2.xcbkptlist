@@ -19,16 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4A5CF7DA-3A01-4C73-8924-365C9CA4AED7"
+            uuid = "712872BA-05DC-457F-9CE0-51F669F6B3E9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QB_TA_iOS/IOSFramework/Modules/DisplayScreen/TADisplayScreen.m"
+            filePath = "QB_TA_iOS/IOSFramework/Modules/Setting/SubModules/TASettingVoiceView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-mikeStatetBtnClick"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "-initWithDelegate:title:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

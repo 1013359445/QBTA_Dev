@@ -7,8 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "TAHeader.h"
+#import "TXLiteAVSDK_TRTC/TRTCCloud.h"
 
 NS_ASSUME_NONNULL_BEGIN
+static NSString * const DefaultsKeyAudioCaptureVolume = @"DefaultsKeyAudioCaptureVolume";
+static NSString * const DefaultsKeyAudioPlayoutVolume = @"DefaultsKeyAudioPlayoutVolume";
 
 typedef NS_ENUM(NSInteger, ScreenStatus) {
     ScreenStart,

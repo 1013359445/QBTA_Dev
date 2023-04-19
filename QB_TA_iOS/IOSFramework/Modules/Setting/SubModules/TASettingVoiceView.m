@@ -7,6 +7,7 @@
 
 #import "TASettingVoiceView.h"
 #import "TASegmentedControl.h"
+#import "TARoomManager.h"
 
 @interface TASettingVoiceView () <TAVoiceViewProtocol>
 @property (nonatomic, retain)TAVoiceView    *mainVoice;
@@ -53,11 +54,25 @@
         make.top.width.height.mas_equalTo(_switch3D);
     }];
 
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *volume = [defaults objectForKey:DefaultsKeyAudioCaptureVolume];
+    self.mikeVoice.slider.value = volume.floatValue / 100.0;
+    
+    volume = [defaults objectForKey:DefaultsKeyAudioPlayoutVolume];
+    self.mainVoice.slider.value = volume.floatValue / 100.0;
 }
 
-- (void)sliderValueChange:(NSString *)value
+- (void)voiceSliderView:(TAVoiceView *)view didiValueChange:(NSString *)value;
 {
-    //[self.presenter modifyInfo:value];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (view.tag == 1001){
+        [[TRTCCloud sharedInstance] setAudioPlayoutVolume:value.intValue];
+        [defaults setObject:value forKey:DefaultsKeyAudioPlayoutVolume];
+    }else {
+        [[TRTCCloud sharedInstance] setAudioCaptureVolume:value.intValue];
+        [defaults setObject:value forKey:DefaultsKeyAudioCaptureVolume];
+    }
 }
 
 -(TAVoiceView *)mainVoice
@@ -65,6 +80,7 @@
     if (!_mainVoice)
     {
         _mainVoice = [[TAVoiceView alloc] initWithDelegate:self title:@"主音量"];
+        _mainVoice.tag = 1001;
     }
     return _mainVoice;
 }
@@ -74,6 +90,7 @@
     if (!_mikeVoice)
     {
         _mikeVoice = [[TAVoiceView alloc] initWithDelegate:self title:@"麦克风音量"];
+        _mikeVoice.tag = 1002;
     }
     return _mikeVoice;
 }
@@ -102,7 +119,6 @@
 @property (nonatomic, weak)id<TAVoiceViewProtocol> delegate;
 @property (nonatomic, retain)UIImageView    *iconImageView;
 @property (nonatomic, retain)UILabel        *valueLabel;
-@property (nonatomic, retain)UISlider       *slider;
 @property (nonatomic, retain)UILabel        *titleLabel;
 @end
 
@@ -202,8 +218,8 @@
 {
     NSString *valueStr = [NSString stringWithFormat:@"%d", (int)(sender.value * 100)];
     _valueLabel.text = valueStr;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderValueChange:)]) {
-        [self.delegate sliderValueChange:valueStr];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(voiceSliderViewValuedidiChange:)]) {
+        [self.delegate voiceSliderViewValuedidiChange:valueStr];
     }
 }
 

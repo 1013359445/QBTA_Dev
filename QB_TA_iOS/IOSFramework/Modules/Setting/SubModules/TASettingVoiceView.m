@@ -56,11 +56,11 @@
 
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *volume = [defaults objectForKey:DefaultsKeyAudioCaptureVolume];
-    self.mikeVoice.slider.value = volume.floatValue / 100.0;
+    NSString *volume = [defaults objectForKey:DefaultsKeyAudioCaptureVolume];
+    [self.mikeVoice setSliderValue:volume];
     
     volume = [defaults objectForKey:DefaultsKeyAudioPlayoutVolume];
-    self.mainVoice.slider.value = volume.floatValue / 100.0;
+    [self.mainVoice setSliderValue:volume];
 }
 
 - (void)voiceSliderView:(TAVoiceView *)view didiValueChange:(NSString *)value;
@@ -118,6 +118,7 @@
 @interface TAVoiceView ()
 @property (nonatomic, weak)id<TAVoiceViewProtocol> delegate;
 @property (nonatomic, retain)UIImageView    *iconImageView;
+@property (nonatomic, retain)UISlider       *slider;
 @property (nonatomic, retain)UILabel        *valueLabel;
 @property (nonatomic, retain)UILabel        *titleLabel;
 @end
@@ -142,7 +143,7 @@
         //  最小值
         _slider.minimumValue = 0;
         //  最大值
-        _slider.maximumValue = 1;
+        _slider.maximumValue = 100;
         //  滑动条有值部分颜色
         _slider.minimumTrackTintColor = kTAColor.c_49;
         //  滑动条没有值部分颜色
@@ -200,26 +201,29 @@
             make.height.mas_equalTo(kRelative(30));
             make.bottom.mas_equalTo(self.mas_top).mas_offset(kRelative(-5));
         }];
-        
-        //  设置默认值
-        _slider.value = 0.5;
-        [self sliderValueChange:_slider];
     }
     return self;
 }
 
 - (void)sliderValueChange:(UISlider *)sender
 {
-    NSString *valueStr = [NSString stringWithFormat:@"%d", (int)(sender.value * 100)];
-    _valueLabel.text = valueStr;
+    NSString *valueStr = [NSString stringWithFormat:@"%d", (int)sender.value];
+    self.valueLabel.text = valueStr;
+}
+
+- (void)setSliderValue:(NSString *)value
+{
+    self.valueLabel.text = value;
+    self.slider.value = value.intValue;
 }
 
 - (void)sliderEditingDidEnd:(UISlider *)sender
 {
-    NSString *valueStr = [NSString stringWithFormat:@"%d", (int)(sender.value * 100)];
-    _valueLabel.text = valueStr;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(voiceSliderViewValuedidiChange:)]) {
-        [self.delegate voiceSliderViewValuedidiChange:valueStr];
+    NSString *valueStr = [NSString stringWithFormat:@"%d", (int)sender.value];
+    self.valueLabel.text = valueStr;
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(voiceSliderView:didiValueChange:)]) {
+        [self.delegate voiceSliderView:self didiValueChange:valueStr];
     }
 }
 

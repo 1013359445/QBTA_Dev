@@ -52,32 +52,17 @@ shareInstance_implementation(TASocketManager);
         [self.socket removeAllHandlers];
         self.socket = nil;
     }
-    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
-
     NSString *url = @"http://39.100.153.162:10246";
-//    url = [NSString stringWithFormat:
-//                      @"http://39.100.153.162:10246?uid=%ld&room_num=%d&phone=%@&nick_name=%@"
-//                      ,userInfo.pkid,userInfo.roomNum,userInfo.phone,@"zzz"];
-//    url = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)(url), (CFStringRef)@"%", NULL, kCFStringEncodingUTF8));
-
-    VPSocketLogger *logger = [VPSocketLogger new];
+    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
     NSDictionary *connectParams = @{@"uid":@(userInfo.pkid).stringValue,
                                     @"room_num":@(userInfo.roomNum).stringValue,
                                     @"phone":userInfo.phone,
                                     @"nick_name":userInfo.nickname};
     
-    VPSocketIOClient *socket = [[VPSocketIOClient alloc] init:[NSURL URLWithString:url] //withConfig:connectParams];
+    VPSocketIOClient *socket = [[VPSocketIOClient alloc] init:[NSURL URLWithString:url]
                                                    withConfig:@{
-                                                                //@"log": @YES,
-                                                                //@"forcePolling": @NO,
-                                                                //@"secure": @YES,
-                                                                //@"forceNew":@YES,
-                                                                //@"forceWebsockets":@YES,
-                                                                //@"selfSigned":@YES,
-                                                                //@"reconnectWait":@5,
-                                                                //@"nsp":@"/rooms",
                                                                 @"connectParams":connectParams,
-                                                                @"logger":logger
+                                                                @"logger":[VPSocketLogger new]
                                                                 }];
     [socket connect];
     self.socket = socket;
@@ -91,9 +76,9 @@ shareInstance_implementation(TASocketManager);
         parm.range = @"room";
         [weakself SendClientMembers:parm];
         
-        //取消上一个定时发送
+        //取消之前的定时发送
         [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
-        //发送心跳-自动重复
+        //开始新的发送心跳-自动定时重复
         [weakself HeartbeatSendServer];
     }];
     [socket on:kSocketEventError callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
@@ -234,7 +219,7 @@ shareInstance_implementation(TASocketManager);
     NSDictionary *dic = @{@"type":@"Heart",@"data":@{@"range":@"my",@"ActionName":@"Heart"}};
     [self.socket emit:@"SendServer" items:@[[dic mj_JSONString]]];
     
-    if (self.socket.status == VPSocketIOClientStatusConnected){
+    if (self.socket.status == VPSocketIOClientStatusConnected || self.socket.status == VPSocketIOClientStatusOpened){
         [self performSelector:@selector(HeartbeatSendServer) withObject:nil afterDelay:18];
     }
 }

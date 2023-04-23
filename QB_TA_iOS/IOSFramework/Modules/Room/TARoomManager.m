@@ -315,7 +315,7 @@ shareInstance_implementation(TARoomManager);
 // 感知远端用户进入房间的通知，并更新远端用户列表
 - (void)onRemoteUserEnterRoom:(NSString *)userId{
     //获取成员列表
-    TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+    TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
     parm.range = @"room";
     [[TASocketManager shareInstance] SendClientMembers:parm];
 }
@@ -323,7 +323,7 @@ shareInstance_implementation(TARoomManager);
 // 感知远端用户离开房间的通知，并更新远端用户列表
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
     //获取成员列表
-    TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+    TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
     parm.range = @"room";
     [[TASocketManager shareInstance] SendClientMembers:parm];
 }

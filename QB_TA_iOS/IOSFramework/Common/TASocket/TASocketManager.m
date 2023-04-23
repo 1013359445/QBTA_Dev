@@ -11,13 +11,17 @@
 #import "TAAlert.h"
 #import "TARoomManager.h"
 #import "TAMemberModel.h"
+#import "TAChatDataModel.h"
 #import "VPSocketLogger.h"
 
-@implementation TAClientMembersDataParmModel
+@implementation TAClientRoomDataParmModel
 - (void)assignDefaultValue
 {
     self.roomNum = [TADataCenter shareInstance].userInfo.roomNum;
 }
+@end
+
+@implementation TAClientChatMessageParmModel
 @end
 
 @implementation TAClientMembersVocieParmModel
@@ -72,7 +76,7 @@ shareInstance_implementation(TASocketManager);
     //监听-服务器连接事件
     [socket on:kSocketEventConnect callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
         //连接成功-获取成员列表
-        TAClientMembersDataParmModel *parm = [TAClientMembersDataParmModel new];
+        TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
         parm.range = @"room";
         [weakself SendClientMembers:parm];
         
@@ -187,10 +191,27 @@ shareInstance_implementation(TASocketManager);
             });
         }
     }];
+
+    //监听-消息列表
+    [socket on: @"receiveClientChatEvent" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        NSDictionary *data = [array firstObject];;
+        if ([data isKindOfClass: [NSDictionary class]]){
+            
+            NSArray *array = data[@"data"];
+            if (array){
+                NSMutableArray *chatList = [NSMutableArray array];
+                for (NSDictionary *dic in array) {
+                    TAChatDataModel *dataModel = [TAChatDataModel mj_objectWithKeyValues:dic];
+                    [chatList addObject:dataModel];
+                }
+                [[TADataCenter shareInstance] setValue:chatList forKey:@"chatMessages"];
+            }
+        }
+    }];
 }
 
 //获取成员列表
-- (void)SendClientMembers:(TAClientMembersDataParmModel *)data
+- (void)SendClientMembers:(TAClientRoomDataParmModel *)data
 {
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
@@ -211,6 +232,28 @@ shareInstance_implementation(TASocketManager);
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
     parm.data = data;
     [self.socket emit:@"SendClientMembersKick" items:@[[parm mj_JSONString]]];
+}
+
+
+//发送消息
+- (void)GetHistoricalMessages{
+    [self SendClientChatEvent:nil phone:nil];
+}
+- (void)SendClientChatEvent:(NSString *)content{
+    [self SendClientChatEvent:content phone:nil];
+}
+- (void)SendClientChatEvent:(NSString *)content phone:(NSString *)phone
+{
+    TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
+    parm.type = @"chat";
+    
+    TAClientChatMessageParmModel *roomData = [TAClientChatMessageParmModel new];
+    roomData.range = @"room";
+    roomData.roomNum = [TADataCenter shareInstance].userInfo.roomNum;
+    roomData.content = content;
+    roomData.phone = phone;
+    parm.data = roomData;
+    [self.socket emit:@"sendClientChatEvent" items:@[[parm mj_JSONString]]];
 }
 
 //心跳

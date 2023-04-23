@@ -9,6 +9,8 @@
 #import "TADataCenter.h"
 #import "IQKeyboardManager.h"
 #import "NSString+Size.h"
+#import "TASocketManager.h"
+#import "TAChatDataModel.h"
 
 @interface TAChatView () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -31,6 +33,7 @@
 }
 - (void)dealloc{
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
 }
 
 - (instancetype)init
@@ -41,6 +44,7 @@
 
         //注册监听
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"chatMessages" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -48,7 +52,17 @@
 //KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    [self chatPeopleWhoSpeakChange];
+    if ([@"membersList" isEqualToString:keyPath]) {
+        [self chatPeopleWhoSpeakChange];
+    }else{
+        [self.msgTableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.msgTableView.contentSize.height > self.msgTableView.bounds.size.height) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
+                [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
+        });
+    }
 }
 
 + (TACmdModel *)cmd{
@@ -97,14 +111,8 @@
     }];
     
     [self chatPeopleWhoSpeakChange];
-    
-    [self.msgTableView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([TADataCenter shareInstance].chatMessages.count > 5) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
-            [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-        }
-    });
+    //获取消息列表
+    [[TASocketManager shareInstance] GetHistoricalMessages];
 }
 
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview
@@ -125,11 +133,8 @@
 
 - (void)chatPeopleWhoSpeakChange
 {
-    UILabel *titleLabel = [self.msgHeaderView viewWithTag:999];
-    
+    UILabel *titleLabel = [self.msgHeaderView viewWithTag:1991];
     NSArray *array = [TADataCenter shareInstance].microphoneUserList;
-    
-    
     NSString *name = @"";
     if (array.count == 0) {
         self.msgTableView.tableHeaderView = nil;
@@ -152,23 +157,16 @@
 
 - (void)sendBtnClick:(UIButton *)sender
 {
-    //调服务端发送
-//    发送成功后。。。
-    
-    if (self.inputTextField.text.length == 0) {
+    NSString *msg = self.inputTextField.text;
+    msg = [msg stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    msg = [msg stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (msg.length == 0) {
         return;
     }
-    NSString *string = [NSString stringWithFormat:@"名字:%@",self.inputTextField.text];
-    [[TADataCenter shareInstance] addChatMessage:string];
-    [self.msgTableView reloadData];
+    //发送消息
+    [[TASocketManager shareInstance] SendClientChatEvent:msg];
     self.inputTextField.text = @"";
     [self.inputTextField resignFirstResponder];
-    
-    kWeakSelf(self);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
-        [weakself.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    });
 }
 
 - (void)showView:(UIView *)superView animated:(BOOL)animated
@@ -335,7 +333,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         UILabel *titleLabel = [UILabel new];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.font = [UIFont systemFontOfSize:11];
-        titleLabel.tag = 999;
+        titleLabel.tag = 1991;
         titleLabel.numberOfLines = 1;
 
         [_msgHeaderView addSubview:view];
@@ -413,8 +411,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
     static NSString *TAChatViewCellIdIdentifier = @"TAChatViewCellIdIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              TAChatViewCellIdIdentifier];
@@ -432,7 +430,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         view.layer.masksToBounds = YES;
         
         UILabel *titleLabel = [UILabel new];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [UIColor yellowColor];
         titleLabel.font = [UIFont systemFontOfSize:11];
         titleLabel.tag = 999;
         titleLabel.numberOfLines = 0;
@@ -451,13 +449,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         }];
     }
     UILabel *titleLabel = [cell.contentView viewWithTag:999];
-    NSString *string = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    titleLabel.textColor = [UIColor yellowColor];
+    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    if (!chatData.nickname){
+        chatData.nickname = @"神秘人";
+    }
+    NSString *text = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
+    NSMutableAttributedString *mAttString = [[NSMutableAttributedString alloc] initWithString:text];
+    NSRange range = [text rangeOfString:chatData.content];
+    [mAttString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+    titleLabel.attributedText = mAttString;
     
-    NSMutableAttributedString *mAttStri = [[NSMutableAttributedString alloc] initWithString:string];
-    NSRange range = [string rangeOfString:@"名字:"];
-    [mAttStri addAttribute:NSForegroundColorAttributeName value:[UIColor yellowColor] range:range];
-    titleLabel.attributedText = mAttStri;
-
     return cell;
 }
 
@@ -472,7 +474,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *string = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    if (!chatData.nickname){
+        chatData.nickname = @"神秘人";
+    }
+    NSString *string = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
     CGFloat singleHeight = [@"单行高度" heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
     CGFloat suggestedHeight = [string heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
     return kRelative(70) - singleHeight + suggestedHeight;

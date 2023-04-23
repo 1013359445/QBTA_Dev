@@ -578,6 +578,8 @@
 		7ABEB96B29ED47AF007556CF /* JFRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB94729ED47AF007556CF /* JFRWebSocket.h */; };
 		7ABEB96C29ED47AF007556CF /* JFRSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94829ED47AF007556CF /* JFRSecurity.m */; };
 		7ABEB96D29ED47AF007556CF /* JFRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB94929ED47AF007556CF /* JFRWebSocket.m */; };
+		7ABEB97729F22EC0007556CF /* TAChatDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABEB97529F22EC0007556CF /* TAChatDataModel.h */; };
+		7ABEB97829F22EC0007556CF /* TAChatDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEB97629F22EC0007556CF /* TAChatDataModel.m */; };
 		7AC5E8F929CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */; };
 		7AC5E8FA29CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */; };
 		7AC611AE29D18FB600833933 /* TARoomListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AC611AC29D18FB600833933 /* TARoomListView.h */; };
@@ -1201,6 +1203,8 @@
 		7ABEB94729ED47AF007556CF /* JFRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFRWebSocket.h; sourceTree = "<group>"; };
 		7ABEB94829ED47AF007556CF /* JFRSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRSecurity.m; sourceTree = "<group>"; };
 		7ABEB94929ED47AF007556CF /* JFRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFRWebSocket.m; sourceTree = "<group>"; };
+		7ABEB97529F22EC0007556CF /* TAChatDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAChatDataModel.h; sourceTree = "<group>"; };
+		7ABEB97629F22EC0007556CF /* TAChatDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAChatDataModel.m; sourceTree = "<group>"; };
 		7AC5E8F729CC4D93006FB4C0 /* TABroadcastExtensionLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TABroadcastExtensionLauncher.h; sourceTree = "<group>"; };
 		7AC5E8F829CC4D93006FB4C0 /* TABroadcastExtensionLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TABroadcastExtensionLauncher.m; sourceTree = "<group>"; };
 		7AC611AC29D18FB600833933 /* TARoomListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARoomListView.h; sourceTree = "<group>"; };
@@ -2258,6 +2262,7 @@
 			children = (
 				7A85949D29ACB49F00D6B51A /* TAChatView.h */,
 				7A85949E29ACB49F00D6B51A /* TAChatView.m */,
+				7ABEB97429F22E96007556CF /* Model */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2473,6 +2478,15 @@
 				7ABEB94929ED47AF007556CF /* JFRWebSocket.m */,
 			);
 			path = Jetfire;
+			sourceTree = "<group>";
+		};
+		7ABEB97429F22E96007556CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7ABEB97529F22EC0007556CF /* TAChatDataModel.h */,
+				7ABEB97629F22EC0007556CF /* TAChatDataModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7AC8D5FB29875A07001E9F12 /* IOSFramework */ = {
@@ -2853,6 +2867,7 @@
 				7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */,
 				7A73290529D571AB00DBFC4F /* TARoomManager.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
+				7ABEB97729F22EC0007556CF /* TAChatDataModel.h in Headers */,
 				7ABEB96929ED47AF007556CF /* DefaultSocketLogger.h in Headers */,
 				7A1FD36B29B9A6F0006C352F /* TASettingVoiceView.h in Headers */,
 				7AD8A63A29A4B1F100257E1D /* TACmdModel.h in Headers */,
@@ -3179,6 +3194,7 @@
 				7A3CB002298A46EF00DD1998 /* SDInternalMacros.m in Sources */,
 				7A3CB007298A46EF00DD1998 /* SDDisplayLink.m in Sources */,
 				7A3CB034298A47AB00DD1998 /* MASConstraintMaker.m in Sources */,
+				7ABEB97829F22EC0007556CF /* TAChatDataModel.m in Sources */,
 				7A3CADF1298A426300DD1998 /* MJPropertyKey.m in Sources */,
 				7A3CB041298A484100DD1998 /* MBProgressHUD.m in Sources */,
 				7A3CADE4298A426300DD1998 /* MJPropertyType.m in Sources */,

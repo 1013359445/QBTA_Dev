@@ -38,11 +38,8 @@
 }
 
 - (void)dealloc{
-    if (self.isAdmin){
-        [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"isProhibition"];
-    }else{
-        [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
-    }
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"isProhibition"];
+    [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
 }
 
@@ -53,11 +50,8 @@
         self.showEffectView = YES;
 
         //注册监听
-        if (self.isAdmin){
-            [[TADataCenter shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:nil];
-        }else{
-            [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:nil];
-        }
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:nil];
+        [[TARoomManager shareInstance] addObserver:self forKeyPath:@"isStartLocalAudio" options:NSKeyValueObservingOptionNew context:nil];
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
         
         //获取成员列表
@@ -71,11 +65,14 @@
 //KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if ([@"isProhibition" isEqualToString:keyPath]) {
-        self.leftBtn.selected = self.isProhibition;
-    }
-    if ([@"isStartLocalAudio" isEqualToString:keyPath]) {
-        self.leftBtn.selected = self.isStartLocalAudio;
+    if (self.isAdmin){
+        if ([@"isProhibition" isEqualToString:keyPath]) {
+            self.leftBtn.selected = self.isProhibition;
+        }
+    }else{
+        if ([@"isStartLocalAudio" isEqualToString:keyPath]) {
+            self.leftBtn.selected = self.isStartLocalAudio;
+        }
     }
     if ([@"membersList" isEqualToString:keyPath]) {
         [self.tableView reloadData];

@@ -45,6 +45,7 @@
 @end
 
 @interface TASocketManager ()
+@property (nonatomic, assign)int connectTimes;//连接次数
 
 @end
 @implementation TASocketManager
@@ -56,6 +57,8 @@ shareInstance_implementation(TASocketManager);
         [self.socket removeAllHandlers];
         self.socket = nil;
     }
+    self.connectTimes = 1;
+
     NSString *url = @"http://39.100.153.162:10246";
     TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
     NSDictionary *connectParams = @{@"uid":@(userInfo.pkid).stringValue,
@@ -70,30 +73,29 @@ shareInstance_implementation(TASocketManager);
                                                                 }];
     [socket connect];
     self.socket = socket;
-
+    
     kWeakSelf(self);
     //-----------------------------------监听--------------------------------
     //监听-服务器连接事件
     [socket on:kSocketEventConnect callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
-        //连接成功-获取成员列表
-        TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
-        parm.range = @"room";
-        [weakself SendClientMembers:parm];
-        
+        weakself.connectTimes = 1;
         //取消之前的定时发送
         [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
         //开始新的发送心跳-自动定时重复
-        [weakself HeartbeatSendServer];
+        [weakself performSelector:@selector(HeartbeatSendServer) withObject:nil afterDelay:18];
     }];
     [socket on:kSocketEventError callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
-        [weakself.socket reconnect];//错误重连
+        //取消之前的定时发送
+        [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
+        //开始新的发送心跳-自动定时重复
+        [weakself performSelector:@selector(reconnect) withObject:nil afterDelay:5 * weakself.connectTimes];
     }];
     [socket on:kSocketEventStatusChange callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
-        if (weakself.socket.status == VPSocketIOClientStatusDisconnected){
-            //取消心跳包发送
+        if (weakself.socket.status == VPSocketIOClientStatusDisconnected || [TADataCenter shareInstance].userInfo != nil){
+            //取消之前的定时发送
             [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
-            //重连
-            [weakself.socket reconnect];
+            //开始新的发送心跳-自动定时重复
+            [weakself performSelector:@selector(reconnect) withObject:nil afterDelay:5 * weakself.connectTimes];
         }
     }];
     
@@ -264,6 +266,20 @@ shareInstance_implementation(TASocketManager);
     
     if (self.socket.status == VPSocketIOClientStatusConnected || self.socket.status == VPSocketIOClientStatusOpened){
         [self performSelector:@selector(HeartbeatSendServer) withObject:nil afterDelay:18];
+    }
+}
+
+- (void)reconnect
+{
+    self.connectTimes ++;
+    [self.socket reconnect];
+}
+
+- (void)setConnectTimes:(int)connectTimes
+{
+    _connectTimes = connectTimes;
+    if (_connectTimes >= 4){
+        _connectTimes = 1;
     }
 }
 

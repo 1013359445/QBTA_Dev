@@ -24,6 +24,7 @@ shareInstance_interface(TADataCenter)
 @property (nonatomic, nullable, copy)NSString*      cookie;
 @property (nonatomic, nullable, copy)NSString*      token;
 
+@property (nonatomic, assign)BOOL                   isChatViewVisible;
 
 @end
 

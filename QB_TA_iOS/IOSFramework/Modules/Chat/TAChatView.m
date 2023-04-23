@@ -34,6 +34,7 @@
 - (void)dealloc{
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
+    [TADataCenter shareInstance].isChatViewVisible = NO;
 }
 
 - (instancetype)init
@@ -45,6 +46,8 @@
         //注册监听
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"chatMessages" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [TADataCenter shareInstance].isChatViewVisible = YES;
     }
     return self;
 }
@@ -111,8 +114,16 @@
     }];
     
     [self chatPeopleWhoSpeakChange];
+    
     //获取消息列表
     [[TASocketManager shareInstance] GetHistoricalMessages];
+    
+    if (![TADataCenter shareInstance].membersList){
+        //获取成员列表
+        TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
+        parm.range = @"room";
+        [[TASocketManager shareInstance] SendClientMembers:parm];
+    }
 }
 
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview

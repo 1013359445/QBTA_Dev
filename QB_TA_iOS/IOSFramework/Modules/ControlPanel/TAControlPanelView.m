@@ -14,6 +14,7 @@
 #import "TAChatView.h"
 #import "TARoomManager.h"
 #import "TARoomListView.h"
+#import "TAChatDataModel.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -28,6 +29,7 @@
 //@property (nonatomic, retain)TAMiniMapView      *miniMapView;
 @property (nonatomic, retain)UIButton           *changeSpaceBtn;
 @property (nonatomic, retain)UIButton           *chatBtn;
+@property (nonatomic, retain)UIView             *newMsgRedPoint;
 
 @end
 
@@ -40,6 +42,10 @@
     return cmdModel;
 }
 
+- (void)dealloc{
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -49,8 +55,22 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[TARoomManager shareInstance] enterRoom:[TADataCenter shareInstance].userInfo.roomNum];
         });
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"chatMessages" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
+}
+//KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
+    TAChatDataModel *chatData = [[TADataCenter shareInstance].chatMessages lastObject];
+    if (![chatData.nickname isEqualToString:userInfo.nickname] && ![chatData.phone isEqualToString:userInfo.phone])
+    {
+        if (![TADataCenter shareInstance].isChatViewVisible)
+        {
+            self.newMsgRedPoint.hidden = NO;
+        }
+    }
 }
 
 - (void)loadSubViews
@@ -134,6 +154,7 @@
 
 - (void)chatBtnClick
 {
+    self.newMsgRedPoint.hidden = YES;
     [[TARouter shareInstance] autoTaskWithCmdModel:[TAChatView cmd] responseBlock:nil];
 }
 
@@ -244,9 +265,23 @@
         _chatBtn = [UIButton new];
         [_chatBtn setImage:kBundleImage(@"icon_chat", @"ControlPanel") forState:UIControlStateNormal];
         [_chatBtn addTarget:self action:@selector(chatBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_chatBtn addSubview:self.newMsgRedPoint];
+        [_newMsgRedPoint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(kRelative(8));
+            make.top.right.mas_equalTo(0);
+        }];
     }
     return _chatBtn;
 }
 
-
+-(UIView *)newMsgRedPoint
+{
+    if (!_newMsgRedPoint) {
+        _newMsgRedPoint = [UIView new];
+        _newMsgRedPoint.backgroundColor = [UIColor redColor];
+        _newMsgRedPoint.layer.cornerRadius = kRelative(4);
+        _newMsgRedPoint.clipsToBounds = YES;
+    }
+    return _newMsgRedPoint;
+}
 @end

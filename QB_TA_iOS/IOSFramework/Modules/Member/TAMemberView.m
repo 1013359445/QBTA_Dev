@@ -55,9 +55,7 @@
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
         
         //获取成员列表
-        TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
-        parm.range = @"room";
-        [[TASocketManager shareInstance] SendClientMembers:parm];
+        [[TASocketManager shareInstance] SendClientMemberList];
     }
     return self;
 }

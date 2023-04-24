@@ -62,14 +62,14 @@
 //KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
-    TAChatDataModel *chatData = [[TADataCenter shareInstance].chatMessages lastObject];
-    if (![chatData.nickname isEqualToString:userInfo.nickname] && ![chatData.phone isEqualToString:userInfo.phone])
+    TAChatDataModel *lastChatData = [[TADataCenter shareInstance].chatMessages lastObject];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *defaultChatDatetime = [defaults objectForKey:DefaultsKeyLastChatDatetime];
+    if (![lastChatData.datetime isEqualToString:defaultChatDatetime] && ![TADataCenter shareInstance].isChatViewVisible)
     {
-        if (![TADataCenter shareInstance].isChatViewVisible)
-        {
-            self.newMsgRedPoint.hidden = NO;
-        }
+        self.newMsgRedPoint.hidden = NO;
+    }else{
+        self.newMsgRedPoint.hidden = YES;
     }
 }
 
@@ -281,6 +281,7 @@
         _newMsgRedPoint.backgroundColor = [UIColor redColor];
         _newMsgRedPoint.layer.cornerRadius = kRelative(4);
         _newMsgRedPoint.clipsToBounds = YES;
+        _newMsgRedPoint.hidden = YES;
     }
     return _newMsgRedPoint;
 }

@@ -47,7 +47,7 @@ shareInstance_interface(TASocketManager)
 - (void)socketConnect;
 
 //获取成员列表
-- (void)SendClientMembers:(TAClientRoomDataParmModel *)data;
+- (void)SendClientMemberList;
 //全体禁⻨\解除禁⻨\禁⻨某⼈\解禁某⼈\申请解禁\同意解禁\否定解禁\⾃⼰禁麦\⾃⼰开⻨
 - (void)SendClientMembersVoice:(TAClientMembersVocieParmModel *)data;
 //踢出某人

@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSString * const DefaultsKeyLastChatDatetime = @"DefaultsKeyLastChatDatetime";
+
 @interface TAChatView : TABaseView
 
 @end

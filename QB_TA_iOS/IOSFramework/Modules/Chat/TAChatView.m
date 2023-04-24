@@ -35,6 +35,11 @@
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
     [TADataCenter shareInstance].isChatViewVisible = NO;
+    
+    TAChatDataModel *lastChatData = [[TADataCenter shareInstance].chatMessages lastObject];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:lastChatData.datetime forKey:DefaultsKeyLastChatDatetime];
+    [defaults synchronize];
 }
 
 - (instancetype)init
@@ -117,13 +122,6 @@
     
     //获取消息列表
     [[TASocketManager shareInstance] GetHistoricalMessages];
-    
-    if (![TADataCenter shareInstance].membersList){
-        //获取成员列表
-        TAClientRoomDataParmModel *parm = [TAClientRoomDataParmModel new];
-        parm.range = @"room";
-        [[TASocketManager shareInstance] SendClientMembers:parm];
-    }
 }
 
 - (void)willMoveToSuperview:(nullable UIView *)newSuperview
@@ -311,9 +309,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         _bgView = [UIView new];
         CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         NSMutableArray *colors = [NSMutableArray arrayWithObjects:
-                                  (id)[UIColor colorWithWhite:0 alpha:0.4].CGColor,
+                                  (id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,
                                   (id)[UIColor colorWithWhite:0 alpha:0.3].CGColor,
-                                  (id)[UIColor colorWithWhite:0 alpha:0.1].CGColor,nil
+                                  (id)[UIColor colorWithWhite:0 alpha:0.05].CGColor,nil
                                   ];
         CAGradientLayer *gradLayer = [CAGradientLayer layer];
         [gradLayer setColors:colors];
@@ -441,7 +439,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         view.layer.masksToBounds = YES;
         
         UILabel *titleLabel = [UILabel new];
-        titleLabel.textColor = [UIColor yellowColor];
         titleLabel.font = [UIFont systemFontOfSize:11];
         titleLabel.tag = 999;
         titleLabel.numberOfLines = 0;
@@ -465,10 +462,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     if (!chatData.nickname){
         chatData.nickname = @"神秘人";
     }
+    
     NSString *text = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
     NSMutableAttributedString *mAttString = [[NSMutableAttributedString alloc] initWithString:text];
     NSRange range = [text rangeOfString:chatData.content];
-    [mAttString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
+    if ([chatData.nickname isEqualToString:userInfo.nickname] && [chatData.phone isEqualToString:userInfo.phone]) {
+        titleLabel.textColor = [UIColor yellowColor];
+        [mAttString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+    }else{
+        titleLabel.textColor = [UIColor whiteColor];
+    }
     titleLabel.attributedText = mAttString;
     
     return cell;

@@ -17,6 +17,7 @@
 @implementation TAClientRoomDataParmModel
 - (void)assignDefaultValue
 {
+    self.range = @"room";
     self.roomNum = [TADataCenter shareInstance].userInfo.roomNum;
 }
 @end
@@ -83,6 +84,8 @@ shareInstance_implementation(TASocketManager);
         [NSObject cancelPreviousPerformRequestsWithTarget:weakself];
         //开始新的发送心跳-自动定时重复
         [weakself performSelector:@selector(HeartbeatSendServer) withObject:nil afterDelay:18];
+        
+        [weakself performSelector:@selector(firstLoadDataOnContented) withObject:nil afterDelay:1.0];
     }];
     [socket on:kSocketEventError callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
         //取消之前的定时发送
@@ -213,10 +216,10 @@ shareInstance_implementation(TASocketManager);
 }
 
 //获取成员列表
-- (void)SendClientMembers:(TAClientRoomDataParmModel *)data
+- (void)SendClientMemberList
 {
     TAClientMembersParmModel *parm = [TAClientMembersParmModel new];
-    parm.data = data;
+    parm.data = [TAClientRoomDataParmModel new];
     [self.socket emit:@"SendClientMembers" items:@[[parm mj_JSONString]]];
 }
 
@@ -283,4 +286,11 @@ shareInstance_implementation(TASocketManager);
     }
 }
 
+- (void)firstLoadDataOnContented
+{
+    //获取消息列表
+    [[TASocketManager shareInstance] GetHistoricalMessages];
+    //获取成员列表
+    [[TASocketManager shareInstance] SendClientMemberList];
+}
 @end

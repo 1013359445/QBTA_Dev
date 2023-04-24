@@ -27,13 +27,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
+//    UIImage *img1;// Some photo;
+//    UIImage *img2;// Some photo;
+//
+//    NSData *imgdata1 = UIImagePNGRepresentation(img1);
+//
+//    NSData *imgdata2 = UIImagePNGRepresentation(img2);
+//
+//    if ([imgdata1 isEqualToData:imgdata2]) {
+//        NSLog(@"Same Image");
+//    }
+    
+    
     self.view.alpha = 0;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         XxxxView *iOSView = [[XxxxView alloc] init];
         iOSView.frame = self.view.bounds;
         iOSView.userInteractionEnabled = YES;
         [self.view addSubview:iOSView];
-        
+
         [CommInterface shareInstance].ueDelegate = [CommInterfaceResult shareInstance];
         [CommInterface shareInstance].iOSViewController = self;
         [CommInterface shareInstance].iOSView = iOSView;
@@ -43,7 +58,7 @@
         const char *cIdentifier = [@"loginBack" cStringUsingEncoding:NSUTF8StringEncoding];
 //        const char *cName = [@"controlPanel" cStringUsingEncoding:NSUTF8StringEncoding];
 //        const char *cIdentifier = nil;
-        
+
         const char *cParam = nil;
         bool animated = false;
         module->showIOSView(cName, cParam, animated , cIdentifier);

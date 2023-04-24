@@ -61,7 +61,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if ([@"membersList" isEqualToString:keyPath]) {
-        [self chatPeopleWhoSpeakChange];
+        [self.msgTableView reloadData];
     }else{
         [self.msgTableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -117,18 +117,11 @@
         make.right.mas_equalTo(kRelative(-5));
         make.bottom.mas_equalTo(kRelative(-5));
     }];
-    
-    [self chatPeopleWhoSpeakChange];
-    
     //获取消息列表
     [[TASocketManager shareInstance] GetHistoricalMessages];
 }
 
-- (void)willMoveToSuperview:(nullable UIView *)newSuperview
-{
-    [super willMoveToSuperview:newSuperview];
-}
-
+#pragma mark - action
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     if ([touches anyObject].view == _bgView) {
@@ -138,30 +131,6 @@
             [self hideViewAnimated:YES];
         }
     }
-}
-
-- (void)chatPeopleWhoSpeakChange
-{
-    UILabel *titleLabel = [self.msgHeaderView viewWithTag:1991];
-    NSArray *array = [TADataCenter shareInstance].microphoneUserList;
-    NSString *name = @"";
-    if (array.count == 0) {
-        self.msgTableView.tableHeaderView = nil;
-        return;
-    }else if (array.count == 1){
-        TAMemberModel *model = array[0];
-        name = model.nickname;
-    }else if (array.count == 2){
-        TAMemberModel *model_0 = array[0];
-        TAMemberModel *model_1 = array[1];
-        name = [NSString stringWithFormat:@"%@和%@",model_0.nickname,model_1.nickname];
-    }else{
-        TAMemberModel *model_0 = array[0];
-        TAMemberModel *model_1 = array[1];
-        name = [NSString stringWithFormat:@"%@、%@等%ld名成员",model_0.nickname,model_1.nickname,array.count];
-    }
-    titleLabel.text = [NSString stringWithFormat:@"%@正在讲话",name];
-    self.msgTableView.tableHeaderView = self.msgHeaderView;
 }
 
 - (void)sendBtnClick:(UIButton *)sender
@@ -178,6 +147,7 @@
     [self.inputTextField resignFirstResponder];
 }
 
+#pragma mark - animated
 - (void)showView:(UIView *)superView animated:(BOOL)animated
 {
     if (self.superview) {
@@ -239,6 +209,7 @@
     }];
 }
 
+#pragma mark - UITextField
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
@@ -303,6 +274,119 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     return YES;
 }
 
+#pragma mark - UITableView
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSArray *array = [TADataCenter shareInstance].microphoneUserList;
+    if (array.count == 0) {
+        return 0;
+    }
+    return kRelative(70);
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *titleLabel = [self.msgHeaderView viewWithTag:1991];
+    NSArray *array = [TADataCenter shareInstance].microphoneUserList;
+    NSString *name = @"";
+    if (array.count == 0) {
+        return nil;
+    }else if (array.count == 1){
+        TAMemberModel *model = array[0];
+        name = model.nickname;
+    }else if (array.count == 2){
+        TAMemberModel *model_0 = array[0];
+        TAMemberModel *model_1 = array[1];
+        name = [NSString stringWithFormat:@"%@和%@",model_0.nickname,model_1.nickname];
+    }else{
+        TAMemberModel *model_0 = array[0];
+        TAMemberModel *model_1 = array[1];
+        name = [NSString stringWithFormat:@"%@、%@等%ld名成员",model_0.nickname,model_1.nickname,array.count];
+    }
+    titleLabel.text = [NSString stringWithFormat:@"%@正在讲话",name];
+    return self.msgHeaderView;
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    static NSString *TAChatViewCellIdIdentifier = @"TAChatViewCellIdIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             TAChatViewCellIdIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier: TAChatViewCellIdIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UIView *view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        view.layer.cornerRadius = kRelative(16);
+        view.layer.masksToBounds = YES;
+        
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.font = [UIFont systemFontOfSize:11];
+        titleLabel.tag = 999;
+        titleLabel.numberOfLines = 0;
+
+        [cell.contentView addSubview:view];
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(kRelative(10));
+            make.width.mas_equalTo(kRelative(400));
+            make.bottom.mas_equalTo(0);
+        }];
+
+        [view addSubview:titleLabel];
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(kRelative(15));
+            make.right.bottom.mas_equalTo(kRelative(-15));
+        }];
+    }
+    UILabel *titleLabel = [cell.contentView viewWithTag:999];
+    titleLabel.textColor = [UIColor yellowColor];
+    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    if (!chatData.nickname){
+        chatData.nickname = @"神秘人";
+    }
+    
+    NSString *text = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
+    NSMutableAttributedString *mAttString = [[NSMutableAttributedString alloc] initWithString:text];
+    NSRange range = [text rangeOfString:chatData.content];
+    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
+    if ([chatData.nickname isEqualToString:userInfo.nickname] && [chatData.phone isEqualToString:userInfo.phone]) {
+        titleLabel.textColor = [UIColor yellowColor];
+        [mAttString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+    }else{
+        titleLabel.textColor = [UIColor whiteColor];
+    }
+    titleLabel.attributedText = mAttString;
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [TADataCenter shareInstance].chatMessages.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    if (!chatData.nickname){
+        chatData.nickname = @"神秘人";
+    }
+    NSString *string = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
+    CGFloat singleHeight = [@"单行高度" heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
+    CGFloat suggestedHeight = [string heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
+    return kRelative(70) - singleHeight + suggestedHeight;
+}
+
+#pragma mark - lazy load
 -(UIView *)bgView
 {
     if (!_bgView){
@@ -332,7 +416,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         _msgHeaderView.backgroundColor = [UIColor clearColor];
         
         UIView *view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.9];
         view.layer.cornerRadius = kRelative(16);
         view.layer.masksToBounds = YES;
         
@@ -419,83 +503,4 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     return _sendBtn;
 }
 
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    static NSString *TAChatViewCellIdIdentifier = @"TAChatViewCellIdIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             TAChatViewCellIdIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier: TAChatViewCellIdIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        UIView *view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-        view.layer.cornerRadius = kRelative(16);
-        view.layer.masksToBounds = YES;
-        
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.font = [UIFont systemFontOfSize:11];
-        titleLabel.tag = 999;
-        titleLabel.numberOfLines = 0;
-
-        [cell.contentView addSubview:view];
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(kRelative(10));
-            make.width.mas_equalTo(kRelative(400));
-            make.bottom.mas_equalTo(0);
-        }];
-
-        [view addSubview:titleLabel];
-        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(kRelative(15));
-            make.right.bottom.mas_equalTo(kRelative(-15));
-        }];
-    }
-    UILabel *titleLabel = [cell.contentView viewWithTag:999];
-    titleLabel.textColor = [UIColor yellowColor];
-    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
-    if (!chatData.nickname){
-        chatData.nickname = @"神秘人";
-    }
-    
-    NSString *text = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
-    NSMutableAttributedString *mAttString = [[NSMutableAttributedString alloc] initWithString:text];
-    NSRange range = [text rangeOfString:chatData.content];
-    TAUserInfo *userInfo = [TADataCenter shareInstance].userInfo;
-    if ([chatData.nickname isEqualToString:userInfo.nickname] && [chatData.phone isEqualToString:userInfo.phone]) {
-        titleLabel.textColor = [UIColor yellowColor];
-        [mAttString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
-    }else{
-        titleLabel.textColor = [UIColor whiteColor];
-    }
-    titleLabel.attributedText = mAttString;
-    
-    return cell;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section { 
-    return [TADataCenter shareInstance].chatMessages.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
-    if (!chatData.nickname){
-        chatData.nickname = @"神秘人";
-    }
-    NSString *string = [NSString stringWithFormat:@"%@:%@",chatData.nickname,chatData.content];
-    CGFloat singleHeight = [@"单行高度" heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
-    CGFloat suggestedHeight = [string heightWithLabelFont:[UIFont systemFontOfSize:11] withLabelWidth:kRelative(370)];
-    return kRelative(70) - singleHeight + suggestedHeight;
-}
 @end

@@ -46,7 +46,7 @@
     [[TARoomManager shareInstance] removeObserver:self forKeyPath:@"isStartLocalAudio"];
 }
 
-//KVO
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     self.mikeState.selected = [TARoomManager shareInstance].isStartLocalAudio;
@@ -89,6 +89,7 @@
     [[TARoomManager shareInstance] seeUserVideoWithRemoteView:self.remoteView];
 }
 
+#pragma mark - Button Action
 -(void)closeBtnClick
 {
     [self hideViewAnimated:YES];

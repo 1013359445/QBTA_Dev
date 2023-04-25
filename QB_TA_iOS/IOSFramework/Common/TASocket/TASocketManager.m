@@ -173,7 +173,7 @@ shareInstance_implementation(TASocketManager);
                 }
                 parm.phone = userPhone;
                 parm.range = @"user";
-                [[TASocketManager shareInstance] SendClientMembersVoice:parm];
+                [self SendClientMembersVoice:parm];
             }];
         }
     }];
@@ -289,8 +289,8 @@ shareInstance_implementation(TASocketManager);
 - (void)firstLoadDataOnContented
 {
     //获取消息列表
-    [[TASocketManager shareInstance] GetHistoricalMessages];
+    [self GetHistoricalMessages];
     //获取成员列表
-    [[TASocketManager shareInstance] SendClientMemberList];
+    [self SendClientMemberList];
 }
 @end

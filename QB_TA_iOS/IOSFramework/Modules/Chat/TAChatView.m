@@ -67,7 +67,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (self.msgTableView.contentSize.height > self.msgTableView.bounds.size.height) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
-                [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
             }
         });
     }

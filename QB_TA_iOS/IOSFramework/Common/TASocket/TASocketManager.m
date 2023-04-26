@@ -202,14 +202,21 @@ shareInstance_implementation(TASocketManager);
         NSDictionary *data = [array firstObject];;
         if ([data isKindOfClass: [NSDictionary class]]){
             
-            NSArray *array = data[@"data"];
-            if (array){
+            NSArray *chatArray = nil;
+            id chatData = data[@"data"];
+            if ([chatData isKindOfClass: [NSDictionary class]]){
+                chatArray = @[chatData];
+            }else if ([chatData isKindOfClass: [NSArray class]]){
+                chatArray = chatData;
+            }
+            if (chatArray){
                 NSMutableArray *chatList = [NSMutableArray array];
-                for (NSDictionary *dic in array) {
+                for (NSDictionary *dic in chatArray) {
                     TAChatDataModel *dataModel = [TAChatDataModel mj_objectWithKeyValues:dic];
                     [chatList addObject:dataModel];
                 }
-                [[TADataCenter shareInstance] setValue:chatList forKey:@"chatMessages"];
+                NSMutableArray *chatMessages = [[TADataCenter shareInstance] mutableArrayValueForKey:@"chatMessages"];
+                [chatMessages addObjectsFromArray:chatList];
             }
         }
     }];
@@ -242,7 +249,7 @@ shareInstance_implementation(TASocketManager);
 
 //发送消息
 - (void)GetHistoricalMessages{
-    [self SendClientChatEvent:nil phone:nil];
+//    [self SendClientChatEvent:nil phone:nil];
 }
 - (void)SendClientChatEvent:(NSString *)content{
     [self SendClientChatEvent:content phone:nil];

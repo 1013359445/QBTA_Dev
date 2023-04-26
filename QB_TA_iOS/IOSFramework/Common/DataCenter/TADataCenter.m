@@ -21,7 +21,7 @@ shareInstance_implementation(TADataCenter);
     if (self) {
         
         self.microphoneUserList = [[NSMutableArray alloc] init];
-        self.chatMessages = [[NSArray alloc] init];
+        self.chatMessages = [[NSMutableArray alloc] init];
     }
     return self;
 }

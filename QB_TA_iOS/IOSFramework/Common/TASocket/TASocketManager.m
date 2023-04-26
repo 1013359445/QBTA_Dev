@@ -249,7 +249,7 @@ shareInstance_implementation(TASocketManager);
 
 //发送消息
 - (void)GetHistoricalMessages{
-//    [self SendClientChatEvent:nil phone:nil];
+    [self SendClientChatEvent:nil phone:nil];
 }
 - (void)SendClientChatEvent:(NSString *)content{
     [self SendClientChatEvent:content phone:nil];

@@ -117,8 +117,6 @@
         make.right.mas_equalTo(kRelative(-5));
         make.bottom.mas_equalTo(kRelative(-5));
     }];
-    //获取消息列表
-    [[TASocketManager shareInstance] GetHistoricalMessages];
 }
 
 #pragma mark - action

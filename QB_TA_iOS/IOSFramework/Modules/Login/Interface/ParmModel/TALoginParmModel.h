@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)NSString*    version;
 @property (nonatomic, copy)NSString*    versionType;
 @property (nonatomic, copy)NSString*    lang;
+@property (nonatomic, copy)NSNumber*    clientType;
 
 @end
 

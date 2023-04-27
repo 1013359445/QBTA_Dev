@@ -507,6 +507,7 @@
 		7A4D3EDA29DE790E00CCE18E /* TAAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3ED829DE790E00CCE18E /* TAAlertViewController.m */; };
 		7A4D3EE029E0039800CCE18E /* TAMemberTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4D3EDE29E0039800CCE18E /* TAMemberTableViewCell.h */; };
 		7A4D3EE129E0039800CCE18E /* TAMemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D3EDF29E0039800CCE18E /* TAMemberTableViewCell.m */; };
+		7A4E294029F92438007EB8B7 /* TABundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AF92674298D03680005CA52 /* TABundle.bundle */; };
 		7A6BF75B298BCA5B002EEDCA /* TALoginInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF759298BCA5B002EEDCA /* TALoginInterface.h */; };
 		7A6BF75C298BCA5B002EEDCA /* TALoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6BF75A298BCA5B002EEDCA /* TALoginInterface.m */; };
 		7A6BF763298BCAF2002EEDCA /* TALoginParmModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A6BF761298BCAF2002EEDCA /* TALoginParmModel.h */; };
@@ -2923,6 +2924,7 @@
 				7AC8D5F629875A07001E9F12 /* Sources */,
 				7AC8D5F729875A07001E9F12 /* Frameworks */,
 				7AD4C06B29C4310900AFE5A4 /* Embed Frameworks */,
+				7A4E293F29F9242C007EB8B7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2964,6 +2966,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A4E293F29F9242C007EB8B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4E294029F92438007EB8B7 /* TABundle.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7AC8D5F629875A07001E9F12 /* Sources */ = {

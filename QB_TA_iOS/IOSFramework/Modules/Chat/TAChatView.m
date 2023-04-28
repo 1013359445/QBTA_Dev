@@ -22,6 +22,7 @@
 @property (nonatomic, retain)UIView         *inputView;
 @property (nonatomic, retain)UITextField    *inputTextField;
 @property (nonatomic, retain)UIButton       *sendBtn;
+@property (nonatomic, retain)NSArray        *chatMsgData;
 
 @end
 
@@ -36,10 +37,12 @@
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
     [TADataCenter shareInstance].isChatViewVisible = NO;
     
-    TAChatDataModel *lastChatData = [[TADataCenter shareInstance].chatMessages lastObject];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:lastChatData.datetime forKey:DefaultsKeyLastChatDatetime];
-    [defaults synchronize];
+    if (self.chatMsgData.count > 0) {
+        TAChatDataModel *lastChatData = [self.chatMsgData lastObject];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:lastChatData.datetime forKey:DefaultsKeyLastChatDatetime];
+        [defaults synchronize];
+    }
 }
 
 - (instancetype)init
@@ -47,6 +50,7 @@
     self = [super init];
     if (self) {
         self.showEffectView = YES;
+        self.chatMsgData = @[];
 
         //注册监听
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
@@ -63,10 +67,11 @@
     if ([@"membersList" isEqualToString:keyPath]) {
         [self.msgTableView reloadData];
     }else{
+        self.chatMsgData = [TADataCenter shareInstance].chatMessages;
         [self.msgTableView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (self.msgTableView.contentSize.height > self.msgTableView.bounds.size.height) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[TADataCenter shareInstance].chatMessages.count-1 inSection:0];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chatMsgData.count-1 inSection:0];
                 [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
             }
         });
@@ -343,7 +348,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     }
     UILabel *titleLabel = [cell.contentView viewWithTag:999];
     titleLabel.textColor = [UIColor yellowColor];
-    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    TAChatDataModel *chatData = self.chatMsgData[indexPath.row];
     if (!chatData.nickname){
         chatData.nickname = @"神秘人";
     }
@@ -369,12 +374,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [TADataCenter shareInstance].chatMessages.count;
+    return self.chatMsgData.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TAChatDataModel *chatData = [TADataCenter shareInstance].chatMessages[indexPath.row];
+    TAChatDataModel *chatData = self.chatMsgData[indexPath.row];
     if (!chatData.nickname){
         chatData.nickname = @"神秘人";
     }

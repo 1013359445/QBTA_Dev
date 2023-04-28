@@ -20,6 +20,7 @@
 @property (nonatomic, retain)UITableView*tableView;
 @property (nonatomic, retain)UIButton   *leftBtn;
 @property (nonatomic, retain)UIButton   *rightBtn;
+@property (nonatomic, retain)NSArray    *membersData;
 //@property (nonatomic, retain)UIView     *tableHeaderView;
 @end
 
@@ -48,6 +49,7 @@
     self = [super init];
     if (self) {
         self.showEffectView = YES;
+        self.membersData = @[];
 
         //注册监听
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"isProhibition" options:NSKeyValueObservingOptionNew context:nil];
@@ -73,6 +75,7 @@
         }
     }
     if ([@"membersList" isEqualToString:keyPath]) {
+        self.membersData = [TADataCenter shareInstance].membersList;
         [self.tableView reloadData];
     }
 }
@@ -223,13 +226,13 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
     }
-    TAMemberModel *data = [TADataCenter shareInstance].membersList[indexPath.row];
+    TAMemberModel *data = self.membersData[indexPath.row];
     cell.data = data;
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger count = [TADataCenter shareInstance].membersList.count;
+    NSInteger count = self.membersData.count;
     self.numberLabel.text = [NSString stringWithFormat:@"%ld人",count];
     return count;
 }

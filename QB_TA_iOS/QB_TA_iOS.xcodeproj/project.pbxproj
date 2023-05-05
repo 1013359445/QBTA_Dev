@@ -526,6 +526,8 @@
 		7A73290E29D58D6800DBFC4F /* TAFileCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A73290C29D58D6800DBFC4F /* TAFileCollectionViewCell.h */; };
 		7A73291129D58DE300DBFC4F /* TAFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A73290F29D58DE300DBFC4F /* TAFileManager.h */; };
 		7A73291229D58DE300DBFC4F /* TAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A73291029D58DE300DBFC4F /* TAFileManager.m */; };
+		7A7ECB9B29FBA907001D5765 /* TAVersionUpdateView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A7ECB9929FBA907001D5765 /* TAVersionUpdateView.h */; };
+		7A7ECB9C29FBA907001D5765 /* TAVersionUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7ECB9A29FBA907001D5765 /* TAVersionUpdateView.m */; };
 		7A85949729ACB43300D6B51A /* TATopMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A85949529ACB43300D6B51A /* TATopMenuView.h */; };
 		7A85949829ACB43300D6B51A /* TATopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85949629ACB43300D6B51A /* TATopMenuView.m */; };
 		7A85949B29ACB44400D6B51A /* TARightMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A85949929ACB44400D6B51A /* TARightMenuView.h */; };
@@ -1151,6 +1153,8 @@
 		7A73290C29D58D6800DBFC4F /* TAFileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAFileCollectionViewCell.h; sourceTree = "<group>"; };
 		7A73290F29D58DE300DBFC4F /* TAFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAFileManager.h; sourceTree = "<group>"; };
 		7A73291029D58DE300DBFC4F /* TAFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAFileManager.m; sourceTree = "<group>"; };
+		7A7ECB9929FBA907001D5765 /* TAVersionUpdateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TAVersionUpdateView.h; sourceTree = "<group>"; };
+		7A7ECB9A29FBA907001D5765 /* TAVersionUpdateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TAVersionUpdateView.m; sourceTree = "<group>"; };
 		7A85949529ACB43300D6B51A /* TATopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TATopMenuView.h; sourceTree = "<group>"; };
 		7A85949629ACB43300D6B51A /* TATopMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TATopMenuView.m; sourceTree = "<group>"; };
 		7A85949929ACB44400D6B51A /* TARightMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TARightMenuView.h; sourceTree = "<group>"; };
@@ -1367,6 +1371,7 @@
 		7A3CAD24298A303D00DD1998 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7A7ECB9829FBA8CA001D5765 /* Update */,
 				7A8594A229ACB51800D6B51A /* Room */,
 				7A8594A529ACB5FF00D6B51A /* FileList */,
 				7A8594A429ACB5AB00D6B51A /* Member */,
@@ -2242,6 +2247,15 @@
 			path = SharScreen;
 			sourceTree = "<group>";
 		};
+		7A7ECB9829FBA8CA001D5765 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				7A7ECB9929FBA907001D5765 /* TAVersionUpdateView.h */,
+				7A7ECB9A29FBA907001D5765 /* TAVersionUpdateView.m */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
 		7A85948B29AC7E0100D6B51A /* ControlPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2865,6 +2879,7 @@
 				7A3CAFA3298A46EF00DD1998 /* SDImageAWebPCoder.h in Headers */,
 				7A3CAFF6298A46EF00DD1998 /* NSBezierPath+SDRoundedCorners.h in Headers */,
 				7A3CB16C298A565900DD1998 /* UIButton+JKImagePosition.h in Headers */,
+				7A7ECB9B29FBA907001D5765 /* TAVersionUpdateView.h in Headers */,
 				7A1FD38629BB37E4006C352F /* KJMarqueeLabel.h in Headers */,
 				7A73290529D571AB00DBFC4F /* TARoomManager.h in Headers */,
 				7A3CAFA6298A46EF00DD1998 /* SDImageCoderHelper.h in Headers */,
@@ -3176,6 +3191,7 @@
 				7A3CAF5D298A46EE00DD1998 /* UIImage+ForceDecode.m in Sources */,
 				7A1FD34F29B5D439006C352F /* TAPersonalInfoView.m in Sources */,
 				7A3CADEF298A426300DD1998 /* NSObject+MJClass.m in Sources */,
+				7A7ECB9C29FBA907001D5765 /* TAVersionUpdateView.m in Sources */,
 				7A1FD33B29B5B82A006C352F /* TAMiniMapView.m in Sources */,
 				7A3CAE57298A462900DD1998 /* IQUIScrollView+Additions.m in Sources */,
 				7A3CB1F9298A703500DD1998 /* TARouter.m in Sources */,

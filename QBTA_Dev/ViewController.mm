@@ -29,7 +29,7 @@
     
     
     
-    
+// 比较是否为相同的图片
 //    UIImage *img1;// Some photo;
 //    UIImage *img2;// Some photo;
 //

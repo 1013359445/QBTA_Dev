@@ -129,6 +129,7 @@
         _effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
         _effectView.frame = CGRectMake(0,0, 2000, 2000);
         _effectView.alpha = 0.8;
+        _effectView.userInteractionEnabled = YES;
     }
     return _effectView;
 }

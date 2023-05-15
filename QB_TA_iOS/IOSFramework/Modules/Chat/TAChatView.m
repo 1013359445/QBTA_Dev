@@ -50,7 +50,7 @@
     self = [super init];
     if (self) {
         self.showEffectView = YES;
-        self.chatMsgData = @[];
+        self.chatMsgData = [TADataCenter shareInstance].chatMessages;
 
         //注册监听
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"membersList" options:NSKeyValueObservingOptionNew context:nil];
@@ -122,6 +122,12 @@
         make.right.mas_equalTo(kRelative(-5));
         make.bottom.mas_equalTo(kRelative(-5));
     }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.msgTableView.contentSize.height > self.msgTableView.bounds.size.height) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.chatMsgData.count-1 inSection:0];
+            [self.msgTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    });
 }
 
 #pragma mark - action

@@ -205,13 +205,13 @@
 			files = (
 				7AC5E96429CD706E006FB4C0 /* TXLiteAVSDK_TRTC.framework in Frameworks */,
 				7AC5E96129CD7063006FB4C0 /* TXLiteAVSDK_ReplayKitExt.framework in Frameworks */,
+				7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */,
+				7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
 				7AC5E96529CD707E006FB4C0 /* Accelerate.framework in Frameworks */,
 				7AC5E96329CD706A006FB4C0 /* libc++.tbd in Frameworks */,
 				7A7328F829D2F23200DBFC4F /* IOSFramework.framework in Frameworks */,
 				7A0930BE29D15A2B0091623E /* ReplayKit.framework in Frameworks */,
-				7AC5E96629CD7088006FB4C0 /* TXFFmpeg.xcframework in Frameworks */,
 				7AC5E96229CD7063006FB4C0 /* VideoToolbox.framework in Frameworks */,
-				7AC5E96729CD7088006FB4C0 /* TXSoundTouch.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

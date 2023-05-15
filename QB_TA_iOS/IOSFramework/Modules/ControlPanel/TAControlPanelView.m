@@ -63,13 +63,15 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     TAChatDataModel *lastChatData = [[TADataCenter shareInstance].chatMessages lastObject];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *defaultChatDatetime = [defaults objectForKey:DefaultsKeyLastChatDatetime];
-    if (![lastChatData.datetime isEqualToString:defaultChatDatetime] && ![TADataCenter shareInstance].isChatViewVisible)
-    {
-        self.newMsgRedPoint.hidden = NO;
-    }else{
-        self.newMsgRedPoint.hidden = YES;
+    if (lastChatData) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *defaultChatDatetime = [defaults objectForKey:DefaultsKeyLastChatDatetime];
+        if (![lastChatData.datetime isEqualToString:defaultChatDatetime] && ![TADataCenter shareInstance].isChatViewVisible)
+        {
+            self.newMsgRedPoint.hidden = NO;
+        }else{
+            self.newMsgRedPoint.hidden = YES;
+        }
     }
 }
 

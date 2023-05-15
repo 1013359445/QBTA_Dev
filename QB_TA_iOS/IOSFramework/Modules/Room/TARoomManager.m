@@ -217,10 +217,10 @@ shareInstance_implementation(TARoomManager);
 
 - (void)setIsStartLocalAudio:(BOOL)isStartLocalAudio
 {
-//    if (_isStartLocalAudio == isStartLocalAudio)
-//    {
-//        return;
-//    }
+    if (_isStartLocalAudio == isStartLocalAudio)
+    {
+        return;
+    }
     _isStartLocalAudio = isStartLocalAudio;
     if (isStartLocalAudio){
         if (self.isFirstStartLocalAudio) {

@@ -135,15 +135,23 @@ int const IconID_Share_Screen   = 1006;
             break;
         case IconID_Share_Screen:
         {
-            if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
-                [TAAlert alertWithTitle:@"温馨提示" msg:@"确定结束分享屏幕吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
-                    if (index == 1){
-                        [[TARoomManager shareInstance] stopShareScreen];
-                    }
-                }];
-            }else{
-                [[TARoomManager shareInstance] startShareScreen];
-            }
+//            BOOL isUser = rand() % 2;
+//            TAChatDataModel *dataModel = [TAChatDataModel new];
+//            dataModel.nickname = isUser ? @"abc":@"系统消息";;
+//            dataModel.phone = isUser ? @"15077833133":@"11100000000";
+//            dataModel.datetime = @"20230515180101";
+//            dataModel.content = isUser ? @"测试通知" : @"xxx进入了房间";
+//            [[TADataCenter shareInstance] setValue:dataModel forKey:@"clientMessageEvent"];
+
+//            if ([TARoomManager shareInstance].shareScreenStatus == ScreenStart) {
+//                [TAAlert alertWithTitle:@"温馨提示" msg:@"确定结束分享屏幕吗？" actionText_1:@"取消" actionText_2:@"确定" action:^(NSInteger index) {
+//                    if (index == 1){
+//                        [[TARoomManager shareInstance] stopShareScreen];
+//                    }
+//                }];
+//            }else{
+//                [[TARoomManager shareInstance] startShareScreen];
+//            }
         }
             break;
         default:
@@ -274,7 +282,7 @@ int const IconID_Share_Screen   = 1006;
             @"icon_name":@"member",
             @"icon_id":@(IconID_Member),
             @"normal":@"tmenu_member_b",
-            @"highlight":@"",//缺
+            @"highlight":@"",
             @"disable":@"",
             @"visible":@"1",
             @"isEnabled":@"1"
@@ -286,8 +294,8 @@ int const IconID_Share_Screen   = 1006;
             @"selected":@"tmenu_shar_g",
             @"highlight":@"tmenu_shar_g",
             @"disable":@"tmenu_shar_g",
-            @"visible":@"1",
-            @"isEnabled":@"1"
+            @"visible":@"0",
+            @"isEnabled":@"0"
         },
         @{
             @"icon_name":@"mike",

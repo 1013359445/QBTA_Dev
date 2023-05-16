@@ -9,6 +9,7 @@
 #import "TAMacroDefinition.h"
 #import "TAUserInfo.h"
 #import "TAMemberModel.h"
+#import "TAChatDataModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,7 @@ shareInstance_interface(TADataCenter)
 
 @property (nonatomic, nullable, retain)NSMutableArray* microphoneUserList;//正在使用麦克风的成员
 @property (nonatomic, nullable, retain)NSMutableArray* chatMessages;//消息记录
+@property (nonatomic, nullable, retain)TAChatDataModel* clientMessageEvent;//通知
 @property (nonatomic, nullable, retain)NSArray*     membersList;//房间的成员
 
 @property (nonatomic, assign)BOOL                   isProhibition;//禁言状态、管理员不受限制

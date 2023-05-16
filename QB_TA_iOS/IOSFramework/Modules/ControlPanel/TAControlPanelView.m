@@ -15,6 +15,7 @@
 #import "TARoomManager.h"
 #import "TARoomListView.h"
 #import "TAChatDataModel.h"
+#import "TAMessageNoticeView.h"
 
 @interface TAControlPanelView ()
 @property (nonatomic, retain)UIImageView        *headImageView;
@@ -31,6 +32,8 @@
 @property (nonatomic, retain)UIButton           *chatBtn;
 @property (nonatomic, retain)UIView             *newMsgRedPoint;
 
+@property (nonatomic, retain)TAMessageNoticeView *messageNoticeView;
+
 @end
 
 @implementation TAControlPanelView
@@ -44,6 +47,7 @@
 
 - (void)dealloc{
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
+    [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"isChatViewVisible"];
 }
 
 - (instancetype)init
@@ -56,12 +60,19 @@
             [[TARoomManager shareInstance] enterRoom:[TADataCenter shareInstance].userInfo.roomNum];
         });
         [[TADataCenter shareInstance] addObserver:self forKeyPath:@"chatMessages" options:NSKeyValueObservingOptionNew context:nil];
+        [[TADataCenter shareInstance] addObserver:self forKeyPath:@"isChatViewVisible" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 //KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
+    if ([@"isChatViewVisible" isEqualToString:keyPath]) {
+        //关闭聊天页面时显示通知面板
+        self.messageNoticeView.hidden = [TADataCenter shareInstance].isChatViewVisible;
+        return;
+    }
+
     TAChatDataModel *lastChatData = [[TADataCenter shareInstance].chatMessages lastObject];
     if (lastChatData) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -130,6 +141,14 @@
         make.left.mas_equalTo(kRelative(80));
         make.bottom.mas_equalTo(kRelative(-30));
     }];
+    
+    [self addSubview:self.messageNoticeView];
+    [_messageNoticeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(kRelative(80));
+        make.width.mas_equalTo(kRelative(360));
+        make.height.mas_equalTo(kRelative(210));
+        make.centerY.mas_equalTo(0);
+    }];
 }
 
 //事件向下传递
@@ -154,8 +173,10 @@
     [[TARouter shareInstance] autoTaskWithCmdModel:[TARoomListView cmd] responseBlock:nil];
 }
 
+//聊天页面
 - (void)chatBtnClick
 {
+    self.messageNoticeView.hidden = YES;
     self.newMsgRedPoint.hidden = YES;
     [[TARouter shareInstance] autoTaskWithCmdModel:[TAChatView cmd] responseBlock:nil];
 }
@@ -287,4 +308,13 @@
     }
     return _newMsgRedPoint;
 }
+
+-(TAMessageNoticeView *)messageNoticeView
+{
+    if (!_messageNoticeView) {
+        _messageNoticeView = [TAMessageNoticeView new];
+    }
+    return _messageNoticeView;
+}
+
 @end

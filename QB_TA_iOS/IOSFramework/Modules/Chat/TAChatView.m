@@ -35,8 +35,8 @@
 - (void)dealloc{
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"membersList"];
     [[TADataCenter shareInstance] removeObserver:self forKeyPath:@"chatMessages"];
-    [TADataCenter shareInstance].isChatViewVisible = NO;
-    
+    [[TADataCenter shareInstance] setValue:@(NO) forKey:@"isChatViewVisible"];
+
     if (self.chatMsgData.count > 0) {
         TAChatDataModel *lastChatData = [self.chatMsgData lastObject];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

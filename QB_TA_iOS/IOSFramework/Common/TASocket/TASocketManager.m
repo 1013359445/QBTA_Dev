@@ -102,10 +102,6 @@ shareInstance_implementation(TASocketManager);
         }
     }];
     
-//    //监听广播
-//    [socket on: @"Broadcast" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
-//    }];
-    
     //监听-成员列表
     [socket on: @"SendClientMembersList" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
         NSDictionary *data = [array firstObject];;
@@ -197,6 +193,26 @@ shareInstance_implementation(TASocketManager);
         }
     }];
 
+    //监听广播
+    [socket on: @"sendClientMessageEvent" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
+        NSDictionary *data = [array firstObject];;
+        if ([data isKindOfClass: [NSDictionary class]]){
+            
+            NSArray *chatArray = nil;
+            id chatData = data[@"data"];
+            if ([chatData isKindOfClass: [NSDictionary class]]){
+                chatArray = @[chatData];
+            }else if ([chatData isKindOfClass: [NSArray class]]){
+                chatArray = chatData;
+            }
+            if (chatArray){
+                for (NSDictionary *dic in chatArray) {
+                    TAChatDataModel *dataModel = [TAChatDataModel mj_objectWithKeyValues:dic];
+                    [[TADataCenter shareInstance] setValue:dataModel forKey:@"clientMessageEvent"];
+                }
+            }
+        }
+    }];
     //监听-消息列表
     [socket on: @"receiveClientChatEvent" callback:^(NSArray *array, VPSocketAckEmitter *emitter) {
         NSDictionary *data = [array firstObject];;
